@@ -1,0 +1,16 @@
+id: EXP-20261009-001
+title: G1 embodiment change compatibility on G1-29 before G1-23 validation
+project: unitree-g1
+owner: David Wei
+participants: [David Wei, Codex]
+status: active
+question: Does the explicit G1-23 embodiment implementation preserve existing G1-29 hardware locomotion behavior?
+hypothesis: G1-29 behavior remains compatible; not promoted to a validated finding by this single run.
+success_criteria:
+  - Focused software contract tests and lint pass.
+  - G1-29 connects and responds to remote axes under supervised hardware conditions.
+  - All 29 G1-29 command slots remain active and disconnect publishes passive commands.
+physical_validation_required: true
+related_repositories: [huggingface/lerobot, MoissanClub/lerobot]
+related_sessions: [SESSION-20261009-001]
+findings: []

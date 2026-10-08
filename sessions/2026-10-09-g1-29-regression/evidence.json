@@ -1,0 +1,45 @@
+{
+  "captured_at": "2026-10-09T02:20:34.904303+08:00",
+  "session_archive": "/home/dwei/.codex/sessions/2026/10/09/rollout-2026-10-09T01-22-48-01a11c8a-0182-73d2-9891-d0b6d876e822.jsonl",
+  "archive_note": "Native archive remains live; referenced rather than duplicated.",
+  "storage_note": "External durable local directory; not pushed or remotely backed up. Large artifacts excluded from lab-book Git.",
+  "artifacts": [
+    {
+      "original_path": "/tmp/g1-29-motion-telemetry.jsonl",
+      "preserved_path": "/home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/g1-29-motion-telemetry.jsonl",
+      "size_bytes": 87865876,
+      "sha256": "220425608d4373a60eaed7159f615fd1257225f55df1a81522ae11857ab25d6b"
+    },
+    {
+      "original_path": "/tmp/lerobot-requested-commit.json",
+      "preserved_path": "/home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/lerobot-requested-commit.json",
+      "size_bytes": 48411,
+      "sha256": "885752a02423ab1b9cdc1663d589e3c89f34abc403e6f60cbfeb99083b409a4c"
+    },
+    {
+      "original_path": "/tmp/lerobot-g1-regression/monitor_motion.py",
+      "preserved_path": "/home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/monitor_motion.py",
+      "size_bytes": 1992,
+      "sha256": "8a68982c5b1f129a6ce68ec28b60ee932d631b59017912d37ed22751a430d397"
+    },
+    {
+      "original_path": "/tmp/lerobot-g1-regression/read_only_preflight.py",
+      "preserved_path": "/home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/read_only_preflight.py",
+      "size_bytes": 1564,
+      "sha256": "c5a8254ec88e13daf45d3d99d2fdc88ce38b7a7cff8c89a52d0e9e619c8f1cb5"
+    },
+    {
+      "original_path": "/tmp/lerobot-g1-regression/G1_29_TEST_RESULTS.md",
+      "preserved_path": "/home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/G1_29_TEST_RESULTS.md",
+      "size_bytes": 1445,
+      "sha256": "4ef526f65e2524f35108f4d3288b38805cf262056a824634a218515dc075dbdf"
+    }
+  ],
+  "missing": [
+    "video",
+    "raw wireless remote bytes",
+    "full environment export",
+    "standalone complete stdout logs"
+  ],
+  "warning": "Telemetry fourth axis is byte16 mislabeled ly. Original preliminary results have a superseded forward/back coverage claim."
+}

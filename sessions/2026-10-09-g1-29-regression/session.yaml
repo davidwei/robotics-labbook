@@ -1,0 +1,12 @@
+id: SESSION-20261009-001
+date: 2026-10-09
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: onboard Unitree G1-29
+experiments: [EXP-20261009-001]
+status: review
+objectives:
+  - Check G1-29 compatibility of upstream G1-23 embodiment changes before G1-23 testing.
+runs: [RUN-20261009-001, RUN-20261009-002]
+agent_sessions: [01a11c8a-0182-73d2-9891-d0b6d876e822]
+notes: Retrospective in-lab capture; local UTC+08 times. No validated finding yet. See session.md and evidence.json.
