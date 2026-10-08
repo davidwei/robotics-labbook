@@ -1,0 +1,12 @@
+# A bounded period of physical robot access.
+id: SESSION-YYYYMMDD-NNN
+date: YYYY-MM-DD
+owner: ""
+participants: []
+location_label: "" # non-sensitive human label if useful
+experiments: []
+status: planned # planned|active|review|closed
+objectives: []
+runs: []
+agent_sessions: []
+notes: ""
