@@ -141,6 +141,10 @@ Detailed shell commands, routine dependency/tool setup failures, exhaustive warn
 
 Lab records should be concise, factual, and useful months later. Prefer explicit uncertainty over persuasive prose. The existence of detailed evidence is not a reason to make the default human view long.
 
+Durable research records should use **agent-neutral language**. Avoid first-person agent phrasing such as "I found", "my earlier claim", or "I changed". State the evidence, correction, or action directly; keep Codex/Claude/other agent identity in provenance fields or timeline attribution when it matters. The notebook should read naturally regardless of which agent opens it months later.
+
+When both matter, distinguish **software validation** (tests, lint, simulation/static checks) from **physical validation** (robot behavior and measurements) in the human-facing summary. Do not let passing software checks visually blur into evidence from physical hardware.
+
 ## Multi-agent behavior
 
 Codex, Claude, and future agents use this same protocol. Do not create agent-specific versions of scientific conclusions. Record agent/session provenance where useful, but organize knowledge around projects/experiments/runs rather than conversations.
