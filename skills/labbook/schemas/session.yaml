@@ -5,8 +5,12 @@ owner: ""
 participants: []
 location_label: "" # non-sensitive human label if useful
 experiments: []
-status: planned # planned|active|review|closed
-objectives: []
+status: planned # planned|active|capture|review|closed
+capture:
+  method: live # live|retrospective|mixed
+  sources: [] # e.g. codex_session, claude_session, git, filesystem, telemetry, operator_recollection
+  coverage: unknown # complete|partial|unknown
+  known_gaps: []
 runs: []
 agent_sessions: []
 notes: ""
