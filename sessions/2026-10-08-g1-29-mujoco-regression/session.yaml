@@ -24,7 +24,8 @@ capture:
 runs:
 - RUN-20261008-001
 - RUN-20261008-002
+- RUN-20261008-003
 agent_sessions:
 - 01a118b8-44b1-76e2-95f8-d13a27c5f7e0
-notes: Development plus headless and operator-confirmed graphical MuJoCo regression validation.
-  No physical robot actuation.
+notes: Development, feature-branch graphical validation, and a matched upstream-parent
+  MuJoCo baseline. No physical robot actuation.

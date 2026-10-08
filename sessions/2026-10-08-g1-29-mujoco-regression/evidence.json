@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-08T12:10:23-07:00",
+  "captured_at": "2026-10-08T14:02:32-07:00",
   "session_archive": "/home/dwei/.codex/sessions/2026/10/07/rollout-2026-10-07T16-34-51-01a118b8-44b1-76e2-95f8-d13a27c5f7e0.jsonl",
   "archive_note": "Native Codex archive is referenced rather than duplicated.",
   "source_revisions": {
@@ -31,11 +31,29 @@
     "mujoco_warning": "NaN, Inf or huge value in QACC at DOF 0. The simulation is unstable. Time = 48.4160.",
     "process_exit_code": 0
   },
+  "upstream_baseline_summary": {
+    "lerobot_commit": "b863b4228356dc53db25d097f2404e4f02a60834",
+    "relationship": "exact parent of feature commit dd3d74b82832673666d6a2adb71bec18ea509219",
+    "start_time": "2026-10-08T14:00:32-07:00",
+    "end_time": "2026-10-08T14:02:19-07:00",
+    "measured_duration_s": 105.0,
+    "teleop_ticks": 6261,
+    "effective_teleop_hz": 59.63,
+    "viewer": "interactive MuJoCo on DISPLAY=:1",
+    "qacc_warning": "NaN, Inf or huge value in QACC at DOF 0. The simulation is unstable. Time = 88.2920.",
+    "ctrl_warning": "NaN, Inf or huge value in CTRL at ACTUATOR 0. The simulation is unstable. Time = 5.8080.",
+    "process_exit_code": 1
+  },
   "artifacts": [
     {
       "path": "/home/dwei/robotics/artifacts/2026-10-08/g1-29-mujoco-regression/graphical/MUJOCO_LOG.TXT",
       "size_bytes": 120,
       "sha256": "22b8ccfbd32a22a7adfd1b9090b056089c259fb7d5f444699b80a46c41f9c409"
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-08/g1-29-mujoco-regression/upstream-baseline/MUJOCO_LOG.TXT",
+      "size_bytes": 244,
+      "sha256": "e314a9edd34e356998d77edf15e866b541481d16a748ce8df040e58c3957933c"
     }
   ],
   "missing": [
@@ -45,5 +63,5 @@
     "base-pose trajectory",
     "commanded walking segment"
   ],
-  "warning": "Both runs hit the pre-existing None image-publisher disconnect warning. The longer graphical run also produced a MuJoCo QACC numerical-instability warning; no matched upstream-baseline run has established whether it is related to the PR."
+  "warning": "All simulation paths hit the pre-existing None image-publisher disconnect warning. Both the feature graphical run and its exact-parent baseline produced a MuJoCo QACC numerical-instability warning, establishing that the warning predates the embodiment diff; the root cause remains undiagnosed."
 }

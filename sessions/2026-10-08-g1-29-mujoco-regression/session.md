@@ -14,16 +14,18 @@ The feature branch was reduced to one commit, rebased onto Hugging Face upstream
 
 [RUN-20261008-002](runs/RUN-20261008-002.yaml) then exercised the documented `lerobot-teleoperate` path with the interactive MuJoCo viewer enabled, DDS on loopback, GR00T, and zero joystick input. It ran for 92.8 seconds and 5,532 teleoperation ticks at 59.63 Hz effective cadence; measured GR00T rates were 49.7–49.8 Hz against a 50 Hz target. David visually confirmed that the graphics were working. The process exited with code 0 after Ctrl-C. MuJoCo nevertheless wrote a numerical-instability warning at simulation time 48.4160: `NaN, Inf or huge value in QACC at DOF 0`.
 
-The runs establish that G1-29 simulation starts and the graphical `lerobot-teleoperate` path remains responsive, but the longer run does not establish numerical stability. The warning is not yet attributable to this PR because no matched upstream-baseline run was performed. Commanded walking, camera publishing, long-duration stability, and physical G1-23 behavior also remain unestablished.
+[RUN-20261008-003](runs/RUN-20261008-003.yaml) repeated the graphical zero-input configuration on exact parent `b863b422`, without the embodiment diff. The baseline emitted the same QACC instability class at simulation time 88.2920 and later emitted a CTRL instability warning at actuator 0 after simulation time restarted. It completed 6,261 teleoperation ticks over 105.0 measured seconds at 59.63 Hz, then returned code 1 while reproducing the existing disconnect warning.
+
+The matched baseline establishes that the QACC instability warning predates this PR and was not introduced by the embodiment diff. It does not establish the instability's root cause or numerical stability. Commanded walking, camera publishing, long-duration stability, and physical G1-23 behavior also remain unestablished.
 
 ## Unresolved shutdown behavior
 
-With image publishing disabled, both headless and graphical disconnects logged `Error closing sim_env: 'NoneType' object has no attribute 'process'`. Inspection found the same unguarded image-publisher dereference in upstream `b863b422`; this embodiment change did not introduce it. The exception prevented confirmation that the environment's normal `close()` completed, although threads stopped and both processes exited. Track this as a pre-existing cleanup defect rather than evidence against G1-29 embodiment compatibility.
+With image publishing disabled, the headless run and both graphical revisions logged `Error closing sim_env: 'NoneType' object has no attribute 'process'`. Inspection found the same unguarded image-publisher dereference in upstream `b863b422`; this embodiment change did not introduce it. The exception prevented confirmation that the environment's normal `close()` completed. Track this as a pre-existing cleanup defect rather than evidence against G1-29 embodiment compatibility.
 
 ## Next checks
 
 - Repeat G1-29 simulation with a small commanded walk and quantitative base-stability criteria.
-- Run the same duration/configuration on upstream `b863b422` to determine whether the QACC instability predates this PR.
+- Diagnose the pre-existing QACC/CTRL instability independently of this embodiment PR.
 - Exercise camera publishing separately.
 - Fix or separately report the headless disconnect guard and verify normal simulator close.
 - Perform the planned tethered physical G1-23 Holosoma test with the Unitree wireless remote; no native G1-23 MuJoCo claim is possible yet.

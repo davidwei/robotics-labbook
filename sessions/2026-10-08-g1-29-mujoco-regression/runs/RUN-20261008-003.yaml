@@ -1,0 +1,51 @@
+id: RUN-20261008-003
+session: SESSION-20261008-001
+experiments:
+- EXP-20261009-001
+start_time: '2026-10-08T14:00:32-07:00'
+end_time: '2026-10-08T14:02:19-07:00'
+environment:
+  type: simulation
+  robot: Unitree G1-29 MuJoCo
+  configuration: Matched upstream-parent baseline using the same interactive viewer,
+    DDS loopback, GR00T balance controller, disabled cameras/image publishing, and
+    zero joystick input as RUN-20261008-002. The embodiment option was omitted because
+    upstream is G1-29-only.
+code:
+  repositories:
+  - repo: huggingface/lerobot
+    commit: b863b4228356dc53db25d097f2404e4f02a60834
+    dirty: false
+    snapshot_ref: exact parent of feature commit dd3d74b82832673666d6a2adb71bec18ea509219
+  - repo: lerobot/unitree-g1-mujoco
+    commit: 68459ed68f6f68e1f661091dfcb6ebce44681aec
+    dirty: false
+    snapshot_ref: Hugging Face Hub cache
+agent_sessions:
+- 01a118b8-44b1-76e2-95f8-d13a27c5f7e0
+artifacts:
+  telemetry: []
+  video: []
+  logs:
+  - /home/dwei/robotics/artifacts/2026-10-08/g1-29-mujoco-regression/upstream-baseline/MUJOCO_LOG.TXT
+observations:
+- The exact parent of the feature commit emitted `NaN, Inf or huge value in QACC
+  at DOF 0` at simulation time 88.2920, confirming that this instability class is
+  present without the embodiment diff.
+- MuJoCo later emitted `NaN, Inf or huge value in CTRL at ACTUATOR 0` at simulation
+  time 5.8080. The lower time after the QACC warning is evidence that simulation time
+  restarted; the cause was not diagnosed.
+- Teleoperation completed 6,261 ticks over 105.0 measured seconds at 59.63 Hz effective
+  cadence.
+- No gamepad was detected, so the run exercised zero-input balance rather than commanded
+  walking.
+- Automatic completion logged the same pre-existing None image-publisher disconnect
+  warning and returned process exit code 1.
+outcome: partial
+outcome_notes: The matched baseline confirms that the QACC instability predates the
+  embodiment diff. Its root cause, the additional CTRL warning, numerical stability,
+  commanded walking, and normal simulator cleanup remain unresolved.
+review:
+  status: pending
+  findings: []
+activity_type: run
