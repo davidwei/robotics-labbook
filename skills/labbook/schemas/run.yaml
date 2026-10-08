@@ -1,0 +1,25 @@
+# A specific execution. Values below are placeholders.
+id: RUN-YYYYMMDD-NNN
+session: SESSION-YYYYMMDD-NNN
+experiments: []
+start_time: ""
+environment:
+  type: physical # physical|simulation
+  robot: ""
+  configuration: ""
+code:
+  repositories:
+    - repo: owner/name
+      commit: ""
+      dirty: false
+      snapshot_ref: "" # required if commit alone does not identify what ran
+agent_sessions: []
+artifacts:
+  telemetry: []
+  video: []
+  logs: []
+observations: []
+outcome: unknown # success|failure|partial|unknown
+review:
+  status: pending # pending|reviewed
+  findings: []
