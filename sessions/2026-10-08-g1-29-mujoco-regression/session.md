@@ -12,9 +12,9 @@ The feature branch was reduced to one commit, rebased onto Hugging Face upstream
 
 [RUN-20261008-001](runs/RUN-20261008-001.yaml) launched the real G1-29 MuJoCo environment headlessly with the DDS bridge and GR00T balance controller at zero joystick input. It completed 1,480 simulation steps in 7.807 seconds. All 29 joint position, velocity and estimated-torque observations were present and finite; all 15 GR00T lower-body outputs were finite; MuJoCo `qpos`, `qvel`, `qacc`, and `ctrl` remained finite. The controller and subscription threads stopped, and the test process exited successfully.
 
-[RUN-20261008-002](runs/RUN-20261008-002.yaml) then exercised the documented `lerobot-teleoperate` path with the interactive MuJoCo viewer enabled, DDS on loopback, GR00T, and zero joystick input. It ran for 92.8 seconds and 5,532 teleoperation ticks at 59.63 Hz effective cadence; measured GR00T rates were 49.7–49.8 Hz against a 50 Hz target. David visually confirmed that the graphics were working. The process exited with code 0 after Ctrl-C.
+[RUN-20261008-002](runs/RUN-20261008-002.yaml) then exercised the documented `lerobot-teleoperate` path with the interactive MuJoCo viewer enabled, DDS on loopback, GR00T, and zero joystick input. It ran for 92.8 seconds and 5,532 teleoperation ticks at 59.63 Hz effective cadence; measured GR00T rates were 49.7–49.8 Hz against a 50 Hz target. David visually confirmed that the graphics were working. The process exited with code 0 after Ctrl-C. MuJoCo nevertheless wrote a numerical-instability warning at simulation time 48.4160: `NaN, Inf or huge value in QACC at DOF 0`.
 
-Together these runs support G1-29 simulation compatibility for short zero-input balance operation through both direct driver and graphical `lerobot-teleoperate` paths. They do not establish commanded walking behavior, camera-publishing behavior, long-duration stability, or physical G1-23 behavior.
+The runs establish that G1-29 simulation starts and the graphical `lerobot-teleoperate` path remains responsive, but the longer run does not establish numerical stability. The warning is not yet attributable to this PR because no matched upstream-baseline run was performed. Commanded walking, camera publishing, long-duration stability, and physical G1-23 behavior also remain unestablished.
 
 ## Unresolved shutdown behavior
 
@@ -23,6 +23,7 @@ With image publishing disabled, both headless and graphical disconnects logged `
 ## Next checks
 
 - Repeat G1-29 simulation with a small commanded walk and quantitative base-stability criteria.
+- Run the same duration/configuration on upstream `b863b422` to determine whether the QACC instability predates this PR.
 - Exercise camera publishing separately.
 - Fix or separately report the headless disconnect guard and verify normal simulator close.
 - Perform the planned tethered physical G1-23 Holosoma test with the Unitree wireless remote; no native G1-23 MuJoCo claim is possible yet.

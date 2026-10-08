@@ -34,12 +34,16 @@ observations:
 - GR00T controller measured 49.7 to 49.8 Hz against a 50 Hz target.
 - No gamepad was detected, so the run exercised zero-input balance rather than commanded
   walking.
+- MuJoCo wrote a numerical-instability warning at simulation time 48.4160 for NaN,
+  Inf, or a huge QACC value at DOF 0. No matched upstream baseline was run, so this
+  is not attributed to the embodiment change.
 - Ctrl-C produced process exit code 0 and no simulation process remained.
 - Disconnect reproduced the pre-existing None image-publisher warning, so normal simulator
   close was not confirmed.
 outcome: partial
-outcome_notes: Operator-confirmed graphical G1-29 teleoperation path worked at expected
-  rates; commanded walking and normal simulator cleanup remain unverified.
+outcome_notes: Operator-confirmed graphics and expected loop rates coexist with a MuJoCo
+  QACC instability warning; numerical stability, attribution, commanded walking, and
+  normal simulator cleanup remain unverified.
 review:
   status: pending
   findings: []
