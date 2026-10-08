@@ -8,9 +8,10 @@ question: Does the explicit G1-23 embodiment implementation preserve existing G1
 hypothesis: G1-29 behavior remains compatible; not promoted to a validated finding by this single run.
 success_criteria:
   - Focused software contract tests and lint pass.
+  - G1-29 runs the real MuJoCo/DDS path with finite state and controller output.
   - G1-29 connects and responds to remote axes under supervised hardware conditions.
   - All 29 G1-29 command slots remain active and disconnect publishes passive commands.
 physical_validation_required: true
 related_repositories: [huggingface/lerobot, MoissanClub/lerobot]
-related_sessions: [SESSION-20261009-001]
+related_sessions: [SESSION-20261008-001, SESSION-20261009-001]
 findings: []

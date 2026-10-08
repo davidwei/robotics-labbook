@@ -1,0 +1,42 @@
+id: RUN-20261008-001
+session: SESSION-20261008-001
+experiments:
+- EXP-20261009-001
+start_time: '2026-10-08T12:09:34-07:00'
+end_time: '2026-10-08T12:09:42-07:00'
+environment:
+  type: simulation
+  robot: Unitree G1-29 MuJoCo
+  configuration: Headless; no camera publishing or viewer; DDS on loopback; GR00T
+    balance controller; zero joystick input; MuJoCo 3.13.0.
+code:
+  repositories:
+  - repo: MoissanClub/lerobot
+    commit: dd3d74b82832673666d6a2adb71bec18ea509219
+    dirty: false
+    snapshot_ref: ''
+  - repo: lerobot/unitree-g1-mujoco
+    commit: 68459ed68f6f68e1f661091dfcb6ebce44681aec
+    dirty: false
+    snapshot_ref: Hugging Face Hub cache
+agent_sessions:
+- 01a118b8-44b1-76e2-95f8-d13a27c5f7e0
+artifacts:
+  telemetry: []
+  video: []
+  logs:
+  - Native Codex archive referenced in ../evidence.json
+observations:
+- Completed 1,480 MuJoCo steps in 7.807 seconds.
+- All 29 q/dq/tau observations and 15 GR00T outputs were present and finite.
+- MuJoCo qpos, qvel, qacc and ctrl remained finite.
+- Controller and subscription threads stopped; process exited with code 0.
+- Disconnect warned while dereferencing a None image publisher, so normal simulator
+  close was not confirmed. Equivalent code exists in upstream b863b422.
+outcome: partial
+outcome_notes: G1-29 zero-input balance smoke test passed without numerical instability;
+  cleanup warning and untested walking/camera paths remain.
+review:
+  status: pending
+  findings: []
+activity_type: run

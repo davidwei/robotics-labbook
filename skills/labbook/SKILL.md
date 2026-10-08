@@ -1,3 +1,8 @@
+---
+name: labbook
+description: Record and maintain durable robotics development, simulation, pre-lab, physical-run, post-lab, and publication evidence in the robotics labbook. Use for robotics work in directories whose path contains a component starting with `lerobot`, and whenever the user asks to log robotics activities or update the labbook.
+---
+
 # Robotics Lab Book Skill
 
 ## Mission

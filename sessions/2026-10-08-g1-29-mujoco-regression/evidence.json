@@ -1,0 +1,30 @@
+{
+  "captured_at": "2026-10-08T12:10:23-07:00",
+  "session_archive": "/home/dwei/.codex/sessions/2026/10/07/rollout-2026-10-07T16-34-51-01a118b8-44b1-76e2-95f8-d13a27c5f7e0.jsonl",
+  "archive_note": "Native Codex archive is referenced rather than duplicated.",
+  "source_revisions": {
+    "lerobot": "dd3d74b82832673666d6a2adb71bec18ea509219",
+    "lerobot_upstream_base": "b863b422",
+    "unitree_g1_mujoco": "68459ed68f6f68e1f661091dfcb6ebce44681aec",
+    "groot_policy": "7bb8a672f5a4213c9261ea5ac1f3f034f5078638"
+  },
+  "simulation_summary": {
+    "elapsed_s": 7.807,
+    "sim_steps": 1480,
+    "joint_q_count": 29,
+    "controller_output_count": 15,
+    "max_abs_q": 0.55319,
+    "max_abs_qvel": 3.680483,
+    "max_abs_qacc": 94.91258,
+    "finite_arrays": ["qpos", "qvel", "qacc", "ctrl"],
+    "process_exit_code": 0
+  },
+  "missing": [
+    "standalone full stdout log",
+    "rendered video",
+    "camera stream",
+    "base-pose trajectory",
+    "commanded walking segment"
+  ],
+  "warning": "Headless disconnect dereferenced a None image publisher and did not prove normal simulator close; the same code exists in upstream b863b422."
+}
