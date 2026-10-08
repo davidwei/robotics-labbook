@@ -1,0 +1,14 @@
+# Minimal example; evolve from real usage.
+id: EXP-YYYYMMDD-NNN
+title: ""
+project: ""
+owner: ""
+participants: []
+status: proposed # proposed|active|analyzing|reviewed|closed
+question: ""
+hypothesis: ""
+success_criteria: []
+physical_validation_required: true
+related_repositories: []
+related_sessions: []
+findings: []
