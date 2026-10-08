@@ -6,7 +6,7 @@
 
 ## Development state
 
-The feature branch was reduced to one commit, rebased onto Hugging Face upstream `b863b422`, and pushed to `MoissanClub/lerobot` as `dd3d74b82832673666d6a2adb71bec18ea509219`. The implementation keeps the 29-slot DDS layout, adds sparse G1-23 embodiment mappings, shares gains by joint name, leaves G1-29 as the default, and explicitly rejects G1-23 simulation until a native model exists. Focused validation reported 75 passing tests plus clean Ruff and whitespace checks. Physical G1-23 Holosoma validation remains a TODO.
+The feature branch was initially reduced to one commit, rebased onto Hugging Face upstream `b863b422`, and pushed to `MoissanClub/lerobot` as `dd3d74b82832673666d6a2adb71bec18ea509219`. That revision is the exact feature code used by the simulation runs below. The branch was later normalized after an upstream merge: upstream commit `c441ebb7` is now followed by one David-authored feature commit, `bdd78d348cdbd4d0147c3b685f7131fabba25e09`. The rewritten commit preserves the detailed message and adds the reviewed G1-23 gravity-compensation wording. The implementation keeps the 29-slot DDS layout, adds sparse G1-23 embodiment mappings, shares gains by joint name, leaves G1-29 as the default, and explicitly rejects G1-23 simulation until a native model exists. Focused validation reported 75 passing tests plus clean Ruff and whitespace checks; the later documentation edit passed its targeted pre-commit and whitespace checks. Physical G1-23 Holosoma validation remains a TODO.
 
 ## Simulation validation
 

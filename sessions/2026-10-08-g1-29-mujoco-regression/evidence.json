@@ -1,9 +1,11 @@
 {
-  "captured_at": "2026-10-08T14:02:32-07:00",
+  "captured_at": "2026-10-08T14:10:34-07:00",
   "session_archive": "/home/dwei/.codex/sessions/2026/10/07/rollout-2026-10-07T16-34-51-01a118b8-44b1-76e2-95f8-d13a27c5f7e0.jsonl",
   "archive_note": "Native Codex archive is referenced rather than duplicated.",
   "source_revisions": {
     "lerobot": "dd3d74b82832673666d6a2adb71bec18ea509219",
+    "lerobot_branch_tip_after_history_rewrite": "bdd78d348cdbd4d0147c3b685f7131fabba25e09",
+    "lerobot_branch_rewrite_base": "c441ebb785b7a1008203b85a241e610bec0a0711",
     "lerobot_upstream_base": "b863b422",
     "unitree_g1_mujoco": "68459ed68f6f68e1f661091dfcb6ebce44681aec",
     "groot_policy": "7bb8a672f5a4213c9261ea5ac1f3f034f5078638"
