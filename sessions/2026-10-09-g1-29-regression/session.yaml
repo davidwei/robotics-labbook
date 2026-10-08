@@ -1,12 +1,38 @@
 id: SESSION-20261009-001
 date: 2026-10-09
 owner: David Wei
-participants: [David Wei, Codex]
+participants:
+- David Wei
+- Codex
 location_label: onboard Unitree G1-29
-experiments: [EXP-20261009-001]
+experiments:
+- EXP-20261009-001
 status: review
 objectives:
-  - Check G1-29 compatibility of upstream G1-23 embodiment changes before G1-23 testing.
-runs: [RUN-20261009-001, RUN-20261009-002]
-agent_sessions: [01a11c8a-0182-73d2-9891-d0b6d876e822]
-notes: Retrospective in-lab capture; local UTC+08 times. No validated finding yet. See session.md and evidence.json.
+- Check G1-29 compatibility of upstream G1-23 embodiment changes before G1-23 testing.
+runs:
+- RUN-20261009-002
+agent_sessions:
+- 01a11c8a-0182-73d2-9891-d0b6d876e822
+notes: Retrospective capture; UTC+08 times. Detailed history in timeline.md; human
+  summary in session.md. Prior RUN-20261009-001 reclassified as preflight; no validated
+  findings or full post-lab analysis.
+capture:
+  method: retrospective
+  sources:
+  - codex_session
+  - commands_and_outputs
+  - git
+  - filesystem
+  - telemetry
+  - operator_recollection
+  coverage: partial
+  known_gaps:
+  - Lab activity outside this Codex session
+  - No video or raw wireless remote bytes captured
+  - Incorrect ly decoding in temporary observer; independent forward/back timing unavailable
+  - No complete dependency export or standalone complete stdout log
+  - No measured controller cadence or quantitative physical stability criterion
+  - Native motion-mode restoration not performed or verified
+activities:
+- PREFLIGHT-20261009-001

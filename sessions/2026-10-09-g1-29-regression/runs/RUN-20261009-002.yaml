@@ -1,34 +1,50 @@
 id: RUN-20261009-002
 session: SESSION-20261009-001
-experiments: [EXP-20261009-001]
-start_time: "2026-10-09T01:28:15+08:00"
-end_time: "2026-10-09T01:30:18+08:00"
-time_notes: Connection/application log timestamps; loop started after three-second reset; bridge invoked 01:27:19; cleanup completed approximately 01:37.
+experiments:
+- EXP-20261009-001
+start_time: '2026-10-09T01:28:15+08:00'
+end_time: '2026-10-09T01:30:18+08:00'
+time_notes: Connection/application log timestamps; loop started after three-second
+  reset; bridge invoked 01:27:19; cleanup completed approximately 01:37.
 environment:
   type: physical
   robot: Unitree G1-29
-  configuration: Explicit g1_29; hardware; localhost ZMQ bridge; Holosoma FASTSAC; remote-only empty exo ports; no cameras/display; 120-second teleop; target 60 Hz, controller target 200 Hz.
+  configuration: Explicit g1_29; hardware; localhost ZMQ bridge; Holosoma FASTSAC;
+    remote-only empty exo ports; no cameras/display; 120-second teleop; target 60
+    Hz, controller target 200 Hz.
 artifacts:
-  telemetry: [/home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/g1-29-motion-telemetry.jsonl]
+  telemetry:
+  - /home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/g1-29-motion-telemetry.jsonl
   video: []
-  logs: [native Codex archive referenced in ../evidence.json]
+  logs:
+  - native Codex archive referenced in ../evidence.json
 observations:
-  - Operator confirmed tether/suspension, spotter, emergency stop and remote prerequisites before motion.
-  - Operator reported robot and remote axes worked; retrospective sequence forward/back then sideways then turn.
-  - All 29 command slots active; final kp/kd/tau zero on all 29 joints; client exit code 0.
-  - Teleop measured 58.54 Hz; controller 200 Hz is target only.
-  - Temporary observer ly offset incorrect; forward/back cannot be independently confirmed or timed from that field.
-  - Bridge SIGINT raised ContextTerminated; bridge and observer needed SIGTERM; native control was not restored.
+- Operator confirmed tether/suspension, spotter, emergency stop and remote prerequisites
+  before motion.
+- Operator reported robot and remote axes worked; retrospective sequence forward/back
+  then sideways then turn.
+- All 29 command slots active; final kp/kd/tau zero on all 29 joints; client exit
+  code 0.
+- Teleop measured 58.54 Hz; controller 200 Hz is target only.
+- Temporary observer ly offset incorrect; forward/back cannot be independently confirmed
+  or timed from that field.
+- Bridge SIGINT raised ContextTerminated; bridge and observer needed SIGTERM; native
+  control was not restored.
 outcome: partial
-outcome_notes: Physical motion reported successful and passive command verified; capture/cleanup limitations remain.
+outcome_notes: Physical motion reported successful and passive command verified; capture/cleanup
+  limitations remain.
 code:
   repositories:
-    - repo: huggingface/lerobot
-      commit: dd3d74b82832673666d6a2adb71bec18ea509219
-      dirty: true
-      snapshot_ref: /home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/
-      notes: Tracked source unchanged; untracked capture helpers preserved externally with hashes in evidence.json. Preliminary summary added after motion run.
-agent_sessions: [01a11c8a-0182-73d2-9891-d0b6d876e822]
+  - repo: huggingface/lerobot
+    commit: dd3d74b82832673666d6a2adb71bec18ea509219
+    dirty: true
+    snapshot_ref: /home/dwei/robotics/artifacts/2026-10-09/g1-29-regression/
+    notes: Tracked source unchanged. Both capture helpers existed during the run;
+      preliminary summary was created afterward. Preserved directory contains separate
+      whole-session artifacts, not a historical tree snapshot.
+agent_sessions:
+- 01a11c8a-0182-73d2-9891-d0b6d876e822
 review:
   status: pending
   findings: []
+activity_type: run
