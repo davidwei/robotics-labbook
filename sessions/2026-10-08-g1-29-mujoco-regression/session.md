@@ -12,16 +12,18 @@ The feature branch was reduced to one commit, rebased onto Hugging Face upstream
 
 [RUN-20261008-001](runs/RUN-20261008-001.yaml) launched the real G1-29 MuJoCo environment headlessly with the DDS bridge and GR00T balance controller at zero joystick input. It completed 1,480 simulation steps in 7.807 seconds. All 29 joint position, velocity and estimated-torque observations were present and finite; all 15 GR00T lower-body outputs were finite; MuJoCo `qpos`, `qvel`, `qacc`, and `ctrl` remained finite. The controller and subscription threads stopped, and the test process exited successfully.
 
-This supports G1-29 simulation compatibility for a short zero-input balance smoke test. It does not establish walking behavior, camera/viewer behavior, long-duration stability, or physical G1-23 behavior.
+[RUN-20261008-002](runs/RUN-20261008-002.yaml) then exercised the documented `lerobot-teleoperate` path with the interactive MuJoCo viewer enabled, DDS on loopback, GR00T, and zero joystick input. It ran for 92.8 seconds and 5,532 teleoperation ticks at 59.63 Hz effective cadence; measured GR00T rates were 49.7–49.8 Hz against a 50 Hz target. David visually confirmed that the graphics were working. The process exited with code 0 after Ctrl-C.
+
+Together these runs support G1-29 simulation compatibility for short zero-input balance operation through both direct driver and graphical `lerobot-teleoperate` paths. They do not establish commanded walking behavior, camera-publishing behavior, long-duration stability, or physical G1-23 behavior.
 
 ## Unresolved shutdown behavior
 
-With image publishing disabled, disconnect logged `Error closing sim_env: 'NoneType' object has no attribute 'process'`. Inspection found the same unguarded image-publisher dereference in upstream `b863b422`; this embodiment change did not introduce it. The exception prevented confirmation that the environment's normal `close()` completed, although threads stopped and the process exited. Track this as a pre-existing cleanup defect rather than evidence against G1-29 embodiment compatibility.
+With image publishing disabled, both headless and graphical disconnects logged `Error closing sim_env: 'NoneType' object has no attribute 'process'`. Inspection found the same unguarded image-publisher dereference in upstream `b863b422`; this embodiment change did not introduce it. The exception prevented confirmation that the environment's normal `close()` completed, although threads stopped and both processes exited. Track this as a pre-existing cleanup defect rather than evidence against G1-29 embodiment compatibility.
 
 ## Next checks
 
 - Repeat G1-29 simulation with a small commanded walk and quantitative base-stability criteria.
-- Exercise camera publishing and viewer modes separately.
+- Exercise camera publishing separately.
 - Fix or separately report the headless disconnect guard and verify normal simulator close.
 - Perform the planned tethered physical G1-23 Holosoma test with the Unitree wireless remote; no native G1-23 MuJoCo claim is possible yet.
 

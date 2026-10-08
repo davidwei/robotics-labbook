@@ -1,0 +1,46 @@
+id: RUN-20261008-002
+session: SESSION-20261008-001
+experiments:
+- EXP-20261009-001
+start_time: '2026-10-08T13:50:54-07:00'
+end_time: '2026-10-08T13:52:29-07:00'
+environment:
+  type: simulation
+  robot: Unitree G1-29 MuJoCo
+  configuration: Interactive viewer on DISPLAY=:1; no camera publishing; DDS on
+    loopback; GR00T balance controller; zero joystick input because no gamepad was
+    detected; launched through lerobot-teleoperate.
+code:
+  repositories:
+  - repo: MoissanClub/lerobot
+    commit: dd3d74b82832673666d6a2adb71bec18ea509219
+    dirty: false
+    snapshot_ref: ''
+  - repo: lerobot/unitree-g1-mujoco
+    commit: 68459ed68f6f68e1f661091dfcb6ebce44681aec
+    dirty: false
+    snapshot_ref: Hugging Face Hub cache
+agent_sessions:
+- 01a118b8-44b1-76e2-95f8-d13a27c5f7e0
+artifacts:
+  telemetry: []
+  video: []
+  logs:
+  - Native Codex archive referenced in ../evidence.json
+observations:
+- MuJoCo viewer opened and David confirmed the graphics were working.
+- Teleoperation ran for 92.8 measured seconds and 5,532 ticks at 59.63 Hz effective
+  cadence.
+- GR00T controller measured 49.7 to 49.8 Hz against a 50 Hz target.
+- No gamepad was detected, so the run exercised zero-input balance rather than commanded
+  walking.
+- Ctrl-C produced process exit code 0 and no simulation process remained.
+- Disconnect reproduced the pre-existing None image-publisher warning, so normal simulator
+  close was not confirmed.
+outcome: partial
+outcome_notes: Operator-confirmed graphical G1-29 teleoperation path worked at expected
+  rates; commanded walking and normal simulator cleanup remain unverified.
+review:
+  status: pending
+  findings: []
+activity_type: run

@@ -19,9 +19,20 @@
     "finite_arrays": ["qpos", "qvel", "qacc", "ctrl"],
     "process_exit_code": 0
   },
+  "graphical_teleoperate_summary": {
+    "start_time": "2026-10-08T13:50:54-07:00",
+    "end_time": "2026-10-08T13:52:29-07:00",
+    "measured_duration_s": 92.8,
+    "teleop_ticks": 5532,
+    "effective_teleop_hz": 59.63,
+    "measured_controller_hz_range": [49.7, 49.8],
+    "viewer": "interactive MuJoCo on DISPLAY=:1",
+    "operator_observation": "David confirmed the graphics were working.",
+    "process_exit_code": 0
+  },
   "missing": [
     "standalone full stdout log",
-    "rendered video",
+    "recorded video",
     "camera stream",
     "base-pose trajectory",
     "commanded walking segment"
