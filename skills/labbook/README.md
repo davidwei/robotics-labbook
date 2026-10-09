@@ -23,6 +23,22 @@ To update later:
 
     git -C ~/robotics/robotics-labbook pull --ff-only
 
+## Daily refresh and pending-work discovery
+
+At the first lab-book-related session each local day, Codex or Claude should safely fast-forward the local canonical checkout, re-read the current skill and relevant workflows, and scan open ideas/experiments for next actions. A symlinked installation reflects updates immediately after pulling; copied installations must be refreshed/reinstalled.
+
+**Important:** This behavior is only automatic when the agent discovers the skill or project instructions at startup. Put a short instruction in each active robotics repository's `AGENTS.md` / `CLAUDE.md` to invoke the lab-book skill at the beginning of robotics work. A skill stored in a separate repository cannot self-activate.
+
+Suggested instruction for both agents:
+
+    At the start of the first robotics work session each local day, locate
+    ~/robotics/robotics-labbook, safely pull --ff-only if clean, re-read
+    skills/labbook/SKILL.md, and discover relevant pending ideas/experiments.
+    Show a short readiness-ranked list before physical lab work.
+    Never run hardware tests without explicit operator authorization.
+
+If the checkout is dirty, offline, or behind with conflicts, preserve local changes and report that refresh could not complete. Do not force-reset or overwrite.
+
 ## Use with Codex
 
 Make `skills/labbook` available through the skill-discovery mechanism supported by your installed Codex version. Prefer a symbolic link when filesystem skills are supported so pulling this repository updates the skill automatically.
