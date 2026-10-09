@@ -11,6 +11,30 @@ Use the lab book as the durable research index and knowledge layer for robotics 
 
 The default reading path must remain concise. Preserve forensic detail without forcing a researcher to read it during ordinary review.
 
+## Daily startup synchronization (Codex and Claude)
+
+At the first lab-book-related work in each local calendar day, **before relying on cached skill instructions or making lab-book changes**:
+
+1. Locate the canonical lab-book checkout (normally `~/robotics/robotics-labbook`). If unavailable, ask for its location; do not silently create a second canonical notebook.
+2. Check whether the checkout has uncommitted changes. Do not overwrite or discard them. If clean and network/authentication permit, run `git -C <labbook> pull --ff-only` (or `git fetch` then fast-forward safely).
+3. Re-read the refreshed `skills/labbook/SKILL.md` and the relevant workflow files. This is a **daily refresh of local skill files**, not permission to rewrite the canonical skill's content.
+4. Note the canonical HEAD revision for provenance. If offline, authentication fails, or fast-forward is blocked, continue using local instructions with an explicit stale/unverified warning and report the obstacle briefly.
+5. Re-check after a known skill update even if already refreshed today. Do not auto-commit, force-pull, or modify skill methodology without an explicit request.
+
+This behavior requires the skill to be discoverable at startup through the agent's installed skill mechanism or project instructions. Merely storing a skill in Git cannot force an agent to read it.
+
+## Pending work discovery and handoff
+
+At the start of a development, pre-lab, or physical-lab session, after refreshing the skill:
+
+- Scan `ideas/`, `experiments/`, and project status files for unresolved work, including unimplemented ideas, unfinished simulations, and pending physical validation. Do not rely on a manually curated backlog alone.
+- Read the status and next action of candidates relevant to the current robot, repository, and available hardware. Distinguish `proposed`, `in_development`, `ready_for_lab`, `validation_pending`, `blocked`, `deferred`, and `completed` as conceptual states; do not assume all existing records already use this schema.
+- Show a short, prioritized list with ID, objective, current readiness, prerequisites, and recommended next action. Rank by expected information value, readiness, dependencies, and available robot access—not only age.
+- Ask the operator to select work when multiple candidates exist. Discovery does **not** authorize implementation, physical testing, or robot motion.
+- When creating/updating an actionable idea or experiment, record the next agent action, target code repository/robot, prerequisites, readiness, and physical validation status. Prefer adding fields to the existing record over inventing parallel backlog files.
+- Update status only from actual evidence: passing tests alone does not make hardware validation complete. If a plan is ready for coding but not physical testing, say so.
+- Keep discovery lightweight during active robot operation; do not interrupt an ongoing physical test to enumerate the backlog.
+
 ## Determine the mode first
 
 Classify current work as one or more of:
