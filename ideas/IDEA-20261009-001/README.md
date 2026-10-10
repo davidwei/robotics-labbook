@@ -28,7 +28,7 @@ These proposed explanations and performance targets are **hypotheses**, not yet 
 
 ## Pending lab-validation checklist
 
-Use code revision `45f49d460fb5395ebcee615c47f72e597b22f356` on `work/g1-vr-physical`. The branch contains P4 commit `126349e2` immediately below P1. At the time this checklist was written, both commits were local and not pushed. Preserve the exact executed revision and any dirty-tree patch in the session record.
+Use code revision `45f49d460fb5395ebcee615c47f72e597b22f356` on `work/g1-vr-physical`. The branch contains P4 commit `126349e2` immediately below P1. Both commits were pushed to `MoissanClub/lerobot:work/g1-vr-physical` on 2026-10-10, with P1 as the remote branch head. Preserve the exact executed revision and any dirty-tree patch in the session record.
 
 ### Readiness order
 
@@ -113,14 +113,14 @@ Use code revision `45f49d460fb5395ebcee615c47f72e597b22f356` on `work/g1-vr-phys
 ## Handoff status
 
 - Original plan captured: yes.
-- P1 code commit: `45f49d46` (`perf(unitree_g1): drain stale camera frames after stalls`) on `work/g1-vr-physical`; local only at the time of this record.
+- P1 code commit: `45f49d460fb5395ebcee615c47f72e597b22f356` (`perf(unitree_g1): drain stale camera frames after stalls`) on `work/g1-vr-physical`; pushed to `MoissanClub/lerobot:work/g1-vr-physical` on 2026-10-10 and verified as the remote branch head.
 - P1 implementation evidence: `OpenCVCameraConfig` has an optional, backward-compatible capture buffer depth; the read-only publisher requests one buffer, records backend acceptance/readback, timestamps OpenCV delivery explicitly, detects slow or abnormally fast post-stall reads, drains queued frames until live cadence resumes, and emits a summary on normal or abnormal exit. No robot-control or safety file changed.
 - P1 software validation: focused OpenCV/read-only suite `66 passed, 1 skipped`; final broad available suite `585 passed, 41 skipped` with the two separately installed Unitree SDK modules excluded; Ruff check, Ruff format check, and `git diff --check` passed. A real Isaac Teleop offscreen Vulkan/CUDA frame-delivery smoke test passed.
 - P1 review evidence: Claude review was repeated through five rounds. Findings about unverified buffer negotiation, optimistic timestamp semantics, stale-frame recovery, incomplete summaries, drain convergence, deterministic clocks, and positional config compatibility were addressed. The fifth-round verdict was `No actionable findings.`
 - P1 environment limitations: this development host has no `/dev/video` device, so V4L2 negotiation and stop/continue recovery remain physically unverified. An expanded suite reached `587 passed, 41 skipped`, then the SDK/reference modules produced `6 failed, 38 errors` because `unitree_sdk2py` is not installed. Targeted mypy reaches a pre-existing OpenCV stub error for `cv2.VideoWriter_fourcc` on an unchanged line.
 - P1 interpretation: software evidence supports backward-compatible configuration, non-fatal unsupported-backend behavior, observable buffer negotiation, conservative backlog draining, and preserved failure evidence. It does not establish camera freshness or recovery time on the Jetson camera driver.
 - Manual P1 validation TODO (camera/headset only; no robot motion): on the G1 Jetson, confirm `camera_config.buffer_size_honored=true`; run the read-only publisher and offscreen/headset display; stop the publisher with `SIGSTOP` for 2 seconds and continue it with `SIGCONT`; confirm `camera_age_ms` returns to approximately one frame period within 1 second, queued frames are reported as dropped, publication resumes, and the summary reports `draining_at_exit=false`. Preserve the JSONL reports and debug logs, including any buffer-size warning.
-- P4 code commit: `126349e2` (`perf(unitree_g1): keep the latest XR controller sample`) on `work/g1-vr-physical`; local only at the time of this record.
+- P4 code commit: `126349e2` (`perf(unitree_g1): keep the latest XR controller sample`) on `work/g1-vr-physical`; pushed to `MoissanClub/lerobot:work/g1-vr-physical` on 2026-10-10 immediately below the P1 commit.
 - P4 implementation evidence: the XR video subprocess now publishes controller input through a fixed-schema shared-memory latest-value slot instead of `multiprocessing.Queue(1)`. Lock acquisition is bounded to 1 ms, and malformed full-input head poses fall back to neutral values.
 - Software validation: relevant G1/VR suite `191 passed, 19 skipped`; focused XR input/video suite `20 passed, 2 skipped` in the final run, with the XR video file also passing three consecutive contention-test runs; targeted mypy, Ruff check, Ruff format check, and `git diff --check` passed.
 - Review evidence: Claude review was repeated after each revision. It identified the multiprocessing queue feeder race, lock-holder liveness risk, insufficient concurrent-test overlap, and malformed head-pose handling. The final implementation and post-mypy verification both received `No actionable findings.`
