@@ -14,6 +14,21 @@ success_criteria:
 physical_validation_required: true
 related_repositories: [huggingface/lerobot, MoissanClub/lerobot]
 related_sessions: [SESSION-20261008-001, SESSION-20261009-001]
+publication:
+  pull_request: https://github.com/huggingface/lerobot/pull/4651
+  source_branch: MoissanClub/lerobot:g1/embodiments
+  candidate_revision: 8c3f16c200f4c454a8ba8fc0065470d598f831d9
+  status: pushed_to_pr_head
+physical_validation_status:
+  g1_29_holosoma: recorded in SESSION-20261009-001
+  g1_29_groot: operator reported physical hardware validation completed separately
+  g1_23: operator reported the commit message's physical hardware test plan completed and verified
+  g1_23_evidence_gap: no structured run record or artifacts were supplied in the publication-preparation session
+software_validation:
+  revision: 8c3f16c200f4c454a8ba8fc0065470d598f831d9
+  focused: 75 focused Unitree G1 tests passed; Ruff and git diff checks passed
+  full_cpu_suite: 3596 passed, 370 skipped, 77 warnings in 282.45 seconds
+  full_cpu_suite_environment: CUDA hidden because both GPUs were occupied by an existing vLLM service; dataset extra and an isolated temporary FFmpeg 6 runtime were used
 findings: []
 
 peer_validation:
