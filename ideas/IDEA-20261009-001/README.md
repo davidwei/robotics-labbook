@@ -26,6 +26,90 @@ These proposed explanations and performance targets are **hypotheses**, not yet 
 6. Do not autonomously execute hardware-only validation. Keep untested claims marked as such.
 7. Update this record with implementation status and link physical experiments/sessions/runs when they occur.
 
+## Pending lab-validation checklist
+
+Use code revision `45f49d460fb5395ebcee615c47f72e597b22f356` on `work/g1-vr-physical`. The branch contains P4 commit `126349e2` immediately below P1. At the time this checklist was written, both commits were local and not pushed. Preserve the exact executed revision and any dirty-tree patch in the session record.
+
+### Readiness order
+
+1. **P1 camera-only baseline and pause recovery — ready for lab.** Requires the Jetson, the real G1 camera, a working CUDA/Isaac Teleop offscreen environment, and no robot connection or controller.
+2. **P1 headset delivery and reconnect — ready after the camera-only gate.** Requires CloudXR/OpenXR and the headset, but still no DDS connection or robot motion.
+3. **P4 controller freshness under camera load — ready after stable video delivery.** Requires the headset/controllers and controller-age instrumentation; keep robot motion disabled.
+4. **Combined supervised physical-arm regression — gated.** Requires explicit operator authorization and the ordinary G1 physical preflight. Run only after the read-only P1/P4 gates pass.
+5. **GPU-assisted camera investigation (`IDEA-20261009-002`) — deferred.** Requires P1/P2 baseline profiles showing that CPU decode/conversion or copies are a material bottleneck.
+
+### Gate 0 — preflight and evidence readiness
+
+- [ ] Record host, Jetson, camera model/device path, pixel format, requested resolution/FPS, headset/runtime versions, exact code revision, and command lines.
+- [ ] Confirm the working tree and installed checkout correspond to the recorded revision; preserve any patch if dirty.
+- [ ] Confirm the real camera is visible and can sustain the requested mode. Record OpenCV backend and `/dev/video` path.
+- [ ] Use new, non-overwriting JSONL output paths for every camera and display run; verify available disk space and readable debug logging.
+- [ ] Confirm the offscreen Vulkan/CUDA display works before involving the headset.
+- [ ] Confirm no robot/DDS process or motor publisher is started for Gates 1–3.
+- [ ] Prepare screen/video capture or a timestamped operator log. Preserve camera JSONL, display JSONL, controller-age logs, warnings, and failure reports.
+- [ ] Rollback/isolation path: P1 and P4 are separate commits and can be reverted independently; the minimum useful experiment is Gate 1 camera-only recovery.
+
+### Gate 1 — P1 real-camera configuration and baseline
+
+- [ ] Start the read-only camera publisher and offscreen display with the same channel and source ID; do not connect to DDS or a robot.
+- [ ] Confirm the first `camera_config` record reports `buffer_size_requested=1`, `buffer_size_set=true`, `buffer_size_actual=1`, and `buffer_size_honored=true`.
+- [ ] If the backend rejects or misreports `CAP_PROP_BUFFERSIZE`, preserve the warning and debug log and mark the mitigation unverified; do not treat the run as a P1 pass.
+- [ ] Confirm the live display receives fresh frames at the requested dimensions and approximate cadence, with `publish_failures=0`.
+- [ ] Confirm `timestamp_semantics=opencv_delivery` is present. Interpret `camera_age_ms` only as a lower bound on the frame's true hardware age.
+- [ ] End one normal baseline run and confirm `frames_published>0`, `backlog_frames_dropped=0` or an explained small count, `publish_failures=0`, and `draining_at_exit=false`.
+
+### Gate 2 — P1 pause/backlog recovery
+
+- [ ] During a stable camera/display run, send `SIGSTOP` to the actual camera publisher process for 2 seconds, then `SIGCONT` it.
+- [ ] Confirm the camera report records `dropped_reason=draining_backlog` after continuation and identifies the trigger (`slow_read` or `fast_read`).
+- [ ] Confirm publication resumes rather than remaining permanently behind.
+- [ ] Confirm display `camera_age_ms` returns to approximately one frame period within 1 second of continuation.
+- [ ] Confirm the final summary has `frames_published>0`, `backlog_frames_dropped>0`, `publish_failures=0`, and `draining_at_exit=false`.
+- [ ] Repeat the stop/continue check at least three times. Preserve each recovery time; do not generalize reliability from a single success.
+- [ ] Negative criteria: no publication recovery, `draining_at_exit=true`, zero published frames, buffer negotiation unconfirmed, or camera age remaining elevated. Preserve the full failed/cancelled report.
+
+### Gate 3 — P1 camera/headset loss and recovery
+
+- [ ] Run the same source through the live headset display after the offscreen gate passes.
+- [ ] Confirm the headset view is live, correctly oriented, and visually current before inducing faults.
+- [ ] Stop or disconnect the camera publisher and confirm a stale/unavailable indication appears rather than a frozen frame being presented as live.
+- [ ] Restart/reconnect the publisher and confirm a new camera session is accepted and live delivery resumes.
+- [ ] Exercise a source-ID mismatch and confirm the display reports `Camera source mismatch` rather than displaying it as the expected feed.
+- [ ] Confirm display shutdown/restart and headset reconnect do not require starting any robot-control process.
+
+### Gate 4 — P4 latest-controller-sample validation, robot motion disabled
+
+- [ ] Run the normal headset/controller plus video path with robot motion disabled and log `time.monotonic() - action["captured_at"]` at the controller consumer.
+- [ ] Measure controller sample age while camera rendering is active. Acceptance target: approximately `p95 <= 12 ms`; also preserve sample count, p50, p99, and maximum.
+- [ ] Confirm both controllers remain continuously tracked during stable operation; correlate any tracking loss with camera/upload/render timing.
+- [ ] Exercise grip pose/quaternion, squeeze, trigger, and—when full input is enabled—sticks, stick clicks, primary/secondary buttons, and head pose. Confirm schema, shapes, and values remain plausible.
+- [ ] Confirm stop-button handling and neutral/fallback behavior for missing or malformed head/controller input.
+- [ ] Disconnect and reconnect the headset/controllers. Confirm the worker exits or reports loss cleanly, no consumer hangs on a lock, and fresh samples resume after reconnect.
+- [ ] Confirm stale-sample checks still reject old input; do not relax any existing freshness or safety limit to obtain a pass.
+
+### Gate 5 — combined P1/P4 endurance, robot motion disabled
+
+- [ ] Run camera, headset display, and controller acquisition together for at least 10 minutes.
+- [ ] Repeat camera `SIGSTOP`/`SIGCONT` while logging controller age and tracking; camera recovery must not cause persistent controller lag or loss.
+- [ ] Confirm camera publication/recovery criteria and controller `p95` target simultaneously.
+- [ ] Preserve CPU/GPU utilization, camera/display/controller reports, warnings, and operator observations. Note that one successful endurance run demonstrates only that run's conditions.
+
+### Gate 6 — supervised physical-arm regression, separate authorization required
+
+- [ ] Obtain explicit operator approval for robot motion and complete the standard G1 physical preflight, safe workspace, stop controls, mode/lease checks, and known-safe baseline.
+- [ ] Before enabling following, re-confirm live video, current controller samples, continuous tracking, and working stop buttons.
+- [ ] At a conservative posture and speed, verify arm following remains smooth and current while video is active; watch for lag, jumps, stale targets, or tracking dropouts.
+- [ ] Exercise the operator stop path, controller/headset disconnect, and reconnect behavior under the existing safety procedure. Existing staleness, torque, displacement, workspace, mode, read-only, and lease checks must remain unchanged.
+- [ ] Stop immediately on unexpected motion, stale input, loss of tracking, instability, safety-check failure, or unexplained camera/controller latency.
+- [ ] Record this as a physical run only if meaningful evidence is produced: exact revision/config, run boundary, telemetry/video references, operator observations, and whether each acceptance criterion passed.
+
+### Completion criteria
+
+- P1 may be marked physically validated only after Gates 1–3 pass on the real Jetson camera path with preserved reports.
+- P4 may be marked physically validated only after Gate 4 meets the controller-age/tracking criteria. Gate 5 provides combined-load evidence.
+- Gate 6 is required before claiming the changes are validated for physical-arm teleoperation, but it is not authorized by this checklist.
+- Record failures and contradictory evidence; do not upgrade a software or offscreen result into physical validation.
+
 ## Handoff status
 
 - Original plan captured: yes.
