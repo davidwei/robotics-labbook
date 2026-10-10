@@ -1,6 +1,6 @@
 # G1 VR teleoperation performance improvements
 
-**Status:** proposed; implementation and physical validation not yet recorded.  
+**Status:** in development; P4 implemented in software, manual validation pending.
 **Owner:** David Wei  
 **Date:** 2026-10-09  
 **Code target:** `MoissanClub/lerobot`, branch `work/g1-vr-physical`.
@@ -28,6 +28,11 @@ These proposed explanations and performance targets are **hypotheses**, not yet 
 ## Handoff status
 
 - Original plan captured: yes.
-- Code changes performed by this lab-book addition: none.
-- Tests executed by this lab-book addition: none.
+- P4 code commit: `126349e2` (`perf(unitree_g1): keep the latest XR controller sample`) on `work/g1-vr-physical`; local only at the time of this record.
+- P4 implementation evidence: the XR video subprocess now publishes controller input through a fixed-schema shared-memory latest-value slot instead of `multiprocessing.Queue(1)`. Lock acquisition is bounded to 1 ms, and malformed full-input head poses fall back to neutral values.
+- Software validation: relevant G1/VR suite `191 passed, 19 skipped`; focused XR input/video suite `20 passed, 2 skipped` in the final run, with the XR video file also passing three consecutive contention-test runs; targeted mypy, Ruff check, Ruff format check, and `git diff --check` passed.
+- Review evidence: Claude review was repeated after each revision. It identified the multiprocessing queue feeder race, lock-holder liveness risk, insufficient concurrent-test overlap, and malformed head-pose handling. The final implementation and post-mypy verification both received `No actionable findings.`
+- Environment limitation: an exploratory expanded suite reached `200 passed, 19 skipped`, then the two SDK/reference modules produced `6 failed, 38 errors` because `unitree_sdk2py` is not installed in the test environment. These are not counted as P4 validation passes.
+- Interpretation: software evidence supports last-write-wins behavior, consistent cross-process snapshots for both schemas, bounded read/write waiting, and preservation of the last valid timestamped sample. It does not establish headset-to-consumer latency on the real XR path.
+- Manual P4 validation TODO: run the normal supervised G1 VR headset/video path, record `time.monotonic() - action["captured_at"]` at the consumer, and confirm approximately `p95 <= 12 ms` while camera rendering is active. Also verify tracking, stop buttons, head pose, disconnect, and reconnect behavior before enabling robot motion.
 - Physical validation performed by this lab-book addition: none.
