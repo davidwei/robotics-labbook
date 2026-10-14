@@ -68,3 +68,5 @@ Operator confirmed low-resolution image quality and same-resolution disconnect/r
 Extended stream: 6.5 minutes averaged 42.8 FPS with zero encoder-input drops, but slowed to ~31 FPS late in the sample. 720p capture works at 15 FPS on the current USB 2 connection; 30 FPS was rejected. Wider peripheral framing observed; viewer still scales into its 640×480 texture. Left running for operator review; details in analysis.
 
 Operator clarified priority: preserve maximum camera field of view while allowing lower-resolution VR delivery. 1920×1080 capture at 8 FPS verified and left running; the entire frame is downscaled to 640×360 within the existing viewer texture, without cropping. 720p/1080p scene boundaries appear similar; exact angular FOV remains unmeasured.
+
+Operator reported 1080p viewpoint identical to 720p and selected 720p. Active capture restored to 1280×720 at 15 FPS, with full-frame downscaling for VR and unchanged headset encoding settings. Evidence: /tmp/g1-resolution-check/camera720-final.jsonl (live). This is a configuration selection, not a new performance validation.
