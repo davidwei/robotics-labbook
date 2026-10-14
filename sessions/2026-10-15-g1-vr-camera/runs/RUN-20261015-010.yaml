@@ -1,0 +1,21 @@
+id: RUN-20261015-010
+session: SESSION-20261015-001
+objective: Ready-pose-only physical test with gravity feedforward
+status: in_progress
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+dirty_patch: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/ready-feedforward-01/code.patch
+command: bash /tmp/g1_start_ready_feedforward.sh
+motor_commands_enabled: true
+vr_following_enabled: false
+preparation_error_limit_rad: 0.08
+following_error_limit_rad: 0.03
+preparation_target_rate_rad_s: 0.02
+peak_planned_gravity_torque_nm: 4.35242729076207
+operator_authorization: Run a test raising the arms to bent ready pose; gantry, clear
+  workspace, regular mode and emergency control confirmed.
+live_evidence: /tmp/g1-ready-feedforward-01/
+software_validation: 87 targeted SDK/reference/pipeline tests passed; Ruff passed.
+observation: Preparation progressing; startup TTS returned SDK status 3104. Ready
+  pose not yet reached.
+next_action: Monitor zero then ready trajectory; hold at ready for operator review.
+  No automatic VR following.
