@@ -24,5 +24,6 @@ runs:
 - RUN-20261015-003
 - RUN-20261015-004
 - RUN-20261015-005
-pending: Operator 720p framing review, investigate late streaming cadence decline,
+- RUN-20261015-006
+pending: Operator full-view review; choose capture mode preserving FOV and cadence;
   final shutdown/artifact capture.

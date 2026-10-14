@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/fullview-1080/1920x1080.png",
+    "sha256": "109432a3dc8f1e9201cc3f2ec80edf923908a5dc3cf9cc9bdb4dc1c670a971ce"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/fullview-1080/camera1080-8.jsonl",
+    "sha256": "8a315ea800792d890934000d4ef5bcb4e04b075517e34b629d132ec2e2d5a928"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/fullview-1080/camera1080-8.log",
+    "sha256": "5cf5169d4738966633fb25d48af66266daf7b99b1fdd522b93591d06f821dee2"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/fullview-1080/g1_start_1080_8.sh",
+    "sha256": "cdab8a4abed2d8fafb94fd15187fc42b15479bc3b349c7fa37d94ecd905ec5ec"
+  }
+]

@@ -1,0 +1,16 @@
+id: RUN-20261015-006
+session: SESSION-20261015-001
+objective: Maximum RGB capture mode with full-frame downscaled VR delivery
+result: capture_verified_operator_review_pending
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+capture: 1920x1080 at configured/accepted 8 FPS
+display: Full image aspect-preserving downscale into existing 640x480 texture (640x360
+  image with borders)
+operator_preference: Maximum camera field of view; lower delivery resolution acceptable.
+observations:
+- 1920x1080 metadata and snapshot verified.
+- 720p and 1080p snapshots appear to cover similar scene boundaries; no calibrated
+  or simultaneous FOV comparison.
+motor_commands_enabled: false
+evidence: fullview-evidence.json
+process_state: 1080p publisher and existing viewer left running
