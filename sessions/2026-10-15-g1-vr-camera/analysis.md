@@ -115,3 +115,7 @@ queue) rather than rely solely on hold duration. Continuous poses should retain
 latest-value semantics. Event transport itself does not replace independent stop
 and fault handling. This is a proposed design improvement, not implemented or
 physically validated by the current exercise.
+
+## Headset HUD observation during endurance
+
+Operator reports Pose-to-Render ~100 ms. SDK definition: interval between sending a pose to the server and rendering the received frame. Source: https://docs.nvidia.com/cloudxr-sdk/apis/cloudxr-js/latest/api/CloudXR/enumerations/MetricsName.html#posetorendertime . This includes the streaming/rendering round trip, unlike PC2 post-acquisition sample age. Do not add the two metrics or subtract one from the other as disjoint stages. Does not establish camera exposure-to-display latency, actuator response, or physical screen scan-out. Local client source smooths this metric through MetricsTracker (default window 20); deployed exact averaging configuration was not independently verified. No screenshot or raw HUD samples captured.

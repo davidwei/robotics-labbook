@@ -84,3 +84,5 @@ Controller reconnect recovered without restarting the harness: 955 fully tracked
 Code review identified a short-press loss risk: latest-value button states can be overwritten before consumption. One-second holds are an aid, not a guarantee; acknowledgment and preserved discrete events are proposed improvements. Upstream loss behavior remains unverified. See analysis and IDEA-20261015-002.
 
 Gate 5 prepared: 10-minute combined camera/controller run with three 2-second camera pauses and three 2-second controller-publication pauses, stage timing and tegrastats. Begins after 2 seconds of full tracking. Tests original stale-timestamp rejection with no robot connection; modified temporary worker is preserved. Completion and operator observations pending.
+
+During endurance, operator observed approximately 100 ms Pose-to-Render in the Isaac Teleop headset HUD. This is operator-reported, without raw client percentile capture. NVIDIA defines it from pose transmission to rendering the returned frame; it differs from local controller sample age and does not measure camera exposure-to-display or physical motion-to-photon latency.
