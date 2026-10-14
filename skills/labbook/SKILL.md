@@ -19,9 +19,27 @@ At the first lab-book-related work in each local calendar day, **before relying 
 2. Check whether the checkout has uncommitted changes. Do not overwrite or discard them. If clean and network/authentication permit, run `git -C <labbook> pull --ff-only` (or `git fetch` then fast-forward safely).
 3. Re-read the refreshed `skills/labbook/SKILL.md` and the relevant workflow files. This is a **daily refresh of local skill files**, not permission to rewrite the canonical skill's content.
 4. Note the canonical HEAD revision for provenance. If offline, authentication fails, or fast-forward is blocked, continue using local instructions with an explicit stale/unverified warning and report the obstacle briefly.
-5. Re-check after a known skill update even if already refreshed today. Do not auto-commit, force-pull, or modify skill methodology without an explicit request.
+5. Re-check after a known skill update even if already refreshed today. Daily synchronization alone does not authorize committing unrelated changes, force-pulling, or modifying skill methodology.
 
 This behavior requires the skill to be discoverable at startup through the agent's installed skill mechanism or project instructions. Merely storing a skill in Git cannot force an agent to read it.
+
+## Commit and push record updates
+
+Standing user instruction: always commit and push labbook record updates after
+completing a coherent update. No additional confirmation is needed for routine
+commits and pushes to the configured labbook remote and current branch.
+
+- Check the diff and record syntax, then stage only the intended record changes.
+  Include an explicitly requested skill update when applicable; leave unrelated
+  working-tree changes untouched.
+- Commit with a descriptive message, push, and verify the push succeeded before
+  reporting the records as synchronized. Do not leave completed records local-only
+  merely because the operator did not repeat this instruction.
+- If push fails, preserve the local commit and report the obstacle. Fetch and retry
+  a normal push only when reconciliation is safe; do not force-push or discard work.
+- This instruction applies to labbook records, not automatic code-repository pushes
+  or robot actuation. A later explicit instruction to keep an update local takes
+  precedence.
 
 ## Pending work discovery and handoff
 

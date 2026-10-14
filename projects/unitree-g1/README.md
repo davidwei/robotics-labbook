@@ -8,3 +8,14 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   - [2026-10-09 G1-29 physical regression](../../sessions/2026-10-09-g1-29-regression/session.md).
 
 Source code remains in huggingface/lerobot and MoissanClub/lerobot. No reviewed findings recorded yet.
+
+## Latest validation update
+
+On 2026-10-15, David Wei reported that a peer verified G1-23 with both **Holosoma**
+and **GR00T** controllers. Treat this as peer-reported verification, separate from
+locally captured G1-29 runs. Peer identity, actual test dates, code/configuration,
+test environment and raw evidence references have not yet been supplied. Details
+are recorded in the [experiment](../../experiments/EXP-20261009-001/experiment.yaml).
+Initial G1-23 validation is therefore no longer listed as unperformed; attaching
+peer provenance remains open. The earlier G1-29 session record remains historical
+and its post-lab review is still pending.

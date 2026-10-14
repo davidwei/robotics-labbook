@@ -15,3 +15,18 @@ physical_validation_required: true
 related_repositories: [huggingface/lerobot, MoissanClub/lerobot]
 related_sessions: [SESSION-20261008-001, SESSION-20261009-001]
 findings: []
+
+peer_validation:
+  reported_on: '2026-10-15'
+  reported_by: David Wei
+  source: operator_statement_in_codex_conversation
+  statement: G1-23 validation on both Holosoma and GR00T controllers was verified by a peer.
+  embodiment: g1_23
+  controllers: [Holosoma, GR00T]
+  status: peer_reported_verified
+  evidence_basis: Peer verification relayed by the operator; no raw run evidence supplied in this update.
+  known_gaps:
+    - Peer identity and actual test dates not supplied.
+    - Exact code revisions, configurations, test environment and scenarios not supplied.
+    - Logs, telemetry and video references not supplied.
+  next_action: Attach peer provenance and evidence when available; do not list initial G1-23 validation as outstanding solely because local records lack it.
