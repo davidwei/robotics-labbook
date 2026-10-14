@@ -62,3 +62,5 @@ is the leading bottleneck hypothesis; this is not a quantitative regression comp
 Camera-aware redirect prefill is deferred as [IDEA-20261015-001](../../ideas/IDEA-20261015-001/README.md). Next: repeat step 3 with manually selected 640×512 per eye, H.264, unchanged frame-rate setting, at least 60 seconds. This comparison has not yet been verified.
 
 Lower-resolution step 3 was subsequently run: verified encoded output 1280×1152, about 43.2 FPS over a 52-second live prefix versus 17.9 FPS baseline. Zero encoder-input drops and packet-loss feedback in this sample. A first resolution-switch connection failed; the next succeeded. See analysis and RUN-20261015-004.
+
+Operator confirmed low-resolution image quality and same-resolution disconnect/reconnect. A five-minute continuous streaming stability window is now pending; no stability pass claimed yet.
