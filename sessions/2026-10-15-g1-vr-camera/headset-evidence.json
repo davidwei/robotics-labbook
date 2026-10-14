@@ -1,0 +1,26 @@
+{
+  "captured_utc": "2026-10-14T16:31:12.335290+00:00",
+  "note": "Snapshots of running processes; not final run totals. JSONL truncated to last complete line.",
+  "files": [
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/headset-verification-snapshot/headset-camera.jsonl",
+      "bytes": 3138951,
+      "sha256": "ab9cc0460458ba7b23936e217e989a254d35181dc111ca350e87580acb98ccbf"
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/headset-verification-snapshot/headset-display.jsonl",
+      "bytes": 4072311,
+      "sha256": "88a5505bcb034281a14bdaf7d2012180af9fe3a91182fba684bb98d7218a112a"
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/headset-verification-snapshot/headset-camera.log",
+      "bytes": 60,
+      "sha256": "5cf5169d4738966633fb25d48af66266daf7b99b1fdd522b93591d06f821dee2"
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/headset-verification-snapshot/headset-display.log",
+      "bytes": 2505,
+      "sha256": "ea47c8b70ca3579a3d3394f19cebc8fe575dacae47cd0fb53a7a3bea90042efc"
+    }
+  ]
+}

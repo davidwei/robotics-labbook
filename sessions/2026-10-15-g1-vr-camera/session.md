@@ -21,8 +21,9 @@ with zero failures, supporting reader contention as the source of skips. This
 is partial validation, not a full P1 pass. Delivery timestamps do not establish
 hardware exposure age or end-to-end headset latency.
 
-**Next:** camera-only headset viewing has been prepared as a diagnostic. Operator
-confirmation of live video and disconnect/reconnect behavior is pending. Do not
+**Step 3:** operator reports “verified. no regression comparing to previous commits”
+after the requested headset check. Recorded as an operator-reported pass; individual
+check results and quantitative latency were not separately reported. Do not
 mark P1 fully validated or advance to physical-arm validation on this evidence.
 Decision: proceed to step 3 before optimizing publication contention. Optimization
 is provisionally lower priority, pending headset results; the strict zero-skips
@@ -49,3 +50,6 @@ comparison or headset latency measurement supports that ranking yet. A 30 FPS
 camera repeating frames in a faster headset display is not itself frame loss.
 Step 3 will check live view, orientation, visible stutter, and reconnect behavior;
 subjective observations will not be presented as quantitative latency validation.
+
+[Headset run](runs/RUN-20261015-003.yaml) and [evidence snapshot](headset-evidence.json)
+preserve this verification. Camera/viewer processes remain running pending shutdown.

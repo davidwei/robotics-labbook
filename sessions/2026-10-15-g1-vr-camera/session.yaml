@@ -13,12 +13,14 @@ capture:
   - git
   - camera_jsonl
   - offscreen_display_jsonl
+  - operator_report
   coverage: partial
   known_gaps:
   - No hardware exposure timestamps or end-to-end visual latency measurement.
-  - No headset operator observation yet.
   - Artifacts stored locally; no remote artifact backup.
 runs:
 - RUN-20261015-001
 - RUN-20261015-002
-pending: Operator headset video check; no robot motion authorized by these runs.
+- RUN-20261015-003
+pending: Session shutdown/final artifact capture; publication contention optimization
+  deferred. No motor test performed.

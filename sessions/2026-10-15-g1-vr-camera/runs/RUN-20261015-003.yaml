@@ -1,0 +1,18 @@
+id: RUN-20261015-003
+session: SESSION-20261015-001
+type: run
+objective: Step 3 camera-only headset viewing and regression check
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+motor_commands_enabled: false
+result: pass_operator_reported
+observation_utc: '2026-10-14T16:31:12.335290+00:00'
+operator_observation: verified. no regression comparing to previous commits
+scope: Operator confirmation of requested step 3 check; no separately reported per-check
+  measurements.
+limitations:
+- Comparison commits not individually specified.
+- No quantitative end-to-end latency or encoder/network drop measurement.
+- Steps 1 and 2 retain partial-pass status due to publication skips.
+evidence: headset-evidence.json
+process_state: Camera and viewer left running; snapshots captured, final shutdown
+  pending.
