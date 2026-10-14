@@ -43,3 +43,20 @@ sustainability and headset end-to-end latency remain unmeasured.
 
 Raw logs and analysis scripts are preserved locally; hashes are in
 [streaming-evidence.json](streaming-evidence.json).
+
+## Lower-resolution follow-up
+
+Operator ran the lower-resolution test. The successful connection at 00:40:41
+negotiated 1280x1152 encoded output with target 90 FPS. A 52.15-second live prefix
+contains 2,253 consecutive ServerFrameData records: 43.18 transmit FPS, encode
+mean/p95 20.29/22.16 ms, transmit interval p95/max 31.64/94.72 ms. Complete five-second
+windows range 37.4–45.8 FPS (42.6–45.8 excluding the first window). Encoder input
+drops and packet-loss feedback are zero in this prefix. This is about 2.4x the
+baseline throughput; it supports a resolution-dependent server-side bottleneck.
+It does not establish 90 FPS, headset displayed FPS, or long-run sustainability.
+
+At 00:40:35, an earlier connection failed with an old 4096x4032 input exceeding the
+new 1280x1152 encoder maximum. Preserve this resolution-switch failure separately
+from successful steady playback. Exact per-eye UI entries were not observed.
+The parser encountered a partial last record while the trace was being written;
+metrics exclude that record. See lowres-evidence.json and RUN-20261015-004.

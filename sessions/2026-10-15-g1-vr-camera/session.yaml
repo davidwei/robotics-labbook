@@ -22,5 +22,6 @@ runs:
 - RUN-20261015-001
 - RUN-20261015-002
 - RUN-20261015-003
+- RUN-20261015-004
 pending: Session shutdown/final artifact capture; publication contention optimization
   deferred. No motor test performed.

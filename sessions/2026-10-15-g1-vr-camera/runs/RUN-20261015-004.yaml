@@ -1,0 +1,23 @@
+id: RUN-20261015-004
+session: SESSION-20261015-001
+type: run
+objective: Lower-resolution camera-only headset streaming comparison
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+operator_observation: i already run the test with lower resolution setting.
+result: measured_improvement
+motor_commands_enabled: false
+encoded_resolution:
+- 1280
+- 1152
+requested_fps: 90
+sample_duration_s: 52.15579783400008
+transmit_fps: 43.17832520111376
+frames_in_sample: 2253
+encoder_input_drops: 0
+packet_loss_feedback_max_percent: 0
+evidence: lowres-evidence.json
+limitations:
+- Live prefix, not completed-run or long-term sustainability measurement.
+- Exact per-eye UI entries not independently observed; negotiated encoder dimensions
+  verified.
+- No headset presented-frame counts or end-to-end latency measurement.

@@ -139,3 +139,5 @@ zero-publication-failure gate did not pass. A reader-free diagnostic published
 300/300 frames. P1 remains partially validated; headset checks are pending and
 P4 physical validation has not started. Next action: operator video check as a
 diagnostic, then investigate publication contention before declaring P1 complete.
+
+Subsequent Oct 15 update: operator verified step 3 with no observed regression. Streaming trace review measured about 18 FPS at 4096×4032 encoded output; see the session analysis. Next action is a lower-resolution headset comparison. Contention optimization is deferred provisionally; P1 strict zero-skips criterion remains unmet and P4 physical validation remains pending. Camera-aware redirect work is tracked in IDEA-20261015-001.

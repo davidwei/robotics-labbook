@@ -1,0 +1,21 @@
+{
+  "note": "Live log snapshots; metrics use saved decoded prefix (2253 complete ServerFrameData records). Incomplete trailing record excluded. Raw snapshot captured later than decode.",
+  "files": [
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/lowres-analysis/NvStreamer-20261015-004041_261015_0040_00-decoded.json",
+      "sha256": "3c25cb8babf2dfdf9805a2c26f131a525c28ad58582a3c962ceb58d573fc49d5"
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/lowres-analysis/analyze_cxr.py",
+      "sha256": "3fb113e8bb69ab08093c08d263c79bf56123f644259a6cdb371b2253d327fe13"
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/lowres-analysis/NvStreamer-20261015-004041_261015_0040_00.etli",
+      "sha256": "00e0099bbc656ec1c4720c4e768a03a9ae866b3fa5b513252910f5dfa149b623"
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/lowres-analysis/cxr_streamsdk.2026-10-14T161426Z.000.log",
+      "sha256": "1b4ba4e383147052d1d785cacc447036dffb238478b54139595f7b4fd140fa15"
+    }
+  ]
+}
