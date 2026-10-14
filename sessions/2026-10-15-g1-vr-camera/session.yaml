@@ -26,5 +26,6 @@ runs:
 - RUN-20261015-005
 - RUN-20261015-006
 - RUN-20261015-007
-pending: Headset connect/play and operator controller exercise, loss/reconnect; final
-  statistics and evidence capture.
+- RUN-20261015-008
+pending: Operator connects/plays, keeps tracking active, observes camera stale message.
+  Await completion and analyze.

@@ -1,0 +1,35 @@
+id: RUN-20261015-008
+session: SESSION-20261015-001
+objective: Gate 5 ten-minute camera/controller endurance with fault injection
+status: waiting_for_headset
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+motor_commands_enabled: false
+camera: 1280x720@15
+consumer_hz: 30
+duration_s: 600
+start_condition: Head and both controllers tracked for 2 seconds; 15-minute connection
+  timeout
+faults: Camera SIGSTOP/SIGCONT at t=60,180,300 s; controller LatestSlot publication
+  suppression at t=120,240,360 s; each lasts 2 seconds.
+instrumentation: Temporary worker mirrors production loop with stage timers and publication
+  suppression; original LatestSlot and timestamp validator. Log overhead included.
+checks:
+- Camera stale indication and recovery
+- Controller sample age increases across suppressed writes
+- Existing 250 ms timestamp validator rejects stale input
+- Tracking/freshness recovery
+- CPU/GPU/thermal telemetry via tegrastats
+limits:
+- No downstream actuator/processor motion path; timestamp rejection alone does not
+  validate robot stop.
+- Controller fault is local publication suppression, not headset/network loss.
+- 12 ms p95 criterion remains unchanged.
+command: bash /tmp/g1_start_endurance.sh
+logs: /tmp/g1-endurance-01; /tmp/g1-endurance-process.log
+harness_evidence:
+- path: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance/g1_endurance.py
+  sha256: 38cb21ebc4f3d17976f3d824968d08361349f64c40ce9651faf611847d9d7589
+- path: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance/g1_start_endurance.sh
+  sha256: 65c8f31f305856a9b71b37a544399787acf9855905263d6f7f65507dea066fc2
+pending: Operator connects/plays, keeps tracking active, observes camera stale message.
+  Await completion and analyze.

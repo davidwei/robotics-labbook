@@ -82,3 +82,5 @@ On operator-reported disconnect, controller consumer stayed responsive and both 
 Controller reconnect recovered without restarting the harness: 955 fully tracked samples over ~32 seconds, both controller poses moving; server resumed video. Post-reconnect sample-age p95 33.5 ms (max 73.0), so the 12 ms target still fails. Raw inputs and reconnect work, but Gate 4 remains partial; downstream robot-stop behavior was not tested.
 
 Code review identified a short-press loss risk: latest-value button states can be overwritten before consumption. One-second holds are an aid, not a guarantee; acknowledgment and preserved discrete events are proposed improvements. Upstream loss behavior remains unverified. See analysis and IDEA-20261015-002.
+
+Gate 5 prepared: 10-minute combined camera/controller run with three 2-second camera pauses and three 2-second controller-publication pauses, stage timing and tegrastats. Begins after 2 seconds of full tracking. Tests original stale-timestamp rejection with no robot connection; modified temporary worker is preserved. Completion and operator observations pending.
