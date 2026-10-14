@@ -78,3 +78,5 @@ Controller exercise: 1,015 samples over ~34 seconds had head and both controller
 Repeated exercise confirmed the remaining left trigger, right grip and both thumbstick clicks. Operator states earlier motions were deliberately fast to test limits. Repeat tracked-sample p95 age ~27.3 ms still exceeds 12 ms; no causal attribution to fast movement. All requested raw input fields observed; disconnect/reconnect and downstream stop semantics remain unverified.
 
 On operator-reported disconnect, controller consumer stayed responsive and both controllers became untracked with neutral inputs. Head remained marked tracked with zero position/identity orientation; this flag alone does not establish headset connectivity. Reconnect verification pending.
+
+Controller reconnect recovered without restarting the harness: 955 fully tracked samples over ~32 seconds, both controller poses moving; server resumed video. Post-reconnect sample-age p95 33.5 ms (max 73.0), so the 12 ms target still fails. Raw inputs and reconnect work, but Gate 4 remains partial; downstream robot-stop behavior was not tested.

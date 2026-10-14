@@ -21,8 +21,9 @@ limitations:
 - captured_at is local acquisition timestamp, not headset hardware timestamp.
 - Malformed-input injection and downstream robot stop semantics not covered by this
   standalone harness.
-pending: Controlled disconnect/reconnect; freshness target remains unmet. Input delivery
-  checks do not establish downstream robot stop behavior.
+pending: Freshness target unmet; investigate acquisition/render cadence. Downstream
+  stop semantics and malformed-input handling not physically validated. Session shutdown/final
+  evidence pending.
 result: partial_validation
 observed_tracked_samples: 1015
 sample_age_ms_p50_p95_p99_max:
@@ -44,3 +45,13 @@ repeat_tracked_age_ms_p50_p95_p99_max:
 - 27.3205
 - 32.4047
 - 37.1449
+reconnect: Operator completed reconnect/video check; both controllers resumed tracking
+  and changed poses without harness restart. Server first video frame logged at 01:06:18
+  local.
+reconnect_tracked_samples: 955
+reconnect_sample_age_ms_p50_p95_p99_max:
+- 15.238
+- 33.468
+- 42.305
+- 73.022
+reconnect_evidence: controller-reconnect-evidence.json

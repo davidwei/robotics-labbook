@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-reconnect/samples.jsonl",
+    "sha256": "7e5cb731cd17e2ba5e51f4f9c7617028c029695be7b9a0d0df6bd38252ea9be6"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-reconnect/process.log",
+    "sha256": "3f215f90d29a4b81907ad8364934edfbeda29a2b03809c66086fb8e7ac41ee5c"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-reconnect/check_reconnect.py",
+    "sha256": "4dd46a8e731ae5bc7399a493a2f05864b424b054e69629377e7a09987134bba7"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-reconnect/cxr_streamsdk.2026-10-14T165959Z.000.log",
+    "sha256": "2ddd10b61a42d307f9a17b7a158ed6a6fbeeacbce43c168dd93c9f6d720687b3"
+  }
+]
