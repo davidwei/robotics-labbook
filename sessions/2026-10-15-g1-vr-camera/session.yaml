@@ -29,4 +29,6 @@ runs:
 - RUN-20261015-008
 - RUN-20261015-009
 - RUN-20261015-010
-pending: Ready-pose-only gravity-feedforward test is running; monitor and record outcome.
+pending: 'E2E deferred: ready-only run stuck at arrival tolerance, then normal quit
+  faulted on shoulder velocity and released authority. No motion test process remains;
+  stationary confirmation and transition review pending.'

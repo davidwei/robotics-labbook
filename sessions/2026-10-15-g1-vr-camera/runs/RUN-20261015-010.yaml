@@ -1,7 +1,7 @@
 id: RUN-20261015-010
 session: SESSION-20261015-001
 objective: Ready-pose-only physical test with gravity feedforward
-status: in_progress
+status: completed
 code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
 dirty_patch: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/ready-feedforward-01/code.patch
 command: bash /tmp/g1_start_ready_feedforward.sh
@@ -15,7 +15,15 @@ operator_authorization: Run a test raising the arms to bent ready pose; gantry, 
   workspace, regular mode and emergency control confirmed.
 live_evidence: /tmp/g1-ready-feedforward-01/
 software_validation: 87 targeted SDK/reference/pipeline tests passed; Ruff passed.
-observation: Preparation progressing; startup TTS returned SDK status 3104. Ready
-  pose not yet reached.
-next_action: Monitor zero then ready trajectory; hold at ready for operator review.
-  No automatic VR following.
+observation: Reached zero-angle target with gravity feedforward; wrist residual about
+  0.0206 rad prevented 0.02-rad arrival gate. Operator reported arm raised, but software
+  ready flag never set. Paused with authority held. On requested transition to E2E,
+  normal q sequence faulted on measured right shoulder pitch velocity -0.1166 rad/s
+  against 0.1 rad/s limit.
+next_action: Review quit/return velocity phase and authority-release behavior; verify
+  arrival fix before further physical E2E.
+result: partial_preparation_then_quit_fault
+cleanup: Process exited and SDK released authority. Operator stationary confirmation
+  requested.
+pending_code_change: Preparation arrival threshold changed to 0.025 rad after this
+  process launched; 100 front-box/SDK/pipeline tests passed. Not physically exercised.
