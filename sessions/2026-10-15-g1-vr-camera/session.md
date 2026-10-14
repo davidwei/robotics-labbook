@@ -70,3 +70,5 @@ Extended stream: 6.5 minutes averaged 42.8 FPS with zero encoder-input drops, bu
 Operator clarified priority: preserve maximum camera field of view while allowing lower-resolution VR delivery. 1920×1080 capture at 8 FPS verified and left running; the entire frame is downscaled to 640×360 within the existing viewer texture, without cropping. 720p/1080p scene boundaries appear similar; exact angular FOV remains unmeasured.
 
 Operator reported 1080p viewpoint identical to 720p and selected 720p. Active capture restored to 1280×720 at 15 FPS, with full-frame downscaling for VR and unchanged headset encoding settings. Evidence: /tmp/g1-resolution-check/camera720-final.jsonl (live). This is a configuration selection, not a new performance validation.
+
+Gate 4 controller/video test started through XRControllers at 30 Hz consumer polling. Camera remains 1280×720@15; no robot object or DDS/motor connection. Tracking, input fields, sample age, and read duration are logged. Operator exercise and final analysis pending (RUN-20261015-007).

@@ -25,5 +25,6 @@ runs:
 - RUN-20261015-004
 - RUN-20261015-005
 - RUN-20261015-006
-pending: Operator full-view review; choose capture mode preserving FOV and cadence;
-  final shutdown/artifact capture.
+- RUN-20261015-007
+pending: Headset connect/play and operator controller exercise, loss/reconnect; final
+  statistics and evidence capture.

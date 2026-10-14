@@ -1,0 +1,25 @@
+id: RUN-20261015-007
+session: SESSION-20261015-001
+objective: 'Gate 4: controller sample freshness and tracking with video'
+status: in_progress
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+consumer_hz: 30
+camera: 1280x720@15 on existing channel
+path: XRControllers(full_input=True) -> VideoControllerSession -> LatestSlot; Orin
+  video_openxr_composition=False
+motor_commands_enabled: false
+command: bash /tmp/g1_start_controller_gate.sh
+logs: /tmp/g1-controller-gate/
+harness_evidence:
+- path: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-gate/g1_controller_gate.py
+  sha256: fbdc500a710f4b05401237ebd49a31c5e8fc94859527dbe433e271d381d3d6b5
+- path: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-gate/g1_start_controller_gate.sh
+  sha256: 7707cf88b92891e3b487581288accac08d786285decc5957b01c38ee3fc2c499
+acceptance: p95 sample age approximately <=12 ms during stable tracking; head/controllers/buttons/triggers
+  and loss/reconnect checked
+limitations:
+- captured_at is local acquisition timestamp, not headset hardware timestamp.
+- Malformed-input injection and downstream robot stop semantics not covered by this
+  standalone harness.
+pending: Headset connect/play and operator controller exercise, loss/reconnect; final
+  statistics and evidence capture.

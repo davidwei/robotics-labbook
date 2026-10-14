@@ -19,3 +19,4 @@
 {"utc": "2026-10-14T16:49:43.403887+00:00", "event": "extended_stream_review_and_720p_capture", "run": "RUN-20261015-005", "camera_mode": "1280x720@15", "viewer": "live, same channel, 640x480 texture", "motion": false}
 {"utc": "2026-10-14T16:51:47.357824+00:00", "event": "fullview_1080_capture", "run": "RUN-20261015-006", "operator_preference": "Maximum camera field of view; lower delivery resolution acceptable."}
 {"utc": "2026-10-14T16:55:49.110715+00:00", "event": "operator_selected_720p_restored", "operator_observation": "visible viewpoint is same as last setup", "capture": "1280x720@15", "command": "bash /tmp/g1_start_720_final.sh", "report": "/tmp/g1-resolution-check/camera720-final.jsonl", "motor_commands": false}
+{"utc": "2026-10-14T17:00:23.790185+00:00", "event": "controller_gate_start", "run": "RUN-20261015-007", "command": "bash /tmp/g1_start_controller_gate.sh", "motor_commands": false}
