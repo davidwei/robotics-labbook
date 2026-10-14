@@ -1,20 +1,34 @@
 # IDEA-20261015-003 — Controlled return and handover to the stock controller
 
-- Status: proposed; first-priority prerequisite for further physical E2E.
+- Status: validation pending; implementation complete in software, first-priority
+  prerequisite for further physical E2E.
 - Target: MoissanClub/lerobot, work/g1-vr-physical; PC2/G1-29 guarded arm controller.
 - Physical validation: pending; RUN-20261015-009/010 expose current fault/exit gaps.
 - Operator requirement: return to stock requires much more care to avoid a dangerous trajectory.
 
+## Implementation checkpoint
+
+Code revision `a65596cb` (`Safely return G1 arm authority to stock controller`)
+was pushed to `MoissanClub/lerobot:work/g1-vr-physical` on 2026-10-14. Normal
+close and publisher faults now use one idempotent handover function: command zero
+pose at a configurable velocity, require measured arrival, and fade the current
+Arm SDK weight to zero over two seconds. Cleanup failures are recorded and shutdown
+continues; there is no second fallback trajectory. A repository-local pre-commit
+check rejects additional Arm SDK publishers and direct zero-weight release paths.
+
+Software validation passed: 293 Unitree-focused tests passed and 16 skipped; the
+focused handover suite passed 59 tests. Ruff, the architectural checker, targeted
+mypy, Bandit and formatting checks passed. A negative checker test rejected a
+synthetic direct shutdown publisher. This is software evidence only; no DDS or
+physical robot execution was performed for this revision.
+
 ## Next agent action
 
-Review guarded G1ArmSDK lifecycle and front-box exit together. Design separate
-normal return, pause/hold, recoverable-input-loss and hardware/transport-fault
-policies before implementation. Preserve no headset handback and pickup on recovery.
-Normal return should have an explicit slow trajectory, appropriate phase-specific
-arrival/velocity/error criteria, and monitored gradual authority reduction after
-arrival. Define timeout/cancellation behavior without silently turning every failure
-into immediate stock release. Do not promise retained authority across process death
-or lost transport. Upstream's ~2-second fade is a reference mechanism, not a safety proof.
+Execute the staged [2026-10-15 validation plan](validation-plan-2026-10-15.md)
+only with explicit operator authorization for each motion stage. Preserve no-headset
+handback and pickup behavior. Do not promise retained authority across process death
+or lost transport. Upstream's measured-arrival plus approximately two-second fade
+is the implemented reference mechanism, not a safety proof.
 
 ## Required checks before physical E2E
 
