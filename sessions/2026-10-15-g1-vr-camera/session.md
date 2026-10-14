@@ -72,3 +72,5 @@ Operator clarified priority: preserve maximum camera field of view while allowin
 Operator reported 1080p viewpoint identical to 720p and selected 720p. Active capture restored to 1280×720 at 15 FPS, with full-frame downscaling for VR and unchanged headset encoding settings. Evidence: /tmp/g1-resolution-check/camera720-final.jsonl (live). This is a configuration selection, not a new performance validation.
 
 Gate 4 controller/video test started through XRControllers at 30 Hz consumer polling. Camera remains 1280×720@15; no robot object or DDS/motor connection. Tracking, input fields, sample age, and read duration are logged. Operator exercise and final analysis pending (RUN-20261015-007).
+
+Controller exercise: 1,015 samples over ~34 seconds had head and both controllers tracked continuously. Positions, both sticks, A/B/X/Y, left grip and right trigger observed. Left trigger, right grip and both stick clicks were not observed and need a deliberate repeat. Sample-age p95 ~32 ms exceeds the ~12 ms target; reads themselves p95 ~0.37 ms. Gate 4 is not a full pass. Disconnect/recovery pending.
