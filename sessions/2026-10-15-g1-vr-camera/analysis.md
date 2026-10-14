@@ -139,3 +139,58 @@ the telemetry capture (includes startup). No thermal throttling diagnosis follow
 from temperature alone. Camera totals include pre-run waiting. The camera's final
 KeyboardInterrupt is expected SIGINT cleanup, and XR session cleanup logged
 XR_ERROR_SESSION_NOT_STOPPING before successful harness cleanup.
+
+
+## Physical preparation and return review (end of session)
+
+### Observations and change audit
+
+RUN-009 failed before VR following: commanded-versus-measured joint error, not
+headset tracking. Preparation then had no gravity feedforward and a 0.03 rad guard.
+RUN-010 changed both feedforward and preparation tolerance, so the repeat does not
+isolate their individual effects. PD load offsets and transient lag are plausible;
+no steady-state model fit or torque calibration establishes the cause conclusively.
+Planned model gravity torque peaked at 4.35 Nm, below the 5 Nm feedforward cap.
+The successful zero-target progression did not prove completion of bent-ready pose.
+
+Preparation/following state was decoupled from the feedforward flag so gravity
+compensation can remain enabled without selecting the following velocity guard.
+The later 0.025 rad preparation arrival tolerance is software-tested only. A proposed
+0.05 rad/s preparation rate was discussed but **not implemented**; target progression
+remains 0.02 rad/s. Normal quit still uses non-preparation guards, and tripped the
+0.10 rad/s velocity threshold on the return attempt. This requires a transition
+review, not automatic widening of every guard encountered. The exact physical
+response to the final stock handback has no operator confirmation in this record.
+
+### Upstream source check
+
+Reviewed live upstream G1_29_ArmController.ctrl_dual_arm_go_home in
+https://github.com/unitreerobotics/xr_teleoperate/blob/main/teleop/robot_control/robot_arm.py
+and the caller in teleop_hand_and_arm.py. Local checkout inspected at
+278a3dcc669eb54b0fd5ed26031e420bc7f42e88. Home targets are zero joint angles;
+it waits for all measured angles below 0.05 rad, checking up to 100 times at
+50 ms intervals. In motion mode, authority weight then decreases from 1 to 0 in
+101 increments separated by 20 ms (~2 s). The torque-zero assignment is commented
+out. Home target movement uses the existing clipping limit; the fade alone is not
+an explicitly slow, collision-checked home trajectory. If home tolerance is never
+met, that loop does not execute its fade. The main application invokes home return
+in finally. This is source review, not physical validation of upstream behavior.
+
+Our guarded G1ArmSDK._release_authority writes zero authority immediately (three
+messages); the watchdog reaches this path on guard faults. Our separate reference
+adapter already has a normal-home/fade implementation, but no further development
+of that adapter is requested. The required improvement belongs in the guarded
+lifecycle. Normal requested exit, tracking pause, recoverable input loss, hardware
+fault and process/transport loss need explicit, distinct policies. Do not assume
+that slower authority fading limits stock-controller speed or preserves clearance.
+
+### Operator decision and next verification
+
+Operator emphasized return to stock as a recurring safety concern. Promote this
+above new VR features and performance tuning. Define observable criteria for a slow
+return path, settled arrival, monitored authority fade, cancellation/holding, and
+what to do when valid feedback is unavailable. Test normal and interrupted handover
+in software first, then as a separate gantry experiment. Retain independent emergency
+control. Hardware E2E stays pending until the transition is validated. TTS status
+3104 also needs investigation; audio-service acceptance alone does not establish
+operator audibility. No new physical test is authorized by the labbook task.

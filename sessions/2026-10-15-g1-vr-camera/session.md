@@ -1,112 +1,73 @@
-# SESSION-20261015-001 — G1 VR camera validation
+# SESSION-20261015-001 — G1 VR validation and physical preparation
 
-2026-10-15 · PC2 / G1-29 · live capture · in progress.
+2026-10-15 · PC2 / G1-29 · session ended; validation incomplete.
 
-**Objective:** validate P1 camera baseline and pause recovery before headset tests,
-using LeRobot `45f49d460fb5395ebcee615c47f72e597b22f356` (P1 and P4).
-No DDS connection or motor commands were used.
+## What was learned
 
-**Observed:** RealSense D435i RGB `/dev/video4`, 640×480 at 30 FPS, accepted and
-reported a one-frame V4L2 buffer. The 20-second baseline read 600 frames, published
-570 and skipped 30 publications. Three two-second publisher pauses recovered a
-live offscreen frame with delivery age at most one frame period in **78.7, 78.6,
-and 87.0 ms** after continuation. Recovery read 1,169 frames, published 1,097,
-dropped three backlog frames and skipped 69 publications. Both runs ended normally
-with `draining_at_exit=false`.
+- Camera baseline and injected-pause recovery worked, with publication skips from
+  nonblocking shared-frame locking. A no-reader diagnostic had no skips. Contention
+  is an improvement opportunity; it is not established as the dominant E2E bottleneck.
+- Operator accepted video and controller behavior without an observed regression.
+  Selected camera capture: **1280×720 at 15 FPS** on USB 2, full frame downscaled
+  without cropping. 1080p had no visible additional viewpoint. Client per-eye
+  640×512 produces a packed 1280×1152 stream; capture, texture and encoding sizes differ.
+- Ten-minute endurance completed with three camera and three controller-publication
+  interruptions. Recovery worked; 160 stale reads were rejected. Normal accepted
+  controller-age p95 was **31.9 ms**, exceeding the 12 ms target. This age starts
+  after PC2 acquisition, not headset capture. Operator HUD Pose-to-Render was ~100 ms;
+  the two metrics are not disjoint stages to add or subtract.
+- Latest-value input can miss short button presses. Live B+Y tests distinguished a
+  ~0.61 s press from a ~1.89 s hold; only the latter latched pause. Four virtual pickup
+  entries and 1,295 following samples showed no target jumps at transitions and no
+  stop/damp outputs. Operator accepted tracking. This did not validate physical hold.
 
-**Unmet criterion:** publication skips violate the checklist's strict zero-failure
-criterion. FrameWriter returns false when its nonblocking write lock is busy.
-A separate ten-second diagnostic without a reader published **300/300** frames
-with zero failures, supporting reader contention as the source of skips. This
-is partial validation, not a full P1 pass. Delivery timestamps do not establish
-hardware exposure age or end-to-end headset latency.
+## Physical tests and failures
 
-**Step 3:** operator reports “verified. no regression comparing to previous commits”
-after the requested headset check. Recorded as an operator-reported pass; individual
-check results and quantitative latency were not separately reported. Do not
-mark P1 fully validated or advance to physical-arm validation on this evidence.
-Decision: proceed to step 3 before optimizing publication contention. Optimization
-is provisionally lower priority, pending headset results; the strict zero-skips
-criterion remains unmet and has not been relaxed.
+Operator confirmed gantry, clear arm workspace, regular action mode and emergency
+control. Fresh feedback and sampled preparation-workspace checks passed.
 
-[Run records](runs/) preserve metrics; [evidence registry](evidence.json) lists
-locally stored artifacts and hashes. No LeRobot source changes were made; the
-branch was fast-forwarded to the published revision. No controller or arm test
-was performed.
+- **RUN-009:** preparation stopped after ~7 s of publication on a 0.03 rad
+  position-error guard. Last right-elbow error was 0.0311 rad. VR following had not
+  started. SDK cleanup released authority; operator confirmed the robot stationary.
+- **RUN-010:** enabled gravity feedforward and a preparation-only 0.08 rad error
+  allowance, keeping following/hold at 0.03 rad. Zero-angle target was reached, but
+  a ~0.0206 rad wrist residual blocked the separate 0.02 rad arrival gate. Operator
+  reported that the arm raised successfully and very slowly; software never marked
+  the configured bent-ready pose complete. These observations must remain distinct.
+  After pausing, normal quit tripped at right-shoulder speed −0.1166 rad/s against
+  a 0.10 rad/s guard and released authority. Post-second-fault stationary confirmation
+  was requested but not received. Startup/paused TTS returned status 3104.
 
-**Discussion before step 3:** skips occur when the publisher cannot acquire the
-exclusive nonblocking lock on the RGB frame file while the display holds a shared
-read lock. The lock protects metadata validation and the CPU pixel copy; it is
-released before GPU upload, encoding, or network delivery. The file is on
-NVMe-backed ext4 under `/tmp`, accessed through mmap/page cache. Moving it to
-RAM-backed storage would not remove the locking mechanism; any performance gain
-is unmeasured. Both local tests used one offscreen reader, with a full 921,600-byte
-copy per fresh read, including duplicate sequences; its loop sleeps 1/90 second
-in addition to processing. The illustrative 0.5 ms lock duration was not measured.
+## Changes and validation limits
 
-**Hypothesis, unverified:** encoding/rendering load and Wi-Fi delivery may be larger
-end-to-end bottlenecks than local publication contention. No stage-by-stage drop
-comparison or headset latency measurement supports that ranking yet. A 30 FPS
-camera repeating frames in a faster headset display is not itself frame loss.
-Step 3 will check live view, orientation, visible stutter, and reconnect behavior;
-subjective observations will not be presented as quantitative latency validation.
+Guarded pause/pickup/fault handling, English voice prompts, preparation feedforward
+and phase-specific error limits were edited. Preparation arrival was subsequently
+changed to 0.025 rad; offline tests passed, but that arrival change was not run on
+hardware. Test batches passed (110, 50, 87, 100; overlapping coverage); Ruff passed
+for checked files. Unitree-reference pickup behavior was preserved; further work on
+that path is deferred and eventual removal is anticipated. LeRobot changes remain
+**uncommitted/unpushed**, preserved in the end-of-session patch. MUJOCO_LOG.TXT was
+left untouched. Per-run patches preserve the actual physical execution states.
 
-[Headset run](runs/RUN-20261015-003.yaml) and [evidence snapshot](headset-evidence.json)
-preserve this verification. Camera/viewer processes remain running pending shutdown.
+## First priority next session
 
-**Streaming log review:** functional headset verification achieved about 18 FPS at
-4096×4032 encoded resolution; zero reported encoder-input drops, but low throughput
-and occasional long frame intervals. See [analysis](analysis.md). Server processing
-is the leading bottleneck hypothesis; this is not a quantitative regression comparison.
+**Return to stock control requires much more care to avoid dangerous trajectories.**
+Upstream normal exit fades authority after homing; our guarded cleanup drops it
+immediately, including on faults. A guard trip is not necessarily a safe stop, and
+slower blending alone does not bound the stock controller's motion. Resolve this
+before further E2E motion. See [IDEA-20261015-003](../../ideas/IDEA-20261015-003/README.md).
 
-Camera-aware redirect prefill is deferred as [IDEA-20261015-001](../../ideas/IDEA-20261015-001/README.md). Next: repeat step 3 with manually selected 640×512 per eye, H.264, unchanged frame-rate setting, at least 60 seconds. This comparison has not yet been verified.
+Next: offline handover/fault-policy review and tests → separate gantry return/hold
+validation → complete bent-ready preparation → physical pickup, pause and recovery
+→ E2E endurance. Controlled post-pickup camera/stale-input tests were deferred.
 
-Lower-resolution step 3 was subsequently run: verified encoded output 1280×1152, about 43.2 FPS over a 52-second live prefix versus 17.9 FPS baseline. Zero encoder-input drops and packet-loss feedback in this sample. A first resolution-switch connection failed; the next succeeded. See analysis and RUN-20261015-004.
+## Shutdown and evidence
 
-Operator confirmed low-resolution image quality and same-resolution disconnect/reconnect. A five-minute continuous streaming stability window is now pending; no stability pass claimed yet.
-
-Extended stream: 6.5 minutes averaged 42.8 FPS with zero encoder-input drops, but slowed to ~31 FPS late in the sample. 720p capture works at 15 FPS on the current USB 2 connection; 30 FPS was rejected. Wider peripheral framing observed; viewer still scales into its 640×480 texture. Left running for operator review; details in analysis.
-
-Operator clarified priority: preserve maximum camera field of view while allowing lower-resolution VR delivery. 1920×1080 capture at 8 FPS verified and left running; the entire frame is downscaled to 640×360 within the existing viewer texture, without cropping. 720p/1080p scene boundaries appear similar; exact angular FOV remains unmeasured.
-
-Operator reported 1080p viewpoint identical to 720p and selected 720p. Active capture restored to 1280×720 at 15 FPS, with full-frame downscaling for VR and unchanged headset encoding settings. Evidence: /tmp/g1-resolution-check/camera720-final.jsonl (live). This is a configuration selection, not a new performance validation.
-
-Gate 4 controller/video test started through XRControllers at 30 Hz consumer polling. Camera remains 1280×720@15; no robot object or DDS/motor connection. Tracking, input fields, sample age, and read duration are logged. Operator exercise and final analysis pending (RUN-20261015-007).
-
-Controller exercise: 1,015 samples over ~34 seconds had head and both controllers tracked continuously. Positions, both sticks, A/B/X/Y, left grip and right trigger observed. Left trigger, right grip and both stick clicks were not observed and need a deliberate repeat. Sample-age p95 ~32 ms exceeds the ~12 ms target; reads themselves p95 ~0.37 ms. Gate 4 is not a full pass. Disconnect/recovery pending.
-
-Repeated exercise confirmed the remaining left trigger, right grip and both thumbstick clicks. Operator states earlier motions were deliberately fast to test limits. Repeat tracked-sample p95 age ~27.3 ms still exceeds 12 ms; no causal attribution to fast movement. All requested raw input fields observed; disconnect/reconnect and downstream stop semantics remain unverified.
-
-On operator-reported disconnect, controller consumer stayed responsive and both controllers became untracked with neutral inputs. Head remained marked tracked with zero position/identity orientation; this flag alone does not establish headset connectivity. Reconnect verification pending.
-
-Controller reconnect recovered without restarting the harness: 955 fully tracked samples over ~32 seconds, both controller poses moving; server resumed video. Post-reconnect sample-age p95 33.5 ms (max 73.0), so the 12 ms target still fails. Raw inputs and reconnect work, but Gate 4 remains partial; downstream robot-stop behavior was not tested.
-
-Code review identified a short-press loss risk: latest-value button states can be overwritten before consumption. One-second holds are an aid, not a guarantee; acknowledgment and preserved discrete events are proposed improvements. Upstream loss behavior remains unverified. See analysis and IDEA-20261015-002.
-
-Gate 5 prepared: 10-minute combined camera/controller run with three 2-second camera pauses and three 2-second controller-publication pauses, stage timing and tegrastats. Begins after 2 seconds of full tracking. Tests original stale-timestamp rejection with no robot connection; modified temporary worker is preserved. Completion and operator observations pending.
-
-During endurance, operator observed approximately 100 ms Pose-to-Render in the Isaac Teleop headset HUD. This is operator-reported, without raw client percentile capture. NVIDIA defines it from pose transmission to rendering the returned frame; it differs from local controller sample age and does not measure camera exposure-to-display or physical motion-to-photon latency.
-
-**Gate 5 complete, partial pass:** 600.02 seconds, 17,938 consumer reads (15,065 fully tracked). Three camera recoveries 138–176 ms; three controller recoveries ~33 ms; 160 stale reads rejected. Normal fully tracked accepted samples had age p95 31.9 ms, exceeding 12 ms. Camera totals including startup: 9,593 reads, 9,133 publications, 454 lock skips, 6 drained frames; draining false at exit. Test processes cleaned up automatically. No physical robot commands were sent.
-
-**Control-policy decision:** Pause must retain arm authority rather than trigger a potentially colliding stock-controller return trajectory. Requested headset gesture is B+Y held for one second, with no headset exit/handback. Guarded-path input loss/invalidity should hold immediately (250 ms stale threshold), require pickup on recovery, and report lost tracking after a continuous one-second gap. Camera loss alone must not pause control. Implementation is in progress; software and physical validation are pending.
-
-**Scope correction:** Operator requested no further iteration on the Unitree-reference path and anticipates eventual removal because of potentially unsafe trajectories. Drafted reference-path pickup changes were reverted; upstream behavioral fidelity has not been fully established. Current development should focus on the guarded path, followed by software tests and controlled physical validation. Reference-path removal is deferred, not implemented.
-
-**Guarded-policy software validation:** Updated tests pass (110 processor/input/front-box/reference-regression/voice checks; a separate earlier camera/arm-adapter/voice suite passed 50, overlapping voice coverage). Ruff and diff checks pass. Added checks for one-second fresh B+Y pause, no headset handback, held-target stability, malformed/stale input, recovery pickup, camera-independent control, and expiry during IK. No new motion phase added. Physical holding/trajectories remain unverified.
-
-**Motor-disabled integration prepared:** Live 1280×720@15 camera and XR video are running through the guarded processor with virtual ready-pose feedback; no robot object, DDS command connection, or motor publisher. Operator Connect/Play and brief-versus-held B+Y exercise requested. Live evidence: `/tmp/g1-guarded-validation/`; startup snapshot, test output, harness, and hashes preserved in `~/robotics/artifacts/2026-10-15-g1-vr-camera/guarded-validation/`. Based on LeRobot `45f49d460fb5395ebcee615c47f72e597b22f356` plus saved dirty patch. Harness expires after 30 minutes; live test is pending, not passed. Robot voice output and actual SDK hold behavior are not exercised by this virtual-feedback harness.
-
-**Live B+Y check:** Operator completed Connect/Play and button exercise. Consumer observed combo holds of approximately 0.61 s, 1.89 s, and 0.30 s. Only the long hold latched pause; zero stop/damp outputs in the inspected 2,812 samples. Both controllers were subsequently untracked. This verifies pause from the virtual unsynced state, not physical holding or pause during following. Snapshot preserved as `guarded-validation/button-check-samples.jsonl`; live pickup and interruption tests await operator return to Play.
-
-**Pickup still pending; audio guidance added:** Later inspection found no following samples; both controllers were untracked after the operator reported alignment complete. Operator requested robot-speaker guidance. Started a separate audio-only DDS client on the configured PC2 interface, using English TTS (language 1), largest-gap direction guidance without distances at ten-second intervals, and explicit virtual-test announcements. The validation still has no motor publisher; earlier “no DDS connection” description is superseded for audio only. Scripts preserved in the guarded-validation artifact directory; voice log remains live in `/tmp/g1-guarded-validation/voice.log`. Audibility and successful pickup require operator verification.
-
-**Live virtual tracking accepted by operator:** Four pickup entries and 1,295 following samples observed. Every recorded pickup/loss transition had zero joint-target discontinuity in virtual feedback, with no stop/damp outputs. One following-to-unsynced transition coincided with both controller flags becoming false; subsequent pickup restored following. Other losses occurred with tracked flags still true and are not assigned a cause here. English guidance received successful audio-service responses; operator reports tracking is good. Operator elected to finish tracking checks; controlled stale-publication/camera interruption after pickup was not executed this round. Physical hold, trajectories, motor watchdog behavior, and physical recovery remain unverified. Validation stopped; preserved full samples, transition summary, voice/camera/process logs and hashes under the guarded-validation artifact directory. Next: gantry/clear-workspace confirmation, then a separately prepared slow bounded physical test.
-
-**Physical preparation:** Operator confirmed gantry, clear arm workspace, regular action mode and emergency control at hand. Read-only preflight received 100 fresh feedback samples; sampled preparation trajectories fit configured workspace. This is not a collision-clearance proof. Started guarded front-box teleoperation with camera, voice and diagnostic recording, waiting for `r`; no activation requested yet. Exact code/launch/preflight snapshot preserved under `physical-guarded-01`. Live logs: `/tmp/g1-physical-guarded-01/`.
-
-**Physical run failed during preparation (RUN-20261015-009):** After operator-authorized `r` and the five-second warning, 171 published-action samples span 6.98 seconds moving toward zero angles. Tracking-error guard tripped before the ready pose or VR following. Last recorded right-elbow target/measured gap was 0.0311 rad versus a 0.03 rad guard; exact watchdog fault sample is unavailable. SDK cleanup releases authority to stock; operator confirmed robot stationary. CloudXR and camera stopped. Do not count physical pause/recovery as passed. Next: review preparation lag and fault hold/release behavior before retry; no guard relaxation performed. Full run evidence and hashes preserved under `physical-guarded-01`.
-
-**Revised preparation test running (RUN-20261015-010):** Operator requested gravity feedforward, a relaxed guard, and a ready-pose-only test. Preparation now has an explicit phase independent of feedforward, 0.08 rad error limit, and gravity torque; following/hold stays at 0.03 rad. 87 targeted offline tests and Ruff passed. Planned gravity torque peaks at 4.35 Nm (limit 5 Nm). Physical preparation is progressing; no VR input is connected. Startup TTS returned 3104, so the voice warning is not confirmed audible. Exact dirty code/script snapshot preserved under `ready-feedforward-01`.
-
-**RUN-20261015-010 outcome:** Gravity-feedforward preparation reached the zero-angle target without a position-error fault, but a ~0.0206 rad wrist residual prevented the separate 0.02-rad arrival gate. Operator observed arm raising; configured bent-ready completion was not recorded. Paused while retaining authority. Preparation arrival tolerance was then revised to 0.025 rad in source; 100 targeted tests passed, but running test retained old code. During normal `q` handover for requested E2E, right shoulder pitch measured -0.1166 rad/s exceeded the 0.10 rad/s non-preparation guard. SDK exited/released authority; E2E not started. Stationary confirmation requested. Review phase-specific return behavior before retry rather than continuing guard-by-guard relaxation.
+End-of-day process check found no matching teleoperation, ready-pose test, camera,
+audio-sidecar or CloudXR processes. No further motion is authorized by this record.
+Robot's final physical posture was not independently verified after the last fault.
+Detailed evidence: [analysis](analysis.md), [runs](runs/), and timeline.jsonl.
+Artifacts: `~/robotics/artifacts/2026-10-15-g1-vr-camera/`, including manifests,
+per-run logs/code snapshots and end-of-session patch. Capture is partial; artifacts
+are local, without remote backup. Original incremental session notes are preserved
+as `end-of-session/session-before-close.md`.

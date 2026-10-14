@@ -5,7 +5,8 @@ owner: David Wei
 project: unitree-g1
 related_ideas:
 - IDEA-20261009-001
-status: in_progress
+- IDEA-20261015-003
+status: completed
 capture:
   method: live
   sources:
@@ -29,6 +30,11 @@ runs:
 - RUN-20261015-008
 - RUN-20261015-009
 - RUN-20261015-010
-pending: 'E2E deferred: ready-only run stuck at arrival tolerance, then normal quit
-  faulted on shoulder velocity and released authority. No motion test process remains;
-  stationary confirmation and transition review pending.'
+pending: 'First priority: guarded return/authority-handover design and validation;
+  see IDEA-20261015-003. Physical E2E not started. Final stationary confirmation after
+  second fault unavailable.'
+outcome: partial_validation_physical_e2e_pending
+shutdown:
+  test_processes_running: false
+  verified_by: pgrep exact test/runtime patterns; no matches
+  robot_final_posture: not independently verified after last fault
