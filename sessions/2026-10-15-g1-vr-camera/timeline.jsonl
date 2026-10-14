@@ -27,3 +27,4 @@
 {"utc": "2026-10-14T17:18:30.168169+00:00", "event": "button_delivery_risk_recorded", "evidence_type": "code-derived; not experimentally validated", "idea": "IDEA-20261015-002", "operator_request": "record discussion in labbook"}
 {"utc": "2026-10-14T17:24:30.612340+00:00", "event": "endurance_prepared", "run": "RUN-20261015-008", "command": "bash /tmp/g1_start_endurance.sh"}
 {"utc": "2026-10-14T17:35:18.318318+00:00", "event": "operator_headset_pose_to_render", "approx_ms": 100, "provenance": "operator observation", "run": "RUN-20261015-008"}
+{"utc": "2026-10-14T17:37:46.317550+00:00", "event": "endurance_final_review", "run": "RUN-20261015-008", "result": "partial_pass", "processes": "automatic cleanup complete"}

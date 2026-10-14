@@ -119,3 +119,23 @@ physically validated by the current exercise.
 ## Headset HUD observation during endurance
 
 Operator reports Pose-to-Render ~100 ms. SDK definition: interval between sending a pose to the server and rendering the received frame. Source: https://docs.nvidia.com/cloudxr-sdk/apis/cloudxr-js/latest/api/CloudXR/enumerations/MetricsName.html#posetorendertime . This includes the streaming/rendering round trip, unlike PC2 post-acquisition sample age. Do not add the two metrics or subtract one from the other as disjoint stages. Does not establish camera exposure-to-display latency, actuator response, or physical screen scan-out. Local client source smooths this metric through MetricsTracker (default window 20); deployed exact averaging configuration was not independently verified. No screenshot or raw HUD samples captured.
+
+## Completed 10-minute combined endurance
+
+See RUN-20261015-008 and endurance-final-evidence.json. All six 2-second faults
+recovered; timestamp validation rejected stale samples during controller publication
+suppression. This does not validate downstream actuator stop behavior. 15,065 of
+17,938 reads were fully tracked; continuous all-device tracking for the entire run
+is not established, and untracked intervals must not be silently excluded from
+reliability claims. Freshness percentiles explicitly select fully tracked, accepted,
+non-injected-fault samples: median/p95/p99/max 13.57/31.94/38.50/58.99 ms.
+
+Worker interval median/p95 22.72/37.81 ms. Stage p95: camera update 22.59 ms,
+render 23.42 ms, controller acquisition 13.22 ms; consumer read 0.44 ms. Stage
+percentiles must not be added. These observations support investigating coupled
+video/acquisition scheduling rather than blaming shared-memory read cost alone.
+GPU utilization median 60%, p95 96.5%, max 99%; GPU temperature max 49.41 C over
+the telemetry capture (includes startup). No thermal throttling diagnosis follows
+from temperature alone. Camera totals include pre-run waiting. The camera's final
+KeyboardInterrupt is expected SIGINT cleanup, and XR session cleanup logged
+XR_ERROR_SESSION_NOT_STOPPING before successful harness cleanup.

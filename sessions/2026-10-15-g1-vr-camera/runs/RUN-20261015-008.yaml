@@ -1,7 +1,7 @@
 id: RUN-20261015-008
 session: SESSION-20261015-001
 objective: Gate 5 ten-minute camera/controller endurance with fault injection
-status: waiting_for_headset
+status: completed
 code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
 motor_commands_enabled: false
 camera: 1280x720@15
@@ -31,5 +31,86 @@ harness_evidence:
   sha256: 38cb21ebc4f3d17976f3d824968d08361349f64c40ce9651faf611847d9d7589
 - path: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance/g1_start_endurance.sh
   sha256: 65c8f31f305856a9b71b37a544399787acf9855905263d6f7f65507dea066fc2
-pending: Operator connects/plays, keeps tracking active, observes camera stale message.
-  Await completion and analyze.
+pending: Investigate sample freshness and publication contention; source mismatch
+  and downstream processor stop/invalid-input checks remain. Physical motion not tested.
+result: partial_pass
+summary:
+  duration_s: 600.0187386849993
+  samples: 17938
+  fully_tracked: 15065
+  stale_rejected: 160
+  age_ms:
+    p50: 13.568752999617573
+    p95: 31.935901600445487
+    p99: 38.50325367056029
+    max: 58.99369799954002
+  read_ms:
+    p50: 0.3327455001453927
+    p95: 0.439967249985784
+    p99: 1.3887770395376697
+    max: 7.661293999262853
+  worker_stage_ms:
+    update_ms:
+      p50: 1.1973629998465185
+      p95: 22.592982949981888
+      p99: 24.056287230196176
+      max: 34.387259999675734
+    render_ms:
+      p50: 6.802505499763356
+      p95: 23.42252155049209
+      p99: 30.28381951998199
+      max: 49.03045799983374
+    acquire_ms:
+      p50: 4.8999045002346975
+      p95: 13.21921079970707
+      p99: 14.620316150212602
+      max: 24.59483700022247
+  worker_interval_ms:
+    p50: 22.722522999174544
+    p95: 37.811925499408964
+    p99: 42.64708281963976
+    max: 60.36368799959746
+  recoveries:
+  - kind: camera
+    ms: 138.2389950003926
+  - kind: controller
+    ms: 33.121573999778775
+  - kind: camera
+    ms: 174.73613599941018
+  - kind: controller
+    ms: 33.07135599970934
+  - kind: camera
+    ms: 175.53778999990755
+  - kind: controller
+    ms: 33.140285000627046
+  camera_summary:
+    event: camera_summary
+    frames_read: 9593
+    frames_published: 9133
+    backlog_frames_dropped: 6
+    publish_failures: 454
+    draining_at_exit: false
+  camera_status_counts:
+    Camera unavailable or stale: 273
+    live: 25471
+  gpu_util_percent:
+    p50: 60.0
+    p95: 96.5
+    p99: 99.0
+    max: 99.0
+  gpu_temperature_c:
+    p50: 48.625
+    p95: 49.187
+    p99: 49.312
+    max: 49.406
+operator_observation: the 10min test is done
+evidence: endurance-final-evidence.json
+limitations_extra:
+- 15065/17938 consumer samples fully tracked; operator activity/tracking interruptions
+  not fully annotated.
+- Age percentiles exclude injected faults and rejected stale samples, and require
+  all devices tracked.
+- Camera totals include pre-start connection wait.
+- Camera SIGINT at cleanup is logged as failed_or_cancelled KeyboardInterrupt; expected
+  harness stop, not a capture failure.
+- XR_ERROR_SESSION_NOT_STOPPING logged at cleanup; cleanup nevertheless completed.

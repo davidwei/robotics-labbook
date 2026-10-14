@@ -1,0 +1,47 @@
+[
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/events.jsonl",
+    "bytes": 6941,
+    "sha256": "f6186605afbbd5f09a571588f6851d35209ef45aa1e96d8667eff3068954e3c2"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/consumer.jsonl",
+    "bytes": 24888270,
+    "sha256": "129889364a1a8137040aceb9f246fb15eae17d2886cc859f437878f745266e40"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/worker.jsonl",
+    "bytes": 11890716,
+    "sha256": "f09a4de09270db40b913e54a10fea6a2efbb5c826b8366fd1db06fb8b6a297b7"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/camera.jsonl",
+    "bytes": 1045257,
+    "sha256": "f1a11f08fa2ddcf2dec8922168ad4b65f19889e4db83592106f9494cdb4a7052"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/analysis-summary.json",
+    "bytes": 1972,
+    "sha256": "08252e4178ca2f1db3f9e8f9160ff96d7a356756f66a1cb9e3f8c532b1191449"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/tegrastats.log",
+    "bytes": 239811,
+    "sha256": "4d17151ae1d037873e321d5a09e234ea65d53a221ecd492612a8165bfe04a2e1"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/camera.log",
+    "bytes": 1580,
+    "sha256": "a0817487098b7be08fd8598964b33d533a2815fbeb2bce16e19f3ffa417b2813"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/g1-endurance-process.log",
+    "bytes": 9792,
+    "sha256": "ef6231b0aaa69107598235fe14c630047eb055dc811b171a86f2f9d68e47c887"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/endurance-final/final_endurance.py",
+    "bytes": 2114,
+    "sha256": "7ea53c41f8073ae9f0a319b4ec18efc2a80347c9869d1692ed0f16746081c666"
+  }
+]
