@@ -1,0 +1,13 @@
+{"event": "process_start", "name": "display", "pid": 6276, "command": ["/home/dwei/miniforge3/envs/lerobot-dev/bin/python", "/tmp/g1_camera_view_monitor.py", "/tmp/g1-camera-gates-20261015-01", "/tmp/g1-camera-gates-20261015-01/camera.rgb"], "utc": "2026-10-14T16:12:16.344359+00:00", "monotonic": 602.517539281}
+{"event": "process_start", "name": "baseline", "pid": 6277, "command": ["/home/dwei/miniforge3/envs/lerobot-dev/bin/python", "/home/dwei/lerobot/examples/unitree_g1/validate_xr_readonly.py", "camera", "--device", "4", "--channel", "/tmp/g1-camera-gates-20261015-01/camera.rgb", "--duration-s", "20", "--output", "/tmp/g1-camera-gates-20261015-01/baseline.jsonl"], "utc": "2026-10-14T16:12:16.345246+00:00", "monotonic": 602.518407945}
+{"event": "process_exit", "name": "baseline", "returncode": 0, "utc": "2026-10-14T16:12:42.989657+00:00", "monotonic": 629.16285459}
+{"event": "process_start", "name": "recovery", "pid": 6366, "command": ["/home/dwei/miniforge3/envs/lerobot-dev/bin/python", "/home/dwei/lerobot/examples/unitree_g1/validate_xr_readonly.py", "camera", "--device", "4", "--channel", "/tmp/g1-camera-gates-20261015-01/camera.rgb", "--duration-s", "45", "--output", "/tmp/g1-camera-gates-20261015-01/recovery.jsonl"], "utc": "2026-10-14T16:12:42.991340+00:00", "monotonic": 629.164509895}
+{"event": "pause", "trial": 1, "pid": 6366, "utc": "2026-10-14T16:12:48.991832+00:00", "monotonic": 635.16502424}
+{"event": "resume", "trial": 1, "pid": 6366, "utc": "2026-10-14T16:12:50.992641+00:00", "monotonic": 637.165835368}
+{"event": "pause", "trial": 2, "pid": 6366, "utc": "2026-10-14T16:12:58.993402+00:00", "monotonic": 645.166594593}
+{"event": "resume", "trial": 2, "pid": 6366, "utc": "2026-10-14T16:13:00.994189+00:00", "monotonic": 647.167384637}
+{"event": "pause", "trial": 3, "pid": 6366, "utc": "2026-10-14T16:13:08.994969+00:00", "monotonic": 655.168171345}
+{"event": "resume", "trial": 3, "pid": 6366, "utc": "2026-10-14T16:13:10.995783+00:00", "monotonic": 657.168990452}
+{"event": "process_exit", "name": "recovery", "returncode": 0, "utc": "2026-10-14T16:13:33.504404+00:00", "monotonic": 679.677597305}
+{"event": "process_exit", "name": "display", "returncode": 0, "utc": "2026-10-14T16:13:34.622181+00:00", "monotonic": 680.795385338}
+{"event": "gates_complete", "utc": "2026-10-14T16:13:34.622978+00:00", "monotonic": 680.79614577}

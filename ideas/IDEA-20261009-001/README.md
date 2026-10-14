@@ -128,3 +128,14 @@ Use code revision `45f49d460fb5395ebcee615c47f72e597b22f356` on `work/g1-vr-phys
 - Interpretation: software evidence supports last-write-wins behavior, consistent cross-process snapshots for both schemas, bounded read/write waiting, and preservation of the last valid timestamped sample. It does not establish headset-to-consumer latency on the real XR path.
 - Manual P4 validation TODO: run the normal supervised G1 VR headset/video path, record `time.monotonic() - action["captured_at"]` at the consumer, and confirm approximately `p95 <= 12 ms` while camera rendering is active. Also verify tracking, stop buttons, head pose, disconnect, and reconnect behavior before enabling robot motion.
 - Physical validation performed for P1 or P4 by these lab-book additions: none.
+
+## 2026-10-15 lab update
+
+Camera baseline and three pause/recovery trials were exercised on PC2 at the
+planned code revision; see [session record](../../sessions/2026-10-15-g1-vr-camera/session.md).
+Buffer depth one was honored and recovery was 79–87 ms, but display-reader
+contention skipped publications (30 baseline, 69 recovery), so the strict
+zero-publication-failure gate did not pass. A reader-free diagnostic published
+300/300 frames. P1 remains partially validated; headset checks are pending and
+P4 physical validation has not started. Next action: operator video check as a
+diagnostic, then investigate publication contention before declaring P1 complete.

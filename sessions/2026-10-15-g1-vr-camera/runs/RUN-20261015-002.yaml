@@ -1,0 +1,46 @@
+id: RUN-20261015-002
+session: SESSION-20261015-001
+type: run
+objective: P1 three 2-second SIGSTOP/SIGCONT recovery trials
+code:
+  host: unitree-g1-nx
+  platform: Linux-5.15.148-tegra-aarch64-with-glibc2.35
+  python: 3.12.14
+  versions:
+    isaacteleop: 1.4.145
+    torch: 2.11.0+cu128
+    opencv-python: 4.13.0.92
+    numpy: 2.2.6
+  code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+  working_tree: ?? MUJOCO_LOG.TXT
+  camera: Intel RealSense D435i RGB /dev/video4
+  mode: 640x480 RGB8 30 FPS; V4L2 buffer=1 honored
+  motor_commands_enabled: false
+result: partial_pass
+observations:
+  config:
+    event: camera_config
+    buffer_size_requested: 1
+    buffer_size_set: true
+    buffer_size_actual: 1.0
+    buffer_size_honored: true
+  summary:
+    event: camera_summary
+    frames_read: 1169
+    frames_published: 1097
+    backlog_frames_dropped: 3
+    publish_failures: 69
+    draining_at_exit: false
+evidence: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera
+unmet_criterion: publish_failures must be zero; nonblocking FrameWriter lock contention
+  skips publications.
+trials:
+- trial: 1
+  recovery_s: 0.07870490100003735
+  pass_under_1s: true
+- trial: 2
+  recovery_s: 0.07861014399998112
+  pass_under_1s: true
+- trial: 3
+  recovery_s: 0.08697215699999106
+  pass_under_1s: true

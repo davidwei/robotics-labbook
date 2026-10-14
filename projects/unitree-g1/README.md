@@ -4,6 +4,7 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
 
 - Experiment: [G1 embodiment compatibility](../../experiments/EXP-20261009-001/experiment.yaml).
 - Sessions:
+  - [2026-10-15 G1 VR camera validation (partial pass; headset pending)](../../sessions/2026-10-15-g1-vr-camera/session.md).
   - [2026-10-08 G1-29 MuJoCo regression](../../sessions/2026-10-08-g1-29-mujoco-regression/session.md).
   - [2026-10-09 G1-29 physical regression](../../sessions/2026-10-09-g1-29-regression/session.md).
 

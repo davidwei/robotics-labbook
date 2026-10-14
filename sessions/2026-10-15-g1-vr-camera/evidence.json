@@ -1,0 +1,96 @@
+{
+  "artifacts_directory": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera",
+  "remote_backup": null,
+  "files": [
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/baseline.jsonl",
+      "sha256": "78b1d7d7ed28adada777b484064deddc472490b4366ef6de515ae855507e8383",
+      "bytes": 65484
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/baseline.log",
+      "sha256": "5cf5169d4738966633fb25d48af66266daf7b99b1fdd522b93591d06f821dee2",
+      "bytes": 60
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/display.jsonl",
+      "sha256": "82b9d1884d091c6ba6516fd0d6cdf0d670732bb31506633e7a196e29ea98063e",
+      "bytes": 962348
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/display.log",
+      "sha256": "5237c4745f444c867442a00f0e1f7cbadeb08b325bdfbd183f7a76f5e874af93",
+      "bytes": 833
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/environment.json",
+      "sha256": "39c1cb47d0c574c1a60c924d9e475f972ea0f1c8852e8375cd3b905d081ea045",
+      "bytes": 495
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/g1_camera_gate_summary.py",
+      "sha256": "fe5d14a88565f5fee287b40a4a15c2609de411aa834b2a080348ee78b70fccac",
+      "bytes": 1378
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/g1_camera_gates.py",
+      "sha256": "3afb7d0430a418ddee05a71be4490930597dd110ef9b5af97d4e638ab24931c9",
+      "bytes": 2082
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/g1_camera_headset.py",
+      "sha256": "afbaf753661eb769cb78e2f2d9fa78b11923e64cfbac031fee5b839c1f428026",
+      "bytes": 970
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/g1_camera_live_start.sh",
+      "sha256": "a221dbca9d6c9cded54864c6cf68993e57bc38935b54fb598020e0a635762eb5",
+      "bytes": 608
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/g1_camera_view_monitor.py",
+      "sha256": "ac6469c9d877fca376de01a8d3cef73aeffa85a4f71ab3f9cc7a77fa782a1cdd",
+      "bytes": 618
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/isolation.jsonl",
+      "sha256": "919a0b3485a49e04ced54eac2675dfdb5a236b7a864ec65ce9e43d55fe70c671",
+      "bytes": 33095
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/isolation.log",
+      "sha256": "5cf5169d4738966633fb25d48af66266daf7b99b1fdd522b93591d06f821dee2",
+      "bytes": 60
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/recovery.jsonl",
+      "sha256": "f045dbbcf4d008afbb1c913dda417dc6d70640d99da55a827628c1c5076a0d11",
+      "bytes": 127171
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/recovery.log",
+      "sha256": "5cf5169d4738966633fb25d48af66266daf7b99b1fdd522b93591d06f821dee2",
+      "bytes": 60
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/summary.json",
+      "sha256": "90219a17a34612e6b4e4f1c001f528e06053bedac502b6301dcf93c8c710a8b0",
+      "bytes": 1396
+    },
+    {
+      "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/timeline.jsonl",
+      "sha256": "18657a76da8a215c8cb3aa7e7d2c32748981220bbab479d0fa17922a0633a2a1",
+      "bytes": 2373
+    }
+  ],
+  "pending_live_artifacts": {
+    "directory": "/tmp/g1-camera-gates-20261015-01",
+    "files": [
+      "headset-camera.jsonl",
+      "headset-camera.log",
+      "headset-display.jsonl",
+      "headset-display.log"
+    ],
+    "status": "mutable; preserve and hash after headset test finishes"
+  }
+}
