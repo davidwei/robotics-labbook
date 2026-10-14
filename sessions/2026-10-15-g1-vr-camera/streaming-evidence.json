@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/streaming-analysis/NvStreamer-20261015-003004.etli",
+    "sha256": "b78754034b3b6039638d133f0d51083c6e91b6730aae827fb040bdf373fe776b",
+    "bytes": 159130
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/streaming-analysis/NvStreamer-20261015-002858.etli",
+    "sha256": "9f750b2d63048b33e9e68ce4e6760311c7711ef58133cf7c53d5789118a48870",
+    "bytes": 890929
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/streaming-analysis/cxr_streamsdk.2026-10-14T161426Z.000.log",
+    "sha256": "600b24272f2fc21f5f6a937e231608156e9f005c92dcf5ac23199214241d7eb0",
+    "bytes": 36766
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/streaming-analysis/cxr_server.2026-10-14T161426Z.log",
+    "sha256": "e334970ecb0bb47208fd872a100f9efcef5faa5ee30092c4f9d5d5c4ee98cb4c",
+    "bytes": 237568
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/streaming-analysis/analyze_cxr.py",
+    "sha256": "4cc9f5fdbe52c9ca9cb1df0dee82605186bcafc60293789f1751383990f26ff7",
+    "bytes": 2057
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/streaming-analysis/summarize_cxr.py",
+    "sha256": "61989212a6e85262e52e1cd471f40b96565504b6bf108e5ef614533de100c91d",
+    "bytes": 563
+  }
+]

@@ -53,3 +53,8 @@ subjective observations will not be presented as quantitative latency validation
 
 [Headset run](runs/RUN-20261015-003.yaml) and [evidence snapshot](headset-evidence.json)
 preserve this verification. Camera/viewer processes remain running pending shutdown.
+
+**Streaming log review:** functional headset verification achieved about 18 FPS at
+4096×4032 encoded resolution; zero reported encoder-input drops, but low throughput
+and occasional long frame intervals. See [analysis](analysis.md). Server processing
+is the leading bottleneck hypothesis; this is not a quantitative regression comparison.
