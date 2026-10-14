@@ -24,10 +24,28 @@ hardware exposure age or end-to-end headset latency.
 **Next:** camera-only headset viewing has been prepared as a diagnostic. Operator
 confirmation of live video and disconnect/reconnect behavior is pending. Do not
 mark P1 fully validated or advance to physical-arm validation on this evidence.
-The next engineering decision is whether to remove publication contention or
-review the zero-skips acceptance criterion explicitly; it was not relaxed here.
+Decision: proceed to step 3 before optimizing publication contention. Optimization
+is provisionally lower priority, pending headset results; the strict zero-skips
+criterion remains unmet and has not been relaxed.
 
 [Run records](runs/) preserve metrics; [evidence registry](evidence.json) lists
 locally stored artifacts and hashes. No LeRobot source changes were made; the
 branch was fast-forwarded to the published revision. No controller or arm test
 was performed.
+
+**Discussion before step 3:** skips occur when the publisher cannot acquire the
+exclusive nonblocking lock on the RGB frame file while the display holds a shared
+read lock. The lock protects metadata validation and the CPU pixel copy; it is
+released before GPU upload, encoding, or network delivery. The file is on
+NVMe-backed ext4 under `/tmp`, accessed through mmap/page cache. Moving it to
+RAM-backed storage would not remove the locking mechanism; any performance gain
+is unmeasured. Both local tests used one offscreen reader, with a full 921,600-byte
+copy per fresh read, including duplicate sequences; its loop sleeps 1/90 second
+in addition to processing. The illustrative 0.5 ms lock duration was not measured.
+
+**Hypothesis, unverified:** encoding/rendering load and Wi-Fi delivery may be larger
+end-to-end bottlenecks than local publication contention. No stage-by-stage drop
+comparison or headset latency measurement supports that ranking yet. A 30 FPS
+camera repeating frames in a faster headset display is not itself frame loss.
+Step 3 will check live view, orientation, visible stutter, and reconnect behavior;
+subjective observations will not be presented as quantitative latency validation.

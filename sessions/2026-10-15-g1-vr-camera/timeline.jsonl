@@ -11,3 +11,4 @@
 {"event": "process_exit", "name": "recovery", "returncode": 0, "utc": "2026-10-14T16:13:33.504404+00:00", "monotonic": 679.677597305}
 {"event": "process_exit", "name": "display", "returncode": 0, "utc": "2026-10-14T16:13:34.622181+00:00", "monotonic": 680.795385338}
 {"event": "gates_complete", "utc": "2026-10-14T16:13:34.622978+00:00", "monotonic": 680.79614577}
+{"utc": "2026-10-14T16:28:15.996749+00:00", "event": "step3_readiness_and_discussion", "decision": "Proceed with camera-only headset validation; defer lock optimization provisionally, retain partial-pass status.", "observed": "Camera publisher PID 6625 and headset viewer PID 6630 still running; viewer reports live.", "hypothesis": "Encoding and Wi-Fi may dominate additional losses; unmeasured.", "pending": "Operator headset confirmation and disconnect/reconnect; no robot motion."}
