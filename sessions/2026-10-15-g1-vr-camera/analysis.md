@@ -91,3 +91,27 @@ Camera and viewer are left running for operator inspection; no DDS/motion used.
 Next: operator review of wider framing; for 720p30 or higher, verify a USB 3
 connection and re-enumerate camera modes. Full-detail streaming also requires
 reviewing viewer texture dimensions independently of per-eye encoded resolution.
+
+## Discrete button delivery through the latest-value slot
+
+Code-derived finding: controller buttons are held/not-held states in the same
+latest-value sample as continuous poses. If the producer writes pressed=True and
+then False before the consumer reads, the intervening press is overwritten and
+may never be observed. The validation consumer polls at 30 Hz; this does not
+impose a universal minimum press duration because scheduling and producer cadence
+vary. No deliberate short-pulse loss experiment has been performed.
+
+Potential losses before PC2 acquisition (headset polling, transport, runtime
+buffering) remain unverified; do not attribute every missed press to LatestSlot.
+Locating losses requires transition traces at headset, local acquisition, and
+consumer. captured_at is assigned on PC2 after session.step returns, so sample-age
+statistics cannot measure headset sensing/network/runtime delay before retrieval.
+
+Proposed guidance: a one-second hold gives repeated opportunities for ordinary
+button state delivery, but is not a delivery guarantee. Prefer “hold until
+acknowledged” with clear visual/audio feedback. For stop or other safety-critical
+commands, preserve discrete events until handled (latched event or acknowledged
+queue) rather than rely solely on hold duration. Continuous poses should retain
+latest-value semantics. Event transport itself does not replace independent stop
+and fault handling. This is a proposed design improvement, not implemented or
+physically validated by the current exercise.
