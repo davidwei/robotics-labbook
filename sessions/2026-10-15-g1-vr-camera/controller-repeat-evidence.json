@@ -1,0 +1,10 @@
+[
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-repeat/samples.jsonl",
+    "sha256": "066ead244a21ed99a8656d025b622f96e01dbac694fa925a910f4124a0cba3b4"
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/controller-repeat/check_repeat.py",
+    "sha256": "b3c0af5476c622c168fcfe120eda6b8e5bf169f94e9541658cf24478b9dd5ebd"
+  }
+]
