@@ -76,3 +76,5 @@ Gate 4 controller/video test started through XRControllers at 30 Hz consumer pol
 Controller exercise: 1,015 samples over ~34 seconds had head and both controllers tracked continuously. Positions, both sticks, A/B/X/Y, left grip and right trigger observed. Left trigger, right grip and both stick clicks were not observed and need a deliberate repeat. Sample-age p95 ~32 ms exceeds the ~12 ms target; reads themselves p95 ~0.37 ms. Gate 4 is not a full pass. Disconnect/recovery pending.
 
 Repeated exercise confirmed the remaining left trigger, right grip and both thumbstick clicks. Operator states earlier motions were deliberately fast to test limits. Repeat tracked-sample p95 age ~27.3 ms still exceeds 12 ms; no causal attribution to fast movement. All requested raw input fields observed; disconnect/reconnect and downstream stop semantics remain unverified.
+
+On operator-reported disconnect, controller consumer stayed responsive and both controllers became untracked with neutral inputs. Head remained marked tracked with zero position/identity orientation; this flag alone does not establish headset connectivity. Reconnect verification pending.
