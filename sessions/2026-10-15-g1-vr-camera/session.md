@@ -64,3 +64,5 @@ Camera-aware redirect prefill is deferred as [IDEA-20261015-001](../../ideas/IDE
 Lower-resolution step 3 was subsequently run: verified encoded output 1280×1152, about 43.2 FPS over a 52-second live prefix versus 17.9 FPS baseline. Zero encoder-input drops and packet-loss feedback in this sample. A first resolution-switch connection failed; the next succeeded. See analysis and RUN-20261015-004.
 
 Operator confirmed low-resolution image quality and same-resolution disconnect/reconnect. A five-minute continuous streaming stability window is now pending; no stability pass claimed yet.
+
+Extended stream: 6.5 minutes averaged 42.8 FPS with zero encoder-input drops, but slowed to ~31 FPS late in the sample. 720p capture works at 15 FPS on the current USB 2 connection; 30 FPS was rejected. Wider peripheral framing observed; viewer still scales into its 640×480 texture. Left running for operator review; details in analysis.

@@ -23,5 +23,6 @@ runs:
 - RUN-20261015-002
 - RUN-20261015-003
 - RUN-20261015-004
-pending: Session shutdown/final artifact capture; publication contention optimization
-  deferred. No motor test performed.
+- RUN-20261015-005
+pending: Operator 720p framing review, investigate late streaming cadence decline,
+  final shutdown/artifact capture.

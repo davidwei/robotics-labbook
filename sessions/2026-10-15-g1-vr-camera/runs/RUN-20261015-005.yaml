@@ -1,0 +1,15 @@
+id: RUN-20261015-005
+session: SESSION-20261015-001
+type: run
+objective: 1280x720 capture and field-of-view comparison
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+result: partial_pass
+capture: 1280x720 RGB at configured 15 FPS; device readback accepted
+failed_attempt: '1280x720 at 30 FPS rejected: actual 15 FPS'
+evidence: stability-720-evidence.json
+operator_review: pending
+limitations:
+- Images captured sequentially, no calibrated FOV measurement.
+- Viewer texture remains 640x480.
+- Capture process still running; evidence is a snapshot.
+motor_commands_enabled: false

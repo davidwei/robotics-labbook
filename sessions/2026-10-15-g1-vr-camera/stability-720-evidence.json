@@ -1,0 +1,67 @@
+[
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/camera720-15.jsonl",
+    "sha256": "d54345243f58299eac528b16395b89095236d425103367c7ca7d337f3866a5ef",
+    "bytes": 79730
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/combined.etli",
+    "sha256": "0093f8c60346dc9b433ae7b3886fd9c86960421f051bb74c67da920d6c72fe48",
+    "bytes": 11205214
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/1280x720.png",
+    "sha256": "3746f16b4d7c39515dc309edd76957d707872fde9d1f9e5421a3597b6910e439",
+    "bytes": 1841023
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/camera720.log",
+    "sha256": "d76714a7536a47f94e9bfc67c1e3053a73dadfdb479c5bc318f4c828aa1f9ccf",
+    "bytes": 1224
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/NvStreamer-20261015-004041_261015_0044_00.etli",
+    "sha256": "7c3689cde206383b4b793d267aece9a31848cdcb39f0c7f177a8e88fb7c60c3d",
+    "bytes": 3862080
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/NvStreamer-20261015-004041_261015_0040_00.etli",
+    "sha256": "0798e1c70d1bb483efad1501a989e8fbf85580b4711e533da0d59d2829fd3cd7",
+    "bytes": 7343134
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/camera720-15.log",
+    "sha256": "5cf5169d4738966633fb25d48af66266daf7b99b1fdd522b93591d06f821dee2",
+    "bytes": 60
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/camera720.jsonl",
+    "sha256": "71ab6e7ce9d2379751d1944faeb679e38b01dbf85fe2a971b261a0d65dc3399e",
+    "bytes": 648
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/640x480.png",
+    "sha256": "3c73a5e30cf8da9decd26e3a19b5334888269a61a332df0dbff813fdea713b2b",
+    "bytes": 592889
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/combined-decoded.json",
+    "sha256": "7b48b7b8fcad8c985871e6ddad1cc3e01b74fd66380700043c2737c0842fb7c8",
+    "bytes": 49931618
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/analyze_combined.py",
+    "sha256": "169fa1ef253eeee1653916f58955f66a676b3820952e3d48fa755aefa498b9d8",
+    "bytes": 2115
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/cxr_windows.py",
+    "sha256": "f6f21cf14bdffbc4c4be885b1df47b12d5e709bb8785ebbac9d08614edda09b3",
+    "bytes": 467
+  },
+  {
+    "path": "/home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/stability-and-720/g1_start_720_15.sh",
+    "sha256": "e7532cc6b4d8fdecc7e8d2e1aa10916bc3577b98768adc9d5a527d32430f57ee",
+    "bytes": 512
+  }
+]

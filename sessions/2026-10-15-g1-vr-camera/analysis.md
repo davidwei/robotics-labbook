@@ -60,3 +60,34 @@ new 1280x1152 encoder maximum. Preserve this resolution-switch failure separatel
 from successful steady playback. Exact per-eye UI entries were not observed.
 The parser encountered a partial last record while the trace was being written;
 metrics exclude that record. See lowres-evidence.json and RUN-20261015-004.
+
+## Extended low-resolution stability and 720p capture
+
+A complete-record snapshot spanning 390.54 seconds (~6.5 minutes) of the same
+1280x1152 encoded connection contains 16,708 consecutive ServerFrameData records,
+with no decoder/parser errors or frame-number gaps. Mean transmit rate 42.78 FPS;
+encode mean/p95/max 20.29/22.33/31.93 ms; transmit interval p95/max 32.57/94.72 ms.
+Encoder-input drops remain zero. Packet-loss feedback mean is 0.0041%, max 1.39%
+(sampled feedback values, not an aggregate packet-loss calculation); mean/max RTT
+7.54/31 ms. First six complete minute rates are 43.18,40.72,44.13,44.55,46.23,43.83
+FPS. The last ~40 seconds fall to ~31 FPS; therefore continuous streaming is
+verified but uniformly sustained 43 FPS is not. No thermal cause established.
+No headset presentation counter or quantitative end-to-end latency was measured.
+
+After preserving the baseline, camera publisher PID 6625 was stopped with SIGINT.
+1280x720@30 was rejected by LeRobot because the device reported 15 FPS. V4L2
+advertises only YUYV: 640x480 up to 30, 1280x720 up to 15, 1920x1080 up to 8 FPS.
+USB topology reports this camera on bus 1 port 3 at 480M (USB 2 speed). This limits
+the current connection; it is not the camera's maximum capability on USB 3.
+
+1280x720@15 subsequently started successfully on the same frame channel; metadata
+and saved image confirm actual dimensions. Viewer reports live. Visual comparison
+shows more peripheral scene at left/right in 720p, consistent with a wider FOV;
+this is not a calibrated angular measurement, and captures are not simultaneous.
+The viewer retains a 640x480 texture and aspect-preserving letterboxing, scaling
+720p to 640x360. Thus this is a capture/framing check, not full-720p headset detail.
+Camera and viewer are left running for operator inspection; no DDS/motion used.
+
+Next: operator review of wider framing; for 720p30 or higher, verify a USB 3
+connection and re-enumerate camera modes. Full-detail streaming also requires
+reviewing viewer texture dimensions independently of per-eye encoded resolution.
