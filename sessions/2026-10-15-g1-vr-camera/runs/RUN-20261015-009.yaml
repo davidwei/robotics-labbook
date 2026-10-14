@@ -1,0 +1,36 @@
+id: RUN-20261015-009
+session: SESSION-20261015-001
+objective: Guarded physical arm preparation and VR pickup
+status: completed
+result: failed_preparation
+motor_commands_enabled: true
+code_revision: 45f49d460fb5395ebcee615c47f72e597b22f356
+dirty_patch: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/physical-guarded-01/code.patch
+dirty_patch_sha256: 546a1c1667c5c595e393d2beacb87c5884030b6ed24f77341eae8fdc0399545d
+command: bash /tmp/g1_start_physical_guarded.sh
+profile: guarded/front_box; start_pose=current; no locomotion
+operator_confirmations:
+- gantry fitted
+- arm workspace clear
+- regular action mode
+- emergency button at hand
+start_command_local: '2026-10-15T02:25:42+08:00'
+fault_local: '2026-10-15T02:25:54+08:00'
+runtime_stopped_local: '2026-10-15T02:25:58+08:00'
+motor_published_samples: 171
+motor_publication_span_s: 6.97504662099891
+following_samples: 0
+error: Tracking error limit exceeded
+last_recorded_right_elbow_gap_rad: 0.031099671032527088
+tracking_error_guard_rad: 0.03
+operator_after_fault: Robot stationary
+cleanup: Arm SDK fault cleanup releases authority to stock; CloudXR stopped; camera
+  stopped with SIGINT.
+evidence: /home/dwei/robotics/artifacts/2026-10-15-g1-vr-camera/physical-guarded-01
+limitations:
+- Watchdog exact fault sample/joint not logged; last consumer sample consistent with
+  right elbow exceeding guard.
+- Physical ready pose, pickup, pause and recovery were not reached.
+- Stock-controller return trajectory was not independently measured after fault.
+next_action: Investigate preparation tracking lag and fault hold/release behavior
+  before another physical run; do not simply relax the guard.

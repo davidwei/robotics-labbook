@@ -27,5 +27,7 @@ runs:
 - RUN-20261015-006
 - RUN-20261015-007
 - RUN-20261015-008
-pending: No live endurance process left; review remaining freshness/contended-publication
-  and downstream fault handling before physical validation.
+- RUN-20261015-009
+pending: Physical preparation failed on tracking-error guard; robot reported stationary.
+  Review preparation lag and stock handback on faults before retry. No test motion
+  process remains.
