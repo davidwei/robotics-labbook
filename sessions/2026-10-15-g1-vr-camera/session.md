@@ -45,8 +45,10 @@ and phase-specific error limits were edited. Preparation arrival was subsequentl
 changed to 0.025 rad; offline tests passed, but that arrival change was not run on
 hardware. Test batches passed (110, 50, 87, 100; overlapping coverage); Ruff passed
 for checked files. Unitree-reference pickup behavior was preserved; further work on
-that path is deferred and eventual removal is anticipated. LeRobot changes remain
-**uncommitted/unpushed**, preserved in the end-of-session patch. MUJOCO_LOG.TXT was
+that path is deferred and eventual removal is anticipated. LeRobot changes were subsequently committed and pushed to
+`MoissanClub/lerobot:work/g1-vr-physical`: `4d9d9724` (VR pause/pickup) and
+`355ac624` (preparation feedforward/tolerances). The final tree passed 148 targeted
+tests and Ruff. The end-of-session patch remains preserved. MUJOCO_LOG.TXT was
 left untouched. Per-run patches preserve the actual physical execution states.
 
 ## First priority next session
