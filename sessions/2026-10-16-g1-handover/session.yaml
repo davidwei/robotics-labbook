@@ -21,6 +21,5 @@ capture:
   known_gaps:
   - No external video
   - Artifacts local only
-  - Current physical safety setup awaits operator confirmation
-pending: Operator focus selection; command/weight telemetry and fade-target continuity
-  audit before any motion stage.
+operator_setup_report: Gantry fitted, workspace clear, emergency control in hand, standard mode.
+pending: Correct offline fade-entry target discontinuity; complete live telemetry before physical handover.

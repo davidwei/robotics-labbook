@@ -1,7 +1,7 @@
 # IDEA-20261015-003 — Controlled return and handover to the stock controller
 
-- Status: validation pending; implementation complete in software, first-priority
-  prerequisite for further physical E2E.
+- Status: physical validation blocked by an offline target-continuity failure found
+  on 2026-10-16; first-priority prerequisite for further physical E2E.
 - Target: MoissanClub/lerobot, work/g1-vr-physical; PC2/G1-29 guarded arm controller.
 - Physical validation: pending; RUN-20261015-009/010 expose current fault/exit gaps.
 - Operator requirement: return to stock requires much more care to avoid a dangerous trajectory.
@@ -24,7 +24,12 @@ physical robot execution was performed for this revision.
 
 ## Next agent action
 
-Execute the staged [2026-10-15 validation plan](validation-plan-2026-10-15.md)
+First correct and regression-test the 0.039 rad fade-entry target jump reproduced
+at a65596cb (0.04 rad measured residual, 0.05 rad/s return setting). Earlier passing
+software checks did not establish this continuity criterion. Complete live telemetry
+and the independent observer before resuming physical gates. Evidence: [Oct 16 session](../../sessions/2026-10-16-g1-handover/session.md).
+
+Then execute the staged [2026-10-15 validation plan](validation-plan-2026-10-15.md)
 only with explicit operator authorization for each motion stage. Preserve no-headset
 handback and pickup behavior. Do not promise retained authority across process death
 or lost transport. Upstream's measured-arrival plus approximately two-second fade

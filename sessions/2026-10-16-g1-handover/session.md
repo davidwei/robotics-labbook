@@ -32,10 +32,26 @@ return limit clips relative to measured position, not the previous command, so i
 must not be described as a proven bound on consecutive command or measured speed.
 No motion-ready claim is made yet.
 
-Operator was asked to select today's focus and confirm current gantry, regular
-mode, clear workspace and emergency control; replies pending at record time.
+Operator selected stage 2 (offline telemetry/continuity audit) and reported gantry
+fitted, workspace clear, emergency control in hand, and standard mode.
 VR E2E is dependent on handover validation. Camera performance, button-event capture,
 and camera-aware redirect improvements remain lower-priority/deferred work.
 
 Evidence and hashes: `~/robotics/artifacts/2026-10-16-g1-handover/`.
 Read-only feedback is a preflight, not a physical motion run. No control process remains.
+
+## Stage 2 — continuity failure, no physical motion
+
+Offline execution of the actual return method at a65596cb with synthetic fresh
+feedback fixed at 0.04 rad produced 102 captured commands. At return_velocity=0.05
+rad/s and period=0.02 s, the return target was 0.039 rad, followed immediately by
+zero at fade entry: a 0.039 rad jump versus the 0.001 rad per-period budget.
+The mocked clock does not model computation time. Authority weight decreased
+monotonically to zero, and the method reported success despite this target jump.
+This is command-generation evidence, not measured robot motion or a physical
+velocity prediction. No DDS connection or hardware transport was created.
+
+Physical handover remains blocked on target-continuity correction and regression
+coverage. Live command/phase telemetry and an independent feedback observer
+lasting five seconds beyond publisher closure still need completion before motion.
+LeRobot control code was not modified in this diagnostic.
