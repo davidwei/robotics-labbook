@@ -73,6 +73,8 @@
     "lowering-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "lowering-01/lowering-01.log": "1f944c8158755770ae7780211293d5c49e456d4a287625c797120ef1b5408748",
     "lowering-01/test_lower.py": "a40ca93800f80d36a4c387b579b1a8769e40c3050027bbd29a2acc14f826c4cc",
-    "lowering-01/lower.sh": "e4e6dd7e68289bf69a0d45d94c2e2621d98cc074005c678408dddba4cbd017e9"
+    "lowering-01/lower.sh": "e4e6dd7e68289bf69a0d45d94c2e2621d98cc074005c678408dddba4cbd017e9",
+    "inspection65-preparation/inspect65.py": "031aac9c3fd1dfcdbb5939386436ebc240af6150ef973660f55503078ad48a96",
+    "inspection65-preparation/test_inspect65.py": "f825dbfa8ada771e07c9eaf29fb82f89050a09c10d89367bfd78d7ea8aa19cc9"
   }
 }

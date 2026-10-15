@@ -213,3 +213,23 @@ distance. Phase-boundary sampling gaps limit exact attribution. Preserve the
 operator observation alongside these measurements; takeover dynamics remain
 unexplained. No automatic retry and no guard relaxation. Next: investigate the
 low-authority takeover behavior before another physical attempt.
+
+## Prepared 65-degree inspection pose and voice cue (offline only)
+
+Operator accepted the fixed-pose experiment and requested a voice cue at inspection.
+Temporary inspect65.py fixes both elbows at 65 degrees and the other twelve joints
+at the exact recorded initial hold targets from RUN-001. This specifies the whole
+pose without inventing a raised-arm posture. It checks positioning and zero-return
+paths against model joint/workspace/feedforward bounds before activation.
+Return deadline is 120 s for the 0.05 rad/s setting, rather than the unsuitable
+five-second deadline; this is a timeout, not a physical-speed guarantee.
+
+English voice and matching terminal message: "Arms at the inspection position.
+Holding. Please inspect." Emitted once after all measured joints are within
+0.04 rad of the inspection target and all speeds below 0.05 rad/s for one second,
+after the target interpolation completes. SDK language flag is 1 (English).
+Normal inspection hold waits for explicit handover. Mock test passed: initial
+measured-pose target continuity, <=0.02 rad/s target speed, five seconds of hold
+without auto-close, explicit handover, and exactly one inspection voice cue.
+No new physical test or speaker audibility verification was performed. Previous
+takeover fault remains unresolved; this preparation does not mark it validated.
