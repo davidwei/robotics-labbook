@@ -4,6 +4,9 @@ Status: data collection only. User explicitly deferred simulation work until aft
 
 ## Direct Git checkout
 
+- Remote branch: [archive/g1-vr-physical-failure](https://github.com/MoissanClub/lerobot/tree/archive/g1-vr-physical-failure).
+- Exact archived commit: [75911f64cee1c9b365fffc25914a5ddd9145731e](https://github.com/MoissanClub/lerobot/commit/75911f64cee1c9b365fffc25914a5ddd9145731e).
+
 The executed code is now archived in `MoissanClub/lerobot` on branch
 `archive/g1-vr-physical-failure`, commit
 `75911f64cee1c9b365fffc25914a5ddd9145731e`.

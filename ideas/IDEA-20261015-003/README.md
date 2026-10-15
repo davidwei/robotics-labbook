@@ -64,3 +64,5 @@ Preparation speed increase and removal of the reference path remain deferred.
 Reusable procedure: [return-to-stock physical test protocol](return-to-stock-test-protocol.md), including separate inspection and post-return operator confirmations.
 
 RUN-006 operator follow-up: forward robot movement and progressively growing arm oscillations that did not stop. An apparent self-reinforcing loop is the operator's interpretation, not an established root cause. Preserve this observation when reviewing the return controller and whole-body interaction.
+
+RUN-006 reproduction code: [remote archive branch](https://github.com/MoissanClub/lerobot/tree/archive/g1-vr-physical-failure), pinned to [commit 75911f64](https://github.com/MoissanClub/lerobot/commit/75911f64cee1c9b365fffc25914a5ddd9145731e). See the [reconstruction handoff](../../sessions/2026-10-16-g1-handover/runs/RUN-20261016-006-reconstruction.md) for the data archive and launch dependencies.
