@@ -24,8 +24,8 @@ physical robot execution was performed for this revision.
 
 ## Next agent action
 
-The Oct 16 working-tree patch over a65596cb fixes fade-entry clipping and retains
-last published feedforward; 63 focused tests pass. Complete live telemetry and the
+The Oct 16 commit ca04051f fixes fade-entry clipping and retains last published
+feedforward; retesting that exact commit passed 63 focused tests. Complete live telemetry and the
 independent observer before physical gates. Exact patch and diagnostic evidence:
 [Oct 16 session](../../sessions/2026-10-16-g1-handover/session.md). Physical behavior
 and retained-feedforward suitability remain unverified.

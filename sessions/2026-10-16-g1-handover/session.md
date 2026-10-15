@@ -105,3 +105,13 @@ Next: complete live command/phase telemetry and independent post-close feedback
 capture before a separately authorized near-zero physical return. Retaining the
 last feedforward is upstream-compatible but is not recomputed gravity compensation
 for changing posture; actual handover motion remains unverified.
+
+## Committed revision retest
+
+Committed code/docs/tests as `ca04051f570e4df1fa1d49f84ce39fd623ecbc2f`
+on work/g1-vr-physical. Retested this exact revision: 63 focused tests passed,
+two CUDA/pygame warnings; Ruff lint/format and architecture checks passed.
+Offline reproduction again measured zero fade-entry target jump, 20 ms write
+separation and monotonic authority decay to zero. Tracked tree clean; existing
+MUJOCO_LOG.TXT left untracked. Code commit remains local (push not requested).
+No hardware motion test; instrumentation/physical validation remain pending.
