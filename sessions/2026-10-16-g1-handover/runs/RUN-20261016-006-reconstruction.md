@@ -45,3 +45,14 @@ First replay the command-law transition and its PD contribution using recorded s
 Future recorder requirement: all 29 body joint q/dq/estimated torque, full available IMU fields, robot mode, host timestamps/ticks, targets/feedforward/gains/authority, phase/event timestamps and operator intervention markers. Add logging offline; this does not authorize another physical test.
 
 The operator requested preservation in the labbook repository itself. The complete [raw-data archive](../artifacts/RUN-20261016-006-reconstruction.tar.gz), [SHA-256 checksum](../artifacts/RUN-20261016-006-reconstruction.sha256) and [timeline plot](../artifacts/RUN-20261016-006-timeline.png) are tracked in Git alongside this index. Extract the archive to recover the raw traces and reconstruction inputs. The archive retains its original capture-time README; this repository index supersedes its local-only storage note.
+
+## Additional preserved dependencies and comparisons
+
+- [RUN-004 stalled return trace](../artifacts/RUN-20261016-004-evidence.tar.gz): full local evidence directory including commands, independent feedback, exact harness/configuration and patch.
+- [RUN-005 successful handover trace](../artifacts/RUN-20261016-005-evidence.tar.gz): same evidence for the successful forward-facing pose case.
+- [G1 model and actual mesh contents](../artifacts/g1-model-68459ed-assets.tar.gz): gravity URDF, candidate MuJoCo XML and meshes from snapshot 68459ed68f6f68e1f661091dfcb6ebce44681aec. Mesh hashes match the original RUN-006 index; files are dereferenced, not cache symlinks.
+- [Environment and SDK source](../artifacts/RUN-20261016-environment-source.tar.gz): complete installed conda/Python package inventories, conda build specs, platform/Python version, tracked Unitree SDK source, aarch64 CRC library, PC2 environment helper and minimal DDS-interface profile. Package source credentials and unrelated hardware configuration are excluded. This is post-run provenance, not a tested portable environment or a bundle of all installed package binaries.
+
+Each archive has an adjacent `.sha256` file and an entry in evidence.json. All four archives are tracked directly in the labbook. The earlier successful/stalled comparison directories no longer require PC2 access.
+
+Still unavailable: signals not recorded during the run (waist/IMU/full-body/torque data and exact emergency-stop timing), proprietary stock-controller behavior, system JetPack binaries, and a hardware-calibrated dynamics model. These are not uncommitted experiment files. No simulation has been built.

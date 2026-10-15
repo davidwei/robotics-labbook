@@ -47,5 +47,6 @@
     "Independent feedback peak 3.09 rad/s at right wrist yaw after closure; slow preparation rate does not bound stock motion.",
     "No external video confirmed; firmware acceptance is not an explicit command ACK."
   ],
-  "safety": "Operator-confirmed gantry, clear workspace, regular mode and emergency control retained."
+  "safety": "Operator-confirmed gantry, clear workspace, regular mode and emergency control retained.",
+  "repository_archive": "../artifacts/RUN-20261016-005-evidence.tar.gz"
 }

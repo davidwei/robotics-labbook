@@ -42,5 +42,6 @@
   "operator_observations": [
     "The arms have been mostly lowered and hands pointing downward."
   ],
-  "interpretation": "Observation is consistent with the SDK/model coordinate convention; it does not establish a physical encoder offset or exact anatomical angle."
+  "interpretation": "Observation is consistent with the SDK/model coordinate convention; it does not establish a physical encoder offset or exact anatomical angle.",
+  "repository_archive": "../artifacts/RUN-20261016-004-evidence.tar.gz"
 }
