@@ -60,7 +60,8 @@
     "Waist compensated gravity and bent forward (observation: bending; compensation explanation not verified)",
     "Requested log examination and asked whether publishing continued",
     "Requested stop publishing",
-    "Reported switching motors to damp mode"
+    "Reported switching motors to damp mode",
+    "Robot moved forward; arm oscillations grew progressively larger and did not stop, as reported by the operator."
   ],
   "protocol_deviation": "Measured inspection condition never passed due shoulder residual about 0.07 rad; no scripted inspection voice fired. Operator confirmed position anyway. Agent requested SIGINT to main process only (11937), invoking the same central return through finally; observer stayed running. Scripted handover voice was bypassed by this shutdown path.",
   "result": "Return published at full authority for 120s, with major measured speed transients, no zero-pose arrival or authority fade. Publisher closure verified; process exit 1. Independent post-close feedback captured.",
@@ -96,5 +97,7 @@
     "Operator damp-mode report came after publisher closure; no captured independent confirmation of damp-mode transition.",
     "No external video confirmed."
   ],
-  "next": "No further actuation. Review return semantics, frozen feedforward and publication timing against evidence. Fix inspection orchestration without adding recovery gates; do not resume remaining scenarios without operator instruction."
+  "next": "No further actuation. Review return semantics, frozen feedforward and publication timing against evidence. Fix inspection orchestration without adding recovery gates; do not resume remaining scenarios without operator instruction.",
+  "operator_followup_verbatim": "the robot moved forward, with the arms start to oscilatting bigger and bigger, seems getting into a self enhancing loops, cannot stop.",
+  "operator_hypothesis": "Apparent self-reinforcing feedback loop; mechanism not yet established."
 }

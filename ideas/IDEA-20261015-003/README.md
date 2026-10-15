@@ -62,3 +62,5 @@ Related evidence: [session](../../sessions/2026-10-15-g1-vr-camera/session.md),
 Preparation speed increase and removal of the reference path remain deferred.
 
 Reusable procedure: [return-to-stock physical test protocol](return-to-stock-test-protocol.md), including separate inspection and post-return operator confirmations.
+
+RUN-006 operator follow-up: forward robot movement and progressively growing arm oscillations that did not stop. An apparent self-reinforcing loop is the operator's interpretation, not an established root cause. Preserve this observation when reviewing the return controller and whole-body interaction.
