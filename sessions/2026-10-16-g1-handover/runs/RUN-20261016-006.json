@@ -61,7 +61,8 @@
     "Requested log examination and asked whether publishing continued",
     "Requested stop publishing",
     "Reported switching motors to damp mode",
-    "Robot moved forward; arm oscillations grew progressively larger and did not stop, as reported by the operator."
+    "Robot moved forward; arm oscillations grew progressively larger and did not stop, as reported by the operator.",
+    "After the forward movement and growing oscillations, the operator used the emergency stop to put the robot into damp mode."
   ],
   "protocol_deviation": "Measured inspection condition never passed due shoulder residual about 0.07 rad; no scripted inspection voice fired. Operator confirmed position anyway. Agent requested SIGINT to main process only (11937), invoking the same central return through finally; observer stayed running. Scripted handover voice was bypassed by this shutdown path.",
   "result": "Return published at full authority for 120s, with major measured speed transients, no zero-pose arrival or authority fade. Publisher closure verified; process exit 1. Independent post-close feedback captured.",
@@ -94,10 +95,16 @@
   "interpretation": "Unsafe-looking high-speed telemetry warrants investigation; no root cause established. Cannot attribute it to stock-only motion: it occurred while return publication remained active.",
   "limitations": [
     "Only arm q/dq and mode captured; no waist/IMU trace in this harness, so reported torso compensation is unverified.",
-    "Operator damp-mode report came after publisher closure; no captured independent confirmation of damp-mode transition.",
+    "Emergency-stop/damp-mode intervention is operator-reported; exact intervention time and mode transition were not independently captured.",
     "No external video confirmed."
   ],
   "next": "No further actuation. Review return semantics, frozen feedforward and publication timing against evidence. Fix inspection orchestration without adding recovery gates; do not resume remaining scenarios without operator instruction.",
   "operator_followup_verbatim": "the robot moved forward, with the arms start to oscilatting bigger and bigger, seems getting into a self enhancing loops, cannot stop.",
-  "operator_hypothesis": "Apparent self-reinforcing feedback loop; mechanism not yet established."
+  "operator_hypothesis": "Apparent self-reinforcing feedback loop; mechanism not yet established.",
+  "operator_intervention": {
+    "action": "Emergency stop used to enter damp mode",
+    "sequence": "After forward movement and progressively growing arm oscillations",
+    "source": "operator report",
+    "timing": "Exact intervention time relative to publisher closure is not established by the message arrival time."
+  }
 }
