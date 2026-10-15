@@ -148,3 +148,27 @@ is a measured-pose hold with a five-second authority blend, then normal return a
 Harness: `/tmp/g1-handover-ready/run.sh`; use a new --root for each attempt.
 Full scripts, exact configuration, patch, failed/successful logs, and sample traces
 preserved under the readiness artifact directory. No control process remains.
+
+## Lowering preparation — offline feasibility, execution blocked
+
+Operator accepted the proposed slow lowering/hold flow and reported ready.
+A fresh read-only check captured 262 distinct ticks, max sampled feedback age
+9.65 ms, and 5.031 s after closure; no writer or activation. Sampled maximum
+arm speed over the entire observation window was 0.0552 rad/s.
+
+Offline quintic interpolation from the measured bent pose to joint zero requires
+115.1 s at peak target speed 0.02 rad/s; sampled targets satisfy model joint limits,
+and peak modeled gravity torque is 3.643 Nm (<5 Nm). This is feasibility evidence,
+not collision certification or a physical tracking result.
+
+Source review identified a limitation in the proposed hold-for-inspection flow:
+G1ArmSDK._run invokes return_to_stock in finally after a fatal fault, and close
+can also initiate return. A normal zero-pose hold does not prevent those paths
+from requesting handover before operator inspection. The prior recommendation
+omitted this distinction. No lowering or authority takeover was attempted.
+
+Next: resolve preparation-specific fault/exit behavior before executing the new
+lowering flow. Preserve fresh-feedback and torque guards; do not bypass them or
+claim a guaranteed software hold after feedback/transport loss. Physical emergency
+behavior and unexpected stock takeover remain material residual risks. No new
+motion authorization is inferred from this record.

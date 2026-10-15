@@ -41,6 +41,20 @@
     "readiness/preflight-01/code.patch": "eeef9c39258c1f171869c7b4639edef3c116abad266d24a3d3a432fc8827e4cb",
     "readiness/preflight-01/provenance.json": "bbac93c8c84883455587d75e4b3afd581e602c9c849acc75b0ef1ffb24d904fe",
     "readiness/preflight-01/publisher-closed.json": "08c12cfcd0c30bc5d7ace4a5d6cdaad0be6fa1f3a2fe4b268a4b39a9ee4cf582",
-    "readiness/preflight-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    "readiness/preflight-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "preparation-feasibility/preparation-preflight-01/feedback.jsonl": "523ecec60fa8125ec6b0dcbc79482f2c62dfa2509ad623cf5a30c2fc75e7f791",
+    "preparation-feasibility/preparation-preflight-01/observer.log": "5935e953de75ed45c0269bfc65bece13dcdc703626555c27bea56f344d9f992b",
+    "preparation-feasibility/preparation-preflight-01/config.json": "b0913878fa9e835793053fa31cabb7a48a39a8e28ef215752538e46997b10649",
+    "preparation-feasibility/preparation-preflight-01/code.patch": "eeef9c39258c1f171869c7b4639edef3c116abad266d24a3d3a432fc8827e4cb",
+    "preparation-feasibility/preparation-preflight-01/lowering-plan.json": "0e456113af0b81f083794f0c91db3eb5b10fc73d36231d92fc0e7721f3f64b49",
+    "preparation-feasibility/preparation-preflight-01/provenance.json": "bbac93c8c84883455587d75e4b3afd581e602c9c849acc75b0ef1ffb24d904fe",
+    "preparation-feasibility/preparation-preflight-01/baseline.json": "ab03d1ade6b7b66684ddd9c1e0a177bb04c2c007be05d913651be7f69e05ea60",
+    "preparation-feasibility/preparation-preflight-01/publisher-closed.json": "a04359f47a15032e7f06f15560d78949d582e020ba40ec4270ead4472d4e519e",
+    "preparation-feasibility/preparation-preflight-01/commands.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "preparation-feasibility/preparation-preflight-01/summary.json": "a4cf34451a3e40cc6ff3904058a23e6343e0875a61409c3632345bb6fac1e239",
+    "preparation-feasibility/preparation-preflight-01/precheck.json": "b6d2ea3884f2012a1599a2b13ea72bd32ade4914bf100e24780fa363e66bade7",
+    "preparation-feasibility/preparation-preflight-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "preparation-feasibility/check_lowering.py": "b7baaa32b4299c270e2cb956878963afa2ddc856facf64a54c343c0b1b141e8d",
+    "preparation-feasibility/preparation-preflight-01.log": "8ad4fb3d6dfd49bbacb2262e455cd57f1b3f22808ff65522f2e9d789f4edf506"
   }
 }
