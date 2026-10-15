@@ -1,0 +1,100 @@
+{
+  "id": "RUN-20261016-006",
+  "experiment": "EXP-20261009-001",
+  "status": "failed; remaining scenarios stopped",
+  "scenario": {
+    "id": 1,
+    "name": "Near-ready tolerance case",
+    "sdk_degrees": {
+      "left_shoulder_pitch_joint": -1,
+      "left_shoulder_roll_joint": 2,
+      "left_shoulder_yaw_joint": 2,
+      "left_elbow_joint": 1,
+      "left_wrist_roll_joint": 2,
+      "left_wrist_pitch_joint": 0,
+      "left_wrist_yaw_joint": 1,
+      "right_shoulder_pitch_joint": -1,
+      "right_shoulder_roll_joint": -2,
+      "right_shoulder_yaw_joint": 2,
+      "right_elbow_joint": 2,
+      "right_wrist_roll_joint": -1,
+      "right_wrist_pitch_joint": 2,
+      "right_wrist_yaw_joint": 0
+    },
+    "left": [
+      -1,
+      2,
+      2,
+      1,
+      2,
+      0,
+      1
+    ],
+    "right": [
+      -1,
+      -2,
+      2,
+      2,
+      -1,
+      2,
+      0
+    ],
+    "wrist_positions_model_m": {
+      "left": [
+        0.2029962896136181,
+        0.16152069676320432,
+        0.09604599284714271
+      ],
+      "right": [
+        0.2028065926928624,
+        -0.1477977340357195,
+        0.09075113861348046
+      ]
+    }
+  },
+  "code_revision": "ca04051f570e4df1fa1d49f84ce39fd623ecbc2f",
+  "dirty_patch": "artifact/code.patch",
+  "artifact": "/home/dwei/robotics/artifacts/2026-10-16-g1-handover/random-return-01",
+  "authorization": "User authorized five scenarios, then required inspection and outcome confirmation per scenario. User confirmed scenario-1 position.",
+  "operator_observations": [
+    "Waist compensated gravity and bent forward (observation: bending; compensation explanation not verified)",
+    "Requested log examination and asked whether publishing continued",
+    "Requested stop publishing",
+    "Reported switching motors to damp mode"
+  ],
+  "protocol_deviation": "Measured inspection condition never passed due shoulder residual about 0.07 rad; no scripted inspection voice fired. Operator confirmed position anyway. Agent requested SIGINT to main process only (11937), invoking the same central return through finally; observer stayed running. Scripted handover voice was bypassed by this shutdown path.",
+  "result": "Return published at full authority for 120s, with major measured speed transients, no zero-pose arrival or authority fade. Publisher closure verified; process exit 1. Independent post-close feedback captured.",
+  "summary": {
+    "return_rows": 4431,
+    "return_duration_s": 119.97883782500048,
+    "fade_rows": 0,
+    "return_weight_min": 1.0,
+    "return_weight_max": 1.0,
+    "peak_joint": "RightWristPitch",
+    "peak_measured_dq_rad_s": 31.440471649169922,
+    "peak_seconds_after_return_start": 43.21088236600008,
+    "max_publication_gap_s": 0.3322214019999592,
+    "feedback_modes": [
+      [
+        5,
+        0
+      ]
+    ],
+    "post_close_s": 5.027765466999881,
+    "closed": {
+      "at": 7152.849664161,
+      "closure_verified": true,
+      "phase": "failed",
+      "writer_created": true,
+      "return_succeeded": false,
+      "fault": "Stock-controller return failed: Timed out before measured arms reached the return pose"
+    }
+  },
+  "interpretation": "Unsafe-looking high-speed telemetry warrants investigation; no root cause established. Cannot attribute it to stock-only motion: it occurred while return publication remained active.",
+  "limitations": [
+    "Only arm q/dq and mode captured; no waist/IMU trace in this harness, so reported torso compensation is unverified.",
+    "Operator damp-mode report came after publisher closure; no captured independent confirmation of damp-mode transition.",
+    "No external video confirmed."
+  ],
+  "next": "No further actuation. Review return semantics, frozen feedforward and publication timing against evidence. Fix inspection orchestration without adding recovery gates; do not resume remaining scenarios without operator instruction."
+}

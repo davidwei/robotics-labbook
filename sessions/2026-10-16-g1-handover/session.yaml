@@ -16,6 +16,7 @@ runs:
 - RUN-20261016-003
 - RUN-20261016-004
 - RUN-20261016-005
+- RUN-20261016-006
 capture:
   method: live
   sources:
@@ -27,6 +28,6 @@ capture:
   - No external video
   - Artifacts local only
 operator_setup_report: Gantry fitted, workspace clear, emergency control in hand, standard mode.
-pending: Review successful prepared-pose handover separately from stalled arbitrary-pose return; fix voice error 3104 and plan next VR validation.
+pending: No actuation. Analyze failed return and protocol deviation before any new operator-authorized test.
 validated_code_revision: ca04051f570e4df1fa1d49f84ce39fd623ecbc2f
-latest_run_status: RUN-005 forward-facing preparation and two-second fade completed; operator reported safe return.
+latest_run_status: RUN-006 failed with high-speed transients during return; publisher closed; operator reported damp mode.

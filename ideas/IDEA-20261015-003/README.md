@@ -1,6 +1,6 @@
 # IDEA-20261015-003 — Controlled return and handover to the stock controller
 
-- Status: partial physical validation; RUN-005 handover from forward-facing zero pose passed with operator approval; arbitrary-pose return remains unresolved.
+- Status: validation_failed for random scenario 1 (RUN-006); further physical tests stopped by operator.
 - Target: MoissanClub/lerobot, work/g1-vr-physical; PC2/G1-29 guarded arm controller.
 - Physical validation: pending; RUN-20261015-009/010 expose current fault/exit gaps.
 - Operator requirement: return to stock requires much more care to avoid a dangerous trajectory.
@@ -22,6 +22,8 @@ synthetic direct shutdown publisher. This is software evidence only; no DDS or
 physical robot execution was performed for this revision.
 
 ## Latest physical evidence
+
+**RUN-006 supersedes readiness to continue:** random scenario 1 produced large speed transients during the 120-second full-authority return, no arrival and no fade. Operator requested stop and reported damp mode. Publisher closure verified. Scenarios 2–5 were not run. Next action is offline evidence review, not motion. Inspection/voice orchestration also needs correction; do not add new recovery gates or infer root cause from torso-compensation speculation.
 
 RUN-20261016-005 subsequently reached all-zero SDK arm coordinates using a slow ordinary trajectory, producing the requested hands-forward pose. Operator approved inspection and reported a safe return. Measured arrival was already satisfied; two-second authority fade and closure completed. This validates the prepared-pose handover case, not the stalled arbitrary-pose return of RUN-004. Post-close right-wrist speed peaked at 3.09 rad/s; voice error 3104 remains. Next: retain this successful baseline and review return trajectory semantics before broadening the claim.
 

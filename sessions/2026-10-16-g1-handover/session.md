@@ -329,3 +329,11 @@ All-zero SDK arm targets produced the requested near-right-angle, hands-forward 
 This demonstrates handover from the prepared pose, not reliable return motion from arbitrary poses. Right-wrist yaw peaked at 3.09 rad/s, 0.45 s after closure; the stock trajectory is not bounded by the slow preparation target rate. Voice announcements still failed (3104). Full trace and exact code/config: `inspection-forward-01` artifacts.
 
 Future return tests follow the [operator-defined five-step protocol](../../ideas/IDEA-20261015-003/return-to-stock-test-protocol.md), with separate confirmations before handover and before proceeding to the next scenario.
+
+## RUN-006: random scenario 1 failed; series stopped
+
+Near-ready targets were within ±2 SDK degrees, but shoulder residuals prevented the scripted inspection announcement. Operator confirmed position; agent used main-process SIGINT to invoke central return while preserving the observer. This bypassed scripted inspection/handover voice and is a protocol deviation.
+
+Return published 4,431 commands at full authority for 120 s, never arrived and never faded. Right-wrist pitch reached 31.44 rad/s at 43.21 s into return. This happened during active return publication, not after stock-only handback. Publisher closure and post-close capture were verified; process exited with failure. Operator observed forward waist bending, requested publication stop and reported switching to damp mode. Known control processes were absent after closure.
+
+Scenarios 2–5 were not started. No more actuation is authorized by the remaining series plan after the stop request. Root cause is unresolved; this result must not be presented as a safe return. Current capture lacks waist/IMU measurements and external video.
