@@ -1,7 +1,6 @@
 # IDEA-20261015-003 — Controlled return and handover to the stock controller
 
-- Status: offline target-continuity correction implemented and tested on 2026-10-16;
-  capture validated; operator near-zero starting pose and physical validation pending.
+- Status: ready_for_lab; revised Unitree-gating experiment prepared on 2026-10-16.
 - Target: MoissanClub/lerobot, work/g1-vr-physical; PC2/G1-29 guarded arm controller.
 - Physical validation: pending; RUN-20261015-009/010 expose current fault/exit gaps.
 - Operator requirement: return to stock requires much more care to avoid a dangerous trajectory.
@@ -24,18 +23,19 @@ physical robot execution was performed for this revision.
 
 ## Next agent action
 
-The Oct 16 commit ca04051f fixes fade-entry clipping and retains last published
-feedforward; retesting that exact commit passed 63 focused tests. Live telemetry mock and independent read-only observer passed. Current elbows
-are about 1.22 rad, outside the near-zero physical gate. Establish a reviewed
-starting pose with operator intervention before motion. Exact patch and diagnostic evidence:
-[Oct 16 session](../../sessions/2026-10-16-g1-handover/session.md). Physical behavior
-and retained-feedforward suitability remain unverified.
+Run the prepared elbow-only 65-degree inspection experiment with operator participation,
+gantry, clear workspace, regular action mode and independent emergency control.
+Use the preserved `final-readiness` harness and patch over ca04051f; target rate
+0.05 rad/s, `unitree_gating=true`. Announce measured arrival, hold for inspection,
+then accept a separate handover request. The earlier near-zero starting-pose
+prerequisite is superseded by the operator's fixed inspection-pose experiment.
+Do not reintroduce extra gates or require recovery to validate its own fallback.
 
-Then execute the staged [2026-10-15 validation plan](validation-plan-2026-10-15.md)
-only with explicit operator authorization for each motion stage. Preserve no-headset
-handback and pickup behavior. Do not promise retained authority across process death
-or lost transport. Upstream's measured-arrival plus approximately two-second fade
-is the implemented reference mechanism, not a safety proof.
+Software: 246 G1 tests passed, 14 skipped; capture mock and live read-only checks
+passed. Physical attempts RUN-20261016-001/002/003 tripped during preparation and
+did not establish successful handback. Latest preparation removes those custom
+trips; physical validation of this candidate remains pending. Reference:
+[Oct 16 session](../../sessions/2026-10-16-g1-handover/session.md).
 
 ## Required checks before physical E2E
 

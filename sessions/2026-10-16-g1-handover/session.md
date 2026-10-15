@@ -305,3 +305,9 @@ unitree-gating-preparation. No physical attempt with the changed gating yet.
 Next: supervised elbow-only 65-degree test with the same independent physical
 coverage, then operator inspection before normal return. No claim of full upstream
 trajectory/lifecycle equivalence or guaranteed safety after transport failure.
+
+## Final experiment readiness
+
+Software: 246 G1 tests passed, 14 skipped; focused suite 69 passed. Lint, format and architecture checks passed. Live read-only capture received 243 fresh samples without creating a command writer and continued five seconds after verified closure. Capture overflow no longer aborts control; fade timing includes publication overhead. Exact patch and harness: `final-readiness` in the artifact registry.
+
+Next experiment is ready for supervised execution: elbow-only 65-degree pose, target rate 0.05 rad/s, Unitree gating selected, English inspection announcement and hold, followed by a separate handover request. No physical motion in this preparation pass. Previous physical return timed out; successful handback remains unverified.
