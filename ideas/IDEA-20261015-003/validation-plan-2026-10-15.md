@@ -112,3 +112,24 @@ is surprising, stock-controller acceptance is ambiguous, or only Gate 1 passes.
 After the session, create run records for meaningful motion tests with exact code and
 configuration provenance, link all evidence, and keep observations separate from
 interpretation. Record negative and aborted runs rather than optimizing for a pass.
+
+## 2026-10-16 operator-reviewed amendment
+
+When validating a recovery/failure-handling procedure, do not require that same
+unvalidated procedure to be a proven-safe fallback for its own test. Failure during
+recovery must be covered by an independent lower-level layer appropriate to the
+experiment: gantry/support, clear workspace, and an operator with emergency control.
+Define the recovery behavior being tested, its assumptions and abort conditions,
+and the independent coverage before execution. Keep existing software guards and
+record faults; do not recursively add unvalidated software recovery layers as a
+prerequisite. This does not establish safety after transport/process failure or
+prove that the recovery works; physical results remain pending until observed.
+
+For this session, validate normal slow lowering, measured arrival/inspection hold,
+and then separately confirmed authority fade. A fault aborts the experiment and
+requires operator intervention under the independent physical coverage. The prior
+claim that preparation fault/exit behavior must first be redesigned is superseded:
+it imposed circular validation. Existing fault-triggered return remains a disclosed
+residual risk, not a newly validated behavior. Operator accepted this principle and
+instructed proceeding with experiments. Normal completion must not auto-fade before
+inspection; fault behavior is distinct from normal completion.
