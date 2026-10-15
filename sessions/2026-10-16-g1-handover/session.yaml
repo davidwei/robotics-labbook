@@ -14,6 +14,7 @@ runs:
 - RUN-20261016-001
 - RUN-20261016-002
 - RUN-20261016-003
+- RUN-20261016-004
 capture:
   method: live
   sources:
@@ -25,6 +26,6 @@ capture:
   - No external video
   - Artifacts local only
 operator_setup_report: Gantry fitted, workspace clear, emergency control in hand, standard mode.
-pending: Proceed with authorized supervised slow lowering and inspection hold; normal fade requires separate operator confirmation. Circular fault-path prerequisite superseded.
+pending: Reconcile SDK elbow coordinates with observed pose and review return target offset before another motion run.
 validated_code_revision: ca04051f570e4df1fa1d49f84ce39fd623ecbc2f
-latest_run_status: RUN-003 aborted during takeover; closure verified. Unitree-gating experiment prepared and offline tested, physical validation pending.
+latest_run_status: RUN-004 reached inspection hold; return timed out without fade; closure verified. Elbow coordinate interpretation corrected, physical calibration unverified.
