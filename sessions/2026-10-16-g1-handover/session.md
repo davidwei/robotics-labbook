@@ -115,3 +115,36 @@ Offline reproduction again measured zero fade-entry target jump, 20 ms write
 separation and monotonic authority decay to zero. Tracked tree clean; existing
 MUJOCO_LOG.TXT left untracked. Code commit remains local (push not requested).
 No hardware motion test; instrumentation/physical validation remain pending.
+
+## Capture readiness and physical starting-pose prerequisite
+
+Prepared temporary capture/observer harness over ca04051f plus a five-line
+logging-only handover-phase patch (uncommitted, preserved). The phase field is
+telemetry, not a new VR state-machine state. Mock capture passed with 102 commands,
+return/fade phase, measured q/dq, commanded q/tau, weight and publication outcome.
+63 focused tests, Ruff and architecture checks passed. Command capture is bounded
+in memory; an independent read-only process writes feedback and continues five
+seconds after controller closure. Motion is disabled by default and requires both
+--motion and an operator typing MOVE. No headset/camera or new SDK publishing path.
+
+First read-only attempt failed on a temporary harness str/Path conversion, before
+control connection; fixed and rerun. Second attempt passed: 269 distinct feedback
+ticks, maximum sampled age 12.07 ms, maximum sampled arm speed 0.0368 rad/s, and
+5.013 seconds captured after closure. No writer created; no authority activation.
+SDK Reader cleanup warning occurred, exit status zero. No competing control process
+was found before the check.
+
+The robot is NOT at the near-zero entry pose: elbow angles 1.218/1.228 rad, versus
+<0.04 rad required for every arm joint. The harness correctly reports not ready
+and will refuse activation. Operator reported standard mode, gantry, clear workspace
+and emergency control earlier. These do not establish the required starting pose.
+Next manual intervention: establish a reviewed near-zero pose with the normal robot
+procedure, or separately plan/authorize a slow preparation from the current bent
+pose. Do not silently expand the near-zero experiment to include that trajectory.
+Also record video of both arms for physical handover. Initial physical experiment
+is a measured-pose hold with a five-second authority blend, then normal return at
+0.05 rad/s; deliberate offsets remain subsequent tests. Physical motion untested.
+
+Harness: `/tmp/g1-handover-ready/run.sh`; use a new --root for each attempt.
+Full scripts, exact configuration, patch, failed/successful logs, and sample traces
+preserved under the readiness artifact directory. No control process remains.

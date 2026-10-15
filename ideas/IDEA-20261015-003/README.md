@@ -1,7 +1,7 @@
 # IDEA-20261015-003 — Controlled return and handover to the stock controller
 
 - Status: offline target-continuity correction implemented and tested on 2026-10-16;
-  live instrumentation and physical validation pending before further physical E2E.
+  capture validated; operator near-zero starting pose and physical validation pending.
 - Target: MoissanClub/lerobot, work/g1-vr-physical; PC2/G1-29 guarded arm controller.
 - Physical validation: pending; RUN-20261015-009/010 expose current fault/exit gaps.
 - Operator requirement: return to stock requires much more care to avoid a dangerous trajectory.
@@ -25,8 +25,9 @@ physical robot execution was performed for this revision.
 ## Next agent action
 
 The Oct 16 commit ca04051f fixes fade-entry clipping and retains last published
-feedforward; retesting that exact commit passed 63 focused tests. Complete live telemetry and the
-independent observer before physical gates. Exact patch and diagnostic evidence:
+feedforward; retesting that exact commit passed 63 focused tests. Live telemetry mock and independent read-only observer passed. Current elbows
+are about 1.22 rad, outside the near-zero physical gate. Establish a reviewed
+starting pose with operator intervention before motion. Exact patch and diagnostic evidence:
 [Oct 16 session](../../sessions/2026-10-16-g1-handover/session.md). Physical behavior
 and retained-feedforward suitability remain unverified.
 

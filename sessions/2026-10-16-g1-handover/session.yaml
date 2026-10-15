@@ -22,5 +22,5 @@ capture:
   - No external video
   - Artifacts local only
 operator_setup_report: Gantry fitted, workspace clear, emergency control in hand, standard mode.
-pending: Offline discontinuity fixed and tested; complete live telemetry and independent observer before physical handover.
+pending: Capture validated; operator near-zero starting pose and physical-test confirmation required. Current elbows about 1.22 rad; no motion authorized or run.
 validated_code_revision: ca04051f570e4df1fa1d49f84ce39fd623ecbc2f
