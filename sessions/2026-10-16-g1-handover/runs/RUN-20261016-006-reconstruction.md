@@ -21,4 +21,4 @@ First replay the command-law transition and its PD contribution using recorded s
 
 Future recorder requirement: all 29 body joint q/dq/estimated torque, full available IMU fields, robot mode, host timestamps/ticks, targets/feedforward/gains/authority, phase/event timestamps and operator intervention markers. Add logging offline; this does not authorize another physical test.
 
-Raw artifacts and the portable archive are local on PC2, not uploaded to GitHub. The labbook stores this index, timeline, results and hashes. Transfer the archive before depending on offline access away from PC2.
+The operator requested preservation in the labbook repository itself. The complete [raw-data archive](../artifacts/RUN-20261016-006-reconstruction.tar.gz), [SHA-256 checksum](../artifacts/RUN-20261016-006-reconstruction.sha256) and [timeline plot](../artifacts/RUN-20261016-006-timeline.png) are tracked in Git alongside this index. Extract the archive to recover the raw traces and reconstruction inputs. The archive retains its original capture-time README; this repository index supersedes its local-only storage note.

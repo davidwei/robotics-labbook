@@ -209,5 +209,14 @@
     "random-return-01/reconstruction/mesh-sha256.json": "1b42bddeaa02d57b27344d9b932380fb174bb2497c6e7ebcc37cb927582821bb",
     "random-return-01/reconstruction/base-source.tar": "5364d12b7913b37c04105b91cc87075d1a9c1413c275c0f9bbad117aaef14958",
     "RUN-20261016-006-reconstruction.tar.gz": "d7aa92302db7e18af0ae7fe2ae916bf6327dfdd690657387a97b982dd4592b63"
+  },
+  "repository_artifacts": {
+    "RUN-20261016-006": {
+      "archive": "artifacts/RUN-20261016-006-reconstruction.tar.gz",
+      "sha256": "d7aa92302db7e18af0ae7fe2ae916bf6327dfdd690657387a97b982dd4592b63",
+      "size_bytes": 4412541,
+      "plot": "artifacts/RUN-20261016-006-timeline.png",
+      "storage": "Tracked directly in labbook Git repository by explicit operator request"
+    }
   }
 }

@@ -343,3 +343,5 @@ Operator follow-up for RUN-006: the robot moved forward and the arms oscillated 
 Operator clarified the intervention sequence: after the forward movement and growing arm oscillations, the operator used the emergency stop to put the robot into damp mode. The exact time relative to publisher closure is not established; message receipt order must not be treated as physical-event timing.
 
 RUN-006: [time-ordered evidence](runs/RUN-20261016-006-timeline.md) and [reconstruction handoff](runs/RUN-20261016-006-reconstruction.md) preserve inputs, uncertainties and future recorder requirements. Portable archive is in local artifact storage; raw data is not uploaded to GitHub. Simulation work was explicitly deferred.
+
+At the operator's explicit request, the full RUN-006 [raw-data archive](artifacts/RUN-20261016-006-reconstruction.tar.gz) and [plot](artifacts/RUN-20261016-006-timeline.png) are now tracked directly in the labbook repository. This supersedes the earlier local-only storage note. Archive contents and checksum were verified.
