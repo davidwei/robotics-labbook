@@ -55,6 +55,24 @@
     "preparation-feasibility/preparation-preflight-01/precheck.json": "b6d2ea3884f2012a1599a2b13ea72bd32ade4914bf100e24780fa363e66bade7",
     "preparation-feasibility/preparation-preflight-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "preparation-feasibility/check_lowering.py": "b7baaa32b4299c270e2cb956878963afa2ddc856facf64a54c343c0b1b141e8d",
-    "preparation-feasibility/preparation-preflight-01.log": "8ad4fb3d6dfd49bbacb2262e455cd57f1b3f22808ff65522f2e9d789f4edf506"
+    "preparation-feasibility/preparation-preflight-01.log": "8ad4fb3d6dfd49bbacb2262e455cd57f1b3f22808ff65522f2e9d789f4edf506",
+    "lowering-01/feedback.jsonl": "c012dfe057847b6469644cca40bdde682d3cf02ac6dee64a71794901e9e66e92",
+    "lowering-01/observer.log": "804c3c3a0ccba2fe75df4a2b16b6b171cde39c1e69437e17b8c47d23d58c6615",
+    "lowering-01/analysis-summary.json": "791282247f94cefe38180d771e604939a6bc7488331806df782db637291606f8",
+    "lowering-01/config.json": "610e2cde505db2eff6355b3af1ca86f23c59c26921db23ca1b5f7656f3d4323b",
+    "lowering-01/excursion-summary.json": "7b295125ed6c0f541792607a2cdcd40c632ea92b305ccc908addfff799435a91",
+    "lowering-01/code.patch": "eeef9c39258c1f171869c7b4639edef3c116abad266d24a3d3a432fc8827e4cb",
+    "lowering-01/lowering-plan.json": "89c9e9807b8c4de1b23c8ea80916b9a78a67c97fc88fd4511859f4f3b4ddd148",
+    "lowering-01/provenance.json": "ca4c53200e4d6cecc2dabd3578d1fd5a24b04c305e67051d1b1134309c3fb1dc",
+    "lowering-01/baseline.json": "5ccfb1dd148ed8e7ac8bc4c2e88979d2596ef30a6ac29a98bb7cd35e8398cf3d",
+    "lowering-01/publisher-closed.json": "a1e85d2f829c5c979d9a8bee9869cf0f54b223c6c326721620aafd606aa6215c",
+    "lowering-01/commands.json": "acf20dc855ebf7f0732ed46b1d8be47fa567a9cb6146eb0e42f38031a6a6efa6",
+    "lowering-01/status.json": "bd4585374872534f7be7fb8a10057b448622f4852439c8a74e6eca8927648148",
+    "lowering-01/harness.py": "4ba52e175cec34800a253b1c6d14b3f5de54e2540adfa1cd3b42a07a0403682c",
+    "lowering-01/precheck.json": "ee5eb495c5ba6d1938ac230c8fba670a6d9064bb07352bfe574e4e138d17ceeb",
+    "lowering-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lowering-01/lowering-01.log": "1f944c8158755770ae7780211293d5c49e456d4a287625c797120ef1b5408748",
+    "lowering-01/test_lower.py": "a40ca93800f80d36a4c387b579b1a8769e40c3050027bbd29a2acc14f826c4cc",
+    "lowering-01/lower.sh": "e4e6dd7e68289bf69a0d45d94c2e2621d98cc074005c678408dddba4cbd017e9"
   }
 }

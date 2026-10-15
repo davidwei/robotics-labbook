@@ -1,0 +1,38 @@
+{
+  "id": "RUN-20261016-001",
+  "experiment": "EXP-20261009-001",
+  "status": "aborted",
+  "objective": "Slow supervised lowering from bent pose to zero, then inspection hold; normal handover separately confirmed",
+  "operator_authorization": "go ahead i am ready; proceed to experiments",
+  "safety": {
+    "gantry": "operator confirmed",
+    "workspace": "operator confirmed clear",
+    "emergency_control": "operator confirmed in hand",
+    "mode": "operator reported standard mode"
+  },
+  "code_revision": "ca04051f570e4df1fa1d49f84ce39fd623ecbc2f",
+  "dirty_patch": "artifact/code.patch; five-line telemetry phase addition",
+  "harness": "/tmp/g1-handover-ready/lower.py",
+  "artifact": "/home/dwei/robotics/artifacts/2026-10-16-g1-handover/lowering-01",
+  "command": "bash /tmp/g1-handover-ready/lower.sh --motion --root /tmp/g1-handover-ready/lowering-01",
+  "independent_observer": true,
+  "video": "requested; availability unconfirmed",
+  "physical_result": "Takeover measured-velocity trip; lowering never started; fallback return timed out; no fade",
+  "timestamp": "2026-10-16T01:09:10.989305+08:00",
+  "residual_risk": "fatal control fault can initiate best-effort return and publisher closure; independent physical coverage applies",
+  "operator_observations": [
+    "stationary after abort",
+    "Did not see clear arm movement",
+    "Arms never raised to level"
+  ],
+  "command_counts": {
+    "takeover_hold": 14,
+    "return": 250,
+    "fade": 0
+  },
+  "fault": "Left elbow dq=-1.9374 rad/s at weight 0.056, limit 0.1 rad/s; return arrival timeout",
+  "post_close_capture_s": 5.031374141,
+  "independent_max_sampled_speed_rad_s": 2.356194496,
+  "end_time": "2026-10-16T01:13:24.484500+08:00",
+  "interpretation": "Unchanged hold targets during takeover. Cause of measured movement not established. Encoder observations and limited operator-visible movement both preserved; do not infer success or dismiss the guard."
+}

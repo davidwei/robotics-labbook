@@ -10,7 +10,8 @@ related_ideas:
 code_revision: a65596cbc4df04ce0805f97b1f623807cb41098c
 labbook_refreshed_revision: fffced8504af907ab189f4b3edabe73b9448c503
 motor_commands_enabled: false
-runs: []
+runs:
+- RUN-20261016-001
 capture:
   method: live
   sources:
@@ -24,3 +25,4 @@ capture:
 operator_setup_report: Gantry fitted, workspace clear, emergency control in hand, standard mode.
 pending: Proceed with authorized supervised slow lowering and inspection hold; normal fade requires separate operator confirmation. Circular fault-path prerequisite superseded.
 validated_code_revision: ca04051f570e4df1fa1d49f84ce39fd623ecbc2f
+latest_run_status: Aborted during takeover; robot reported stationary; investigate before retry.

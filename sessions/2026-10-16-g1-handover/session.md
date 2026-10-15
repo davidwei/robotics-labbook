@@ -193,3 +193,23 @@ it imposed circular validation. Existing fault-triggered return remains a disclo
 residual risk, not a newly validated behavior. Operator accepted this principle and
 instructed proceeding with experiments. Normal completion must not auto-fade before
 inspection; fault behavior is distinct from normal completion.
+
+## RUN-20261016-001 — takeover abort, no planned lowering
+
+Operator-authorized lowering attempt aborted during initial measured-pose hold.
+14 unchanged-position commands ramped authority from 0.004 to 0.056. The left-elbow
+velocity guard reported -1.9374 rad/s (>0.1); fallback published 250 return commands,
+timed out before arrival, and closed. No fade commands. Independent feedback
+continued 5.031 s after closure; all experiment/observer processes exited.
+Operator reported stationary afterward, no clear arm movement seen, and arms never
+raised to level. No raise was commanded; the initial pose was the measured posture,
+with elbow flexion about 70 degrees, not the predefined raised ready pose.
+
+Encoder samples from first command to closure (~7.17 s) show left elbow 69.80 to
+58.85 degrees (10.95 degrees excursion) and right elbow 70.35 to 58.40 degrees
+(11.96 degrees). About 6.5 degrees per elbow was observed in the ~0.40 s takeover
+window. These are encoder measurements, not IMU-derived travel or Cartesian hand
+distance. Phase-boundary sampling gaps limit exact attribution. Preserve the
+operator observation alongside these measurements; takeover dynamics remain
+unexplained. No automatic retry and no guard relaxation. Next: investigate the
+low-authority takeover behavior before another physical attempt.
