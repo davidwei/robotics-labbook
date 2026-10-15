@@ -1,6 +1,6 @@
 # IDEA-20261015-003 — Controlled return and handover to the stock controller
 
-- Status: ready_for_lab; revised Unitree-gating experiment prepared on 2026-10-16.
+- Status: validation_pending; RUN-20261016-004 reached inspection pose but return stalled.
 - Target: MoissanClub/lerobot, work/g1-vr-physical; PC2/G1-29 guarded arm controller.
 - Physical validation: pending; RUN-20261015-009/010 expose current fault/exit gaps.
 - Operator requirement: return to stock requires much more care to avoid a dangerous trajectory.
@@ -21,7 +21,11 @@ mypy, Bandit and formatting checks passed. A negative checker test rejected a
 synthetic direct shutdown publisher. This is software evidence only; no DDS or
 physical robot execution was performed for this revision.
 
-## Next agent action
+## Latest physical evidence
+
+RUN-20261016-004 reached inspection hold; return timed out after 120 seconds with no fade. Voice failed with SDK 3104. Elbow readings are SDK coordinates, not anatomical flexion; zero is not a straight elbow. Physical offset calibration remains unverified. Next action: reconcile coordinate convention with operator observation and review the small measured-relative return target offset before another motion run. The prepared experiment below records the procedure just tested, not a pending successful handback claim.
+
+## Prepared procedure
 
 Run the prepared elbow-only 65-degree inspection experiment with operator participation,
 gantry, clear workspace, regular action mode and independent emergency control.

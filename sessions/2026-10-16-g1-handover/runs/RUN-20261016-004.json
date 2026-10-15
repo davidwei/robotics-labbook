@@ -1,0 +1,42 @@
+{
+  "id": "RUN-20261016-004",
+  "experiment": "EXP-20261009-001",
+  "status": "completed_with_failed_return",
+  "objective": "Inspect elbow-only 65-degree SDK pose with Unitree-style gating, then separately request return-to-stock",
+  "operator_authorization": [
+    "go ahead (start experiment)",
+    "confirm",
+    "go ahead (handover)"
+  ],
+  "code_revision": "ca04051f570e4df1fa1d49f84ce39fd623ecbc2f",
+  "dirty_patch": "artifact/code.patch",
+  "artifact": "/home/dwei/robotics/artifacts/2026-10-16-g1-handover/inspection65-unitree-01",
+  "physical_result": "Inspection hold reached without custom guard trip; return timed out without measured arrival or fade. Transport closure verified; this does not verify stock acceptance.",
+  "voice": "Both pre-motion and inspection announcements failed with SDK status 3104; text emitted",
+  "summary": {
+    "return_rows": 4423,
+    "fade_rows": 0,
+    "return_duration_s": 119.98427836999963,
+    "return_start_elbow_sdk_deg": [
+      64.81178797765605,
+      65.03906252228823
+    ],
+    "return_end_elbow_sdk_deg": [
+      64.71428019706495,
+      65.16403449353196
+    ],
+    "max_return_target_offset_rad": 0.0009999999999998899,
+    "post_close_s": 5.002302386999872,
+    "closed": {
+      "at": 6070.678737303,
+      "closure_verified": true,
+      "phase": "failed",
+      "writer_created": true,
+      "return_succeeded": false,
+      "fault": "Stock-controller return failed: Timed out before measured arms reached the return pose"
+    }
+  },
+  "measurement_correction": "Correction: reported elbow degrees are SDK joint coordinates, not anatomical flexion. Slots 18/25 and radians-to-degrees conversion match local upstream. Both executed and upstream URDFs have elbow axis +Y and forearm extending approximately +X at q=0; increasing elbow coordinate rotates forearm toward -Z in the parent frame. Earlier statements that zero means straight and return-to-zero lowers the arms are unsupported/incorrect. No physical encoder offset was calibrated or changed; operator visual reference is pending.",
+  "safety": "Previously confirmed gantry, clear workspace, standard mode, emergency control; no additional fallback motion",
+  "capture": "Independent feedback, command trace, exact harness/config/patch; no video confirmed"
+}

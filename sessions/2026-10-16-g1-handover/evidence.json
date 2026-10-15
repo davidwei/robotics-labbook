@@ -135,6 +135,25 @@
     "final-readiness/unitree-readiness-01/summary.json": "1765250111ba9c761ac621827d9bde6adb5a3a0d4d861d4381113e369f667efe",
     "final-readiness/unitree-readiness-01/harness.py": "c4a1b9b6f21c7d03220275ae041d1634f42ee47e479401806beb776fdceec4ab",
     "final-readiness/unitree-readiness-01/precheck.json": "fda2b9a82122eb1696f0878bd7889fbaed59504c1902b0e4af08988628d751f1",
-    "final-readiness/unitree-readiness-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    "final-readiness/unitree-readiness-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inspection65-unitree-01/feedback.jsonl": "640a3e977037d25cac8ff7e34e9799ad6b5b83b6d5d5cf1576c6827e035be688",
+    "inspection65-unitree-01/capture-summary.json": "5d8e7cf3e48b93df30f6841d28888e2f25981382e9e10b8afaea6d03bf8ef5d9",
+    "inspection65-unitree-01/observer.log": "804c3c3a0ccba2fe75df4a2b16b6b171cde39c1e69437e17b8c47d23d58c6615",
+    "inspection65-unitree-01/analysis-summary.json": "27e6c1c47ccb9204c31b5186f9001367bafab618600f22062f9c7c59ee9fe7fc",
+    "inspection65-unitree-01/config.json": "206a11305798a35f912cd8c38246bbc9cdb76f02afd319c2a8705bba4921da61",
+    "inspection65-unitree-01/activated-plan.json": "6616d8e3cf21f3183754f836059347854ddc9990ab3790f06310a23b08f9c7fa",
+    "inspection65-unitree-01/code.patch": "e3a0bbd94d221c372097d77d09517c45dd72092a6f74538b2336c07bf12f4555",
+    "inspection65-unitree-01/lowering-plan.json": "78556bfdc72bdbc022f910c46def6ea11c402185a256d5c88a97f16c5edd33fc",
+    "inspection65-unitree-01/provenance.json": "ca4c53200e4d6cecc2dabd3578d1fd5a24b04c305e67051d1b1134309c3fb1dc",
+    "inspection65-unitree-01/baseline.json": "f0d1e4c87946d2fc74d0bce42976864309c7534ec69d0bc640a57a3e499b25f1",
+    "inspection65-unitree-01/publisher-closed.json": "13daeb8df27a18230f9c76033eae9febf99cc457b3a92a5c88b952eda8c5da3c",
+    "inspection65-unitree-01/angle-convention-correction.txt": "295eab98c0b05411a90b348b7786b67a009d200d591d21844cfc6b742d28e683",
+    "inspection65-unitree-01/inspection-held": "dae49e2f756615d9d7cf0916f0971b4926a1f6e8f261fc8138523a2b40b66bd3",
+    "inspection65-unitree-01/commands.json": "5fc354a53e13c6a92d3951ef7e566175d56d577db0d857a3283ad6761641ea40",
+    "inspection65-unitree-01/status.json": "12bbfa53b70d5bc1e39dbb9bb65b5215484e6e5fc0a3013824d9de27286f514f",
+    "inspection65-unitree-01/harness.py": "c4a1b9b6f21c7d03220275ae041d1634f42ee47e479401806beb776fdceec4ab",
+    "inspection65-unitree-01/precheck.json": "e7c2635f03b0e3c33fbef5762b9e87910e257201c8080c759ec0d17f9278f492",
+    "inspection65-unitree-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inspection65-unitree-01/process.log": "927a49a6803cdd035c92efa82f14e11985d0ab18b4040ca3f3d47b9ab3642f94"
   }
 }

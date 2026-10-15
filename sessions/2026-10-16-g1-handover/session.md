@@ -311,3 +311,11 @@ trajectory/lifecycle equivalence or guaranteed safety after transport failure.
 Software: 246 G1 tests passed, 14 skipped; focused suite 69 passed. Lint, format and architecture checks passed. Live read-only capture received 243 fresh samples without creating a command writer and continued five seconds after verified closure. Capture overflow no longer aborts control; fade timing includes publication overhead. Exact patch and harness: `final-readiness` in the artifact registry.
 
 Next experiment is ready for supervised execution: elbow-only 65-degree pose, target rate 0.05 rad/s, Unitree gating selected, English inspection announcement and hold, followed by a separate handover request. No physical motion in this preparation pass. Previous physical return timed out; successful handback remains unverified.
+
+## RUN-004: inspection reached; return stalled
+
+The revised profile reached the 65-degree SDK elbow inspection pose without a guard trip. Spoken warnings failed (SDK 3104); text prompts worked. After separate operator authorization, return published for 120 seconds but elbows remained near 65 degrees. No arrival or fade occurred. Transport closure and five seconds of subsequent feedback were captured. Successful stock handback is not established.
+
+Correction: reported elbow degrees are SDK joint coordinates, not anatomical flexion. Slots 18/25 and radians-to-degrees conversion match local upstream. Both executed and upstream URDFs have elbow axis +Y and forearm extending approximately +X at q=0; increasing elbow coordinate rotates forearm toward -Z in the parent frame. Earlier statements that zero means straight and return-to-zero lowers the arms are unsupported/incorrect. No physical encoder offset was calibrated or changed; operator visual reference is pending.
+
+Next: reconcile observed pose with the model coordinate convention, then review the small measured-relative return target offset (0.001 rad per publication); it is not a physical velocity guarantee. Do not change offsets merely to match the earlier incorrect angle description.
