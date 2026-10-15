@@ -58,3 +58,5 @@ trips; physical validation of this candidate remains pending. Reference:
 Related evidence: [session](../../sessions/2026-10-15-g1-vr-camera/session.md),
 [analysis](../../sessions/2026-10-15-g1-vr-camera/analysis.md), RUN-009 and RUN-010.
 Preparation speed increase and removal of the reference path remain deferred.
+
+Reusable procedure: [return-to-stock physical test protocol](return-to-stock-test-protocol.md), including separate inspection and post-return operator confirmations.

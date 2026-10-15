@@ -327,3 +327,5 @@ Operator confirmed arms mostly lowered, hands pointing downward at the reported 
 All-zero SDK arm targets produced the requested near-right-angle, hands-forward pose. Slow preparation used 0.05 rad/s target rate; operator inspected and approved. From this pose, measured return arrival was already satisfied: 101 fade publications lowered authority to zero over 2.00 s. Publisher closure and five seconds of feedback were verified; process exited normally. Operator reported the return was safe.
 
 This demonstrates handover from the prepared pose, not reliable return motion from arbitrary poses. Right-wrist yaw peaked at 3.09 rad/s, 0.45 s after closure; the stock trajectory is not bounded by the slow preparation target rate. Voice announcements still failed (3104). Full trace and exact code/config: `inspection-forward-01` artifacts.
+
+Future return tests follow the [operator-defined five-step protocol](../../ideas/IDEA-20261015-003/return-to-stock-test-protocol.md), with separate confirmations before handover and before proceeding to the next scenario.

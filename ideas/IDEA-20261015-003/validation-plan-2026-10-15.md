@@ -142,3 +142,7 @@ Latest operator decision: use explicit unitree_gating=true for the next arm expe
 remove extra normal-control and recovery trips that are absent upstream. Exception
 handling must remain effective when normal-control assumptions fail. Independent
 physical coverage applies. See RUN-003 and the Oct 16 software checkpoint.
+
+## Operator-defined per-scenario sequence (2026-10-16)
+
+Use [the return-to-stock test protocol](return-to-stock-test-protocol.md): announce move → slow pose preparation → announce inspection and wait for confirmation → return to stock → wait for operator success/failure assessment before the next scenario. This supersedes any automatic progression implied earlier in this plan. It adds no recovery-control gate.
