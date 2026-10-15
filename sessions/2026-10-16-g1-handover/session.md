@@ -55,3 +55,31 @@ Physical handover remains blocked on target-continuity correction and regression
 coverage. Live command/phase telemetry and an independent feedback observer
 lasting five seconds beyond publisher closure still need completion before motion.
 LeRobot control code was not modified in this diagnostic.
+
+## Upstream comparison — return command semantics
+
+Reviewed current GitHub xr_teleoperate main robot_arm.py and local revision
+278a3dcc669eb54b0fd5ed26031e420bc7f42e88 (same relevant G1-29 behavior).
+In motion_mode, go_home sets the shared goal to zero, waits up to 100 x 50 ms
+for all measured arm angles below 0.05 rad, then changes weight 1 to 0 in 101
+steps with 20 ms sleeps. Its separate 250 Hz publisher continues measured-relative
+position clipping during the fade. The feedforward-zero assignment is commented
+out: previous feedforward is retained. go_home returns None even on timeout;
+its return is not a physical completion acknowledgement.
+
+Our a65596cb fade instead writes exact-zero targets and zero feedforward.
+The reproduced 0.039 rad target discontinuity remains valid, but 39x denotes a
+comparison with the configured per-period target offset, NOT 39x measured motor
+speed. Both measured-relative limiters bound command-to-measurement offset rather
+than consecutive commanded position or physical joint speed.
+
+Unitree's G1 arm7 SDK example identifies motor_cmd[29].q as weight (1 enables,
+0 disables arm_sdk), distinct from arm motor q position targets. The examples do
+not expose the firmware blending equation or guarantee a collision-free stock
+trajectory. SDK Write success indicates a local DDS write without a caught error,
+not motor execution or handover acknowledgement. No robot commands issued.
+
+Sources: https://github.com/unitreerobotics/xr_teleoperate/blob/main/teleop/robot_control/robot_arm.py
+and https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/example/g1/high_level/g1_arm7_sdk_dds_example.py.
+Next: preserve continuous target generation through fade, explicitly decide
+feedforward behavior, then test and instrument before physical execution.
