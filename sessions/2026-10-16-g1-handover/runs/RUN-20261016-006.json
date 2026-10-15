@@ -106,5 +106,12 @@
     "sequence": "After forward movement and progressively growing arm oscillations",
     "source": "operator report",
     "timing": "Exact intervention time relative to publisher closure is not established by the message arrival time."
+  },
+  "archive_code": {
+    "repository": "https://github.com/MoissanClub/lerobot",
+    "branch": "archive/g1-vr-physical-failure",
+    "commit": "75911f64cee1c9b365fffc25914a5ddd9145731e",
+    "verification": "git diff from recorded base exactly matches archived code.patch",
+    "pushed": true
   }
 }

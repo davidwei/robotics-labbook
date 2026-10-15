@@ -2,6 +2,26 @@
 
 Status: data collection only. User explicitly deferred simulation work until after the lab. No simulation implementation or execution occurred.
 
+## Direct Git checkout
+
+The executed code is now archived in `MoissanClub/lerobot` on branch
+`archive/g1-vr-physical-failure`, commit
+`75911f64cee1c9b365fffc25914a5ddd9145731e`.
+Its diff from base `ca04051f570e4df1fa1d49f84ce39fd623ecbc2f` was verified
+byte-for-byte equal to RUN-006's `code.patch`.
+
+```bash
+git clone git@github.com:MoissanClub/lerobot.git lerobot-run006
+cd lerobot-run006
+git checkout --detach 75911f64cee1c9b365fffc25914a5ddd9145731e
+```
+
+Do not apply `code.patch` again to this archive commit. The patch is only needed
+when starting from the base commit. The raw-data archive still supplies the exact
+temporary `harness.py`, launch script, scenario/configuration, and traces; those
+experiment files are not added to the LeRobot branch. This archives a known failed
+physical experiment, not a validated fix or authorization to run it on hardware.
+
 ## Preserved inputs
 
 - Artifact directory: `/home/dwei/robotics/artifacts/2026-10-16-g1-handover/random-return-01`.

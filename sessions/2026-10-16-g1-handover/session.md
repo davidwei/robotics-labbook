@@ -345,3 +345,5 @@ Operator clarified the intervention sequence: after the forward movement and gro
 RUN-006: [time-ordered evidence](runs/RUN-20261016-006-timeline.md) and [reconstruction handoff](runs/RUN-20261016-006-reconstruction.md) preserve inputs, uncertainties and future recorder requirements. Portable archive is in local artifact storage; raw data is not uploaded to GitHub. Simulation work was explicitly deferred.
 
 At the operator's explicit request, the full RUN-006 [raw-data archive](artifacts/RUN-20261016-006-reconstruction.tar.gz) and [plot](artifacts/RUN-20261016-006-timeline.png) are now tracked directly in the labbook repository. This supersedes the earlier local-only storage note. Archive contents and checksum were verified.
+
+RUN-006 code is pushed to `MoissanClub/lerobot:archive/g1-vr-physical-failure` at `75911f64cee1c9b365fffc25914a5ddd9145731e`. Its diff from ca04051f exactly matches the recorded run patch. Direct checkout instructions are in the reconstruction handoff; no patch reapplication is needed.
