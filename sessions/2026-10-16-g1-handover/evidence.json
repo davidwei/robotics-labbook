@@ -198,6 +198,16 @@
     "random-return-01/scenario.json": "50165f847145aa58c0968b8fe5ba2fc5ddcf3949a916c57caf2976297a3c769f",
     "random-return-01/precheck.json": "c1e05d97c8edd686f282defa7628d823d79c506beeead42a7080e65afafc5ffb",
     "random-return-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "random-return-01/process.log": "848ac4f4a06c56fb70a67411a5e01f820ff264a1c2d6e3ff951c7443fc96d610"
+    "random-return-01/process.log": "848ac4f4a06c56fb70a67411a5e01f820ff264a1c2d6e3ff951c7443fc96d610",
+    "random-return-01/reconstruction/environment.json": "d9a5987ce3a42f764b3773904e9d16ad8a5b1a304f0284b52a22e6754c3d1b32",
+    "random-return-01/reconstruction/g1_body29_hand14.urdf": "8bbf006633fc50b616f665c7a970780cc296577a0adfd7d28b049e751c238735",
+    "random-return-01/reconstruction/README.md": "68df8cd800c0dba12e92c8f71044c3e3543d8a22b48b6e1c74c66ea3ecc075cd",
+    "random-return-01/reconstruction/timeline.png": "fc79797a800c210f2a49a8b1f649e1b0614adfd8f467d4efcf8fffd8a550c736",
+    "random-return-01/reconstruction/g1_29dof_with_hand.xml": "cec4777a3b9c8b05f8ed6547a1bc35673e0f2b0e267c4493bcb59efdb4275f51",
+    "random-return-01/reconstruction/arm-excursions.json": "9660c8cbe6631726d48d28c53b4ec2bb4d99c1d7f16b2cf0f1db2b302b800f9d",
+    "random-return-01/reconstruction/timeline.md": "31acfd4a28f03ede88ef6c6c84ef3cf39822e3133a2c2dabf7f8119f079270eb",
+    "random-return-01/reconstruction/mesh-sha256.json": "1b42bddeaa02d57b27344d9b932380fb174bb2497c6e7ebcc37cb927582821bb",
+    "random-return-01/reconstruction/base-source.tar": "5364d12b7913b37c04105b91cc87075d1a9c1413c275c0f9bbad117aaef14958",
+    "RUN-20261016-006-reconstruction.tar.gz": "d7aa92302db7e18af0ae7fe2ae916bf6327dfdd690657387a97b982dd4592b63"
   }
 }

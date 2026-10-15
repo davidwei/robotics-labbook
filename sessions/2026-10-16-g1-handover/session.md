@@ -341,3 +341,5 @@ Scenarios 2–5 were not started. No more actuation is authorized by the remaini
 Operator follow-up for RUN-006: the robot moved forward and the arms oscillated with progressively increasing amplitude; the motion did not stop. The operator described an apparent self-reinforcing loop. Growing oscillations and forward movement are operator observations; the feedback mechanism remains an unconfirmed hypothesis. The earlier damp-mode intervention remains recorded separately.
 
 Operator clarified the intervention sequence: after the forward movement and growing arm oscillations, the operator used the emergency stop to put the robot into damp mode. The exact time relative to publisher closure is not established; message receipt order must not be treated as physical-event timing.
+
+RUN-006: [time-ordered evidence](runs/RUN-20261016-006-timeline.md) and [reconstruction handoff](runs/RUN-20261016-006-reconstruction.md) preserve inputs, uncertainties and future recorder requirements. Portable archive is in local artifact storage; raw data is not uploaded to GitHub. Simulation work was explicitly deferred.
