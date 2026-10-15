@@ -1,0 +1,40 @@
+{
+  "id": "RUN-20261016-002",
+  "experiment": "EXP-20261009-001",
+  "status": "aborted",
+  "objective": "Fixed 65-degree elbow inspection pose then hold; normal handover separately confirmed",
+  "operator_authorization": "go ahead to physical test",
+  "safety": {
+    "gantry": "operator confirmed",
+    "workspace": "operator confirmed clear",
+    "emergency_control": "operator confirmed in hand",
+    "mode": "operator reported standard mode"
+  },
+  "code_revision": "ca04051f570e4df1fa1d49f84ce39fd623ecbc2f",
+  "dirty_patch": "artifact/code.patch; five-line telemetry phase addition",
+  "harness": "/tmp/g1-handover-ready/inspect65.py",
+  "artifact": "/home/dwei/robotics/artifacts/2026-10-16-g1-handover/inspection65-01",
+  "command": "bash /tmp/g1-handover-ready/inspect65.sh --motion --root /tmp/g1-handover-ready/inspection65-01",
+  "independent_observer": true,
+  "video": "requested; availability unconfirmed",
+  "physical_result": "Positioning interrupted by right wrist yaw velocity guard; inspection not reached; publisher join timeout during fallback",
+  "timestamp": "2026-10-16T01:18:41.701472+08:00",
+  "residual_risk": "fatal control fault can initiate best-effort return and publisher closure; independent physical coverage applies",
+  "operator_observations": [
+    "robot stationary",
+    "no inspection announcement",
+    "arm movement barely visible; requests increased speed for visual validation"
+  ],
+  "fault": "kRightWristYaw=-0.1227 rad/s >0.1 at weight1; Arm publisher did not stop; operator intervention required",
+  "command_counts": {
+    "normal": 445,
+    "return": 4608,
+    "fade": 0
+  },
+  "capture_limitations": [
+    "publisher-closed marker written despite close raising; not actual publisher closure",
+    "commands continued after marker; saved command trace may omit final writes",
+    "post-close capture claim invalid for this run; process and observer subsequently exited"
+  ],
+  "end_time": "2026-10-16T01:25:00.444699+08:00"
+}

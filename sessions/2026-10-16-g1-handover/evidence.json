@@ -75,6 +75,21 @@
     "lowering-01/test_lower.py": "a40ca93800f80d36a4c387b579b1a8769e40c3050027bbd29a2acc14f826c4cc",
     "lowering-01/lower.sh": "e4e6dd7e68289bf69a0d45d94c2e2621d98cc074005c678408dddba4cbd017e9",
     "inspection65-preparation/inspect65.py": "031aac9c3fd1dfcdbb5939386436ebc240af6150ef973660f55503078ad48a96",
-    "inspection65-preparation/test_inspect65.py": "f825dbfa8ada771e07c9eaf29fb82f89050a09c10d89367bfd78d7ea8aa19cc9"
+    "inspection65-preparation/test_inspect65.py": "f825dbfa8ada771e07c9eaf29fb82f89050a09c10d89367bfd78d7ea8aa19cc9",
+    "inspection65-01/feedback.jsonl": "e317d72de8af95f8ab04382c2405def531c7b0360f0b249605c05164fa4b0a2e",
+    "inspection65-01/observer.log": "5935e953de75ed45c0269bfc65bece13dcdc703626555c27bea56f344d9f992b",
+    "inspection65-01/config.json": "44667d478de894da7473f9bfe73d8f8ded1ec81bc8cf34088be7bbdda4feb39a",
+    "inspection65-01/code.patch": "eeef9c39258c1f171869c7b4639edef3c116abad266d24a3d3a432fc8827e4cb",
+    "inspection65-01/lowering-plan.json": "aa5f6b7d313f7356f5b442a1f6680474b3a625012886380f0007467c71c818d8",
+    "inspection65-01/provenance.json": "ca4c53200e4d6cecc2dabd3578d1fd5a24b04c305e67051d1b1134309c3fb1dc",
+    "inspection65-01/baseline.json": "5c02bb0be6c68dce75b79d539de5dbf7d9d30b7e06f9d1bfb9295000e1af5963",
+    "inspection65-01/publisher-closed.json": "bb0811b32fd914fa471f7376fbb55ccd4d732a0bc783f0eab40bb49fc59ace8e",
+    "inspection65-01/commands.json": "e6c27251b4be3d71fbb334c3c6de6287e7550d12c6a1d1da7efde7e0eb29ecfa",
+    "inspection65-01/status.json": "ad434f6cdd70b173baea6fb8c6bd5e406fa73ae86b94899572d08383eb97d1bd",
+    "inspection65-01/harness.py": "031aac9c3fd1dfcdbb5939386436ebc240af6150ef973660f55503078ad48a96",
+    "inspection65-01/precheck.json": "40297e3faa33acd1b82b466c86ee9ed2a8b493a0500d411ee3a37ef1c426e9cf",
+    "inspection65-01/observer-ready": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inspection65-01/inspection65-01.log": "137ff0d3850979e9543563fc57e034b99819a9abdd6f9ec7766d548c30fa9354",
+    "inspection65-01/inspect65.sh": "fa685584e960b120583d12ae6745089d022484bffad8e0f0e5644261bc8f50e3"
   }
 }

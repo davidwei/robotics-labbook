@@ -233,3 +233,28 @@ measured-pose target continuity, <=0.02 rad/s target speed, five seconds of hold
 without auto-close, explicit handover, and exactly one inspection voice cue.
 No new physical test or speaker audibility verification was performed. Previous
 takeover fault remains unresolved; this preparation does not mark it validated.
+
+## RUN-20261016-002 — positioning interrupted; cleanup capture limitation
+
+Takeover reached full authority, then the right wrist yaw velocity guard tripped
+at -0.1227 rad/s against 0.1. Last positioning progress was 6.14/18.44 seconds;
+elbows around 60 degrees. No inspection prompt or normal fade occurred. Operator
+reported stationary, barely visible movement, and requested higher speed for visual
+validation. Saved trace contains 445 normal and 4608 return commands; zero fades.
+
+The 120 s configured return uses a step count, while close joins with a wall-clock
+timeout. The publisher was still returning when close raised "Arm publisher did
+not stop; operator intervention required". Process subsequently exited; no matching
+test/observer processes remain. The harness wrote its publisher-closed marker even
+though close failed, and captured commands continued after that marker. Therefore
+five-seconds-after-actual-closure capture is NOT established for this run. Preserve
+this instrumentation defect; do not reuse the marker as physical closure evidence.
+Next: fix timeout accounting and closure reporting; assess target speed and the
+wrist guard separately before another run. No automatic retry or guard relaxation.
+
+Upstream comparison refreshed: G1-29 go_home uses target clipping, a measured
+absolute-angle arrival threshold of 0.05 rad, roughly five seconds of arrival
+polling, and then a two-second authority fade. That Python path has no measured
+speed trip, torque trip, tracking-error trip or stale-feedback guard. Our observed
+0.1 rad/s trip is local controller behavior during normal positioning, not an
+upstream go_home guard. Firmware-level protections are outside this source review.
