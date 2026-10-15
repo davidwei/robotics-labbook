@@ -258,3 +258,18 @@ polling, and then a two-second authority fade. That Python path has no measured
 speed trip, torque trip, tracking-error trip or stale-feedback guard. Our observed
 0.1 rad/s trip is local controller behavior during normal positioning, not an
 upstream go_home guard. Firmware-level protections are outside this source review.
+
+## Operator constraint — no additional return-to-stock gates
+
+Operator instructed: "do not add any other gate outside the unitree return-to-stock
+guard." Do not introduce additional speed, torque, tracking-error, pose, dwell or
+inspection requirements inside the return/fade routine beyond the Unitree reference
+behavior. The inspection hold belongs to the normal experiment before an explicit
+handover request, not inside return-to-stock. Preserve the independent physical
+coverage principle rather than inventing recursive software prerequisites.
+
+No controller change made in response to this instruction. Existing code still
+contains missing/stale/nonfinite feedback checks in _return_snapshot; these were
+already present and must not be misrepresented as upstream-equivalent. The 0.1
+rad/s trip from RUN-002 is in normal positioning, not the return path. Any proposal
+to remove existing checks must explicitly distinguish that from adding no new gates.

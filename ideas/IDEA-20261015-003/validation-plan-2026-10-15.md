@@ -133,3 +133,7 @@ it imposed circular validation. Existing fault-triggered return remains a disclo
 residual risk, not a newly validated behavior. Operator accepted this principle and
 instructed proceeding with experiments. Normal completion must not auto-fade before
 inspection; fault behavior is distinct from normal completion.
+
+Operator constraint: do not add gates inside return-to-stock beyond Unitree
+reference behavior. Keep experiment inspection prerequisites separate from the
+return routine. See the Oct 16 session for existing implementation differences.
