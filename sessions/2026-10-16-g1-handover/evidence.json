@@ -8,6 +8,10 @@
     "run.sh": "337e112f1f69b8e961ac0749db07bc963c9bab788cb6c093d9913671b60d74d3",
     "stage2/check_transition.py": "2a635d0904816e012c098bae493995f2f983ceb888a156dfb7f8ed1d43f1e73c",
     "stage2/commands.jsonl": "e7ddf8809b1cfd734d6c25a1f268a78cd6751b84e3f00233ea45415372ad3d7a",
-    "stage2/summary.json": "89c3676a268d61b35136b5d4e4ecda47a53efc5f0147e310bcabee26b5f1b9a8"
+    "stage2/summary.json": "89c3676a268d61b35136b5d4e4ecda47a53efc5f0147e310bcabee26b5f1b9a8",
+    "stage2-fixed/implementation.patch": "9ac4e3341001a8d8d359ee2e8713872abae2922c6ee035a88da626480db0e6b2",
+    "stage2-fixed/check_transition.py": "2a635d0904816e012c098bae493995f2f983ceb888a156dfb7f8ed1d43f1e73c",
+    "stage2-fixed/summary.json": "2d053ce0c1ed0e4bc15eddcb2e0721fb1397459d1ab392cdd24e2545df65e886",
+    "stage2-fixed/commands.jsonl": "4e53ebe10ebfe3b9c6b09627f27bec7e7c8482bfdb4e2021736e12ac4a1e45f4"
   }
 }

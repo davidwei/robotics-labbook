@@ -83,3 +83,25 @@ Sources: https://github.com/unitreerobotics/xr_teleoperate/blob/main/teleop/robo
 and https://github.com/unitreerobotics/unitree_sdk2_python/blob/master/example/g1/high_level/g1_arm7_sdk_dds_example.py.
 Next: preserve continuous target generation through fade, explicitly decide
 feedforward behavior, then test and instrument before physical execution.
+
+## Implemented correction — offline validated, physical validation pending
+
+At operator request, changed the working tree over a65596cb to keep measured-relative
+position clipping throughout the authority fade, publish at the control cadence,
+and retain the last successfully published feedforward during return/fade. The
+reference publisher only gains feedforward bookkeeping for this shared handover;
+its tracking behavior is unchanged. Updated user documentation clarifies that the
+velocity parameter limits target offset, not actual joint speed.
+
+63 focused SDK/reference tests passed (two CUDA/pygame environment warnings), Ruff
+and architectural checks passed. Coverage includes 50/250 Hz fade timing, nonzero
+residuals, retained feedforward, changing feedback, stale feedback and idempotence.
+The same diagnostic now reports zero fade-entry target jump and 20 ms separation,
+with monotonic weight to zero. This supersedes the offline continuity blocker for
+this patch only, not the remaining physical validation requirements. Snapshot:
+`stage2-fixed/implementation.patch`; code remains uncommitted. No motor commands.
+
+Next: complete live command/phase telemetry and independent post-close feedback
+capture before a separately authorized near-zero physical return. Retaining the
+last feedforward is upstream-compatible but is not recomputed gravity compensation
+for changing posture; actual handover motion remains unverified.

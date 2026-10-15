@@ -22,4 +22,4 @@ capture:
   - No external video
   - Artifacts local only
 operator_setup_report: Gantry fitted, workspace clear, emergency control in hand, standard mode.
-pending: Correct offline fade-entry target discontinuity; complete live telemetry before physical handover.
+pending: Offline discontinuity fixed and tested; complete live telemetry and independent observer before physical handover.
