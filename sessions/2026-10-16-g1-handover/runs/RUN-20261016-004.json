@@ -38,5 +38,9 @@
   },
   "measurement_correction": "Correction: reported elbow degrees are SDK joint coordinates, not anatomical flexion. Slots 18/25 and radians-to-degrees conversion match local upstream. Both executed and upstream URDFs have elbow axis +Y and forearm extending approximately +X at q=0; increasing elbow coordinate rotates forearm toward -Z in the parent frame. Earlier statements that zero means straight and return-to-zero lowers the arms are unsupported/incorrect. No physical encoder offset was calibrated or changed; operator visual reference is pending.",
   "safety": "Previously confirmed gantry, clear workspace, standard mode, emergency control; no additional fallback motion",
-  "capture": "Independent feedback, command trace, exact harness/config/patch; no video confirmed"
+  "capture": "Independent feedback, command trace, exact harness/config/patch; no video confirmed",
+  "operator_observations": [
+    "The arms have been mostly lowered and hands pointing downward."
+  ],
+  "interpretation": "Observation is consistent with the SDK/model coordinate convention; it does not establish a physical encoder offset or exact anatomical angle."
 }

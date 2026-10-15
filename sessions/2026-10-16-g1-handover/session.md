@@ -319,3 +319,5 @@ The revised profile reached the 65-degree SDK elbow inspection pose without a gu
 Correction: reported elbow degrees are SDK joint coordinates, not anatomical flexion. Slots 18/25 and radians-to-degrees conversion match local upstream. Both executed and upstream URDFs have elbow axis +Y and forearm extending approximately +X at q=0; increasing elbow coordinate rotates forearm toward -Z in the parent frame. Earlier statements that zero means straight and return-to-zero lowers the arms are unsupported/incorrect. No physical encoder offset was calibrated or changed; operator visual reference is pending.
 
 Next: reconcile observed pose with the model coordinate convention, then review the small measured-relative return target offset (0.001 rad per publication); it is not a physical velocity guarantee. Do not change offsets merely to match the earlier incorrect angle description.
+
+Operator confirmed arms mostly lowered, hands pointing downward at the reported inspection pose. This is consistent with the SDK/model convention; no encoder calibration offset is established.
