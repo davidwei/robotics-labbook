@@ -1,0 +1,10 @@
+{
+  "artifact_root": "/home/dwei/robotics/artifacts/2026-10-16-g1-handover",
+  "sha256": {
+    "feedback.py": "076709c3df1c724d19c453081e8bb1433d49f0aa34fd03b6ff9f725418fd7695",
+    "feedback.log": "9c9d80093f91b1d463a46522743942ec6369cb508184aa986647ff92bbfbb0dd",
+    "feedback.json": "fb026b4749cc59553a84f9b434890ab1c35492e6ac968336062d875a6da4fcb7",
+    "summary.json": "4a9c25c86b2464926247106ff189af5d3a642921c62f4e404997464c977a6c0e",
+    "run.sh": "337e112f1f69b8e961ac0749db07bc963c9bab788cb6c093d9913671b60d74d3"
+  }
+}

@@ -1,0 +1,26 @@
+id: SESSION-20261016-001
+date: '2026-10-16'
+timezone: Asia/Shanghai
+owner: David Wei
+project: unitree-g1
+status: in_progress
+mode: pre-lab
+related_ideas:
+- IDEA-20261015-003
+code_revision: a65596cbc4df04ce0805f97b1f623807cb41098c
+labbook_refreshed_revision: fffced8504af907ab189f4b3edabe73b9448c503
+motor_commands_enabled: false
+runs: []
+capture:
+  method: live
+  sources:
+  - commands_and_outputs
+  - git
+  - read_only_feedback
+  coverage: partial
+  known_gaps:
+  - No external video
+  - Artifacts local only
+  - Current physical safety setup awaits operator confirmation
+pending: Operator focus selection; command/weight telemetry and fade-target continuity
+  audit before any motion stage.
