@@ -1,0 +1,36 @@
+{
+  "id": "RUN-20261016-003",
+  "experiment": "EXP-20261009-001",
+  "status": "aborted",
+  "objective": "Elbow-only 65-degree inspection pose at 0.05 rad/s target speed; other joints retain activation pose; hold before separately confirmed handover",
+  "operator_authorization": "ok. now move forward",
+  "safety": {
+    "gantry": "operator confirmed",
+    "workspace": "operator confirmed clear",
+    "emergency_control": "operator confirmed in hand",
+    "mode": "operator reported standard mode"
+  },
+  "code_revision": "ca04051f570e4df1fa1d49f84ce39fd623ecbc2f",
+  "dirty_patch": "artifact/code.patch; telemetry phases, wall-clock return timeout and immediate fault logging; exact patch preserved",
+  "harness": "/tmp/g1-handover-ready/inspect65_elbow.py",
+  "artifact": "/home/dwei/robotics/artifacts/2026-10-16-g1-handover/inspection65-elbow-01",
+  "command": "bash /tmp/g1-handover-ready/inspect65_elbow.sh --motion --root /tmp/g1-handover-ready/inspection65-elbow-01",
+  "independent_observer": true,
+  "video": "requested; availability unconfirmed",
+  "physical_result": "Right wrist yaw speed trip during takeover, before elbow trajectory; return timeout, transport closure verified",
+  "timestamp": "2026-10-16T01:30:37.590090+08:00",
+  "residual_risk": "fatal control fault can initiate best-effort return and publisher closure; independent physical coverage applies",
+  "fault": "RightWristYaw=0.5584 rad/s >0.1 at weight0.044",
+  "command_counts": {
+    "normal_hold": 11,
+    "return": 4455,
+    "fade": 0
+  },
+  "return_duration_s": 119.99824,
+  "post_close_s": 5.00599,
+  "operator_observations": [
+    "Did not see arm move much",
+    "Whole body may adjust balance when arms raise"
+  ],
+  "interpretation": "Encoder transient recorded; balancing explanation is operator context, not established root cause"
+}

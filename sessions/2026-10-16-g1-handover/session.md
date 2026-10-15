@@ -273,3 +273,35 @@ contains missing/stale/nonfinite feedback checks in _return_snapshot; these were
 already present and must not be misrepresented as upstream-equivalent. The 0.1
 rad/s trip from RUN-002 is in normal positioning, not the return path. Any proposal
 to remove existing checks must explicitly distinguish that from adding no new gates.
+
+## RUN-20261016-003 and operator-requested gating alignment
+
+Elbow-only trajectory speed increased to 0.05 rad/s; other twelve targets held at
+activation pose. Before that trajectory began, right wrist yaw speed tripped at
+0.5584 rad/s versus 0.1, at authority 0.044. Operator saw little arm movement and
+noted whole-body balance adjustments may accompany raising. Independent feedback
+also showed a brief wrist encoder change; its cause remains unproven. No inspection
+announcement. Return sent 4455 commands over 119.998 s, timed out without arrival
+or fade, then transport closure succeeded. Independent capture continued 5.006 s
+past verified closure. The wall-clock timeout/closure-reporting fix worked in this
+failure case; return-to-stock itself did not pass.
+
+Operator then directed removal of all non-Unitree gates, emphasizing that recovery
+normally runs during exceptions and extra gates can prevent it from functioning.
+Implemented explicit arm_sdk.unitree_gating=true in the next experiment. This
+bypasses added measured-speed, torque/feedforward magnitude, posture, tracking-error,
+position/workspace/displacement, caller/scheduling, feedback age/gap/tick and mode
+change trips. Required finite data, explicit activation and publisher ownership
+remain. Normal VR pickup/pause logic is untouched. Other profiles retain existing
+behavior; the prepared experiment explicitly selects Unitree gating. No new gates
+were added. Model torque/path values may be recorded without vetoing recovery.
+
+67 focused SDK/reference tests, Ruff and architecture checks passed. New tests cover
+motion/feedback conditions formerly causing trips, recovery despite the initiating
+fault and old feedback, and failure to fade before measured arrival. The mock
+experiment retains the English inspection cue and explicit handover request.
+Prepared code is uncommitted over ca04051f; exact patch/harness preserved under
+unitree-gating-preparation. No physical attempt with the changed gating yet.
+Next: supervised elbow-only 65-degree test with the same independent physical
+coverage, then operator inspection before normal return. No claim of full upstream
+trajectory/lifecycle equivalence or guaranteed safety after transport failure.

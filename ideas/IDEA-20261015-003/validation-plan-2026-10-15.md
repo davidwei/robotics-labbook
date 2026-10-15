@@ -137,3 +137,8 @@ inspection; fault behavior is distinct from normal completion.
 Operator constraint: do not add gates inside return-to-stock beyond Unitree
 reference behavior. Keep experiment inspection prerequisites separate from the
 return routine. See the Oct 16 session for existing implementation differences.
+
+Latest operator decision: use explicit unitree_gating=true for the next arm experiment;
+remove extra normal-control and recovery trips that are absent upstream. Exception
+handling must remain effective when normal-control assumptions fail. Independent
+physical coverage applies. See RUN-003 and the Oct 16 software checkpoint.
