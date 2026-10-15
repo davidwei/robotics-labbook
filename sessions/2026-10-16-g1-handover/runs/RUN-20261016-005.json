@@ -1,0 +1,51 @@
+{
+  "id": "RUN-20261016-005",
+  "experiment": "EXP-20261009-001",
+  "status": "passed_for_tested_pose",
+  "objective": "Slow preparation to forward-facing near-right-angle arm pose, followed by stock handover",
+  "operator_authorization": "Requested arms raising to right angle, hands forward, then return to stock",
+  "operator_observations": [
+    "inspected. good",
+    "ok. the return to stock is safe as well."
+  ],
+  "code_revision": "ca04051f570e4df1fa1d49f84ce39fd623ecbc2f",
+  "dirty_patch": "artifact/code.patch",
+  "artifact": "/home/dwei/robotics/artifacts/2026-10-16-g1-handover/inspection-forward-01",
+  "config_changes": "All 14 target joint coordinates zero; ordinary preparation trajectory max target rate 0.05 rad/s. Same Unitree gating and return settings as RUN-004. No new motion gates.",
+  "model_check": "At zero arm coordinates, forearms approximately +X, upper arms approximately -Z; shoulder-roll/elbow/wrist-yaw joint-center interior angle about 98 degrees. No hardware calibration offset changed.",
+  "physical_result": "Preparation reached inspection hold; operator approved. Return already within tolerance, one return command, 101 fade commands over 2 seconds, weight reaches zero, verified closure, five seconds follow-up; process exit 0.",
+  "summary": {
+    "feedback_samples": 5284,
+    "post_close_s": 5.012887802000478,
+    "max_feedback_age_s": 0.015077696999469481,
+    "max_arm_speed": 3.09250545501709,
+    "unique_ticks": 5284,
+    "closed": {
+      "at": 6597.860248262,
+      "closure_verified": true,
+      "phase": "complete",
+      "writer_created": true,
+      "return_succeeded": true,
+      "fault": null
+    },
+    "return_rows": 1,
+    "fade_rows": 101,
+    "fade_duration_s": 2.0001738520004437,
+    "weight_start": 0.9999957915001687,
+    "weight_end": 0.0,
+    "peak_joint": "RightWristYaw",
+    "peak_dq_rad_s": -3.09250545501709,
+    "peak_seconds_after_close": 0.4473672740004986,
+    "final_elbow_sdk_deg": [
+      69.81124739348444,
+      71.38023746848475
+    ]
+  },
+  "voice": "Inspection and return voice announcements failed SDK 3104; text prompts emitted.",
+  "limitations": [
+    "Successful supervised demonstration from near-zero pose, not arbitrary-pose recovery validation.",
+    "Independent feedback peak 3.09 rad/s at right wrist yaw after closure; slow preparation rate does not bound stock motion.",
+    "No external video confirmed; firmware acceptance is not an explicit command ACK."
+  ],
+  "safety": "Operator-confirmed gantry, clear workspace, regular mode and emergency control retained."
+}
