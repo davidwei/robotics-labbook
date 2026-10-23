@@ -1,0 +1,44 @@
+{
+  "session_id": "2026-10-23-so101-reassembly-warning",
+  "artifacts": [
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/hardware.json",
+      "sha256": "69c6d09443fad2e0c207e74756c501c387adbcf884874c7a98cfb1c14813b776",
+      "type": "configuration_or_provenance"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/provenance.json",
+      "sha256": "6732ecd312184a890092ca3445b12ccddec64ef3d63577bb2c855af8933198f9",
+      "type": "configuration_or_provenance"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/software-tests.log",
+      "sha256": "d752639b3cb746c477a46c72da2aae9e3a211eec72e1a4b34934b4dfb3a41fff",
+      "type": "software_preflight"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/config-check.log",
+      "sha256": "ba66f7d510dbd0db1552b0b6b6b52971044beb11c2311c22230444891422ab0f",
+      "type": "software_preflight"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/run.sh",
+      "sha256": "448dbeaa43b5fc28daa98201ac8b7595d8f4773a72c35bf9ce57e83ac27c1a04",
+      "type": "configuration_or_provenance"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/calibrate_arm.py",
+      "sha256": "3bcb8836ab2989f8795e59107b571aa79a0a16380eb2935b8df315371b006fc2",
+      "type": "configuration_or_provenance"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/so101_dev.snapshot.py",
+      "sha256": "bd7b48f26ed323c44cddabf3952881f34d8e57222143f3986a613a9e2745884f",
+      "type": "configuration_or_provenance"
+    }
+  ],
+  "physical_run_evidence": [],
+  "known_gaps": [
+    "No new calibration, physical run logs, or camera video yet."
+  ]
+}

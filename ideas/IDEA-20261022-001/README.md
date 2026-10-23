@@ -33,3 +33,12 @@ record. Robot motion still requires explicit operator authorization at lab time.
 
 Prerequisites: powered and calibrated SO-101 leader/follower pair, clear workspace, operator control,
 audible host speech, and captured control/cadence logs. Labbook updates do not authorize robot motion.
+
+## 2026-10-23 Intel Mac lab preparation
+
+Session: [SO101 reassembly and warning validation](../../sessions/2026-10-23-so101-reassembly-warning/session.md).
+The operator selected recalibration after reassembly, then camera-free teleoperation
+and recording. A separate v0.4.4-compatible local port passed 44 focused software tests;
+see the session for exact revision and deviations. Physical calibration/validation
+remains pending. Next action: operator completes interactive leader/follower ranges,
+then performs the gentle text-warning phase before voice and recording.
