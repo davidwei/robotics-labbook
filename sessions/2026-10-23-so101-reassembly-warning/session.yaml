@@ -8,7 +8,7 @@ source_local_path: /Users/dwei/lerobot/lerobot-src
 source_branch: lab/so101-intel-warning-20261023
 source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
 physical_validation: pending
-next_action: operator_recalibrates_leader_and_follower_then_runs_gentle_text_only_teleoperation
+next_action: confirm_leader_gripper_range_and_complete_follower_calibration_before_teleoperation
 capture:
   method: live
   sources: [codex_session, git, filesystem, operator_recollection]

@@ -10,7 +10,9 @@ teleoperation and recording validation for IDEA-20261022-001.
 
 Both previously identified USB adapters are present. Existing local calibration
 files were backed up; fresh session-specific calibration directories are prepared.
-No new calibration files exist yet, and no motors were commanded during this preparation.
+The new leader calibration file is now present. Its gripper span is only 105 ticks
+versus 1,171 in the prior file; full-travel capture is awaiting operator confirmation.
+Follower recalibration remains pending. No motors were commanded by the agent.
 
 The planned candidate `5da2b74` is based on newer LeRobot requiring Python >=3.12
 and newer PyTorch. This Intel Mac retains its previously working v0.4.4 environment.
@@ -25,7 +27,7 @@ processor tests passed; focused Ruff checks passed. A camera-free config with a
 
 ## Physical validation and next action
 
-The operator must complete interactive leader and follower recalibration first.
+The operator must confirm or redo the leader gripper range and complete follower recalibration first.
 Then run gentle text-only teleoperation, voice teleoperation and two short diagnostic
 recording episodes, one phase at a time, using the session runner. Recalibration
 is intentional after reassembly, unlike the routine-preflight instructions in the

@@ -35,10 +35,15 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/so101_dev.snapshot.py",
       "sha256": "bd7b48f26ed323c44cddabf3952881f34d8e57222143f3986a613a9e2745884f",
       "type": "configuration_or_provenance"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/calibration-checkpoints/leader-initial.json",
+      "sha256": "a43eb9813d8ed68eafc4324ae778fc3646cf7c37a26b8481b033723af27eda77",
+      "type": "calibration_snapshot"
     }
   ],
   "physical_run_evidence": [],
   "known_gaps": [
-    "No new calibration, physical run logs, or camera video yet."
+    "Leader gripper full-travel capture unconfirmed; follower calibration and physical warning runs pending; no camera video."
   ]
 }
