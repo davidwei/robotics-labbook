@@ -6,12 +6,14 @@ idea_refs:
 run_refs:
 - RUN-20261023-001
 - RUN-20261023-002
+- RUN-20261023-003
+- RUN-20261023-004
 source_repository: https://github.com/MoissanClub/lerobot
 source_local_path: /Users/dwei/lerobot/lerobot-src
 source_branch: lab/so101-intel-warning-20261023
 source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
-physical_validation: partial_text_warning_only
-next_action: operator_checks_say_in_own_terminal_then_runs_voice_test_if_audio_and_tracking_are_normal
+physical_validation: text_and_speech_operator_confirmed_threshold_analysis_pending
+next_action: add_timestamped_joint_telemetry_before_estimating_catch_up_time_or_retuning_threshold
 capture:
   method: live
   sources:

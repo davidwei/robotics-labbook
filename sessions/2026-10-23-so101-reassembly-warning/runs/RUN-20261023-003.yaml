@@ -1,0 +1,31 @@
+id: RUN-20261023-003
+session_id: 2026-10-23-so101-reassembly-warning
+idea_refs:
+- IDEA-20261022-001
+activity: run
+objective: Camera-free SO101 voice-warning validation
+source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
+source_branch: lab/so101-intel-warning-20261023
+start_utc: '2026-10-23T20:50:24Z'
+end_utc: '2026-10-23T20:51:22Z'
+exit_code: 0
+config:
+  fps: 30
+  duration_s: 45
+  cameras: {}
+  play_sounds: true
+  joint_error_threshold_degrees: 2.0
+warning_log_count: 1
+warning_times_local:
+- '13:50:36'
+timezone: America/Los_Angeles
+evidence:
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_135024_77207.log
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_135024_77207.manifest.txt
+physical_validation: partial
+outcome: Completed; operator confirms warning works following the shorter-prompt run.
+  Per-event angular errors, velocities and catch-up times unavailable.
+remaining_uncertainty:
+- Per-joint threshold accuracy and catch-up ETA.
+- Tracking smoothness during speech not explicitly confirmed.
+- Default 10-degree threshold and physical recording not tested.

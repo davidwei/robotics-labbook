@@ -1,7 +1,8 @@
 # SO101 recalibration and warning validation — 2026-10-23
 
 Status: in progress; recalibration completed; text warnings observed in one completed
-physical teleoperation run. Voice and recording validation remain pending.
+physical teleoperation run. Voice operation is now operator-confirmed; predictive
+threshold analysis and physical recording remain pending.
 
 The operator reports that both SO101 arms were reassembled for greater rigidity.
 Cameras are disconnected. The selected work is recalibration followed by supervised
@@ -66,3 +67,12 @@ The operator confirmed Terminal speech is audible, then requested the shorter
 phrase "Slow down". Local code commit `75504316f16bb2bb50b1cebdb61986cff28dd54a` implements that wording;
 12 focused monitor/integration tests and Ruff passed. A running process must
 be restarted to load it. The shorter prompt is not yet physically validated.
+
+## Warning analysis requested by the operator
+
+The latest voice run logged 10 warnings; a preceding voice run logged one, and
+the earlier completed text test logged seven (18 total notifications). The
+operator reports the shorter warning works. Per-event catch-up time cannot be
+calculated because joint positions, targets and velocities were not recorded.
+See [analysis.md](analysis.md) for evidence limits and proposed telemetry. No
+threshold or control behavior was changed during this analysis.

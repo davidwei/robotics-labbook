@@ -80,16 +80,53 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_134838_77069.manifest.txt",
       "sha256": "a514ce3b0fcee1d7e452eddd8536e41f7d8728449ace1afc8704f9e954197c43",
       "type": "failed_sandbox_preflight"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/warning-events.csv",
+      "sha256": "741fcf078c8d1c9dd3139a567db2362f19cea6e78e14a0f84e30f1f5f34f21f0",
+      "type": "analysis"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/warning-analysis.json",
+      "sha256": "29e7f059303d189c0d4c5197e29a1574ce67237f66786ba0a638ac106118fb8f",
+      "type": "analysis"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/warning-analysis.txt",
+      "sha256": "9b2cc0fab803fe7f189c0628f26ea58bf7171ba8442a8dc0f299ec2fa3aacd54",
+      "type": "analysis"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_135024_77207.log",
+      "sha256": "8d5c9bb091abefc29f463cfba447bdd0eadd72820e9c2f69df3a039c9cc9617c",
+      "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_135228_77311.log",
+      "sha256": "d78cbb2f2d0435059dcc70e8f824061810ede62157c18e87f50bb9f72ed61053",
+      "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_135024_77207.manifest.txt",
+      "sha256": "254d83240d6775efdfa32ca8ceb14dcafe3c8c39d7293f9560c26fdb544ef53f",
+      "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_135228_77311.manifest.txt",
+      "sha256": "0e871d488ae8316031c5ffdf2276511019208d1adc85ba6357a4d50b42440003",
+      "type": "physical_run_log_or_manifest"
     }
   ],
   "physical_run_evidence": [
     "RUN-20261023-001",
-    "RUN-20261023-002"
+    "RUN-20261023-002",
+    "RUN-20261023-003",
+    "RUN-20261023-004"
   ],
   "known_gaps": [
-    "No camera video or logged joint-error values.",
-    "Audible warning unverified; agent-executed say returned 0 but operator heard no sound.",
-    "Agent voice test blocked by USB sandbox permissions before hardware connection.",
-    "Recording integration not yet tested physically."
+    "No joint targets/position/velocity telemetry; per-event catch-up projections unavailable.",
+    "Warning timestamps reflect background worker logging at second resolution.",
+    "No camera video.",
+    "Default threshold, physical recording and speech-related smoothness remain unverified."
   ]
 }
