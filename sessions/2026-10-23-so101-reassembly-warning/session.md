@@ -1,6 +1,7 @@
 # SO101 recalibration and warning validation — 2026-10-23
 
-Status: in progress; recalibration completed by the operator; physical tracking and warning tests pending.
+Status: in progress; recalibration completed; text warnings observed in one completed
+physical teleoperation run. Voice and recording validation remain pending.
 
 The operator reports that both SO101 arms were reassembled for greater rigidity.
 Cameras are disconnected. The selected work is recalibration followed by supervised
@@ -40,7 +41,21 @@ The implemented warning checks angular tracking error (default 10 degrees; propo
 lab probe 2 degrees). It does not estimate one-second catch-up time. Cameras and image
 recording are disabled; the planned dataset contains joint states/actions only.
 
-No warning has been observed or heard in this session, and no physical test result
-is claimed. Operator observations, actual run boundaries and errors remain to capture.
+Text-warning evidence is recorded below. Audible warnings and recording remain
+unverified; no broad physical-validation claim is made.
 
 Evidence and commands: `/Users/dwei/lerobot/outputs/lab/so101-20261023/`.
+
+## Text test and audio preflight
+
+The first text-only attempt aborted because follower motor ID 6 was not detected.
+A subsequent 30-second attempt exited normally and logged seven `slow down`
+messages. The operator confirmed seeing the warnings. Speech was intentionally
+disabled, explaining silence in that test; smoothness and usefulness remain unconfirmed.
+
+An agent-executed macOS `say` preflight returned success, but the operator heard
+no sound. A voice-enabled attempt from the agent exited before connecting to
+hardware because the sandbox denied access to the leader USB port. This is an
+execution-environment limitation, not evidence of a robot or warning defect.
+Next: test `say "Please slow down"` in the operator's own Terminal. If audible
+and tracking was normal, run `run.sh teleop-voice` there before recording.

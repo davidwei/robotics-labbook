@@ -50,10 +50,46 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/calibration-checkpoints/follower-completed.json",
       "sha256": "ac32708f11ec989a7f297149d0f80b940de3f72831a454677ca62403a3a28f6d",
       "type": "completed_calibration_snapshot"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134611_76951.log",
+      "sha256": "3591eaa3f10cd2f158c8be31d8d41bc1bfdc77495f4c94f7e6708c5a2de8fa0c",
+      "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134611_76951.manifest.txt",
+      "sha256": "65e686d69e52cdb50cff041f0a295c21a677e384c9ff520d6e7f0c93f6161245",
+      "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134625_76973.log",
+      "sha256": "15245707bc48e1062d6ab10c35cb9d06a2c812edd7444274e35feb01e9910a48",
+      "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134625_76973.manifest.txt",
+      "sha256": "0ffed143ae7a6f41d4d2998c0e06696eedfc17ccd77466b75718d5e590672111",
+      "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_134838_77069.log",
+      "sha256": "6cd3db8bbf16ec9401a0549a0562e89ed7b8b194fe07fcf1e591be712208863d",
+      "type": "failed_sandbox_preflight"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_134838_77069.manifest.txt",
+      "sha256": "a514ce3b0fcee1d7e452eddd8536e41f7d8728449ace1afc8704f9e954197c43",
+      "type": "failed_sandbox_preflight"
     }
   ],
-  "physical_run_evidence": [],
+  "physical_run_evidence": [
+    "RUN-20261023-001",
+    "RUN-20261023-002"
+  ],
   "known_gaps": [
-    "Physical teleoperation and warning tests pending; no camera video."
+    "No camera video or logged joint-error values.",
+    "Audible warning unverified; agent-executed say returned 0 but operator heard no sound.",
+    "Agent voice test blocked by USB sandbox permissions before hardware connection.",
+    "Recording integration not yet tested physically."
   ]
 }

@@ -1,0 +1,23 @@
+id: RUN-20261023-001
+session_id: 2026-10-23-so101-reassembly-warning
+idea_refs:
+- IDEA-20261022-001
+activity: run
+objective: Camera-free SO101 tracking-error text warning check
+source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
+source_branch: lab/so101-intel-warning-20261023
+config:
+  cameras: {}
+  fps: 30
+  play_sounds: false
+  joint_error_threshold_degrees: 2
+start_utc: '2026-10-23T20:46:11Z'
+end_utc: '2026-10-23T20:46:19Z'
+exit_code: 1
+warning_log_count: 0
+evidence:
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134611_76951.log
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134611_76951.manifest.txt
+physical_validation: partial
+outcome: 'Aborted: follower motor ID 6 (expected model 777) missing during connection;
+  cause unknown.'

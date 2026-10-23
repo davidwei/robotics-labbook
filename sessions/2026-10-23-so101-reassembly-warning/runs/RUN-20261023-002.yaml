@@ -1,0 +1,29 @@
+id: RUN-20261023-002
+session_id: 2026-10-23-so101-reassembly-warning
+idea_refs:
+- IDEA-20261022-001
+activity: run
+objective: Camera-free SO101 tracking-error text warning check
+source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
+source_branch: lab/so101-intel-warning-20261023
+config:
+  cameras: {}
+  fps: 30
+  play_sounds: false
+  joint_error_threshold_degrees: 2
+start_utc: '2026-10-23T20:46:25Z'
+end_utc: '2026-10-23T20:47:03Z'
+exit_code: 0
+warning_log_count: 7
+evidence:
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134625_76973.log
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-text_20261023_134625_76973.manifest.txt
+physical_validation: partial
+outcome: Completed 30-second text-only teleoperation; seven slow-down messages logged;
+  operator confirmed seeing the log.
+operator_observation: Operator reported no warning sound while moving fast, then confirmed
+  seeing slow down. Speech was disabled by this test configuration.
+remaining_uncertainty:
+- Smoothness and operator usefulness not confirmed.
+- No joint-error telemetry or video to independently verify threshold crossing.
+- No physical validation of speech or cooldown/recovery from this run alone.

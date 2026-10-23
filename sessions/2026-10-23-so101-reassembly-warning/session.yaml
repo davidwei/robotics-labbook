@@ -1,16 +1,26 @@
 id: 2026-10-23-so101-reassembly-warning
 status: in_progress
 robot: so101
-idea_refs: [IDEA-20261022-001]
-run_refs: []
+idea_refs:
+- IDEA-20261022-001
+run_refs:
+- RUN-20261023-001
+- RUN-20261023-002
 source_repository: https://github.com/MoissanClub/lerobot
 source_local_path: /Users/dwei/lerobot/lerobot-src
 source_branch: lab/so101-intel-warning-20261023
 source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
-physical_validation: pending
-next_action: supervised_30_second_text_only_teleoperation_at_2_degree_error_threshold
+physical_validation: partial_text_warning_only
+next_action: operator_checks_say_in_own_terminal_then_runs_voice_test_if_audio_and_tracking_are_normal
 capture:
   method: live
-  sources: [codex_session, git, filesystem, operator_recollection]
+  sources:
+  - codex_session
+  - git
+  - filesystem
+  - operator_recollection
   coverage: partial
-  known_gaps: [no_camera_video, no_physical_runs_yet, reassembly_not_observed_by_agent]
+  known_gaps:
+  - no_camera_video
+  - no_physical_runs_yet
+  - reassembly_not_observed_by_agent
