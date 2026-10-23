@@ -1,6 +1,6 @@
 # IDEA-20261022-001 — Warn when an SO follower trails its leader
 
-Project: SO-101 / LeRobot. Status: in development; software implementation complete locally.
+Project: SO-101 / LeRobot. Status: ready for lab.
 Target: `MoissanClub/lerobot`, branch `so101demo`.
 Physical validation: pending; no SO-101 hardware was moved or tested.
 
@@ -9,7 +9,7 @@ five commanded arm joints exceeds its configured tracking-error threshold. Exclu
 contact can intentionally prevent convergence. Emit the text `slow down` and speak `Please slow down`
 immediately, then at most once every five seconds while the condition persists.
 
-Implementation state: the local branch adds a generic normalized joint-error monitor with hysteresis,
+Implementation state: commit `5da2b7467fc736260dcc5e148894d7a8f5525599` adds a generic normalized joint-error monitor with hysteresis,
 enabled initially for the shared SO-100/SO-101 runtime family. It reads the existing observation and final
 processed target without extra hardware I/O or action modification. A latest-only background notifier
 serializes blocking speech, allowing one active and one replaceable pending warning without delaying the
@@ -21,10 +21,15 @@ tests passed. Ruff check and formatting passed. Targeted mypy passed for the new
 integration, and monitor tests; checking `lerobot_record.py` also reports two pre-existing unused-ignore
 errors on unchanged lines. This is software evidence only.
 
-Next agent action: review and commit the code change, then prepare a physical SO-101 validation plan that
-measures actual joint tracking error, warning timing, control-loop cadence, false prompts near the threshold,
-and behavior with speech enabled/disabled. Validate or tune the 10-degree default before treating it as a
-reusable operating threshold.
+Lab start plan: follow [`lab-test-2026-10-23.md`](./lab-test-2026-10-23.md). Begin with revision and audio
+preflight, then a gentle log-only teleoperation run at a deliberately low 2-degree threshold, followed by
+speech-enabled teleoperation and a short local recording test. Do not restrain or obstruct the follower to
+create persistent lag. Validate or tune the 10-degree default before treating it as a reusable operating
+threshold.
+
+Next agent action: assist the operator with the 2026-10-23 preflight and capture the exact run boundary,
+configuration, logs, video reference, cadence summary, and brief operator observations in a physical session
+record. Robot motion still requires explicit operator authorization at lab time.
 
 Prerequisites: powered and calibrated SO-101 leader/follower pair, clear workspace, operator control,
 audible host speech, and captured control/cadence logs. Labbook updates do not authorize robot motion.
