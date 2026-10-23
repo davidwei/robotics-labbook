@@ -59,3 +59,10 @@ hardware because the sandbox denied access to the leader USB port. This is an
 execution-environment limitation, not evidence of a robot or warning defect.
 Next: test `say "Please slow down"` in the operator's own Terminal. If audible
 and tracking was normal, run `run.sh teleop-voice` there before recording.
+
+## Shorter speech prompt
+
+The operator confirmed Terminal speech is audible, then requested the shorter
+phrase "Slow down". Local code commit `75504316f16bb2bb50b1cebdb61986cff28dd54a` implements that wording;
+12 focused monitor/integration tests and Ruff passed. A running process must
+be restarted to load it. The shorter prompt is not yet physically validated.
