@@ -106,3 +106,8 @@ Catch-up ratios are mostly unavailable and the one finite arm estimate is highly
 window-sensitive. Offline threshold replay also exposed immediate rearming that
 can increase announcement counts at higher thresholds. No new threshold is chosen.
 See [analysis.md](analysis.md) for per-event interpretation and next checks.
+
+Follow-up inspection found a 3.879-second elbow encoder plateau around warning
+8, with approximately 10 degrees of requested error despite operator-reported
+free motion. This is a sustained offset worth diagnosing; its cause is unknown.
+See analysis.md. No automatic recovery or gain changes were applied.

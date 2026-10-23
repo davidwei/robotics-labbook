@@ -50,3 +50,24 @@ Proposed next step: establish stationary-pose residuals and agree on warning
 tolerances/debounce/global audio cooldown before selecting a reusable threshold.
 Pickup mode remains separate and deferred. Detailed review is referenced by
 evidence.json; per-event joint-only projections must not be confused with arm ETA.
+
+## Follow-up: zero-velocity cases 6–9
+
+Inspecting contiguous identical elbow encoder readings around each event gives
+plateaus of 0.400/0.167/3.879/0.801 seconds for events 6/7/8/9 respectively.
+Case 8 held the reported follower elbow at -38.286 degrees for 117 samples while
+the requested leader target ranged from -48.923 to -47.956 degrees. This is
+sustained residual tracking error, not only an artifact of the short velocity
+window. Cases 6, 7 and 9 show resumed motion after their plateaus. Encoder
+quantization still limits the meaning of exactly zero motion.
+
+The monitor never pauses commands. The driver requests position goals with
+P=16, I=0, D=32 in this candidate. Load/static-friction equilibrium under that
+tuning is one hypothesis; command acceptance, torque/protection state and other
+motor/controller limits are alternatives. The operator reports no obstruction.
+No cause is established: actual motor Goal_Position, torque-enabled state, load,
+current and temperature were not recorded. A software target is not proof of the
+motor's stored goal or torque production. Proposed next diagnostic: short,
+supervised stationary comparison of requested and motor-stored goal/position and
+controller status before tuning gains, changing thresholds or inferring a stall.
+No controller settings or hardware execution were changed for this analysis.
