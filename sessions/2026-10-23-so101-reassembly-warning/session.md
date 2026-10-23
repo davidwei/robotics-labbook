@@ -76,3 +76,24 @@ operator reports the shorter warning works. Per-event catch-up time cannot be
 calculated because joint positions, targets and velocities were not recorded.
 See [analysis.md](analysis.md) for evidence limits and proposed telemetry. No
 threshold or control behavior was changed during this analysis.
+
+## Threshold-measurement logging ready
+
+Local source commit `f6f59ca3cf8396dc8a254ce4c056f8593a88c8fc` adds opt-in raw positions/targets for all five
+arm joints on every control tick, with software timestamps and warning sample IDs.
+A bounded background writer reports drops/errors. No extra motor reads or target
+changes are added. The session runner enables uniquely named telemetry automatically
+and produces JSON/CSV catch-up projections after cleanup.
+
+Validation: 55 focused tests and Ruff passed. A synthetic 301-cycle capture had
+zero drops; event/sample matching and a known 0.25-second projection passed. These
+are software checks; logging overhead and estimator accuracy on hardware remain
+unverified. Next: operator reruns gentle 45-second `teleop-voice` from Terminal at
+the unchanged 2-degree threshold. Catch-up values assume constant filtered follower
+speed over a 100 ms window, within 0.5 degrees; unavailable/stationary/moving-away
+cases are explicit, not converted into finite predictions.
+
+Pickup recovery is the requested next feature after threshold analysis. See
+IDEA-20261023-001. The G1 history provides a concept and virtual evidence, not a
+validated physical hold/recovery procedure. No pickup or automatic motion changes
+are implemented in this threshold-measurement candidate.

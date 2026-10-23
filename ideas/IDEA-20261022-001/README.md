@@ -42,3 +42,13 @@ and recording. A separate v0.4.4-compatible local port passed 44 focused softwar
 see the session for exact revision and deviations. Physical calibration/validation
 remains pending. Next action: operator completes interactive leader/follower ranges,
 then performs the gentle text-warning phase before voice and recording.
+
+## Threshold measurement instrumentation
+
+The operator confirmed audible warning operation and requests per-event catch-up
+time estimates. Prior logs count notifications but lack joint telemetry. Local
+Intel candidate `f6f59ca3cf8396dc8a254ce4c056f8593a88c8fc` now captures raw joint samples and correlates warning
+IDs; 55 focused software tests and synthetic capture/analysis passed. Next action:
+operator reruns the unchanged 2-degree test with telemetry. Hardware capture and
+projection accuracy remain unverified. Pickup recovery is deferred to
+[IDEA-20261023-001](../IDEA-20261023-001/README.md) after this experiment.

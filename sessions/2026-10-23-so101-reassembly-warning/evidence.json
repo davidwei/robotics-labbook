@@ -115,6 +115,26 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_135228_77311.manifest.txt",
       "sha256": "0e871d488ae8316031c5ffdf2276511019208d1adc85ba6357a4d50b42440003",
       "type": "physical_run_log_or_manifest"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/telemetry-provenance.json",
+      "sha256": "2e32fc56d2e096078c344c6de37cf7c42d842a6e5f754c97a93430ca621b3db7",
+      "type": "threshold_logging_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/telemetry-software-tests.log",
+      "sha256": "6e2307722069a67d4cd7065dfdf6da287cd8d05cd8b85a632d3834aca131e0cd",
+      "type": "threshold_logging_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/telemetry-config-check.log",
+      "sha256": "ba66f7d510dbd0db1552b0b6b6b52971044beb11c2311c22230444891422ab0f",
+      "type": "threshold_logging_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/analyze_joint_telemetry.snapshot.py",
+      "sha256": "89a18ec58b355ee70655fd52af1acb713e71237748c670899c768438184e73a3",
+      "type": "threshold_logging_software_validation"
     }
   ],
   "physical_run_evidence": [
