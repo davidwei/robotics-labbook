@@ -97,3 +97,12 @@ Pickup recovery is the requested next feature after threshold analysis. See
 IDEA-20261023-001. The G1 history provides a concept and virtual evidence, not a
 validated physical hold/recovery procedure. No pickup or automatic motion changes
 are implemented in this threshold-measurement candidate.
+
+## Instrumented threshold test completed
+
+Run 005 captured 1,347 samples with zero drops and nine warnings; operator reports
+free motion without obstruction. The 2-degree monitor stayed active throughout.
+Catch-up ratios are mostly unavailable and the one finite arm estimate is highly
+window-sensitive. Offline threshold replay also exposed immediate rearming that
+can increase announcement counts at higher thresholds. No new threshold is chosen.
+See [analysis.md](analysis.md) for per-event interpretation and next checks.

@@ -1,0 +1,30 @@
+id: RUN-20261023-005
+session_id: 2026-10-23-so101-reassembly-warning
+idea_refs:
+- IDEA-20261022-001
+activity: run
+objective: Instrumented camera-free threshold measurement
+source_revision: f6f59ca3cf8396dc8a254ce4c056f8593a88c8fc
+source_branch: lab/so101-intel-warning-20261023
+start_utc: '2026-10-23T21:06:17Z'
+end_utc: '2026-10-23T21:07:16Z'
+exit_code: 0
+config:
+  fps: 30
+  duration_s: 45
+  joint_error_threshold_deg: 2
+  play_sounds: true
+  cameras: {}
+telemetry:
+  samples: 1347
+  dropped: 0
+  logged_warnings: 9
+  missing_notification_samples: 0
+operator_observation: Free motion, no obstruction.
+outcome: Complete capture; warning state persisted throughout. Full-arm constant-speed
+  ETA unavailable in 8/9 events; one finite ETA is strongly window-sensitive.
+physical_validation: partial_observational_capture_only
+evidence:
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_140617_77951.telemetry.jsonl
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_140617_77951.threshold-review.json
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/teleop-voice_20261023_140617_77951.threshold-review.csv

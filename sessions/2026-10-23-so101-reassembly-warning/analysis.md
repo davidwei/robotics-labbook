@@ -25,3 +25,28 @@ Record all five arm-joint follower positions and requested leader targets with m
 This is a constant-speed counterfactual projection, not actual time measured after the leader stopped. Acceleration, deceleration, loads, motor saturation and measurement timing remain limitations. Validate predictions with controlled leader-stop trials before choosing a time-based warning threshold. No such telemetry or additional physical trial was implemented/executed for this analysis.
 
 Review status: proposed analysis for operator review; no reusable performance or safety claim.
+
+## Instrumented run 005: threshold measurement
+
+Operator reports free motion without obstruction. Capture completed with 1,347
+samples, zero dropped records and nine matched warnings over approximately 45 s.
+The warning state remained active throughout; these were repeated notifications,
+not nine independent lag episodes. Shoulder lift and elbow dominated the errors.
+
+Only event 2 has a finite full-arm constant-speed projection (11.475 s). That
+shoulder estimate changes to 40.035/80.127 s with 250/500 ms velocity windows,
+and the full-arm estimates at those windows become unavailable due to other
+non-closing joints. The finite number is not a reliable measured recovery time.
+Eight events have no finite arm projection because of startup warmup or a joint
+with zero/wrong-direction short-window velocity outside tolerance. This does not
+establish a stall or obstruction; operator reports no obstruction.
+
+Offline replay on the same trace: 2/5/10/15/20-degree limits produce 9/13/19/12/7
+requests. Recovery resets the warning interval, so raising the threshold alone
+can increase announcements. This replay does not predict how operator movement
+would change with different live prompts. No threshold or cooldown was changed.
+
+Proposed next step: establish stationary-pose residuals and agree on warning
+tolerances/debounce/global audio cooldown before selecting a reusable threshold.
+Pickup mode remains separate and deferred. Detailed review is referenced by
+evidence.json; per-event joint-only projections must not be confused with arm ETA.

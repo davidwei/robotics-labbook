@@ -8,12 +8,13 @@ run_refs:
 - RUN-20261023-002
 - RUN-20261023-003
 - RUN-20261023-004
+- RUN-20261023-005
 source_repository: https://github.com/MoissanClub/lerobot
 source_local_path: /Users/dwei/lerobot/lerobot-src
 source_branch: lab/so101-intel-warning-20261023
 source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
 physical_validation: text_and_speech_operator_confirmed_threshold_analysis_pending
-next_action: operator_runs_camera_free_45_second_teleop_voice_with_joint_telemetry_then_reviews_catch_up_projections
+next_action: review_static_pose_residuals_and_warning_rearm_cooldown_before_threshold_selection
 capture:
   method: live
   sources:
