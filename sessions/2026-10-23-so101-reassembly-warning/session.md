@@ -1,6 +1,6 @@
 # SO101 recalibration and warning validation — 2026-10-23
 
-Status: in progress; physical recalibration and warning tests are pending.
+Status: in progress; recalibration completed by the operator; physical tracking and warning tests pending.
 
 The operator reports that both SO101 arms were reassembled for greater rigidity.
 Cameras are disconnected. The selected work is recalibration followed by supervised
@@ -10,9 +10,11 @@ teleoperation and recording validation for IDEA-20261022-001.
 
 Both previously identified USB adapters are present. Existing local calibration
 files were backed up; fresh session-specific calibration directories are prepared.
-The new leader calibration file is now present. Its gripper span is only 105 ticks
-versus 1,171 in the prior file; full-travel capture is awaiting operator confirmation.
-Follower recalibration remains pending. No motors were commanded by the agent.
+Both new calibration files are present, with IDs 1..6 and positive ranges.
+The leader gripper was recalibrated to a span of 1,149 ticks, resolving the earlier
+105-tick capture concern; follower gripper span is 1,494 ticks. Both USB adapters
+remain connected. The operator reports both calibrations complete; range-file checks
+do not establish physical tracking accuracy. No motors were commanded by the agent.
 
 The planned candidate `5da2b74` is based on newer LeRobot requiring Python >=3.12
 and newer PyTorch. This Intel Mac retains its previously working v0.4.4 environment.
@@ -27,11 +29,12 @@ processor tests passed; focused Ruff checks passed. A camera-free config with a
 
 ## Physical validation and next action
 
-The operator must confirm or redo the leader gripper range and complete follower recalibration first.
+Next: a supervised 30-second, camera-free, text-only teleoperation test at a
+2-degree joint-error threshold, from similar starting poses.
 Then run gentle text-only teleoperation, voice teleoperation and two short diagnostic
 recording episodes, one phase at a time, using the session runner. Recalibration
 is intentional after reassembly, unlike the routine-preflight instructions in the
-original test plan. New ranges are not yet validated.
+original test plan. New ranges are saved; physical tracking with them is not yet validated.
 
 The implemented warning checks angular tracking error (default 10 degrees; proposed
 lab probe 2 degrees). It does not estimate one-second catch-up time. Cameras and image

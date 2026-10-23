@@ -40,10 +40,20 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/calibration-checkpoints/leader-initial.json",
       "sha256": "a43eb9813d8ed68eafc4324ae778fc3646cf7c37a26b8481b033723af27eda77",
       "type": "calibration_snapshot"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/calibration-checkpoints/leader-completed.json",
+      "sha256": "3071030e7a571c2b1241369dd0b8f8e303687b51c427d77ea26f60673a22434b",
+      "type": "completed_calibration_snapshot"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/calibration-checkpoints/follower-completed.json",
+      "sha256": "ac32708f11ec989a7f297149d0f80b940de3f72831a454677ca62403a3a28f6d",
+      "type": "completed_calibration_snapshot"
     }
   ],
   "physical_run_evidence": [],
   "known_gaps": [
-    "Leader gripper full-travel capture unconfirmed; follower calibration and physical warning runs pending; no camera video."
+    "Physical teleoperation and warning tests pending; no camera video."
   ]
 }
