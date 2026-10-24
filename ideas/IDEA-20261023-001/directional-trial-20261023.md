@@ -55,3 +55,9 @@ At 126.49s, sampled gripper Status=1 once, with all torque-enable readings still
 3. Investigate the single gripper status event by logging motor-side voltage limits/configuration and correlated timestamps before altering fault handling.
 
 No thresholds or fault policies changed during this analysis. Root cause remains unvalidated.
+
+## Status interpretation follow-up
+
+Verified supplier ST memory-map documentation identifies address65 bit0 (Status=1) as voltage outside configured range, either overvoltage or undervoltage: https://docs.waveshare.com/Memory_Map_Explanation/ST_Servo_Memory_Map_Explanation . This supersedes the earlier statement that bit meaning was not established. The local SDK also names bit1-value voltage error, but packet error-byte semantics must not substitute for the register-specific table. One isolated gripper voltage-status reading does not identify whether the event was high/low voltage, transient or configuration-related; nearby 5.0–5.1V samples are not simultaneous.
+
+Recommended future policy, not implemented: distinguish faults by decoded type; first voltage event immediately suspends tracking/new target advancement and triggers prompt fresh status/voltage confirmation; isolated cleared event remains logged, persistent/repeated events latch Fault. Do not continue unrestricted following while confirming, automatically return home, disable torque indiscriminately, or silently ignore repeated transients. Confirm actual min/max voltage registers and installed variant before tuning thresholds. Current controller still latches on any nonzero sampled status.
