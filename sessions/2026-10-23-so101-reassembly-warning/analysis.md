@@ -84,3 +84,28 @@ degrees, but the elbow error was still 3.604 degrees, also present at 1 second.
 These are tracking-error observations; the trace does not establish why the
 elbow retained that offset. Pickup alignment could gate initial engagement but
 would not, by itself, resolve a motor's persistent position-tracking residual.
+
+## Two physical alignment checks
+
+Run 006 timed out after 30.046 s; the leader changed during this run, so fixed
+snapshot tracking and current-leader matching are distinct. Run 007 ended by
+operator input after 13.511 s, never reporting ALIGNED. In run 007 all six
+leader readings remained unchanged. Its final elbow target and motor-stored
+goal both read 93.407 degrees, but actual position was 96.835 degrees: 3.429
+degrees of residual error. Wrist flex target was 74.022 degrees, stored goal
+73.978 and actual 73.011: 1.011 degrees from the requested target, slightly over
+the 1-degree gate. That borderline wrist result includes goal rounding; the
+elbow error is much larger and not explained by encoder rounding. Other arm
+joints met 1 degree; gripper met its 3-unit opening tolerance.
+
+The preceding longer run ended at the same elbow and wrist residuals. The latest
+elbow moved only one observed encoder increment (~0.088 degree). These checks
+show the goal is reaching the motor register at this pose; they do not establish
+why actual position remains offset. Standard configuration writes P=16/I=0/D=32.
+Load/friction/tuning is a hypothesis, alongside torque/protection, limits/dead
+zones or physical contact. Do not infer the obstruction-free context of the
+earlier moving test applies to these later stationary runs without confirmation.
+No current/load/torque/protection telemetry was captured, and no gains or
+tolerances were changed. Proposed next step: a supervised stationary register
+diagnostic before controller changes. Raising the tolerance would mask rather
+than explain the elbow residual.

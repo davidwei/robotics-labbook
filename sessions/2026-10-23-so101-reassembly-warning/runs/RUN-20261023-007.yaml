@@ -1,0 +1,36 @@
+id: RUN-20261023-007
+session_id: 2026-10-23-so101-reassembly-warning
+activity: run
+objective: Supervised fixed-pose startup alignment and motor goal readback
+source_revision: 26b60dfc72cf4817326612e5a8c76091f3b9b390
+source_branch: lab/so101-intel-warning-20261023
+evidence:
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/alignment/alignment_20261024T004729_1792802849721077000.jsonl
+- /Users/dwei/lerobot/outputs/lab/so101-20261023/alignment-review.json
+config:
+  config: /Users/dwei/lerobot/outputs/lab/so101-20261023/hardware.json
+  check: false
+  speed_deg_s: 5.0
+  gripper_speed: 10.0
+  tolerance_deg: 1.0
+  gripper_tolerance: 3.0
+  settle_s: 1.0
+  timeout_s: 30.0
+  max_start_error_deg: 30.0
+  hold_gripper: false
+  log_dir: null
+sample_count: 251
+sample_duration_s: 13.511164989999997
+outcome:
+  type: summary
+  outcome: operator_exit_not_aligned
+  aligned_seen: false
+observations:
+  elbow_final_error_deg: 3.4285714285714306
+  wrist_flex_final_error_deg: 1.0109890109890216
+  motor_elbow_goal_deg: 93.4065934065934
+  leader_changed_during_run: false
+physical_validation: alignment_not_achieved
+unknowns:
+- Physical contact/support during this alignment not reported.
+- Current, load, torque-enable, protection and dead-zone state were not recorded.

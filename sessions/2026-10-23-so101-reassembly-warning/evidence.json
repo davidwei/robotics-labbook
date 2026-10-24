@@ -200,6 +200,26 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/align_so101.snapshot.py",
       "sha256": "20ff642198bc90ceff273460419caaf540b6922152634854a8b2f0a217d58476",
       "type": "initial_alignment_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment/alignment_20261024T004645_1792802805914900000.jsonl",
+      "sha256": "07c69b1e2288cfab3226d6a879bb43934be134c5089b449d325d4f0dfded8244",
+      "type": "physical_alignment_log_or_review"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment/alignment_20261024T004729_1792802849721077000.jsonl",
+      "sha256": "f9f879683b2f9419b750574105c30cfc6ee06458281d4d7b379799b15ce96e3e",
+      "type": "physical_alignment_log_or_review"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment-review.json",
+      "sha256": "757d6fb6f56929d4b03569d4845fe213c9783c2c8da5c94e7abe309e8c3450fa",
+      "type": "physical_alignment_log_or_review"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment-review.txt",
+      "sha256": "d5ed98f6c1cf1429efb5baf8ff28728cbc14ed0000bb69b7907511bbd797f9b8",
+      "type": "physical_alignment_log_or_review"
     }
   ],
   "physical_run_evidence": [
@@ -207,7 +227,9 @@
     "RUN-20261023-002",
     "RUN-20261023-003",
     "RUN-20261023-004",
-    "RUN-20261023-005"
+    "RUN-20261023-005",
+    "RUN-20261023-006",
+    "RUN-20261023-007"
   ],
   "known_gaps": [
     "No camera video; software timestamps are not simultaneous hardware sample times.",

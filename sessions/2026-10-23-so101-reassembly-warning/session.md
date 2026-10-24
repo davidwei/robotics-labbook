@@ -129,3 +129,13 @@ timeout or operator exit disables follower torque; operator support is required.
 nonalignment cases, seed-before-enable order and cleanup. Config files passed
 the hardware-free check. No physical alignment run or seamless teleop handoff
 is claimed. This diagnostic does not implement pickup recovery.
+
+## Alignment inspection result
+
+Two physical alignment checks did not reach the configured gate. The latest
+ran 13.5 s with a stationary leader: elbow remained 3.43 degrees off despite
+a matching motor-stored goal; wrist flex was borderline at 1.01 degrees.
+The preceding 30-second run ended at the same residuals. The target-transmission
+path is supported by readback at this pose; the cause of residual error remains
+unknown. Next: stationary motor torque/load/current and configuration readback,
+without changing gains or loosening the gate to conceal the elbow offset.
