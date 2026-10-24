@@ -27,3 +27,7 @@ Recording must mark or pause/discard interrupted episodes during pickup.
 
 Current threshold logging is observational and does not implement pickup or any
 automatic motion/stop behavior. No physical pickup validation is claimed.
+
+## Session closeout — 2026-10-23
+
+See [session handoff](../../sessions/2026-10-23-so101-reassembly-warning/handoff.md). Audible angular-error warning physically confirmed; catch-up-time accuracy and threshold selection unresolved. Pickup recovery and manual recording gates remain proposed/unimplemented. Next agent action: review static PD residual and reachable limits before threshold decisions, then specify pickup hold/resume policy. Target: MoissanClub/lerobot, SO101; prerequisites: operator, verified setup/calibration and clear workspace. Physical validation remains incomplete.

@@ -52,3 +52,7 @@ IDs; 55 focused software tests and synthetic capture/analysis passed. Next actio
 operator reruns the unchanged 2-degree test with telemetry. Hardware capture and
 projection accuracy remain unverified. Pickup recovery is deferred to
 [IDEA-20261023-001](../IDEA-20261023-001/README.md) after this experiment.
+
+## Session closeout — 2026-10-23
+
+See [session handoff](../../sessions/2026-10-23-so101-reassembly-warning/handoff.md). Audible angular-error warning physically confirmed; catch-up-time accuracy and threshold selection unresolved. Pickup recovery and manual recording gates remain proposed/unimplemented. Next agent action: review static PD residual and reachable limits before threshold decisions, then specify pickup hold/resume policy. Target: MoissanClub/lerobot, SO101; prerequisites: operator, verified setup/calibration and clear workspace. Physical validation remains incomplete.

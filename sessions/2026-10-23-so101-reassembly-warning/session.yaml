@@ -1,5 +1,5 @@
 id: 2026-10-23-so101-reassembly-warning
-status: in_progress
+status: ended_validation_incomplete
 robot: so101
 idea_refs:
 - IDEA-20261022-001
@@ -16,8 +16,8 @@ source_repository: https://github.com/MoissanClub/lerobot
 source_local_path: /Users/dwei/lerobot/lerobot-src
 source_branch: lab/so101-intel-warning-20261023
 source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
-physical_validation: text_and_speech_operator_confirmed_threshold_analysis_pending
-next_action: confirm_follower_adapter_servo_voltage_rating_and_power_path_then_check_clearances_before_tuning
+physical_validation: audible_warning_confirmed_tracking_cause_and_threshold_unresolved
+next_action: characterize_clear_pose_static_residual_and_reachable_limits_before_threshold_selection_or_tuning
 capture:
   method: live
   sources:
@@ -28,8 +28,11 @@ capture:
   coverage: partial
   known_gaps:
   - no_camera_video
-  - no_physical_runs_yet
+  - final_power_and_torque_state_not_independently_verified
   - reassembly_not_observed_by_agent
 instrumented_candidate_revision: f6f59ca3cf8396dc8a254ce4c056f8593a88c8fc
 alignment_candidate_revision: 26b60dfc72cf4817326612e5a8c76091f3b9b390
 diagnostic_candidate_revision: 603a7bc8bcee7619b7b2a843605239044631d051
+
+closeout_source_revision: 102be54dfdba03ea11505ef345790d34ff370489
+closeout_summary: handoff.md

@@ -257,5 +257,11 @@
     "Counterfactual constant-speed ETA is not validated against controlled stop-and-catch-up trials.",
     "Stationary residual baseline and causes of persistent offsets unknown.",
     "Different live thresholds and physical recording remain untested."
-  ]
+  ],
+  "durable_archive": {
+    "url": "https://github.com/davidwei/robotics-labbook/releases/download/so101-session-20261023/so101-20261023-evidence.tar.gz",
+    "sha256": "430cccd8e0cee993e63d80e85b4aa0526e9dde96149006b6ff2e3c108000ab43",
+    "visibility": "private",
+    "contents": "Session outputs, raw telemetry, calibration snapshots, configuration, manifests and workspace installation logs; local paths in registry map into archive by basename/session-relative path."
+  }
 }
