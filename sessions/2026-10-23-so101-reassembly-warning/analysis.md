@@ -165,3 +165,30 @@ P and D with no integral contribution. For a stationary fixed target, the
 derivative contribution tends to zero; a persistent proportional error can
 therefore coexist with constant output balancing gravity/friction. This is a
 plausible mechanism for the residual, not proof of its cause. No gains changed.
+
+## Proposed tracking strategy under the operator's working assumption
+
+The operator asks to reason assuming gravity-related PD residuals and occasional
+follower hard limits. These causes remain assumptions, not newly validated findings.
+Proposed architecture: mapped reachable leader targets -> joint/workspace soft
+limits -> time-based velocity/acceleration limits -> motor position control, with
+measured-state progress monitoring and explicit pickup/resume outside the normal
+tracking envelope. Calibration extrema alone do not describe all self/table collisions.
+
+Separate free-space tracking accuracy from unreachable targets. Characterize
+per-joint stationary residuals across poses/payloads, then tune P/D in controlled
+steps. Evaluate integral or gravity compensation only with actuator-interface
+compatibility, bounded effort/offsets and verified saturation/anti-windup/reset
+behavior. A fixed correction of 3.43 degrees from one pose is not a validated
+workspace-wide gravity model. Improved holding accuracy cannot make a physical
+limit reachable, and integral accumulation against a stop must be avoided.
+
+Use slow-down prompts for motion-related lag. For a constrained target or sustained
+non-progress outside the established free-space envelope, disengage following and
+enter a separately validated hold/pickup policy. Hold must not retain an unreachable
+old target and torque-off can drop an unsupported arm. Require leader alignment
+within per-joint tolerances/dwell and explicit resume with command continuity.
+Preserve desired targets, actual sent targets, measured states and mode changes
+in recording; define interrupted-episode handling and consistent training action
+semantics before collection with compensation/pickup. No control changes or new
+physical tests were performed for this design discussion.
