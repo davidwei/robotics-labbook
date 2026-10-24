@@ -5,7 +5,7 @@ Target: MoissanClub/lerobot, SO101 leader/follower. Physical validation: pending
 
 The operator requests a pickup mode when the follower is stuck or out of sync:
 disengage following, prompt the operator to align the leader with the measured
-follower pose, then explicitly resume without a target jump. Do not implement or
+follower pose, then resume without a target jump. The updated proposal uses alignment plus dwell for automatic resume; see the state-machine specification. Do not implement or
 physically test this during the current threshold experiment.
 
 Reference: [G1 VR session](../../sessions/2026-10-15-g1-vr-camera/session.md),
@@ -18,7 +18,7 @@ Next agent action: after reviewing threshold telemetry, design the SO101 pickup
 state machine and follower hold policy, inspect G1 code/evidence at exact revisions,
 and add mocked/simulation transition tests before supervised physical validation.
 Prerequisites: fresh feedback, defined per-joint alignment tolerances and dwell,
-explicit resume, and a distinction between lag, an obstacle and hardware fault.
+a defined continuous resume policy, and a distinction between lag, an obstacle and hardware fault.
 Do not assume large position error proves a collision. Never keep commanding an
 unreachable leader target or automatically force/reverse through an obstruction.
 Torque-off can drop an unsupported arm; holding can sustain contact force. The
@@ -31,3 +31,7 @@ automatic motion/stop behavior. No physical pickup validation is claimed.
 ## Session closeout — 2026-10-23
 
 See [session handoff](../../sessions/2026-10-23-so101-reassembly-warning/handoff.md). Audible angular-error warning physically confirmed; catch-up-time accuracy and threshold selection unresolved. Pickup recovery and manual recording gates remain proposed/unimplemented. Next agent action: review static PD residual and reachable limits before threshold decisions, then specify pickup hold/resume policy. Target: MoissanClub/lerobot, SO101; prerequisites: operator, verified setup/calibration and clear workspace. Physical validation remains incomplete.
+
+## State-machine design update — 2026-10-23
+
+[State-machine specification](state-machine.md) records Idle, Lagging, Tracking, Awaiting alignment, Returning to rest and Fault; keyboard triggers; distinct boundary/nonprogress transitions; automatic alignment-dwell resume; and unresolved holding/initialization/fault policies. This supersedes earlier explicit-resume wording. Status: design proposed, implementation and physical validation pending. Next agent action: resolve the specification’s open policies before coding.
