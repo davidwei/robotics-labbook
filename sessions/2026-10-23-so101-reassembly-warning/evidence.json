@@ -230,6 +230,16 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/motor-states-config-check.log",
       "sha256": "cde9afcf2c78e754409ad9a0f5e7191629d61d4eb7a13d6af185605f3c458855",
       "type": "motor_state_diagnostic_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment/alignment_20261024T005710_1792803430183617000.jsonl",
+      "sha256": "a00e73641d8ce31273329d93f1bfca95f77cfb9e010f3da22a670735e89d06a7",
+      "type": "motor_state_physical_run_or_analysis"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/motor-state-review.json",
+      "sha256": "762cfdbb1614b0624eb2b2a8064fcafe87de8a7fc66627ca57215261bef20b22",
+      "type": "motor_state_physical_run_or_analysis"
     }
   ],
   "physical_run_evidence": [
@@ -239,7 +249,8 @@
     "RUN-20261023-004",
     "RUN-20261023-005",
     "RUN-20261023-006",
-    "RUN-20261023-007"
+    "RUN-20261023-007",
+    "RUN-20261023-008"
   ],
   "known_gaps": [
     "No camera video; software timestamps are not simultaneous hardware sample times.",

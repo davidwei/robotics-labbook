@@ -159,3 +159,12 @@ recovery is added. Startup goal display now uses real readback rather than the
 seed value. 68 focused software tests and Ruff passed; config check passed.
 Physical validation of this diagnostic candidate is pending. Next: operator
 runs the same `align_so101.py` command to inspect the persistent elbow error.
+
+## Motor-state observations
+
+The elbow remains 3.43 degrees off despite a correct stored goal and enabled
+torque. Load/current are nonzero, sampled status is zero, and no diagnostic
+read failed. Constant output does not establish a mechanical stop; static
+load/friction, power, binding and internal control remain hypotheses. Telemetry
+reports about 5 V while the operator expects a 12 V follower; labels and power
+path need confirmation before tuning. No supply or gain changes were made.

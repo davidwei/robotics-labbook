@@ -109,3 +109,45 @@ No current/load/torque/protection telemetry was captured, and no gains or
 tolerances were changed. Proposed next step: a supervised stationary register
 diagnostic before controller changes. Raising the tolerance would mask rather
 than explain the elbow residual.
+
+## Motor-state run 008 and competing hypotheses
+
+Run 008 ended by operator input after 29.119 s, not aligned. There were 559
+position samples and 173 staggered diagnostic updates, with no diagnostic read
+errors. Elbow goal remained 93.407 degrees and actual 96.835 degrees (3.429
+degrees error). Torque-enable stayed 1; sampled status stayed 0; velocity/moving
+feedback stayed 0. Elbow current was nonzero after startup (typically 7–12 raw),
+and load settled at 152 raw. P/I/D read back 16/0/32; dead zones 1/1. Configured
+torque limit was 1000; temperature was 26–28 raw versus limit 80. No sampled
+status flag establishes a fault, but staggered sampling cannot exclude transients.
+
+The operator proposes that persistent error plus constant load identifies an
+end-of-freedom condition. This is a candidate explanation, not a demonstrated
+cause. Feetech describes load as the motor control-output duty-cycle scale
+(1000 full scale), not a force/contact sensor. A constant output can balance
+load/friction with I=0. Actual position 2871 is near calibrated maximum 2875,
+but requested/stored goal 2832 is inside limits 664..2875 and away from that
+upper endpoint. This supports inspecting binding/geometry but does not prove
+a simple upper-stop explanation.
+
+Another material observation is elbow voltage 50–51 raw. Feetech documents
+0.1 V/count, giving about 5.0–5.1 V. Operator says the follower should be 12 V;
+actual adapter/servo labels and the power path remain unconfirmed. SO101
+voltage variants differ, so do not prescribe a new supply voltage before
+confirming the exact build. No supply, gain or control changes were performed.
+
+Open hypotheses, which may coexist:
+1. Static gravity/friction equilibrium under current proportional drive/I=0.
+2. Supply-path/voltage mismatch if this is indeed the 12 V build.
+3. Mechanical binding/contact/end-of-travel interference after reassembly.
+4. Controller/protection/firmware behavior, less directly supported by sampled
+   torque/status/temperature but not excluded.
+
+Prioritize adapter/servo-label and power-path confirmation plus physical clearance
+inspection before supervised pose comparisons or tuning. Pickup mode can detect
+sustained tracking failure without claiming its cause is a hard stop.
+
+Primary sources: https://www.feetechrc.com/20210430-56680.html (feedback scales
+and operating mode); https://github.com/huggingface/lerobot/blob/main/AGENT_GUIDE.md
+(voltage variants). These are interpretation references, not measurements of
+this physical unit. Raw evidence remains in motor-state-review.json references.
