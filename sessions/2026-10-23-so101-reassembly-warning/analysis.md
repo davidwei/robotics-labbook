@@ -151,3 +151,17 @@ Primary sources: https://www.feetechrc.com/20210430-56680.html (feedback scales
 and operating mode); https://github.com/huggingface/lerobot/blob/main/AGENT_GUIDE.md
 (voltage variants). These are interpretation references, not measurements of
 this physical unit. Raw evidence remains in motor-state-review.json references.
+
+## Operator assessment and confirmed PD settings
+
+Operator reports successful raising/lowering in more stretched poses and would
+rule out insufficient voltage/internal protection as the explanation. Preserve
+this as operator assessment: it supports deprioritizing complete drive failure,
+while pose/load-dependent effects are not conclusively excluded by that report.
+
+Latest follower elbow register readback is P=16, I=0, D=32, matching the driver's
+configure() writes. The motor has PID parameters but this configuration enables
+P and D with no integral contribution. For a stationary fixed target, the
+derivative contribution tends to zero; a persistent proportional error can
+therefore coexist with constant output balancing gravity/friction. This is a
+plausible mechanism for the residual, not proof of its cause. No gains changed.
