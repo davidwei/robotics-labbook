@@ -1,6 +1,6 @@
 # SO101 teleoperation state machine
 
-Status: proposed design, updated 2026-10-23 from operator discussion. Not implemented or physically validated. Target: MoissanClub/lerobot, SO101 leader/follower.
+Status: design implemented as an opt-in supervised prototype on 2026-10-23; physical validation pending. Target: MoissanClub/lerobot, SO101 leader/follower.
 
 This design supersedes the earlier requirement for an explicit resume key after pickup: alignment plus dwell now resumes tracking automatically. “Pick up” is an operator action while Awaiting alignment, not a separate state.
 
@@ -68,3 +68,7 @@ Recording is an independent state machine. Starting/stopping recording must not 
 ## Next agent action
 
 Review and resolve holding policy, Esc destination, startup initialization, fault reset, transition priority, continuous resume and quantitative guards. Then implement and test transitions with mocked motors before a separate operator-supervised physical test. Prerequisites: verified calibration/rest pose, fresh feedback, clear workspace and defined recording semantics. No robot motion or controller changes are authorized by this document.
+
+## Prototype policy resolution
+
+See [implementation checkpoint](README.md#implementation-checkpoint--2026-10-23) and the linked source test guide. The prototype adds setup_hold for startup away from rest and latched Halted for Esc. Awaiting alignment holds the measured entry pose; resume starts at the current measured pose. Fault/Halted require session restart. S explicitly requests return, repeated S does not reset its timeout, and Space is ignored outside Idle. Boundary violations prevent automatic alignment resume even if numeric alignment tolerance would otherwise pass. Fault/halt take priority over ordinary transitions; explicit Stop takes priority over normal following. Settings and holding behavior still require physical validation.

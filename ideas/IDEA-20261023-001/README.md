@@ -1,6 +1,6 @@
 # IDEA-20261023-001 — SO101 pickup mode after loss of synchronization
 
-Status: proposed; implement after the current threshold-measurement experiment.
+Status: ready_for_lab for a supervised state-machine prototype; physical validation pending. Dataset recording integration remains planned.
 Target: MoissanClub/lerobot, SO101 leader/follower. Physical validation: pending.
 
 The operator requests a pickup mode when the follower is stuck or out of sync:
@@ -35,3 +35,17 @@ See [session handoff](../../sessions/2026-10-23-so101-reassembly-warning/handoff
 ## State-machine design update — 2026-10-23
 
 [State-machine specification](state-machine.md) records Idle, Lagging, Tracking, Awaiting alignment, Returning to rest and Fault; keyboard triggers; distinct boundary/nonprogress transitions; automatic alignment-dwell resume; and unresolved holding/initialization/fault policies. This supersedes earlier explicit-resume wording. Status: design proposed, implementation and physical validation pending. Next agent action: resolve the specification’s open policies before coding.
+
+## Implementation checkpoint — 2026-10-23
+
+Implemented the isolated supervised prototype at [c253a77](https://github.com/MoissanClub/lerobot/commit/c253a774f4d791f03bd47a6dfff0ded7ff009246), branch `lab/so101-intel-warning-20261023`. [Test guide](https://github.com/MoissanClub/lerobot/blob/c253a774f4d791f03bd47a6dfff0ded7ff009246/workbench/so101_intel_mac/STATE_MACHINE_TEST.md) contains setup, commands, parameters and limitations. Existing teleoperate/record entry points remain unchanged; shared Controller is available for future recording integration.
+
+Software validation: 54 focused tests passed, including fake-motor trajectory/state tests, real runner with mocked buses and serial-failure cleanup; Ruff passed; CLI help started locally. Historical replay processed 1,347 samples, entered Lagging at sample 1 and Awaiting alignment at sample 1073 for shoulder/elbow nonprogress. Replay is classification of fixed recorded measurements, not a counterfactual physical simulation. It excludes unrecorded gripper and used a synthetic zero rest solely for offline initialization. The first recorded elbow exceeded the calibrated endpoint but target pointed inward, so no outward-boundary transition was expected.
+
+Resolved prototype policies: Awaiting alignment captures and holds measured follower pose; automatic resume after dwell is seeded from current follower pose. Esc latches Halted, requiring restart. Fault latches. Startup away from rest holds position in setup_hold until S explicitly requests return; Space is ignored outside Idle. Return blocks/timeouts fault; no automatic home on fault. Serial exceptions attempt a fresh measured-pose hold only if available, then wait for operator support before disconnect/release. Physical effectiveness remains unverified; holding may sustain force and feedback loss may leave the old servo goal in place.
+
+Initial arm alignment tolerance 1.5° deliberately does not hide the known 3.43° elbow residual; inspect pose/error if alignment never clears. Settings are explicit trial parameters, not established safe limits or validated obstacle detection.
+
+Next agent action: guide operator through rest-pose capture, config check and supervised gentle trial. Prerequisites: operator present, verified calibration/ports, clear swept space/rest path, no cameras required. No hardware was actuated during implementation. First validate P/pickup and S/Esc behavior without deliberate obstruction; assess nonprogress/boundary behavior separately. Dataset gates/cameras remain future work.
+
+Replay evidence: [private compressed decisions](https://github.com/davidwei/robotics-labbook/releases/download/so101-session-20261023/historical-replay.jsonl.gz), SHA256 `ccd418d9354a4132a54f0ba142612d0e8d1683fc1ef7d55c45c1d6bc6974b6e4`. Original telemetry remains in the session evidence archive.
