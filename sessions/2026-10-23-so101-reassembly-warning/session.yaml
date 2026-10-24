@@ -16,7 +16,7 @@ source_local_path: /Users/dwei/lerobot/lerobot-src
 source_branch: lab/so101-intel-warning-20261023
 source_revision: acbd895405315c1e7f8f3e9d51114bf81a86ab63
 physical_validation: text_and_speech_operator_confirmed_threshold_analysis_pending
-next_action: supervised_stationary_motor_goal_torque_load_current_deadzone_diagnostic_before_tuning
+next_action: operator_reruns_alignment_with_motor_state_logging_to_diagnose_elbow_residual
 capture:
   method: live
   sources:
@@ -31,3 +31,4 @@ capture:
   - reassembly_not_observed_by_agent
 instrumented_candidate_revision: f6f59ca3cf8396dc8a254ce4c056f8593a88c8fc
 alignment_candidate_revision: 26b60dfc72cf4817326612e5a8c76091f3b9b390
+diagnostic_candidate_revision: 603a7bc8bcee7619b7b2a843605239044631d051

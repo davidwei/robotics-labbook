@@ -220,6 +220,16 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment-review.txt",
       "sha256": "d5ed98f6c1cf1429efb5baf8ff28728cbc14ed0000bb69b7907511bbd797f9b8",
       "type": "physical_alignment_log_or_review"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/motor-states-tests.log",
+      "sha256": "716b878566017ef92fdfeaf09398828ed721b9c7766e4fd2abb99b5fa4d54333",
+      "type": "motor_state_diagnostic_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/motor-states-config-check.log",
+      "sha256": "cde9afcf2c78e754409ad9a0f5e7191629d61d4eb7a13d6af185605f3c458855",
+      "type": "motor_state_diagnostic_software_validation"
     }
   ],
   "physical_run_evidence": [

@@ -139,3 +139,23 @@ The preceding 30-second run ended at the same residuals. The target-transmission
 path is supported by readback at this pose; the cause of residual error remains
 unknown. Next: stationary motor torque/load/current and configuration readback,
 without changing gains or loosening the gate to conceal the elbow offset.
+
+## Motor-state diagnostic candidate ready
+
+Operator requested motor states in the setup/inspection workflow. Source commit
+`603a7bc8bcee7619b7b2a843605239044631d051` extends the existing alignment script with startup snapshots for both
+arms and timestamped, staggered follower register reads. Live display includes
+torque enabled, raw current/load/temperature/status and elbow PID/dead zones.
+Logs include operating mode, position/torque/protection limits, homing offset,
+voltage, velocity and motion flags. Each optional diagnostic read records its
+latency/error; failures are unavailable rather than substituted zeros.
+
+One optional register read is scheduled per eligible control iteration, with a
+0.15-second minimum between reads, using the owning serial thread. Fields are
+not simultaneous. Values are raw register units after driver sign decoding, not
+validated amperes/percentages or decoded fault flags. Alignment criteria and
+range-calibration behavior are unchanged; no automatic gain tuning or fault
+recovery is added. Startup goal display now uses real readback rather than the
+seed value. 68 focused software tests and Ruff passed; config check passed.
+Physical validation of this diagnostic candidate is pending. Next: operator
+runs the same `align_so101.py` command to inspect the persistent elbow error.
