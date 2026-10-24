@@ -101,3 +101,7 @@ Operator reported repeated shoulder/elbow/gripper advisories without leader moti
 ## Outward-only position advisory — 2026-10-23
 
 Operator requests no position-boundary advisory absent an outward tracking request. Implemented `9cd3ff0`: active Tracking/Lagging, near upper bound with requested target > measured +.1, or near lower bound with target < measured -.1. Proximity alone and inward/holding requests remain silent; proximity/margin still logged independently. Motion-state boundary trigger unchanged. 30 focused tests and Ruff passed; code pushed. Restart runner for validation.
+
+## Increasing-load-only advisory — 2026-10-23
+
+Operator requests load-boundary advisories only when tracking toward greater load. Implemented/pushed `bcb7c22`: active following plus abs(gravity torque at requested pose) minus abs(gravity torque at measured pose) > .01Nm before nominal load/accuracy model warnings can appear. Threshold configurable. Holding, lower-load and tiny changes stay silent; raw estimates and requested load change remain logged. Empirical response warning stays independent; no state transitions changed. This endpoint comparison does not guarantee low load along an intermediate path. 31 focused tests and Ruff passed; restart runner for physical validation.
