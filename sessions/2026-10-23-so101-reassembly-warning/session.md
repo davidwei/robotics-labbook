@@ -111,3 +111,21 @@ Follow-up inspection found a 3.879-second elbow encoder plateau around warning
 8, with approximately 10 degrees of requested error despite operator-reported
 free motion. This is a sustained offset worth diagnosing; its cause is unknown.
 See analysis.md. No automatic recovery or gain changes were applied.
+
+## Supervised initial alignment diagnostic prepared
+
+Operator requested an initial setup that waits for follower alignment and allows
+inspection. Source commit `26b60dfc72cf4817326612e5a8c76091f3b9b390` adds a separate camera-free fixed-pose
+alignment command. It seeds the follower's measured pose before standard holding
+configuration, shows an initial difference table, and requires a second terminal
+Enter before a goal ramp (5 degrees/s arm, 10 normalized units/s gripper).
+It displays the frozen leader target, current leader, measured follower, motor
+Goal_Position readback and error. Matching requires all arm errors <=1 degree
+and gripper <=3 units for 1 second after the ramp, with the leader still close
+to the snapshot. Leader movement does not retarget the follower. A 30-second
+timeout or operator exit disables follower torque; operator support is required.
+
+64 software tests and Ruff passed, including residual-error and leader-motion
+nonalignment cases, seed-before-enable order and cleanup. Config files passed
+the hardware-free check. No physical alignment run or seamless teleop handoff
+is claimed. This diagnostic does not implement pickup recovery.

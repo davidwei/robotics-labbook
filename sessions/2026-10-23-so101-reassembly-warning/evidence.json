@@ -185,6 +185,21 @@
       "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/initial-alignment-review.json",
       "sha256": "2585f84d1a6d71606fcc21796e9b36eebc2ab8c891a0d9446c0783dd20b4580d",
       "type": "startup_alignment_analysis"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment-tests.log",
+      "sha256": "eb2e954d2b97583c260b8ac1c6c18bb755145e6c4facc810014e51b1c1e4ce9f",
+      "type": "initial_alignment_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/alignment-config-check.log",
+      "sha256": "cde9afcf2c78e754409ad9a0f5e7191629d61d4eb7a13d6af185605f3c458855",
+      "type": "initial_alignment_software_validation"
+    },
+    {
+      "path": "/Users/dwei/lerobot/outputs/lab/so101-20261023/align_so101.snapshot.py",
+      "sha256": "20ff642198bc90ceff273460419caaf540b6922152634854a8b2f0a217d58476",
+      "type": "initial_alignment_software_validation"
     }
   ],
   "physical_run_evidence": [
