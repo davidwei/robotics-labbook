@@ -71,3 +71,16 @@ motor's stored goal or torque production. Proposed next diagnostic: short,
 supervised stationary comparison of requested and motor-stored goal/position and
 controller status before tuning gains, changing thresholds or inferring a stall.
 No controller settings or hardware execution were changed for this analysis.
+
+## Initial alignment check
+
+The first instrumented loop sample, after connection and before the first loop
+Goal_Position write, was not aligned. Absolute errors (degrees) were shoulder
+pan 6.901, shoulder lift 9.670, elbow 4.220, wrist flex 1.890 and wrist roll 10.022.
+Four of five monitored joints exceeded the 2-degree limit; the first warning was
+therefore due immediately. Gripper alignment cannot be assessed from this trace.
+At approximately 0.5 seconds the other four arm-joint errors were below 0.4
+degrees, but the elbow error was still 3.604 degrees, also present at 1 second.
+These are tracking-error observations; the trace does not establish why the
+elbow retained that offset. Pickup alignment could gate initial engagement but
+would not, by itself, resolve a motor's persistent position-tracking residual.
