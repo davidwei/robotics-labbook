@@ -72,6 +72,10 @@ repeat_experiment:
     elbow_position_deg: 96.0440
     elbow_calibrated_upper_bound_deg: 94.9011
     interpretation: status_bit_cleared_but_endpoint_condition_not_resolved
+  operator_calibration_clarification:
+    elbow_endpoint_intentionally_inside_geometric_limit: true
+    folded_rest_may_be_on_or_outside_calibrated_boundary: true
+    implication: calibrated_boundary_crossing_is_not_proof_of_geometric_hard_stop
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
@@ -99,4 +103,5 @@ capture:
   - no_tracking_phase_post_replacement_test
   - elbow_overload_root_cause_unresolved
   - no_unloaded_mechanical_range_or_assembly_inspection
+  - folded_rest_not_reconciled_with_conservative_calibration_boundary
 

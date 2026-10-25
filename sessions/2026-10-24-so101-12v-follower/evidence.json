@@ -61,6 +61,11 @@
       "timestamp": "2026-10-24T22:02:14-07:00",
       "claim": "All SO-101 follower motors were replaced so every follower joint now uses a 12 V motor variant.",
       "verification": "not_independently_verified"
+    },
+    {
+      "timestamp": "2026-10-24T22:45:00-07:00",
+      "claim": "The elbow calibration endpoint was intentionally limited inside the true geometric limit, and the folded rest may be on or outside that conservative boundary.",
+      "verification": "operator_method_clarification"
     }
   ],
   "known_missing_evidence": [
