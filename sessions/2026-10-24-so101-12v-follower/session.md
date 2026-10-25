@@ -24,5 +24,7 @@ For the next operator-requested teleoperation diagnostic, the `awaiting_alignmen
 
 After upstream teleoperation appeared unable to move motor ID 3 (`elbow_flex`), a torque-off read-only register comparison found normal communication and no configuration outlier: model 777, firmware 3.10, phase 12, position mode, PID 16/0/32, 12.2 V and the principal protection settings matched the other non-gripper motors. The elbow was warmer at 42 C versus 31–34 C for the others. Its raw present position was 3145 and last goal 3135 while its configured maximum position limit was 3114. These observations do not prove motor health; an unloaded isolated motion test is required to distinguish motor/output failure from linkage, limit and load effects.
 
+The operator then removed motor ID 3 from the elbow linkage and connected it as the only motor on the Waveshare board. A direct single-motor read confirmed ID 3, model 777, firmware 3.10, 12.2 V, status zero, torque disabled, zero current/load and temperature reduced to 37 C. The shaft remained at raw position 3145, above the configured maximum 3114. No isolated motion command has yet been issued.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 

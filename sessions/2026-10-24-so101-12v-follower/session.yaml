@@ -101,6 +101,19 @@ repeat_experiment:
     last_goal_position_raw: 3135
     configured_max_position_raw: 3114
     conclusion: motor_health_unresolved_requires_unloaded_isolated_motion_test
+  motor_3_isolated_setup:
+    operator_reported_off_linkage: true
+    only_motor_connected_to_board: true
+    direct_read_id: 3
+    status: 0
+    torque_enable: 0
+    present_voltage_v: 12.2
+    present_temperature_c: 37
+    present_current_raw: 0
+    present_load_raw: 0
+    present_position_raw: 3145
+    configured_max_position_raw: 3114
+    isolated_motion_performed: false
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
