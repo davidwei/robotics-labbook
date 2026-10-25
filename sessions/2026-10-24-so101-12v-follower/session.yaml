@@ -15,7 +15,26 @@ operator_report: All SO-101 follower motors were replaced so every follower join
 motor_commands_enabled: false
 runs: []
 physical_validation: pending_post_replacement_preflight_and_calibration
-next_action: Verify 12 V motor identity, supply, wiring, motor IDs and communication with torque disabled; recalibrate before separately authorized low-speed motion.
+next_action: Complete leader and follower recalibration; archive and hash both generated calibration files before repeating the directional-advisory experiment at revision 3cb506d.
+voltage_audit:
+  follower_present_voltage_v: 12.2-12.3
+  leader_present_voltage_v: 5.1-5.2
+  all_torque_disabled: true
+  all_status_zero: true
+  artifact: voltage-audit-20261024.json
+calibration:
+  leader_status: stale_pending_recalibration
+  follower_status: stale_pending_recalibration
+  pre_calibration_artifacts:
+  - leader-calibration-before-recalibration.json
+  - follower-calibration-before-12v-recalibration.json
+  required_post_calibration_artifacts:
+  - leader-calibration-after-recalibration.json
+  - follower-calibration-after-12v-recalibration.json
+repeat_experiment:
+  reference: ../2026-10-23-so101-reassembly-warning
+  source_revision: 3cb506d168e4a36d580ac33a70f1711d7b98459e
+  readiness: blocked_on_both_calibrations_and_provenance_capture
 capture:
   method: live
   sources:
@@ -25,7 +44,7 @@ capture:
   known_gaps:
   - replacement_not_observed_by_recording_agent
   - no_motor_label_or_serial_inventory
-  - no_power_supply_or_voltage_measurement
-  - no_post_replacement_bus_discovery_or_calibration
+  - no_physical_motor_label_or_serial_inventory
+  - no_post_replacement_leader_or_follower_calibration
   - no_post_replacement_motion_test
 

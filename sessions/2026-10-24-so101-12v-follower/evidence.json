@@ -1,5 +1,21 @@
 {
-  "artifacts": [],
+  "artifacts": [
+    {
+      "path": "voltage-audit-20261024.json",
+      "sha256": "fdccc051998de0cfb0c1969db6041f97f0bbe1a28ef49c699cbe91172d9b7de8",
+      "description": "Read-only voltage, voltage-limit, torque, status, temperature, model and firmware audit for all leader and follower motors."
+    },
+    {
+      "path": "leader-calibration-before-recalibration.json",
+      "sha256": "06104f54065cf84b4860290e81537a11ce429fb10dbd68438eb105016fde92e9",
+      "description": "Stale leader calibration preserved before operator-requested recalibration."
+    },
+    {
+      "path": "follower-calibration-before-12v-recalibration.json",
+      "sha256": "78e2624563c4d8fa34df6183c267b3b9822d109ee91d57b2ee501227d26559a0",
+      "description": "Stale follower calibration preserved before recalibration of the replaced 12 V motors."
+    }
+  ],
   "operator_reports": [
     {
       "timestamp": "2026-10-24T22:02:14-07:00",
@@ -9,9 +25,9 @@
   ],
   "known_missing_evidence": [
     "motor label or serial-number inventory",
-    "power-supply rating and voltage measurement",
-    "post-replacement bus discovery",
-    "post-replacement calibration",
+    "independent power-supply rating and multimeter measurement",
+    "new leader calibration file",
+    "new follower calibration file",
     "post-replacement motion telemetry or video"
   ]
 }
