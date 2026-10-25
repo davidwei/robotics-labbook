@@ -1,0 +1,18 @@
+{
+  "artifacts": [],
+  "operator_reports": [
+    {
+      "timestamp": "2026-10-24T22:02:14-07:00",
+      "claim": "All SO-101 follower motors were replaced so every follower joint now uses a 12 V motor variant.",
+      "verification": "not_independently_verified"
+    }
+  ],
+  "known_missing_evidence": [
+    "motor label or serial-number inventory",
+    "power-supply rating and voltage measurement",
+    "post-replacement bus discovery",
+    "post-replacement calibration",
+    "post-replacement motion telemetry or video"
+  ]
+}
+

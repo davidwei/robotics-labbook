@@ -123,3 +123,7 @@ Advisory only; no motor-command refusal implemented. Future enforcement should c
 ## Completed directional-advisory physical round — 2026-10-23
 
 [Trial review](directional-trial-20261023.md): achieved Tracking, entered Awaiting alignment on elbow nonprogress, failed to complete pickup, then latched Fault on a single gripper Status=1 sample. Zero telemetry drops. No direction-specific advisories: 2° probes plus .01Nm increase gate were too insensitive at the failing pose, despite general load warnings. This exposes a prediction limitation; no controller change made. Next action: correct directional horizon/gradient scaling, then review pickup ergonomics and gripper status provenance before further validation. Raw log privately archived and linked in report.
+
+## Follower 12 V motor replacement — 2026-10-24
+
+The operator reported replacing every SO-101 follower motor with a 12 V variant. This resolves the intended variant choice but not physical validation: labels/part numbers, supply delivery, bus configuration, calibration and tracking performance have not yet been captured. See [the active lab session](../../sessions/2026-10-24-so101-12v-follower/session.md). Next action: torque-disabled electrical/bus preflight and follower recalibration before any separately authorized low-speed motion.

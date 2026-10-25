@@ -1,0 +1,31 @@
+id: SESSION-20261024-001
+date: '2026-10-24'
+timezone: America/Los_Angeles
+owner: David Wei
+project: so101
+status: in_progress
+mode: in-lab
+related_ideas:
+- IDEA-20261022-001
+- IDEA-20261023-001
+previous_session: 2026-10-23-so101-reassembly-warning
+labbook_refreshed_revision: 965e3cfdf372f97b72648c126de217bbe7b4a153
+activity: hardware_maintenance
+operator_report: All SO-101 follower motors were replaced so every follower joint now uses a 12 V motor variant.
+motor_commands_enabled: false
+runs: []
+physical_validation: pending_post_replacement_preflight_and_calibration
+next_action: Verify 12 V motor identity, supply, wiring, motor IDs and communication with torque disabled; recalibrate before separately authorized low-speed motion.
+capture:
+  method: live
+  sources:
+  - operator_recollection
+  - codex_session
+  coverage: partial
+  known_gaps:
+  - replacement_not_observed_by_recording_agent
+  - no_motor_label_or_serial_inventory
+  - no_power_supply_or_voltage_measurement
+  - no_post_replacement_bus_discovery_or_calibration
+  - no_post_replacement_motion_test
+

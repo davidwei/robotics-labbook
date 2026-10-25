@@ -1,0 +1,3 @@
+{"timestamp":"2026-10-24T22:02:14-07:00","type":"operator_report","activity":"hardware_maintenance","robot":"so101_follower","observation":"Operator reported completing replacement of all follower motors so every follower joint now uses a 12 V motor variant.","physical_validation":"pending","source":"operator_recollection"}
+{"timestamp":"2026-10-24T22:02:14-07:00","type":"capture_boundary","activity":"preflight","observation":"No powered inspection, bus discovery, calibration, torque enable, commanded motion, or electrical measurement has been captured in this session.","motor_commands_enabled":false,"source":"codex_session"}
+
