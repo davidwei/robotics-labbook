@@ -84,6 +84,11 @@
       "path": "spare2-id5-isolated-45deg.jsonl",
       "sha256": "443a4334de4976df3f8a399e8c244feeadf9d3d174ee3131cd8de2a48a4a9a2c",
       "description": "Failed guarded unloaded spare-ID-5 direct 45-degree test: essentially no motion, load reached reduced torque limit, status zero."
+    },
+    {
+      "path": "motor3-isolated-repeat-02.jsonl",
+      "sha256": "12dcbe5009706427471b8945e4ef3163c9e85304f252fd6d9853b1fca61d23c5",
+      "description": "Passing controlled repeat on isolated motor ID 3: small bidirectional steps plus 45-degree motion at the same reduced torque that failed both spares."
     }
   ],
   "operator_reports": [

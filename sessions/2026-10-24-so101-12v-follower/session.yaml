@@ -198,6 +198,24 @@ repeat_experiment:
       sha256: 443a4334de4976df3f8a399e8c244feeadf9d3d174ee3131cd8de2a48a4a9a2c
     torque_disabled_after_each_attempt: true
     higher_torque_test_performed: false
+  motor_3_isolated_repeat_2:
+    outcome: passed
+    sequence_raw: 2601_to_2581_to_2601_to_2089
+    final_observed_position_raw: 2094
+    temporary_torque_limit_raw: 200
+    segment_durations_s:
+    - 0.17
+    - 0.17
+    - 0.96
+    current_range_raw: 0-10
+    load_range_raw: -112_to_200
+    temperature_range_c: 32-33
+    status_values:
+    - 0
+    torque_disabled_after_test: true
+    artifact: motor3-isolated-repeat-02.jsonl
+    sha256: 12dcbe5009706427471b8945e4ef3163c9e85304f252fd6d9853b1fca61d23c5
+    interpretation: repeat_confirms_normal_motor_3_motion_at_same_reduced_torque_that_failed_both_spares
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
