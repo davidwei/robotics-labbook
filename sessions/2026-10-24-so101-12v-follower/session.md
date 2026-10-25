@@ -10,5 +10,9 @@ The controlled repeat reached a powered preflight but is now blocked. The runner
 
 Next: with torque off and the arm supported, inspect elbow mechanical freedom and calibration/end-stop geometry, then capture a rest pose with margin inside the safe boundary before any powered retry. The fault cause remains unresolved; do not restart the directional trial yet.
 
+After reviewing the difference from upstream teleoperation, the supervised runner was changed so the periodic motor monitor is report-only: nonzero status or unexpected torque-enable values remain in telemetry and produce console warnings, but no longer drive the controller into `FAULT` or suppress leader commands. The change is preserved in local code revision `c5ce05ec2e649132f5546631f108b02fa7d23c37`; 60 focused SO-101 tests and Ruff passed. This software decision does not resolve the elbow overload or make the physical repeat ready.
+
+A subsequent torque-off read found status zero on every motor, showing that the elbow's status-32 flag did not persist after shutdown. The unloaded elbow measured 96.04 degrees, still 1.14 degrees beyond its 94.90-degree calibrated upper bound. The cleared bit therefore does not show that the endpoint/load condition has been corrected.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 

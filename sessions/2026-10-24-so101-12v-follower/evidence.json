@@ -44,6 +44,11 @@
       "path": "state-machine-repeat-01.jsonl",
       "sha256": "d237c28a8a3780ccf30bb4d15cf2f94b2a585fe93fb7dc28acc802030105cbe5",
       "description": "Closed zero-drop telemetry from the powered preflight that latched follower elbow_flex status 32 before Tracking."
+    },
+    {
+      "path": "post-fault-read-only.json",
+      "sha256": "4ad4e9bb656ed37c79ef49bbccd7a1dbf3b529d1788c9e3d20ef328d46d9241b",
+      "description": "Torque-off post-fault register snapshot: all status values cleared; elbow remained 1.14 degrees beyond its calibrated upper bound."
     }
   ],
   "operator_reports": [
