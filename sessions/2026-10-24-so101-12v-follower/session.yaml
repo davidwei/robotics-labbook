@@ -113,7 +113,21 @@ repeat_experiment:
     present_load_raw: 0
     present_position_raw: 3145
     configured_max_position_raw: 3114
-    isolated_motion_performed: false
+    isolated_motion_performed: true
+  motor_3_isolated_motion_test:
+    outcome: passed
+    artifact: motor3-isolated-test-01.jsonl
+    sha256: a380b22e452b2600f5c9fef4ae7712b3d8c7d03d83bd7ace9d6641121c23fe78
+    sequence_raw: 3145_to_3114_to_3094_to_3114
+    temporary_torque_limit_raw: 200
+    current_range_raw: 0-2
+    load_range_raw: -56_to_68
+    voltage_v: 12.2
+    temperature_range_c: 37-38
+    status_values:
+    - 0
+    torque_disabled_after_test: true
+    interpretation: motor_encoder_communications_and_unloaded_output_function
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
@@ -143,5 +157,5 @@ capture:
   - no_unloaded_mechanical_range_or_assembly_inspection
   - folded_rest_not_reconciled_with_conservative_calibration_boundary
   - preferred_folded_rest_requires_non_overloading_park_or_support_strategy
-  - motor_3_unloaded_motion_not_tested
+  - motor_3_installed_linkage_and_horn_load_not_isolated
 

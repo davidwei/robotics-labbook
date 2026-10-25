@@ -26,5 +26,7 @@ After upstream teleoperation appeared unable to move motor ID 3 (`elbow_flex`), 
 
 The operator then removed motor ID 3 from the elbow linkage and connected it as the only motor on the Waveshare board. A direct single-motor read confirmed ID 3, model 777, firmware 3.10, 12.2 V, status zero, torque disabled, zero current/load and temperature reduced to 37 C. The shaft remained at raw position 3145, above the configured maximum 3114. No isolated motion command has yet been issued.
 
+The authorized unloaded isolated motion test passed. With torque limited to 200 raw, motor ID 3 moved inward from raw 3145 to the configured upper-limit region, then completed a 3114 to 3094 to 3114 small-step sequence in the correct directions. Status remained zero, current stayed at 0–2 raw, load stayed between -56 and 68 raw, voltage remained 12.2 V and temperature stayed 37–38 C. Torque was disabled and temporary control settings were restored after the test. This strongly supports that the motor, encoder, communications and unloaded output stage function; the earlier failure is now more likely associated with the installed linkage, horn/coupler geometry, assembly preload or required joint torque rather than an intrinsically nonmoving motor.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 

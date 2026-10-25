@@ -54,6 +54,11 @@
       "path": "state-machine-repeat-02.jsonl",
       "sha256": "a004313253f8a3a49e30ab4e53a514b7147b45c6938e0132fb29e57e295a596e",
       "description": "Zero-drop report-only powered diagnostic telemetry reproducing persistent elbow_flex status 32 before Tracking."
+    },
+    {
+      "path": "motor3-isolated-test-01.jsonl",
+      "sha256": "a380b22e452b2600f5c9fef4ae7712b3d8c7d03d83bd7ace9d6641121c23fe78",
+      "description": "Guarded unloaded motor-ID-3 small-step test; correct bidirectional motion, zero status and low current/load with automatic cleanup."
     }
   ],
   "operator_reports": [
