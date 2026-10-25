@@ -170,6 +170,34 @@ repeat_experiment:
     forty_five_degree_test_performed: false
     artifact: spare1-id4-isolated-test.jsonl
     sha256: 054d9686884b76737dcf25a33d2768178a1980ec4490f69251c16fa3ede13679
+  spare_2_isolated_test:
+    id: 5
+    model: 777
+    firmware: '3.10'
+    initial_voltage_v: 12.3
+    initial_temperature_c: 25
+    initial_status: 0
+    initial_torque_enable: 0
+    small_step:
+      target_raw: 52_to_72
+      outcome: timeout_no_motion
+      current_range_raw: 0-4
+      load_range_raw: -172_to_0
+      artifact: spare2-id5-isolated-test.jsonl
+      sha256: 82bedbef63149aa23962925ce7f3dda70bf5bbb228346be2d3f59ba79abdb485
+    forty_five_degree_step:
+      target_raw: 52_to_564
+      outcome: timeout_no_motion
+      observed_position_range_raw: 50-53
+      current_range_raw: 0-4
+      load_range_raw: -200_to_0
+      temperature_range_c: 26-36
+      status_values:
+      - 0
+      artifact: spare2-id5-isolated-45deg.jsonl
+      sha256: 443a4334de4976df3f8a399e8c244feeadf9d3d174ee3131cd8de2a48a4a9a2c
+    torque_disabled_after_each_attempt: true
+    higher_torque_test_performed: false
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
@@ -201,4 +229,5 @@ capture:
   - preferred_folded_rest_requires_non_overloading_park_or_support_strategy
   - motor_3_installed_linkage_and_horn_load_not_isolated
   - spare_1_no_motion_and_transient_temperature_sample_unresolved
+  - spare_2_no_motion_at_reduced_torque_unresolved
 

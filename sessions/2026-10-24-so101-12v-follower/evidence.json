@@ -74,6 +74,16 @@
       "path": "spare1-id4-isolated-test.jsonl",
       "sha256": "054d9686884b76737dcf25a33d2768178a1980ec4490f69251c16fa3ede13679",
       "description": "Failed guarded unloaded spare-ID-4 small-step test: no position change, low current, moderate load and one transient 59 C sample followed by 26 C torque-off recheck."
+    },
+    {
+      "path": "spare2-id5-isolated-test.jsonl",
+      "sha256": "82bedbef63149aa23962925ce7f3dda70bf5bbb228346be2d3f59ba79abdb485",
+      "description": "Failed guarded unloaded spare-ID-5 +20-count test: no motion at reduced torque, status zero."
+    },
+    {
+      "path": "spare2-id5-isolated-45deg.jsonl",
+      "sha256": "443a4334de4976df3f8a399e8c244feeadf9d3d174ee3131cd8de2a48a4a9a2c",
+      "description": "Failed guarded unloaded spare-ID-5 direct 45-degree test: essentially no motion, load reached reduced torque limit, status zero."
     }
   ],
   "operator_reports": [
