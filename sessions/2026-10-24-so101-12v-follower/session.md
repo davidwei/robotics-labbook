@@ -20,5 +20,7 @@ The operator clarified that the elbow calibration endpoint was intentionally set
 
 The operator prefers to retain the current folded rest geometry. Future design work should therefore keep the conservative teleoperation boundary while treating the folded pose separately as a parked/rest configuration. The unresolved requirement is to avoid sustained elbow overload there, for example through mechanical support or explicit torque-off parking rather than redefining the preferred pose as an ordinary powered operating target.
 
+For the next operator-requested teleoperation diagnostic, the `awaiting_alignment` pickup-exit tolerance was separated from the existing startup/tracking alignment threshold. Revision `c779a6c23cdc00694fe99243d874f60a916c193a` permits pickup exit when each rotary joint is within 15 degrees; the gripper remains at 3 normalized units, and startup/rest plus normal tracking alignment remain at their prior 1.5-degree/3-unit thresholds. Sixty-two focused tests and Ruff passed; physical validation is pending.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 

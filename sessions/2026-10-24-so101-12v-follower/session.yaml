@@ -80,6 +80,14 @@ repeat_experiment:
     retain_current_folded_geometry: true
     design_implication: separate_parked_rest_from_conservative_powered_teleoperation_envelope
     overload_mitigation: unresolved
+  pickup_exit_change:
+    source_revision: c779a6c23cdc00694fe99243d874f60a916c193a
+    rotary_joint_tolerance_deg: 15.0
+    gripper_tolerance_normalized: 3.0
+    startup_and_tracking_alignment_unchanged: true
+    focused_tests_passed: 62
+    lint: passed
+    physical_validation: pending
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
