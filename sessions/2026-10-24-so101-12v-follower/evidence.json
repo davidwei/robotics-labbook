@@ -14,6 +14,16 @@
       "path": "follower-calibration-before-12v-recalibration.json",
       "sha256": "78e2624563c4d8fa34df6183c267b3b9822d109ee91d57b2ee501227d26559a0",
       "description": "Stale follower calibration preserved before recalibration of the replaced 12 V motors."
+    },
+    {
+      "path": "leader-calibration-after-recalibration.json",
+      "sha256": "37c2595a0b03f5225793fb7f2cb793313a62eb79ac9802f6313c774f5018611d",
+      "description": "Fresh operator-completed leader calibration generated 2026-10-24 22:15:15 PDT."
+    },
+    {
+      "path": "follower-calibration-after-12v-recalibration.json",
+      "sha256": "8a59e3d2c64201a30e4a9bd51dc365f59fb8782139978f300d87a8e84d9082b0",
+      "description": "Fresh operator-completed follower calibration for the replaced 12 V motors, generated 2026-10-24 22:17:21 PDT."
     }
   ],
   "operator_reports": [
@@ -26,8 +36,6 @@
   "known_missing_evidence": [
     "motor label or serial-number inventory",
     "independent power-supply rating and multimeter measurement",
-    "new leader calibration file",
-    "new follower calibration file",
     "post-replacement motion telemetry or video"
   ]
 }

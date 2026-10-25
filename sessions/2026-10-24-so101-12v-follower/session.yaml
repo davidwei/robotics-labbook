@@ -14,8 +14,8 @@ activity: hardware_maintenance
 operator_report: All SO-101 follower motors were replaced so every follower joint now uses a 12 V motor variant.
 motor_commands_enabled: false
 runs: []
-physical_validation: pending_post_replacement_preflight_and_calibration
-next_action: Complete leader and follower recalibration; archive and hash both generated calibration files before repeating the directional-advisory experiment at revision 3cb506d.
+physical_validation: calibrations_completed_post_replacement_motion_validation_pending
+next_action: Verify the experiment checkout and configuration at revision 3cb506d before a separately authorized repeat directional-advisory run.
 voltage_audit:
   follower_present_voltage_v: 12.2-12.3
   leader_present_voltage_v: 5.1-5.2
@@ -23,18 +23,21 @@ voltage_audit:
   all_status_zero: true
   artifact: voltage-audit-20261024.json
 calibration:
-  leader_status: stale_pending_recalibration
-  follower_status: stale_pending_recalibration
+  leader_status: completed_operator_interactive
+  follower_status: completed_operator_interactive
   pre_calibration_artifacts:
   - leader-calibration-before-recalibration.json
   - follower-calibration-before-12v-recalibration.json
-  required_post_calibration_artifacts:
-  - leader-calibration-after-recalibration.json
-  - follower-calibration-after-12v-recalibration.json
+  post_calibration_artifacts:
+  - path: leader-calibration-after-recalibration.json
+    sha256: 37c2595a0b03f5225793fb7f2cb793313a62eb79ac9802f6313c774f5018611d
+  - path: follower-calibration-after-12v-recalibration.json
+    sha256: 8a59e3d2c64201a30e4a9bd51dc365f59fb8782139978f300d87a8e84d9082b0
+  motor_ids_preserved: true
 repeat_experiment:
   reference: ../2026-10-23-so101-reassembly-warning
   source_revision: 3cb506d168e4a36d580ac33a70f1711d7b98459e
-  readiness: blocked_on_both_calibrations_and_provenance_capture
+  readiness: calibration_complete_checkout_and_preflight_pending
 capture:
   method: live
   sources:
@@ -45,6 +48,5 @@ capture:
   - replacement_not_observed_by_recording_agent
   - no_motor_label_or_serial_inventory
   - no_physical_motor_label_or_serial_inventory
-  - no_post_replacement_leader_or_follower_calibration
   - no_post_replacement_motion_test
 
