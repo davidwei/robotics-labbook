@@ -59,6 +59,16 @@
       "path": "motor3-isolated-test-01.jsonl",
       "sha256": "a380b22e452b2600f5c9fef4ae7712b3d8c7d03d83bd7ace9d6641121c23fe78",
       "description": "Guarded unloaded motor-ID-3 small-step test; correct bidirectional motion, zero status and low current/load with automatic cleanup."
+    },
+    {
+      "path": "motor3-isolated-45deg-01.jsonl",
+      "sha256": "6a01f337675d51717173b89e9f51b775e96f42f89059e085e4583f9de83e930f",
+      "description": "First guarded 45-degree attempt: target written before torque enable was accepted in the goal register but produced no motion and safely timed out."
+    },
+    {
+      "path": "motor3-isolated-45deg-02.jsonl",
+      "sha256": "8473c7b7eade4d737cabe8913d8ec0159f2930712aa61306411b2b8f8e378f40",
+      "description": "Successful guarded 45-degree unloaded motor-3 rotation using hold, torque-enable, then target ordering."
     }
   ],
   "operator_reports": [

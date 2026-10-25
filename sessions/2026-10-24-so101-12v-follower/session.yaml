@@ -128,6 +128,29 @@ repeat_experiment:
     - 0
     torque_disabled_after_test: true
     interpretation: motor_encoder_communications_and_unloaded_output_function
+  motor_3_isolated_45deg_test:
+    requested_rotation_deg: 45.0
+    raw_step: 512
+    direction: inward_decreasing_raw_position
+    first_attempt:
+      outcome: safe_timeout_no_motion
+      command_order: target_then_torque_enable
+      artifact: motor3-isolated-45deg-01.jsonl
+      sha256: 6a01f337675d51717173b89e9f51b775e96f42f89059e085e4583f9de83e930f
+    retry:
+      outcome: passed
+      command_order: hold_then_torque_enable_then_target
+      artifact: motor3-isolated-45deg-02.jsonl
+      sha256: 8473c7b7eade4d737cabe8913d8ec0159f2930712aa61306411b2b8f8e378f40
+      position_raw: 3109_to_2602
+      target_raw: 2597
+      duration_s: 0.95
+      current_range_raw: 0-7
+      load_range_raw: 0-200
+      status_values:
+      - 0
+      temperature_c: 37
+    torque_disabled_after_each_attempt: true
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
