@@ -88,6 +88,19 @@ repeat_experiment:
     focused_tests_passed: 62
     lint: passed
     physical_validation: pending
+  motor_3_read_only_diagnostic:
+    motor: elbow_flex
+    id: 3
+    communication: normal
+    configuration_matches_peer_motors: true
+    status: 0
+    torque_enable: 0
+    present_voltage_v: 12.2
+    present_temperature_c: 42
+    present_position_raw: 3145
+    last_goal_position_raw: 3135
+    configured_max_position_raw: 3114
+    conclusion: motor_health_unresolved_requires_unloaded_isolated_motion_test
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
@@ -117,4 +130,5 @@ capture:
   - no_unloaded_mechanical_range_or_assembly_inspection
   - folded_rest_not_reconciled_with_conservative_calibration_boundary
   - preferred_folded_rest_requires_non_overloading_park_or_support_strategy
+  - motor_3_unloaded_motion_not_tested
 

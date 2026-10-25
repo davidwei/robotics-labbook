@@ -22,5 +22,7 @@ The operator prefers to retain the current folded rest geometry. Future design w
 
 For the next operator-requested teleoperation diagnostic, the `awaiting_alignment` pickup-exit tolerance was separated from the existing startup/tracking alignment threshold. Revision `c779a6c23cdc00694fe99243d874f60a916c193a` permits pickup exit when each rotary joint is within 15 degrees; the gripper remains at 3 normalized units, and startup/rest plus normal tracking alignment remain at their prior 1.5-degree/3-unit thresholds. Sixty-two focused tests and Ruff passed; physical validation is pending.
 
+After upstream teleoperation appeared unable to move motor ID 3 (`elbow_flex`), a torque-off read-only register comparison found normal communication and no configuration outlier: model 777, firmware 3.10, phase 12, position mode, PID 16/0/32, 12.2 V and the principal protection settings matched the other non-gripper motors. The elbow was warmer at 42 C versus 31–34 C for the others. Its raw present position was 3145 and last goal 3135 while its configured maximum position limit was 3114. These observations do not prove motor health; an unloaded isolated motion test is required to distinguish motor/output failure from linkage, limit and load effects.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 
