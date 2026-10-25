@@ -39,6 +39,11 @@
       "path": "repeat-read-only-preflight.json",
       "sha256": "78aa806854410cf8558745980b4ea6dc8adf5022f8b7c67fe037ce76d4ba4a37",
       "description": "Exact-revision read-only calibration/register/position/voltage/status/torque/PID preflight."
+    },
+    {
+      "path": "state-machine-repeat-01.jsonl",
+      "sha256": "d237c28a8a3780ccf30bb4d15cf2f94b2a585fe93fb7dc28acc802030105cbe5",
+      "description": "Closed zero-drop telemetry from the powered preflight that latched follower elbow_flex status 32 before Tracking."
     }
   ],
   "operator_reports": [
@@ -51,7 +56,8 @@
   "known_missing_evidence": [
     "motor label or serial-number inventory",
     "independent power-supply rating and multimeter measurement",
-    "post-replacement motion telemetry or video"
+    "post-replacement Tracking-phase telemetry or video",
+    "physical inspection identifying the elbow overload root cause"
   ]
 }
 

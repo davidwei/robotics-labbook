@@ -1,6 +1,14 @@
 # Directional-advisory repeat preflight
 
-Status: ready for an operator-started physical trial; no post-replacement motion has occurred.
+Status: blocked after an operator-started powered preflight fault; the directional experiment did not begin.
+
+## Powered preflight result
+
+The runner entered `Idle` and commanded the saved folded rest pose. About 2.1 seconds later the follower `elbow_flex` motor reported status 32; the runner latched `fault` before the operator entered Tracking. The supplier register definition identifies status bit 5 (value 32) as load overload. All other motor status values remained zero.
+
+Immediately before the fault, the saved elbow rest command was 94.46 degrees while the measured elbow was 103.34 degrees, beyond the calibrated upper bound of 94.90 degrees. This supports a direct observation that powered holding was attempting to reduce an approximately 8.9-degree rest error at the folded endpoint. It does not yet establish whether the cause is rest-pose capture, calibration/end-stop geometry, assembly orientation, or another mechanical issue.
+
+The operator stopped the runner. The closed telemetry contains 3,024 records, a writer summary of 3,022 submitted/written and zero dropped records, and is archived as `state-machine-repeat-01.jsonl`. Do not restart this trial until the elbow can be checked unloaded and a rest pose safely inside the calibrated/mechanical boundary is established.
 
 ## Controlled comparison
 
