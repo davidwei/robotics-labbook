@@ -76,6 +76,10 @@ repeat_experiment:
     elbow_endpoint_intentionally_inside_geometric_limit: true
     folded_rest_may_be_on_or_outside_calibrated_boundary: true
     implication: calibrated_boundary_crossing_is_not_proof_of_geometric_hard_stop
+  operator_rest_preference:
+    retain_current_folded_geometry: true
+    design_implication: separate_parked_rest_from_conservative_powered_teleoperation_envelope
+    overload_mitigation: unresolved
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
@@ -104,4 +108,5 @@ capture:
   - elbow_overload_root_cause_unresolved
   - no_unloaded_mechanical_range_or_assembly_inspection
   - folded_rest_not_reconciled_with_conservative_calibration_boundary
+  - preferred_folded_rest_requires_non_overloading_park_or_support_strategy
 

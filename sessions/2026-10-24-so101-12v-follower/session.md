@@ -18,5 +18,7 @@ The report-only powered diagnostic reproduced the elbow overload without enterin
 
 The operator clarified that the elbow calibration endpoint was intentionally set inside the arm's true geometric limit to provide collision margin, and that the folded rest pose may lie on or outside that conservative calibration boundary. Therefore, elbow positions above 94.90 degrees are not evidence by themselves that the arm contacted its geometric hard stop. The revised leading issue is a mismatch between the conservative software range and the selected folded rest, combined with reproducibly high holding effort in that configuration. Mechanical contact, motor phase/direction, horn alignment and calibration quality remain unverified rather than established causes.
 
+The operator prefers to retain the current folded rest geometry. Future design work should therefore keep the conservative teleoperation boundary while treating the folded pose separately as a parked/rest configuration. The unresolved requirement is to avoid sustained elbow overload there, for example through mechanical support or explicit torque-off parking rather than redefining the preferred pose as an ordinary powered operating target.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 
