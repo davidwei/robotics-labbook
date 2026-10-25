@@ -3,19 +3,20 @@ date: '2026-10-24'
 timezone: America/Los_Angeles
 owner: David Wei
 project: so101
-status: in_progress
-mode: in-lab
+status: completed
+mode: post-lab
+ended_at: '2026-10-25T00:54:32-07:00'
 related_ideas:
 - IDEA-20261022-001
 - IDEA-20261023-001
 previous_session: 2026-10-23-so101-reassembly-warning
-labbook_refreshed_revision: 965e3cfdf372f97b72648c126de217bbe7b4a153
+labbook_refreshed_revision: 9db0a538296fde39822da5dd5a610c696fe491b7
 activity: hardware_maintenance
 operator_report: All SO-101 follower motors were replaced so every follower joint now uses a 12 V motor variant.
 motor_commands_enabled: false
 runs: []
-physical_validation: blocked_by_follower_elbow_load_overload_during_powered_preflight
-next_action: With torque off and the follower supported, inspect elbow mechanical freedom and calibration/end-stop geometry; establish a rest pose with safe boundary margin before retry.
+physical_validation: motor_3_reinstalled_and_recalibrated_post_reinstall_powered_hold_pending
+next_action: Next lab visit confirms assembly, captures a rest pose bound to calibration 5de187e, then performs a monitored powered hold before any Tracking attempt.
 voltage_audit:
   follower_present_voltage_v: 12.2-12.3
   leader_present_voltage_v: 5.1-5.2
@@ -262,6 +263,7 @@ capture:
   - no_physical_motor_label_or_serial_inventory
   - no_tracking_phase_post_replacement_test
   - elbow_overload_root_cause_unresolved
+  - no_post_reinstall_powered_hold_or_teleoperation
   - no_unloaded_mechanical_range_or_assembly_inspection
   - folded_rest_not_reconciled_with_conservative_calibration_boundary
   - preferred_folded_rest_requires_non_overloading_park_or_support_strategy

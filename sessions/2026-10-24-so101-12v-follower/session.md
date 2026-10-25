@@ -38,5 +38,7 @@ Motor ID 3 was reconnected alone and the same reduced-torque comparison was repe
 
 The operator reinstalled motor ID 3, recalibrated the full follower and observed that the elbow motor moved successfully during calibration. The new follower calibration hash is `5de187e0901e4f394eae8affdacca9388f60f013b824dd7067a1bfc5eab8f4df`; motor 3 homing offset changed from 1286 to 156 and its captured raw range changed from 955–3114 to 1012–3230. A read-only six-motor verification passed: all IDs 1–6 were present, the file matched the motor registers, all torque values and statuses were zero, and motor 3 read 12.2 V, 32 C and raw position 3222, eight counts inside its new conservative upper limit. This supports successful reinstallation/calibration but does not yet validate powered holding or teleoperation in the preferred folded pose.
 
+The operator left the lab shortly after midnight on 2026-10-25. The session closed with torque disabled and zero status in the final read-only verification. No post-reinstall powered hold, rest-pose capture or teleoperation run was performed. The next lab visit should begin by confirming the final mechanical assembly, capturing a rest pose bound to the new calibration, and performing a short monitored powered hold before Tracking.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 
