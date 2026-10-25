@@ -1,0 +1,91 @@
+{
+  "Homing_Offset": {
+    "elbow_flex": 156,
+    "gripper": 2046,
+    "shoulder_lift": 2016,
+    "shoulder_pan": 1712,
+    "wrist_flex": -1659,
+    "wrist_roll": 1856
+  },
+  "ID": {
+    "elbow_flex": 3,
+    "gripper": 6,
+    "shoulder_lift": 2,
+    "shoulder_pan": 1,
+    "wrist_flex": 4,
+    "wrist_roll": 5
+  },
+  "Max_Position_Limit": {
+    "elbow_flex": 3230,
+    "gripper": 3127,
+    "shoulder_lift": 3176,
+    "shoulder_pan": 3344,
+    "wrist_flex": 2992,
+    "wrist_roll": 4095
+  },
+  "Min_Position_Limit": {
+    "elbow_flex": 1012,
+    "gripper": 1667,
+    "shoulder_lift": 778,
+    "shoulder_pan": 873,
+    "wrist_flex": 713,
+    "wrist_roll": 0
+  },
+  "Operating_Mode": {
+    "elbow_flex": 0,
+    "gripper": 0,
+    "shoulder_lift": 0,
+    "shoulder_pan": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0
+  },
+  "Phase": {
+    "elbow_flex": 12,
+    "gripper": 12,
+    "shoulder_lift": 12,
+    "shoulder_pan": 12,
+    "wrist_flex": 12,
+    "wrist_roll": 12
+  },
+  "Present_Position": {
+    "elbow_flex": 3222,
+    "gripper": 1674,
+    "shoulder_lift": 791,
+    "shoulder_pan": 2069,
+    "wrist_flex": 2649,
+    "wrist_roll": 2814
+  },
+  "Present_Temperature": {
+    "elbow_flex": 32,
+    "gripper": 30,
+    "shoulder_lift": 28,
+    "shoulder_pan": 29,
+    "wrist_flex": 30,
+    "wrist_roll": 30
+  },
+  "Present_Voltage": {
+    "elbow_flex": 122,
+    "gripper": 124,
+    "shoulder_lift": 123,
+    "shoulder_pan": 122,
+    "wrist_flex": 123,
+    "wrist_roll": 123
+  },
+  "Status": {
+    "elbow_flex": 0,
+    "gripper": 0,
+    "shoulder_lift": 0,
+    "shoulder_pan": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0
+  },
+  "Torque_Enable": {
+    "elbow_flex": 0,
+    "gripper": 0,
+    "shoulder_lift": 0,
+    "shoulder_pan": 0,
+    "wrist_flex": 0,
+    "wrist_roll": 0
+  },
+  "calibration_matches_motor_registers": true
+}

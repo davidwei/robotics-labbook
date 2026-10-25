@@ -216,6 +216,26 @@ repeat_experiment:
     artifact: motor3-isolated-repeat-02.jsonl
     sha256: 12dcbe5009706427471b8945e4ef3163c9e85304f252fd6d9853b1fca61d23c5
     interpretation: repeat_confirms_normal_motor_3_motion_at_same_reduced_torque_that_failed_both_spares
+  post_motor_3_reinstall_calibration:
+    operator_observed_motor_3_motion: true
+    artifact: follower-calibration-after-motor3-reinstall.json
+    sha256: 5de187e0901e4f394eae8affdacca9388f60f013b824dd7067a1bfc5eab8f4df
+    all_motor_ids_present: true
+    calibration_matches_motor_registers: true
+    all_torque_disabled: true
+    all_status_zero: true
+    elbow_homing_offset_raw:
+      before: 1286
+      after: 156
+    elbow_range_raw:
+      before: 955-3114
+      after: 1012-3230
+    elbow_present_position_raw: 3222
+    elbow_present_voltage_v: 12.2
+    elbow_present_temperature_c: 32
+    verification_artifact: post-reinstall-calibration-verify.json
+    verification_sha256: 43505ac601bfebdefa9d689b0f40a4bba16ec4b2b75194cbc659aeba217c7fd8
+    powered_holding_validation: pending
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
@@ -248,4 +268,5 @@ capture:
   - motor_3_installed_linkage_and_horn_load_not_isolated
   - spare_1_no_motion_and_transient_temperature_sample_unresolved
   - spare_2_no_motion_at_reduced_torque_unresolved
+  - post_reinstall_powered_hold_and_teleoperation_not_tested
 

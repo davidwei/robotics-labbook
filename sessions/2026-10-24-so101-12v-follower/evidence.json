@@ -89,6 +89,16 @@
       "path": "motor3-isolated-repeat-02.jsonl",
       "sha256": "12dcbe5009706427471b8945e4ef3163c9e85304f252fd6d9853b1fca61d23c5",
       "description": "Passing controlled repeat on isolated motor ID 3: small bidirectional steps plus 45-degree motion at the same reduced torque that failed both spares."
+    },
+    {
+      "path": "follower-calibration-after-motor3-reinstall.json",
+      "sha256": "5de187e0901e4f394eae8affdacca9388f60f013b824dd7067a1bfc5eab8f4df",
+      "description": "Full follower calibration generated after motor ID 3 reinstallation."
+    },
+    {
+      "path": "post-reinstall-calibration-verify.json",
+      "sha256": "43505ac601bfebdefa9d689b0f40a4bba16ec4b2b75194cbc659aeba217c7fd8",
+      "description": "Torque-disabled six-motor verification that the post-reinstall calibration matches motor registers with all statuses zero."
     }
   ],
   "operator_reports": [
