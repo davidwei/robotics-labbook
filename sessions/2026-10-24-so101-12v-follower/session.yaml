@@ -72,6 +72,20 @@ repeat_experiment:
     elbow_position_deg: 96.0440
     elbow_calibrated_upper_bound_deg: 94.9011
     interpretation: status_bit_cleared_but_endpoint_condition_not_resolved
+  report_only_powered_diagnostic:
+    outcome: elbow_overload_reproduced_before_tracking
+    telemetry: state-machine-repeat-02.jsonl
+    telemetry_sha256: a004313253f8a3a49e30ab4e53a514b7147b45c6938e0132fb29e57e295a596e
+    source_revision: c5ce05ec2e649132f5546631f108b02fa7d23c37
+    duration_s: 13.52
+    first_status_32_after_first_poll_s: 2.59
+    consecutive_status_32_polls: 22
+    elbow_position_range_deg: 96.0440-104.2198
+    elbow_hold_target_deg: 96.0440
+    elbow_peak_load_raw: -1000
+    elbow_peak_current_raw: 419
+    tracking_entered: false
+    telemetry_dropped_records: 0
 capture:
   method: live
   sources:
@@ -84,4 +98,5 @@ capture:
   - no_physical_motor_label_or_serial_inventory
   - no_tracking_phase_post_replacement_test
   - elbow_overload_root_cause_unresolved
+  - no_unloaded_mechanical_range_or_assembly_inspection
 

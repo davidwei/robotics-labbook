@@ -14,5 +14,7 @@ After reviewing the difference from upstream teleoperation, the supervised runne
 
 A subsequent torque-off read found status zero on every motor, showing that the elbow's status-32 flag did not persist after shutdown. The unloaded elbow measured 96.04 degrees, still 1.14 degrees beyond its 94.90-degree calibrated upper bound. The cleared bit therefore does not show that the endpoint/load condition has been corrected.
 
+The report-only powered diagnostic reproduced the elbow overload without entering Tracking. Status was initially zero, then changed to 32 about 2.59 seconds after the first status poll and remained 32 for 22 consecutive polls through shutdown. The elbow drifted from 96.04 to 104.22 degrees while the measured-pose hold target remained 96.04 degrees; peak sampled load was -1000 and peak sampled current was 419 raw. One console warning was expected because warning display is edge-triggered, while telemetry preserves every poll. This establishes that the powered endpoint/load problem is reproducible even though the status bit clears while torque is off.
+
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos or serial-number inventory. The powered preflight is captured in telemetry, but no Tracking-phase experiment occurred.
 

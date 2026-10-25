@@ -49,6 +49,11 @@
       "path": "post-fault-read-only.json",
       "sha256": "4ad4e9bb656ed37c79ef49bbccd7a1dbf3b529d1788c9e3d20ef328d46d9241b",
       "description": "Torque-off post-fault register snapshot: all status values cleared; elbow remained 1.14 degrees beyond its calibrated upper bound."
+    },
+    {
+      "path": "state-machine-repeat-02.jsonl",
+      "sha256": "a004313253f8a3a49e30ab4e53a514b7147b45c6938e0132fb29e57e295a596e",
+      "description": "Zero-drop report-only powered diagnostic telemetry reproducing persistent elbow_flex status 32 before Tracking."
     }
   ],
   "operator_reports": [
