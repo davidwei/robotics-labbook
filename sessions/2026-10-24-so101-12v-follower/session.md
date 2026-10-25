@@ -6,7 +6,9 @@ Read-only register inspection found 12.2–12.3 V at all six follower motors and
 
 The operator identified both saved leader and follower calibration records as stale and recalibrated both arms interactively. The exact before/after JSON files are archived and hashed. All six motor IDs remained 1–6 on both arms. The follower offsets changed substantially after motor replacement; captured spans changed by +50, −16, −116, −309, 0 and −83 counts in joint order. These are calibration observations, not evidence that tracking or recovery behavior is validated.
 
-Next: verify the exact experiment checkout and configuration, then reproduce the prior experiment at source revision `3cb506d168e4a36d580ac33a70f1711d7b98459e`, preserving the new calibration hashes and the 12 V follower setup as provenance. Treat the first powered motion as a separate, explicitly authorized run.
+The controlled repeat is now ready for an operator-started physical trial. The exact revision `3cb506d168e4a36d580ac33a70f1711d7b98459e` is checked out cleanly in an isolated LeRobot 0.4.4 environment. Forty-nine focused tests and Ruff passed. Frozen calibration files match motor-side registers; read-only hardware checks found zero status, disabled torque, follower P/I/D 16/0/32 and the expected voltages. The intended folded rest pose was captured and the final offline runner check passed. See [repeat-preflight.md](repeat-preflight.md).
+
+Next: start one supervised minimum-useful trial, inspect initial state before Space, move gently without deliberate obstruction, and preserve the generated telemetry. The first powered motion remains a separate operator action.
 
 Capture is partial and live. The replacement itself was not observed by the recording agent, and there are no photos, serial-number inventory, or post-replacement motion artifacts yet.
 

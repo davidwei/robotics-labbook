@@ -1,0 +1,11 @@
+{
+  "pose": {
+    "shoulder_pan": -5.670329670329671,
+    "shoulder_lift": -102.98901098901099,
+    "elbow_flex": 94.46153846153847,
+    "wrist_flex": 76.43956043956044,
+    "wrist_roll": 5.582417582417582,
+    "gripper": 0.20604395604395606
+  },
+  "follower_calibration_sha256": "8a59e3d2c64201a30e4a9bd51dc365f59fb8782139978f300d87a8e84d9082b0"
+}

@@ -14,8 +14,8 @@ activity: hardware_maintenance
 operator_report: All SO-101 follower motors were replaced so every follower joint now uses a 12 V motor variant.
 motor_commands_enabled: false
 runs: []
-physical_validation: calibrations_completed_post_replacement_motion_validation_pending
-next_action: Verify the experiment checkout and configuration at revision 3cb506d before a separately authorized repeat directional-advisory run.
+physical_validation: ready_for_repeat_trial_post_replacement_motion_validation_pending
+next_action: Operator starts one supervised minimum-useful directional-advisory repeat; inspect initial state before Space and preserve telemetry.
 voltage_audit:
   follower_present_voltage_v: 12.2-12.3
   leader_present_voltage_v: 5.1-5.2
@@ -37,7 +37,14 @@ calibration:
 repeat_experiment:
   reference: ../2026-10-23-so101-reassembly-warning
   source_revision: 3cb506d168e4a36d580ac33a70f1711d7b98459e
-  readiness: calibration_complete_checkout_and_preflight_pending
+  checkout: /Users/davidwei/robotics/lerobot-so101-experiment
+  environment: /Users/davidwei/miniforge3/envs/lerobot-so101-3cb506d
+  readiness: ready_for_operator_started_physical_trial
+  focused_tests_passed: 49
+  lint: passed
+  hardware_config_sha256: 57d928c368239ba5c0766ec88aa3a7e7d67d6aa380841cd1841dcca5e224afb6
+  rest_pose_sha256: ec2127a3609c712357871e9c559bca0046385466d5411b622be14ee30c6b20f2
+  read_only_preflight_sha256: 78aa806854410cf8558745980b4ea6dc8adf5022f8b7c67fe037ce76d4ba4a37
 capture:
   method: live
   sources:

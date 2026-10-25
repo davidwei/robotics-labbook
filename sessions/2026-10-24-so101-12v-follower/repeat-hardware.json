@@ -1,0 +1,23 @@
+{
+  "robot": {
+    "type": "so101_follower",
+    "port": "/dev/cu.usbmodem5AE60801371",
+    "id": "follower-arm-01",
+    "calibration_dir": "/Users/davidwei/robotics/lerobot-so101-experiment/workbench/so101_intel_mac/outputs/lab/so101-20261024-12v/calibration/follower",
+    "use_degrees": true
+  },
+  "teleop": {
+    "type": "so101_leader",
+    "port": "/dev/cu.usbmodem5AE60548171",
+    "id": "leader-arm-01",
+    "calibration_dir": "/Users/davidwei/robotics/lerobot-so101-experiment/workbench/so101_intel_mac/outputs/lab/so101-20261024-12v/calibration/leader",
+    "use_degrees": true
+  },
+  "experiment": {
+    "reference_trial": "2026-10-23 directional-advisory trial",
+    "source_revision": "3cb506d168e4a36d580ac33a70f1711d7b98459e",
+    "intended_change": "all SO-101 follower motors replaced by operator with 12 V variants",
+    "follower_live_voltage_preflight_v": "12.2-12.3",
+    "leader_live_voltage_preflight_v": "5.1-5.2"
+  }
+}

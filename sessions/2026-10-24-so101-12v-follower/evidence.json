@@ -24,6 +24,21 @@
       "path": "follower-calibration-after-12v-recalibration.json",
       "sha256": "8a59e3d2c64201a30e4a9bd51dc365f59fb8782139978f300d87a8e84d9082b0",
       "description": "Fresh operator-completed follower calibration for the replaced 12 V motors, generated 2026-10-24 22:17:21 PDT."
+    },
+    {
+      "path": "repeat-hardware.json",
+      "sha256": "57d928c368239ba5c0766ec88aa3a7e7d67d6aa380841cd1841dcca5e224afb6",
+      "description": "Session-specific hardware configuration for the exact-revision repeat."
+    },
+    {
+      "path": "repeat-rest-pose.json",
+      "sha256": "ec2127a3609c712357871e9c559bca0046385466d5411b622be14ee30c6b20f2",
+      "description": "Read-only captured folded rest pose bound to the new follower calibration hash."
+    },
+    {
+      "path": "repeat-read-only-preflight.json",
+      "sha256": "78aa806854410cf8558745980b4ea6dc8adf5022f8b7c67fe037ce76d4ba4a37",
+      "description": "Exact-revision read-only calibration/register/position/voltage/status/torque/PID preflight."
     }
   ],
   "operator_reports": [
