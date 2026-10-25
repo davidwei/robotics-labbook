@@ -69,6 +69,11 @@
       "path": "motor3-isolated-45deg-02.jsonl",
       "sha256": "8473c7b7eade4d737cabe8913d8ec0159f2930712aa61306411b2b8f8e378f40",
       "description": "Successful guarded 45-degree unloaded motor-3 rotation using hold, torque-enable, then target ordering."
+    },
+    {
+      "path": "spare1-id4-isolated-test.jsonl",
+      "sha256": "054d9686884b76737dcf25a33d2768178a1980ec4490f69251c16fa3ede13679",
+      "description": "Failed guarded unloaded spare-ID-4 small-step test: no position change, low current, moderate load and one transient 59 C sample followed by 26 C torque-off recheck."
     }
   ],
   "operator_reports": [

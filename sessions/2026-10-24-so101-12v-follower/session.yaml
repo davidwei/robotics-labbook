@@ -151,6 +151,25 @@ repeat_experiment:
       - 0
       temperature_c: 37
     torque_disabled_after_each_attempt: true
+  spare_1_isolated_test:
+    id: 4
+    model: 777
+    firmware: '3.10'
+    initial_voltage_v: 12.4
+    initial_temperature_c: 26
+    initial_status: 0
+    initial_torque_enable: 0
+    small_step_raw: 476_to_496
+    outcome: aborted_no_motion
+    observed_position_raw: 476
+    current_range_raw: 0-2
+    load_range_raw: -96_to_0
+    transient_temperature_sample_c: 59
+    post_abort_temperature_c: 26
+    post_abort_status: 0
+    forty_five_degree_test_performed: false
+    artifact: spare1-id4-isolated-test.jsonl
+    sha256: 054d9686884b76737dcf25a33d2768178a1980ec4490f69251c16fa3ede13679
   report_only_powered_diagnostic:
     outcome: elbow_overload_reproduced_before_tracking
     telemetry: state-machine-repeat-02.jsonl
@@ -181,4 +200,5 @@ capture:
   - folded_rest_not_reconciled_with_conservative_calibration_boundary
   - preferred_folded_rest_requires_non_overloading_park_or_support_strategy
   - motor_3_installed_linkage_and_horn_load_not_isolated
+  - spare_1_no_motion_and_transient_temperature_sample_unresolved
 
