@@ -37,3 +37,7 @@ bash demo_so101.sh launch --label demo_30fps --episodes 27
 ```
 
 10FPS config parsing/calibration-file preflight passed without hardware connection. Five-minute cap is imposed by the launcher. Physical10FPS trial is pending. Operator announced departure; actual launcher shutdown, torque release, motor power-off and final resting pose were not independently observed.
+
+## October26 startup correction
+
+Operator encountered follower then leader calibration mismatch. Recording children have DEVNULL stdin, so upstream calibration input raised EOFError before recording. Camera-preview KeyboardInterrupt was the intentional SIGTERM release path, separate from calibration failure. Added interactive follower then leader lerobot-calibrate calls before preview/raw keyboard handling on launch and resume. Enter restores saved values; c measures new ranges. Commands inherit Terminal input, use selected configuration/session paths, and abort on failure. Fresh-session calibration hashes captured afterward; resumed datasets retain their calibration-change append guard. Check/list remain hardware-free. Source revision `bd49580152521e054218c1f41dd5b9bfeacc3d75` on lab/so101-intel-warning-20261023. Ten launcher/session tests pass; hardware startup validation pending operator. No agent-side motor connection or actuation. Canonical daily refresh attempted but GitHub DNS/network unavailable; local skill used. Changes committed locally; remote synchronization blocked by network.
