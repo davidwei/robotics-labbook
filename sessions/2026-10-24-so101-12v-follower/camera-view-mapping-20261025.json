@@ -1,0 +1,57 @@
+{
+  "confirmed_at": "20261025_215557",
+  "views": [
+    {
+      "index": 0,
+      "rotation": 0,
+      "width": 640,
+      "height": 480
+    },
+    {
+      "index": 1,
+      "rotation": 0,
+      "width": 640,
+      "height": 480
+    }
+  ],
+  "cameras": {
+    "camera_0": {
+      "type": "opencv",
+      "index_or_path": 0,
+      "width": 640,
+      "height": 480,
+      "fps": 30,
+      "rotation": 0
+    },
+    "camera_1": {
+      "type": "opencv",
+      "index_or_path": 1,
+      "width": 640,
+      "height": 480,
+      "fps": 30,
+      "rotation": 0
+    }
+  },
+  "scope": "device mapping and orientation only; no lens or camera-to-robot calibration",
+  "roles": {
+    "camera_0": "high_mount",
+    "camera_1": "gripper"
+  },
+  "usb_identity_binding": "deferred by operator; numeric indices require re-verification after installation changes",
+  "usb_inventory_unbound": [
+    {
+      "product": "USB Camera",
+      "serial": "20250807114148",
+      "vendor_id": 13030,
+      "product_id": 37409,
+      "role": null
+    },
+    {
+      "product": "Innomaker-U20CAM-1080p-S1",
+      "serial": "SN0001",
+      "vendor_id": 3141,
+      "product_id": 25446,
+      "role": null
+    }
+  ]
+}
