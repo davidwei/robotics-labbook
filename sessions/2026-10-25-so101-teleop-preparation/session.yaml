@@ -1,0 +1,14 @@
+id: 2026-10-25-so101-teleop-preparation
+status: prepared
+mode: pre-lab
+robot: so101
+source_revision: 3cb506d168e4a36d580ac33a70f1711d7b98459e
+physical_validation: pending
+hardware_actuated: false
+calibration_source: ../2026-10-24-so101-12v-follower
+next_action: operator_runs_read_only_preflight_then_supervised_standard_teleop
+capture:
+  method: live
+  coverage: partial
+  sources: [filesystem, git, operator_request]
+  known_gaps: [no_live_motor_verification_yet, no_physical_test_yet]

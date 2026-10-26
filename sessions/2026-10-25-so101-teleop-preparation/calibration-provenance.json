@@ -1,0 +1,16 @@
+{
+  "labbook_revision": "c3179a2484b157883f22993cf8bff6194f173ef5",
+  "files": {
+    "follower": {
+      "source": "/Users/dwei/robotics/robotics-labbook/sessions/2026-10-24-so101-12v-follower/follower-calibration-after-motor3-reinstall.json",
+      "installed": "/Users/dwei/lerobot/outputs/lab/so101-20261025-12v/calibration/follower/follower-arm-01.json",
+      "sha256": "5de187e0901e4f394eae8affdacca9388f60f013b824dd7067a1bfc5eab8f4df"
+    },
+    "leader": {
+      "source": "/Users/dwei/robotics/robotics-labbook/sessions/2026-10-24-so101-12v-follower/leader-calibration-after-recalibration.json",
+      "installed": "/Users/dwei/lerobot/outputs/lab/so101-20261025-12v/calibration/leader/leader-arm-01.json",
+      "sha256": "37c2595a0b03f5225793fb7f2cb793313a62eb79ac9802f6313c774f5018611d"
+    }
+  },
+  "hardware_verified_here": false
+}
