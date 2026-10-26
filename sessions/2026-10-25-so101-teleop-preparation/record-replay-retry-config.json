@@ -1,0 +1,93 @@
+{
+  "record": {
+    "robot": {
+      "type": "so101_follower",
+      "port": "/dev/cu.usbmodem5AE60801371",
+      "id": "follower-arm-01",
+      "calibration_dir": "/Users/dwei/lerobot/outputs/lab/so101-20261025-12v/calibration/follower",
+      "use_degrees": true,
+      "cameras": {
+        "camera_0": {
+          "type": "opencv",
+          "index_or_path": 0,
+          "width": 640,
+          "height": 480,
+          "fps": 30,
+          "rotation": 0
+        },
+        "camera_1": {
+          "type": "opencv",
+          "index_or_path": 1,
+          "width": 640,
+          "height": 480,
+          "fps": 30,
+          "rotation": 0
+        }
+      },
+      "max_relative_target": null
+    },
+    "teleop": {
+      "type": "so101_leader",
+      "port": "/dev/cu.usbmodem5AE60548171",
+      "id": "leader-arm-01",
+      "calibration_dir": "/Users/dwei/lerobot/outputs/lab/so101-20261025-12v/calibration/leader",
+      "use_degrees": true
+    },
+    "display_data": true,
+    "play_sounds": true,
+    "dataset": {
+      "repo_id": "local/so101_cameras_20261025_220057",
+      "root": "/Users/dwei/lerobot/recordings/so101_cameras_20261025_220057",
+      "single_task": "SO101 camera recording and replay comparison",
+      "fps": 30,
+      "episode_time_s": 30,
+      "reset_time_s": 0,
+      "num_episodes": 1,
+      "video": true,
+      "push_to_hub": false,
+      "vcodec": "h264"
+    },
+    "catch_up_warning": {
+      "enabled": true,
+      "telemetry_path": "/Users/dwei/lerobot/outputs/lab/so101-20261025-12v/so101_cameras_20261025_220057.telemetry.jsonl"
+    }
+  },
+  "replay": {
+    "robot": {
+      "type": "so101_follower",
+      "port": "/dev/cu.usbmodem5AE60801371",
+      "id": "follower-arm-01",
+      "calibration_dir": "/Users/dwei/lerobot/outputs/lab/so101-20261025-12v/calibration/follower",
+      "use_degrees": true,
+      "cameras": {
+        "camera_0": {
+          "type": "opencv",
+          "index_or_path": 0,
+          "width": 640,
+          "height": 480,
+          "fps": 30,
+          "rotation": 0
+        },
+        "camera_1": {
+          "type": "opencv",
+          "index_or_path": 1,
+          "width": 640,
+          "height": 480,
+          "fps": 30,
+          "rotation": 0
+        }
+      },
+      "max_relative_target": null
+    },
+    "dataset": {
+      "repo_id": "local/so101_cameras_20261025_220057",
+      "root": "/Users/dwei/lerobot/recordings/so101_cameras_20261025_220057",
+      "episode": 0,
+      "fps": 30
+    },
+    "play_sounds": true,
+    "display_data": true,
+    "display_recorded_cameras": true,
+    "video_backend": "pyav"
+  }
+}
