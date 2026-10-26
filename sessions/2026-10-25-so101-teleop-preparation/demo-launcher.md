@@ -35,3 +35,5 @@ bash demo_so101.sh launch --session EXACT_PRINTED_SESSION_NAME
 ```
 
 27 is two demo episodes plus25 collection episodes; use25 for25 total. The recording limit counts successful saves, not attempts. Replay remains available after reaching it.
+
+Launch usability correction: operator encountered required-mode argparse error when invoking module/options directly. Mode now defaults to launch; explicit launch/list/check remain supported. Fresh no-mode regression test passes without hardware; three launcher tests pass. Root wrapper and module both accept omitted mode.
