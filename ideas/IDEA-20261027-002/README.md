@@ -2,16 +2,17 @@
 
 Status: time-sensitive; ready for hardware inventory and input-only bring-up.
 Project: PICO 4 loan evaluation / Unitree G1. Physical robot validation: not
-started and not authorized. Loan window: device return expected within a few days
-of 2026-10-27; exact deadline pending.
+started and not authorized. Loan deadline: Friday, 2026-10-30; target completion of
+tracking evidence by Thursday, 2026-10-29.
 
 ## Objective and scope
 
 Verify NVIDIA's released GEAR-SONIC whole-body teleoperation path with the borrowed
-PICO 4, two handheld controllers and foot trackers. First establish calibrated
-full-body tracking and SONIC Sim2Sim behavior. A real-G1 attempt is a later,
-separately authorized gate, not an automatic consequence of successful streaming or
-simulation.
+PICO 4-family headset and two confirmed foot trackers. Exact headset variant, OS,
+controller inventory and tracker firmware are not yet confirmed. First establish
+calibrated full-body tracking and SONIC Sim2Sim behavior. A real-G1 attempt is a
+later, separately authorized gate, not an automatic consequence of successful
+streaming or simulation.
 
 Use NVIDIA's full
 [`GR00T-WholeBodyControl`](https://github.com/NVlabs/GR00T-WholeBodyControl)
@@ -37,10 +38,10 @@ Primary references:
 
 ## Time-boxed validation ladder
 
-1. **Inventory before installation:** record exact PICO model/OS, controller and
-   tracker count/firmware, battery/charger state, available cables, installed apps,
-   Wi-Fi topology and return deadline. Confirm the trackers pair and appear in the
-   headset UI.
+1. **Inventory before installation:** identify the exact PICO model/OS from the
+   device settings and hardware label; record controller inventory, the two tracker
+   firmware versions, battery/charger state, available cables, installed apps and
+   Wi-Fi topology. Confirm both trackers pair and appear in the headset UI.
 2. **Input-only tracking:** install/launch the documented XRoboToolkit PICO client
    and PC service. With no simulator or robot, verify head, both controllers and both
    feet are present, correctly labeled, finite and directionally plausible. Preserve
@@ -69,7 +70,8 @@ Primary references:
   XRoboToolkit transport, calibration, pose semantics and SONIC deployment stages.
 - Real-robot motion is not required to complete the time-sensitive evaluation.
 
-Next agent action: confirm the exact return deadline and device inventory, then
-prepare the input-only XRoboToolkit bring-up and evidence capture. Prerequisites:
-borrowed PICO/controllers/trackers charged and available, compatible workstation,
-private low-latency Wi-Fi and permission to install the documented PICO application.
+Next agent action: identify the exact headset model/OS and remaining device
+inventory, then prepare the input-only XRoboToolkit bring-up and evidence capture.
+Prerequisites: borrowed PICO/controllers/trackers charged and available, compatible
+workstation, private low-latency Wi-Fi and permission to install the documented PICO
+application.

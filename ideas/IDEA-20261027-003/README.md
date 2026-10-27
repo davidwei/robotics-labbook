@@ -4,6 +4,7 @@ Status: time-sensitive; ready for compatibility discovery and input-only connect
 test. Project: PICO 4 loan evaluation / NVIDIA Isaac Teleop. Physical robot
 validation: not started and not authorized. Related:
 [SONIC foot-tracking evaluation](../IDEA-20261027-002/README.md).
+Loan deadline: Friday, 2026-10-30; preserve compatibility evidence by Thursday.
 
 ## Objective and uncertainty
 
@@ -16,8 +17,9 @@ Do not initially assume Isaac Teleop exposes the PICO ankle trackers. NVIDIA's
 current Isaac Capture device table explicitly lists PICO 4 Ultra controller and hand
 tracking, while the GR00T whole-body stack separately documents PICO foot tracking
 through XRoboToolkit and also provides an Isaac Teleop input backend. The borrowed
-device is described only as PICO 4. Exact model, OS, WebXR/CloudXR client behavior
-and foot-tracker availability through DeviceIO must therefore be measured.
+device is confirmed only as a member of the PICO 4 family with two foot trackers.
+Exact model, OS, controller inventory, WebXR/CloudXR client behavior and foot-tracker
+availability through DeviceIO must therefore be measured.
 
 Primary references:
 
