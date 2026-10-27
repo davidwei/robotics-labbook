@@ -5,8 +5,10 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
 - Experiment: [G1 embodiment compatibility](../../experiments/EXP-20261009-001/experiment.yaml).
 - Follow-up idea: [native G1-23 MuJoCo embodiment support](../../ideas/IDEA-20261027-001/README.md),
   based on the maintainer guidance after PR #4651 approval.
-- Active safety validation: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
-  software-complete at LeRobot `a65596cb`, physical validation pending.
+- Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
+  software candidate at LeRobot `a65596cb`; physical validation failed at RUN-006
+  and further physical tests remain stopped pending offline analysis and a new
+  operator decision.
 - Sessions:
   - [2026-10-16 handover validation preparation](../../sessions/2026-10-16-g1-handover/session.md).
   - [2026-10-15 G1 VR camera validation (partial pass; headset pending)](../../sessions/2026-10-15-g1-vr-camera/session.md).
