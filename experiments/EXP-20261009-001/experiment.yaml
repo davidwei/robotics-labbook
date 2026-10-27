@@ -18,7 +18,10 @@ publication:
   pull_request: https://github.com/huggingface/lerobot/pull/4651
   source_branch: MoissanClub/lerobot:g1/embodiments
   candidate_revision: 8c3f16c200f4c454a8ba8fc0065470d598f831d9
-  status: pushed_to_pr_head
+  status: merged
+  merged_at: '2026-10-19T20:56:57Z'
+  merge_commit: 3991580a5673f5f0219a4e8835a5f973eeccf9a7
+follow_up_idea: ../../ideas/IDEA-20261027-001/README.md
 physical_validation_status:
   g1_29_holosoma: recorded in SESSION-20261009-001
   g1_29_groot: operator reported physical hardware validation completed separately
