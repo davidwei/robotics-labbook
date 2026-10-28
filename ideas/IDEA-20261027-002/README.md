@@ -12,7 +12,8 @@ PICO headset, regulatory model `A8110`, and two confirmed foot trackers. A8110 i
 used for both standard PICO 4 and PICO 4 Pro, so the exact marketed variant,
 controller inventory and tracker firmware are not yet confirmed. Direct device
 inspection reports Android 10 and software version/build `202403120341`; this does
-not by itself distinguish standard from Pro. No eye-tracking or face-tracking
+not by itself distinguish standard from Pro. The device reports PICO system version
+`5.20`. No eye-tracking or face-tracking
 setting was visible, making standard PICO 4 the leading inference, but the marketed
 variant remains unconfirmed. The headset shows one paired motion-tracker set (two
 trackers). First establish

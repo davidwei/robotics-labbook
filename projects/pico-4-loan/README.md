@@ -5,7 +5,8 @@ operator a PICO 4-family headset with two foot trackers; the equipment must be
 returned by Friday, 2026-10-30. The headset regulatory model is `A8110`. Published
 regulatory evidence uses A8110 for both PICO 4 and PICO 4 Pro, so the marketed
 variant remains unresolved. Direct device inspection reports Android 10 and software
-version/build `202403120341`. No eye-tracking or face-tracking setting was visible,
+version/build `202403120341`, with PICO system version `5.20`. No eye-tracking or
+face-tracking setting was visible,
 which is evidence consistent with standard PICO 4 but is not conclusive model
 identification. The device shows one pair of motion trackers (two trackers).
 Controller inventory and tracker firmware remain to be recorded.

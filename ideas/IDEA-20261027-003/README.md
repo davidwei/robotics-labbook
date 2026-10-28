@@ -20,7 +20,8 @@ through XRoboToolkit and also provides an Isaac Teleop input backend. The borrow
 device has regulatory model `A8110`, used for standard PICO 4 and PICO 4 Pro, and
 has two foot trackers. It is not identified as the currently documented PICO 4
 Ultra. Direct inspection reports Android 10 and software version/build
-`202403120341`. No eye-tracking or face-tracking setting was visible, so standard
+`202403120341`, with PICO system version `5.20`. No eye-tracking or face-tracking
+setting was visible, so standard
 PICO 4 is the leading but unconfirmed variant inference. The device shows one paired
 motion-tracker set (two trackers). Controller inventory, WebXR/CloudXR client
 behavior and motion-tracker availability through DeviceIO must therefore be measured.
@@ -57,11 +58,12 @@ Primary references:
 - Preserve exact versions, client URL/profile, logs and a minimal reconnect test.
 - Prefer input-only and simulation evidence; real robot motion is unnecessary.
 
-Current next action: update the PICO system/browser through the supported firmware
-path and verify Chrome 125 or later, then repeat the H.264 G1-29 MuJoCo test. If no
-supported firmware update is available within the loan window, preserve Chrome 105 as
-the compatibility boundary and prioritize the XRoboToolkit/SONIC path rather than
-bypassing NVIDIA's browser gate.
+Current next action: check whether the system updater offers a release newer than
+PICO system version `5.20` and whether PICO Browser has a separate supported update.
+Verify Chrome 125 or later, then repeat the H.264 G1-29 MuJoCo test. If no supported
+update is available within the loan window, preserve Chrome 105 as the compatibility
+boundary and prioritize the XRoboToolkit/SONIC path rather than bypassing NVIDIA's
+browser gate.
 
 ## 2026-10-27 development evidence — G1-29 MuJoCo launch
 
@@ -115,8 +117,9 @@ Direct observations and boundaries:
 - The current NVIDIA client negotiated AV1 initially; the headset showed a dark
   screen. The helper was extended to prefill H.264, and the next native CloudXR log
   confirmed `H264 video format selected` and first-frame delivery.
-- The PICO browser reported Chromium 105 and NVIDIA's client reported that Chrome
-  125 or later is required. NVIDIA's current client source encodes
+- The headset reports PICO system version `5.20`; its PICO browser reported Chromium
+  105, and NVIDIA's client reported that Chrome 125 or later is required. NVIDIA's
+  current client source encodes
   `MIN_PICO_CHROME_MAJOR = 125` and directs the operator to update headset firmware.
 - With H.264, the control screen flashed and disappeared into a black screen. The
   final G1 simulator run nevertheless recorded `0.0993 rad` of arm motion over 6412
