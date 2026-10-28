@@ -9,8 +9,10 @@ tracking evidence by Thursday, 2026-10-29.
 
 Verify NVIDIA's released GEAR-SONIC whole-body teleoperation path with the borrowed
 PICO headset, regulatory model `A8110`, and two confirmed foot trackers. A8110 is
-used for both standard PICO 4 and PICO 4 Pro, so the exact marketed variant, OS,
-controller inventory and tracker firmware are not yet confirmed. First establish
+used for both standard PICO 4 and PICO 4 Pro, so the exact marketed variant,
+controller inventory and tracker firmware are not yet confirmed. Direct device
+inspection reports Android 10 and software version/build `202403120341`; this does
+not by itself distinguish standard from Pro. First establish
 calibrated full-body tracking and SONIC Sim2Sim behavior. A real-G1 attempt is a
 later, separately authorized gate, not an automatic consequence of successful
 streaming or simulation.
@@ -43,7 +45,7 @@ Primary references:
 
 ## Time-boxed validation ladder
 
-1. **Inventory before installation:** record the marketed variant and OS from device
+1. **Inventory before installation:** record the marketed variant from device
    settings; determine whether eye/face tracking identifies a Pro variant; record
    controller inventory, the two tracker firmware versions, battery/charger state,
    available cables, installed apps and Wi-Fi topology. Confirm both trackers pair
@@ -76,7 +78,7 @@ Primary references:
   XRoboToolkit transport, calibration, pose semantics and SONIC deployment stages.
 - Real-robot motion is not required to complete the time-sensitive evaluation.
 
-Next agent action: identify the exact headset model/OS and remaining device
+Next agent action: identify the marketed headset variant and remaining device
 inventory, then prepare the input-only XRoboToolkit bring-up and evidence capture.
 Prerequisites: borrowed PICO/controllers/trackers charged and available, compatible
 workstation, private low-latency Wi-Fi and permission to install the documented PICO

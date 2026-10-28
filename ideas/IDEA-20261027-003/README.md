@@ -19,7 +19,8 @@ tracking, while the GR00T whole-body stack separately documents PICO foot tracki
 through XRoboToolkit and also provides an Isaac Teleop input backend. The borrowed
 device has regulatory model `A8110`, used for standard PICO 4 and PICO 4 Pro, and
 has two foot trackers. It is not identified as the currently documented PICO 4
-Ultra. Exact marketed variant, OS, controller inventory, WebXR/CloudXR client
+Ultra. Direct inspection reports Android 10 and software version/build
+`202403120341`. Exact marketed variant, controller inventory, WebXR/CloudXR client
 behavior and foot-tracker availability through DeviceIO must therefore be measured.
 
 Primary references:
