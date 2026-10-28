@@ -17,9 +17,10 @@ Do not initially assume Isaac Teleop exposes the PICO ankle trackers. NVIDIA's
 current Isaac Capture device table explicitly lists PICO 4 Ultra controller and hand
 tracking, while the GR00T whole-body stack separately documents PICO foot tracking
 through XRoboToolkit and also provides an Isaac Teleop input backend. The borrowed
-device is confirmed only as a member of the PICO 4 family with two foot trackers.
-Exact model, OS, controller inventory, WebXR/CloudXR client behavior and foot-tracker
-availability through DeviceIO must therefore be measured.
+device has regulatory model `A8110`, used for standard PICO 4 and PICO 4 Pro, and
+has two foot trackers. It is not identified as the currently documented PICO 4
+Ultra. Exact marketed variant, OS, controller inventory, WebXR/CloudXR client
+behavior and foot-tracker availability through DeviceIO must therefore be measured.
 
 Primary references:
 

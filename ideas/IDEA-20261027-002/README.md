@@ -8,11 +8,16 @@ tracking evidence by Thursday, 2026-10-29.
 ## Objective and scope
 
 Verify NVIDIA's released GEAR-SONIC whole-body teleoperation path with the borrowed
-PICO 4-family headset and two confirmed foot trackers. Exact headset variant, OS,
+PICO headset, regulatory model `A8110`, and two confirmed foot trackers. A8110 is
+used for both standard PICO 4 and PICO 4 Pro, so the exact marketed variant, OS,
 controller inventory and tracker firmware are not yet confirmed. First establish
 calibrated full-body tracking and SONIC Sim2Sim behavior. A real-G1 attempt is a
 later, separately authorized gate, not an automatic consequence of successful
 streaming or simulation.
+
+Model evidence: the [A8110 FCC test report](https://fcc.report/FCC-ID/2A5NV-A8110/6011039.pdf)
+states that A8110 covers both PICO 4 and PICO 4 Pro; the Pro adds eye and face
+tracking. The regulatory code alone therefore does not resolve the variant.
 
 Use NVIDIA's full
 [`GR00T-WholeBodyControl`](https://github.com/NVlabs/GR00T-WholeBodyControl)
@@ -38,10 +43,11 @@ Primary references:
 
 ## Time-boxed validation ladder
 
-1. **Inventory before installation:** identify the exact PICO model/OS from the
-   device settings and hardware label; record controller inventory, the two tracker
-   firmware versions, battery/charger state, available cables, installed apps and
-   Wi-Fi topology. Confirm both trackers pair and appear in the headset UI.
+1. **Inventory before installation:** record the marketed variant and OS from device
+   settings; determine whether eye/face tracking identifies a Pro variant; record
+   controller inventory, the two tracker firmware versions, battery/charger state,
+   available cables, installed apps and Wi-Fi topology. Confirm both trackers pair
+   and appear in the headset UI.
 2. **Input-only tracking:** install/launch the documented XRoboToolkit PICO client
    and PC service. With no simulator or robot, verify head, both controllers and both
    feet are present, correctly labeled, finite and directionally plausible. Preserve

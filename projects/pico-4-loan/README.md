@@ -2,8 +2,10 @@
 
 Owner: David Wei. Status: time-boxed discovery and validation. A friend lent the
 operator a PICO 4-family headset with two foot trackers; the equipment must be
-returned by Friday, 2026-10-30. The exact PICO 4 model/variant, OS version,
-controller inventory and tracker firmware remain to be recorded.
+returned by Friday, 2026-10-30. The headset regulatory model is `A8110`. Published
+regulatory evidence uses A8110 for both PICO 4 and PICO 4 Pro, so the marketed
+variant remains unresolved; OS version, controller inventory and tracker firmware
+also remain to be recorded.
 
 Objectives:
 
