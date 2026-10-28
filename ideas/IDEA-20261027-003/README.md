@@ -20,8 +20,10 @@ through XRoboToolkit and also provides an Isaac Teleop input backend. The borrow
 device has regulatory model `A8110`, used for standard PICO 4 and PICO 4 Pro, and
 has two foot trackers. It is not identified as the currently documented PICO 4
 Ultra. Direct inspection reports Android 10 and software version/build
-`202403120341`. Exact marketed variant, controller inventory, WebXR/CloudXR client
-behavior and foot-tracker availability through DeviceIO must therefore be measured.
+`202403120341`. No eye-tracking or face-tracking setting was visible, so standard
+PICO 4 is the leading but unconfirmed variant inference. The device shows one paired
+motion-tracker set (two trackers). Controller inventory, WebXR/CloudXR client
+behavior and motion-tracker availability through DeviceIO must therefore be measured.
 
 Primary references:
 

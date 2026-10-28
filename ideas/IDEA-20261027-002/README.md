@@ -12,7 +12,10 @@ PICO headset, regulatory model `A8110`, and two confirmed foot trackers. A8110 i
 used for both standard PICO 4 and PICO 4 Pro, so the exact marketed variant,
 controller inventory and tracker firmware are not yet confirmed. Direct device
 inspection reports Android 10 and software version/build `202403120341`; this does
-not by itself distinguish standard from Pro. First establish
+not by itself distinguish standard from Pro. No eye-tracking or face-tracking
+setting was visible, making standard PICO 4 the leading inference, but the marketed
+variant remains unconfirmed. The headset shows one paired motion-tracker set (two
+trackers). First establish
 calibrated full-body tracking and SONIC Sim2Sim behavior. A real-G1 attempt is a
 later, separately authorized gate, not an automatic consequence of successful
 streaming or simulation.
@@ -45,11 +48,12 @@ Primary references:
 
 ## Time-boxed validation ladder
 
-1. **Inventory before installation:** record the marketed variant from device
-   settings; determine whether eye/face tracking identifies a Pro variant; record
-   controller inventory, the two tracker firmware versions, battery/charger state,
-   available cables, installed apps and Wi-Fi topology. Confirm both trackers pair
-   and appear in the headset UI.
+1. **Inventory before installation:** if readily available, record the marketed
+   variant from the box or device settings; preserve the observation that no
+   eye/face-tracking setting was visible. Record controller inventory, both tracker
+   firmware versions, battery/charger state, available cables, installed apps and
+   Wi-Fi topology. Confirm both members of the motion-tracker pair appear separately
+   in the headset UI.
 2. **Input-only tracking:** install/launch the documented XRoboToolkit PICO client
    and PC service. With no simulator or robot, verify head, both controllers and both
    feet are present, correctly labeled, finite and directionally plausible. Preserve
@@ -78,8 +82,9 @@ Primary references:
   XRoboToolkit transport, calibration, pose semantics and SONIC deployment stages.
 - Real-robot motion is not required to complete the time-sensitive evaluation.
 
-Next agent action: identify the marketed headset variant and remaining device
-inventory, then prepare the input-only XRoboToolkit bring-up and evidence capture.
+Next agent action: record the remaining device inventory, then prepare the input-only
+XRoboToolkit bring-up and evidence capture; do not let unresolved standard-versus-Pro
+labeling delay the time-sensitive tracking test.
 Prerequisites: borrowed PICO/controllers/trackers charged and available, compatible
 workstation, private low-latency Wi-Fi and permission to install the documented PICO
 application.
