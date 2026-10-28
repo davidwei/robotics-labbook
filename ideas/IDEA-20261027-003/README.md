@@ -1,7 +1,7 @@
 # IDEA-20261027-003 — Evaluate PICO 4 with NVIDIA Isaac Teleop
 
-Status: time-sensitive; ready for compatibility discovery and input-only connection
-test. Project: PICO 4 loan evaluation / NVIDIA Isaac Teleop. Physical robot
+Status: time-sensitive; blocked on PICO browser/firmware update for valid video/WebXR
+testing. Project: PICO 4 loan evaluation / NVIDIA Isaac Teleop. Physical robot
 validation: not started and not authorized. Related:
 [SONIC foot-tracking evaluation](../IDEA-20261027-002/README.md).
 Loan deadline: Friday, 2026-10-30; preserve compatibility evidence by Thursday.
@@ -57,12 +57,11 @@ Primary references:
 - Preserve exact versions, client URL/profile, logs and a minimal reconnect test.
 - Prefer input-only and simulation evidence; real robot motion is unnecessary.
 
-Next agent action: reuse the existing Isaac Teleop/CloudXR installation to run a
-no-robot PICO connection and DeviceIO schema capture. Prerequisites: exact headset
-OS/model, HTTPS-capable PICO browser/client, charged controllers, same-network access
-and current CloudXR firewall/certificate setup. If plain PICO 4 is unsupported by the
-current client, preserve the failure boundary and prioritize XRoboToolkit/SONIC
-tracking before the loan ends.
+Current next action: update the PICO system/browser through the supported firmware
+path and verify Chrome 125 or later, then repeat the H.264 G1-29 MuJoCo test. If no
+supported firmware update is available within the loan window, preserve Chrome 105 as
+the compatibility boundary and prioritize the XRoboToolkit/SONIC path rather than
+bypassing NVIDIA's browser gate.
 
 ## 2026-10-27 development evidence — G1-29 MuJoCo launch
 
@@ -97,3 +96,40 @@ GPU memory was released, rerun `g1_29` headless live XR, connect the PICO CloudX
 client, and record headset/controller connection, bilateral clutch motion, tracking
 continuity and shutdown. Test tracker exposure separately; this G1 bridge consumes XR
 controllers and does not establish ankle-tracker support.
+
+## 2026-10-28 development evidence — PICO connection and browser boundary
+
+The Qwen3-VL vLLM user service was stopped temporarily, releasing both RTX 5090s,
+and restored after the test. The G1-29 supervised MuJoCo/CloudXR path then created
+Vulkan/OpenXR successfully. NVIDIA IsaacCapture PR 1170's manual connection-helper
+behavior was adapted to the installed `isaacteleop` 1.3.132rc1 environments (whose
+WSS source is byte-identical to NVIDIA tag `v1.3.131`). The certificate page and
+`/connect/` helper passed direct route tests and live HTTPS checks. This was an
+environment patch, not a source-repository commit, and will be lost if either virtual
+environment is reinstalled.
+
+Direct observations and boundaries:
+
+- The helper eliminated manual server entry and successfully reached an active PICO
+  CloudXR stream. The server recorded its first video frame.
+- The current NVIDIA client negotiated AV1 initially; the headset showed a dark
+  screen. The helper was extended to prefill H.264, and the next native CloudXR log
+  confirmed `H264 video format selected` and first-frame delivery.
+- The PICO browser reported Chromium 105 and NVIDIA's client reported that Chrome
+  125 or later is required. NVIDIA's current client source encodes
+  `MIN_PICO_CHROME_MAJOR = 125` and directs the operator to update headset firmware.
+- With H.264, the control screen flashed and disappeared into a black screen. The
+  final G1 simulator run nevertheless recorded `0.0993 rad` of arm motion over 6412
+  frames, which is evidence that some controller input reached the bridge. It is not
+  a passing visual, controller-semantics, continuity or safety result.
+- The final run evidence is
+  `/home/dwei/lerobot-dev/unitree_g1_lerobot/outputs/vr-sim-20261028-120402-a7hf139m`.
+  No physical robot was connected or moved.
+
+Next agent action: update the PICO system/browser through the supported headset
+firmware path, verify the PICO user agent reports Chrome 125 or later, then repeat the
+H.264 G1-29 MuJoCo test. Do not treat a generic sideloaded Android Chrome as equivalent
+unless immersive WebXR and PICO controller exposure are separately proven. After a
+visible stable stream, validate one controller/arm at a time, release-to-freeze,
+bilateral control, tracking loss and clean shutdown. Motion-tracker exposure remains a
+separate unanswered question.
