@@ -58,12 +58,10 @@ Primary references:
 - Preserve exact versions, client URL/profile, logs and a minimal reconnect test.
 - Prefer input-only and simulation evidence; real robot motion is unnecessary.
 
-Current next action: check whether the system updater offers a release newer than
-PICO system version `5.20` and whether PICO Browser has a separate supported update.
-Verify Chrome 125 or later, then repeat the H.264 G1-29 MuJoCo test. If no supported
-update is available within the loan window, preserve Chrome 105 as the compatibility
-boundary and prioritize the XRoboToolkit/SONIC path rather than bypassing NVIDIA's
-browser gate.
+Current next action: preserve Chrome 105 as the compatibility boundary and prioritize
+the XRoboToolkit/SONIC path rather than bypassing NVIDIA's browser gate. Reopen this
+Isaac Teleop path only if an owner-approved, official PICO update raises the browser to
+Chrome 125 or later; then repeat the H.264 G1-29 MuJoCo test.
 
 ## 2026-10-27 development evidence — G1-29 MuJoCo launch
 
@@ -121,6 +119,9 @@ Direct observations and boundaries:
   105, and NVIDIA's client reported that Chrome 125 or later is required. NVIDIA's
   current client source encodes
   `MIN_PICO_CHROME_MAJOR = 125` and directs the operator to update headset firmware.
+- The headset's System Update view reports version `5.20` with no newer update, and
+  Library/Updates offers no updates for PICO Browser or any other application. No
+  supported on-device update path was available during this evaluation.
 - With H.264, the control screen flashed and disappeared into a black screen. The
   final G1 simulator run nevertheless recorded `0.0993 rad` of arm motion over 6412
   frames, which is evidence that some controller input reached the bridge. It is not
@@ -129,10 +130,8 @@ Direct observations and boundaries:
   `/home/dwei/lerobot-dev/unitree_g1_lerobot/outputs/vr-sim-20261028-120402-a7hf139m`.
   No physical robot was connected or moved.
 
-Next agent action: update the PICO system/browser through the supported headset
-firmware path, verify the PICO user agent reports Chrome 125 or later, then repeat the
-H.264 G1-29 MuJoCo test. Do not treat a generic sideloaded Android Chrome as equivalent
-unless immersive WebXR and PICO controller exposure are separately proven. After a
-visible stable stream, validate one controller/arm at a time, release-to-freeze,
-bilateral control, tracking loss and clean shutdown. Motion-tracker exposure remains a
-separate unanswered question.
+Next agent action: stop spending the remaining loan window on CloudXR browser bypasses
+and proceed with XRoboToolkit/SONIC input-only bring-up. If an official PICO update
+later provides Chrome 125 or newer, repeat the H.264 test and validate one
+controller/arm at a time, release-to-freeze, bilateral control, tracking loss and clean
+shutdown. Motion-tracker exposure through Isaac Teleop remains unanswered.

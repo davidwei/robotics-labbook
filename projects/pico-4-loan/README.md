@@ -11,6 +11,12 @@ which is evidence consistent with standard PICO 4 but is not conclusive model
 identification. The device shows one pair of motion trackers (two trackers).
 Controller inventory and tracker firmware remain to be recorded.
 
+The headset reports no system update beyond PICO system version `5.20`, and its
+Library/Updates view offers no application updates. The installed PICO Browser remains
+Chromium 105, below NVIDIA's current CloudXR client requirement of Chrome 125. Treat
+the Isaac Teleop browser path as blocked for this loan window unless an owner-approved,
+official PICO update path becomes available.
+
 Objectives:
 
 1. [Verify NVIDIA SONIC with PICO whole-body and foot tracking](../../ideas/IDEA-20261027-002/README.md).
