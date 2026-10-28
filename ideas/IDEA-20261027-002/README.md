@@ -89,3 +89,34 @@ labeling delay the time-sensitive tracking test.
 Prerequisites: borrowed PICO/controllers/trackers charged and available, compatible
 workstation, private low-latency Wi-Fi and permission to install the documented PICO
 application.
+
+## 2026-10-28 XRoboToolkit discovery
+
+NVIDIA `NVlabs/GR00T-WholeBodyControl` main revision
+`1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b` documents XRoboToolkit PICO client
+`v1.1.1` and PC service `v1.0.0`. The official XRoboToolkit release includes a
+dedicated `XRoboToolkit-PICO-1.1.1-SDK29.apk`; Android 10 corresponds to API 29, so
+this is the conservative client candidate for the borrowed headset rather than the
+generic APK. The corresponding workstation package is
+`XRoboToolkit_PC_Service_1.0.0_ubuntu_24.04_amd64.deb`.
+
+Both official GitHub release assets were downloaded for inspection but not installed:
+
+- SDK29 APK: SHA-256
+  `6089e1ce175cf3e292cea5919c2b97711151186ca39c4a5569786a12fc167eb2`.
+- Ubuntu 24.04 PC service: SHA-256
+  `bce661f0be0b8a246ceecb2e5f1675a81c26b834648dc7fdf23f8c0bfe2a5d19`;
+  Debian package name `roboticsservice`, version `1.0.0.0`, architecture `amd64`.
+
+The PICO was not connected through ADB during discovery. Installation therefore
+requires either owner-approved sideloading through the headset browser/download
+manager or a USB connection with headset-side ADB authorization. Before streaming,
+verify both trackers in the PICO UI, calibrate them at the ankles, start the PC
+service, and configure XRoboToolkit with workstation IP `10.9.0.149`, Head +
+Controller tracking, Data/Control Send, and PICO Motion Tracker Full body.
+
+Next agent action: after owner approval, install the SDK29 PICO APK and Ubuntu 24.04
+PC service, then perform a no-robot connection/schema test. Record status `WORKING`,
+24-joint pose shape, finite transforms, timestamp/FPS behavior, left/right ankle
+response, controller buttons, disconnect/reconnect and tracker occlusion. Do not start
+SONIC Sim2Sim until this input evidence is stable.
