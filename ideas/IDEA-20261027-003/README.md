@@ -63,3 +63,37 @@ OS/model, HTTPS-capable PICO browser/client, charged controllers, same-network a
 and current CloudXR firewall/certificate setup. If plain PICO 4 is unsupported by the
 current client, preserve the failure boundary and prioritize XRoboToolkit/SONIC
 tracking before the loan ends.
+
+## 2026-10-27 development evidence — G1-29 MuJoCo launch
+
+The selected path was the supervised `unitree_g1_lerobot` G1-29 simulator rather
+than the SO-101 example: repository `MoissanClub/unitree_g1_lerobot` at
+`f6ad0248b99fed639a371ad26d59ec41e4f12b6f`, using its isolated LeRobot checkout at
+`d5e400bcefeccc93ba956ce876530e5283512df1`. The integration working tree was dirty
+in `tools/g1_vr_operator.py`, `tools/g1_vr_service.py`, the focused operator test,
+and coworker documentation; those pre-existing changes add CloudXR startup-timeout
+monitoring/retries and were the code actually executed.
+
+Software observations:
+
+- The focused operator suite passed: `20 passed`.
+- A bounded synthetic G1-29 MuJoCo replay passed 100 frames with `0.2630 rad` motion
+  and 54 distinct camera frames. Evidence remains at
+  `/home/dwei/lerobot-dev/unitree_g1_lerobot/outputs/vr-sim-20261027-214156-flegcb8v`.
+- Live startup brought the simulator and CloudXR to ready, and the 25-second CloudXR
+  signaling check passed. The OpenXR bridge then failed before headset connection:
+  Vulkan device creation returned `VK_ERROR_OUT_OF_DEVICE_MEMORY` /
+  `xrCreateVulkanDeviceKHR ... VkResult=-2`. Evidence remains at
+  `/home/dwei/lerobot-dev/unitree_g1_lerobot/outputs/vr-sim-20261027-214207-7ywe47lg`.
+- At failure, each RTX 5090 had about 30.3 GiB of 32.6 GiB allocated by the two
+  tensor-parallel workers of a Qwen3-VL vLLM server on port 8000. This is direct
+  resource evidence and the leading explanation for Vulkan allocation failure;
+  headset compatibility and controller input were not tested by this attempt.
+- The supervisor stopped bridge, simulator and CloudXR after failure. No physical
+  robot was connected or moved.
+
+Next agent action: with operator approval, temporarily stop the vLLM server, verify
+GPU memory was released, rerun `g1_29` headless live XR, connect the PICO CloudXR web
+client, and record headset/controller connection, bilateral clutch motion, tracking
+continuity and shutdown. Test tracker exposure separately; this G1 bridge consumes XR
+controllers and does not establish ankle-tracker support.
