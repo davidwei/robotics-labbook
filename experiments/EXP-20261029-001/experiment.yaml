@@ -110,6 +110,20 @@ operator_decisions:
       operators, local O and facility E-stop, independent capture and explicit
       authorization for each motion run.
     physical_validation_status: read-only and PICO-input preflight only; no SONIC motion yet
+  - date: 2026-10-30
+    decision: >-
+      RUN-20261030-001 confirmed that SONIC exit did not restore the prior command
+      stream. The operator recognized this as the previously observed development-
+      mode behavior and accepts it for gantry-only work. Treat SONIC local O as
+      process/control publication stop, not automatic return to stock mode. Each
+      further gantry run needs a fresh setup; untethered use remains blocked.
+    source: RUN-20261030-001 telemetry and operator interpretation
+    next_agent_action: >-
+      Preserve explicit mode ownership in each run and provide a deliberate stock-
+      mode restoration procedure when restoration is required.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: rated gantry, explicit current-mode check, two operators, capture and separate run authorization
+    physical_validation_status: feet-clear INIT/local-O observed; automatic stock-mode restoration absent
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
   - PC2 PICO input passed one 30-second window; decoder/encoder TensorRT builds passed, but exact runtime engines and exact-candidate simulation remain unvalidated.

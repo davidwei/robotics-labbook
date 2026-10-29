@@ -75,7 +75,9 @@ but no damping frame or resumed stock LowCmd during 5.37 seconds of post-stop
 capture. Suspended joints relaxed by as much as 0.406 rad. A delayed three-second
 check still received zero LowCmd, confirming the prior stock stream had not
 resumed. This does not validate the stop/handover path. Further motion testing
-should not proceed in this state, and untethered testing remains blocked.
+requires a fresh setup. The operator recognized this as prior development-mode
+behavior and accepted the missing automatic mode restoration for gantry-only
+work. Untethered testing remains blocked.
 
 Next: inspect why the expected damping frame was not captured, establish the
 post-SONIC stock-controller ownership/handover behavior, and record the operator's

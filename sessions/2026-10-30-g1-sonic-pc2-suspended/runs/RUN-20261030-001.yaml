@@ -35,6 +35,7 @@ observations:
   - With the robot suspended, joints relaxed after command publication stopped; largest measured post-stop change was 0.406 rad at hardware joint 25 (right elbow).
   - The operator visually described the INIT motion as smooth.
   - A delayed three-second check captured 963 LowState and 906 torso IMU samples but zero LowCmd, confirming the prior stock stream had not resumed by 01:53:31.
+  - The operator interpreted the outcome as SONIC entering development mode without restoring the original mode on exit, consistent with prior experiments.
   - All captured LowState and LowCmd CRC checks passed; sampled motor status was zero and maximum sampled motor temperature was 51 C.
 capture:
   coverage: partial
@@ -45,7 +46,9 @@ capture:
     - No synchronized video is registered.
     - No damping frame or stock-controller resumption was captured; a delayed check also saw no LowCmd.
 decision: >-
-  Do not treat local O or stock-controller handover as validated. Do not run an
-  further motion or untethered test. Review the stop implementation and command
-  ownership before a separately authorized follow-up.
+  Accept the missing automatic mode restoration as a known gantry-only operating
+  limitation. Do not treat local O as a return-to-stock handover, and do not use
+  this behavior untethered. Before each separately authorized gantry run, assume
+  SONIC must take ownership from the current development-mode state; restore stock
+  mode explicitly when needed rather than expecting SONIC exit to do it.
 evidence: ../evidence.json
