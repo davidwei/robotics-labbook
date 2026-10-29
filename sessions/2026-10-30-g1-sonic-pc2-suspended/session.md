@@ -36,8 +36,23 @@ failures were zero. XRoboToolkit PC Service is running locally on PC2; a
 20-minute read-only DDS capture began at 01:18:39 for the PICO preflight.
 The PICO app has not yet connected, and SONIC has not commanded the robot.
 
+The operator then connected PICO (`192.168.0.171`) to PC2 XRoboToolkit
+(`192.168.0.201`). The first input checks were inconclusive because the probe
+omitted the SDK's `init()` call; after that correction, a service-side device
+disconnect left the SDK with no body frames despite a TCP socket still
+receiving bytes. Restarting the local XR service and reconnecting PICO cleared
+the condition. A subsequent **input-only** check passed: 2,160 finite 24-by-7
+body frames over 30.02 continuous seconds (71.96 Hz), maximum device frame
+gap 29.09 ms, maximum receive gap 48.03 ms, zero restarts. This is one passing
+window, not a stale-input or reconnection reliability result.
+
+The long read-only DDS capture was interrupted after the PICO check and has no
+closing summary line. Its intact JSONL records contain 176,249 LowState,
+285,636 torso IMU and 167,081 LowCmd messages; all captured LowState/LowCmd
+CRC checks passed. No SONIC deployment, control handover or motion occurred.
+
 Next: identify the existing command publisher and G1 hardware/firmware;
-verify PICO/tracker freshness and the exact PC2 candidate; arrange an operator
+verify the exact PC2 candidate and repeat PICO freshness before motion; arrange an operator
 and separate safety operator, full unloading and clearance, local `O` and E-stop,
 independent capture through the post-stop period, and explicit authorization
 before a suspended initialization/stop diagnostic. Loaded or untethered motion

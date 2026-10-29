@@ -7,8 +7,18 @@
     },
     {
       "path": "/home/dwei/sonic/captures/pico-preflight-20261030-01.jsonl",
-      "sha256": null,
-      "description": "Read-only DDS capture started 2026-10-30 01:18:39 CST for PICO preflight; still in progress at record time. Hash and coverage pending closure."
+      "sha256": "514121119cc746447c3210845e049535d620ab563f2bd57b055bea9c2cc95051",
+      "description": "Read-only DDS capture 01:18:39-01:34:20 CST for PICO preflight. Interrupted without closing summary; 176249 LowState, 285636 torso IMU, 167081 LowCmd records, no captured CRC failures. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/captures/pico-body-20261030-06.jsonl",
+      "sha256": "c99d5fee2a61638bb92db71cb27a3e0a160ff74cb828b5aab60e14a9dc824565",
+      "description": "Input-only PICO body pose capture and passing 30.02-second freshness summary after local XR service restart and PICO reconnect. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/check_pico_body.py",
+      "sha256": "8b1060ab22e2b0dbacc06986ba34248696a6b970f9a5924429ebf93da290cf13",
+      "description": "Read-only PICO SDK 24-joint stream check used for the final passing window."
     },
     {
       "path": "/home/dwei/sonic/captures/preflight-20261030-01.jsonl",
@@ -58,7 +68,7 @@
   ],
   "known_missing_evidence": [
     "G1 hardware and firmware inventory",
-    "PICO/tracker input-only capture on PC2",
+    "PICO tracker firmware and repeated reconnect reliability",
     "TensorRT engine and exact-candidate simulation evidence",
     "Synchronized video and all suspended motion/stop outcomes"
   ]

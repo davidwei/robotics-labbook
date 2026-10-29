@@ -13,7 +13,7 @@ capture:
     - Activity before this agent session is not reconstructed.
     - G1 firmware, manufacture date, pelvis and motor-driver revision are not yet inventoried.
     - Existing rt/lowcmd publisher identity is unknown.
-    - PICO connection, tracker firmware and body stream have not been checked on PC2.
+    - One 30-second PICO body stream passed; tracker firmware and repeated reconnect behavior remain unverified.
     - No physical SONIC command or motion run has occurred in this capture.
 runs: []
 activities:
@@ -29,14 +29,20 @@ activities:
     evidence: evidence.json
   - type: preflight
     start_local: 2026-10-30T01:18:39+08:00
-    description: XRoboToolkit PC Service running; 20-minute read-only DDS capture started for PICO preflight.
+    end_local: 2026-10-30T01:34:20+08:00
+    description: XRoboToolkit PC Service running; read-only DDS capture for PICO preflight, interrupted without closing summary.
+    evidence: evidence.json
+  - type: preflight
+    start_local: 2026-10-30T01:33:22+08:00
+    end_local: 2026-10-30T01:34:11+08:00
+    description: Input-only PICO body stream check passed a 30-second continuous window after XR service restart and headset reconnect.
     evidence: evidence.json
 next_agent_action: >-
-  Complete G1 identity and publisher inspection, PICO input-only freshness,
-  exact-candidate engine/simulation checks and suspended diagnostic preparation.
+  Complete G1 identity and publisher inspection, exact-candidate engine/simulation
+  checks, physical unloading/clearance and suspended diagnostic preparation.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry fully unloading feet, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: read_only_preflight_only
+physical_validation_status: read_only_and_pico_input_preflight_only
