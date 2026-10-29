@@ -13,9 +13,9 @@ capture:
     - Activity before this agent session is not reconstructed.
     - G1 firmware, manufacture date, pelvis and motor-driver revision are not yet inventoried.
     - Existing rt/lowcmd publisher identity is unknown.
-    - Operator reported feet clear, limb clearance and E-stop at hand; distinct safety operator was not confirmed.
-    - One 30-second PICO body stream passed; tracker firmware and repeated reconnect behavior remain unverified.
-    - No physical SONIC command or motion run has occurred in this capture.
+    - Operator reported feet clear, limb clearance, E-stop at hand and a second person present; command publisher identity was not independently established.
+    - One earlier 30-second PICO body stream passed; tracker firmware and repeated reconnect behavior remain unverified.
+    - Live PICO latch and teardown passed without a SONIC subscriber; stale-input and robot stop behavior remain untested.
 runs: [RUN-20261030-001]
 activities:
   - type: preflight
@@ -47,13 +47,26 @@ activities:
     description: Feet-clear SONIC INIT and local-O stop; process exit observed, damping and stock-controller handover unresolved.
     run: RUN-20261030-001
     evidence: evidence.json
+  - type: preflight
+    start_local: 2026-10-30T02:03:22+08:00
+    end_local: 2026-10-30T02:05:23+08:00
+    description: Live input-only PICO chord latch passed, but manager teardown aborted after its shutdown message (exit 134).
+    evidence: evidence.json
+  - type: software_validation
+    description: Added normal manager stop return and explicit XRoboToolkit close; Python compilation and two latch tests passed.
+    evidence: evidence.json
+  - type: preflight
+    start_local: 2026-10-30T02:07:33+08:00
+    end_local: 2026-10-30T02:08:47+08:00
+    description: Live input-only PICO latch and teardown retest passed with one start, one stop, SDK uninitialization and exit 0.
+    evidence: evidence.json
 next_agent_action: >-
-  Complete G1 identity and publisher inspection, exact-candidate engine/simulation
-  checks, physical unloading/clearance and suspended diagnostic preparation.
+  Complete G1 identity and command-owner inspection, then implement and validate
+  an independent stale-PICO outcome before any policy-motion test.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot
   contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: feet_clear_init_and_local_stop_diagnostic_complete_handover_unresolved
+physical_validation_status: feet_clear_init_stop_diagnostic_and_input_only_pico_latch_complete_stale_input_and_handover_unresolved

@@ -58,7 +58,32 @@
     {
       "path": "/home/dwei/sonic/check_pico_body.py",
       "sha256": "8b1060ab22e2b0dbacc06986ba34248696a6b970f9a5924429ebf93da290cf13",
-      "description": "Read-only PICO SDK 24-joint stream check used for the final passing window."
+      "description": "Read-only PICO SDK 24-joint stream check version used for the earlier passing window; subsequently corrected because it did not gate the receive-gap maximum."
+    },
+    {
+      "path": "/home/dwei/sonic/check_pico_body.py",
+      "sha256": "de6e1432e55c6c09c23ae6845a523b50068a7af1effec221cb44f36262a0a390",
+      "description": "Corrected checker content: receive gaps at or above 100 ms reset the window and the pass condition checks both device and receive gaps."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/body-freshness.jsonl",
+      "sha256": "d584cbabe6191967ff6be662c80c5df6d93dd388d2995a0ef23fdf21bd00393a",
+      "description": "Rejected freshness attempt: old checker reported pass despite a 1046 ms receive gap; retained as evidence of the checker defect, not a freshness pass."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/body-freshness-02.jsonl",
+      "sha256": "bdcdf245e60d5f3f25020a269e67e7c7ccba50a936b2ce929b7f7dc9723f9c16",
+      "description": "Corrected freshness-check attempt; failed after the XR service lost TestDevice. It is not a passing 30-second window."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/manager-02.typescript",
+      "sha256": "f09066ef735075bd1ddaa34ebfc7830eca071f1f9c6822708dab10f8c017880a",
+      "description": "First live latch preflight at SONIC revision dc86407: one OFF-to-PLANNER event and one shutdown event, followed by process abort exit 134. No SONIC subscriber was running."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/manager-03.typescript",
+      "sha256": "9e6bdf6750b2d55c3a430ad3a2785bc7efbb9701a577d86cf40a3c51056f825e",
+      "description": "Clean live latch/teardown retest at SONIC revision 632b6b7: exactly one OFF-to-PLANNER and one PLANNER-to-OFF transition, SDK uninitialized, exit 0. No SONIC subscriber was running."
     },
     {
       "path": "/home/dwei/sonic/captures/preflight-20261030-01.jsonl",
@@ -112,6 +137,6 @@
     "TensorRT engine and exact-candidate simulation evidence",
     "Synchronized video",
     "Observed damping-frame publication and identified stock-controller resumption after local O",
-    "PICO stop, stale-input, process-loss and hardware E-stop outcomes"
+    "Stale PICO, SONIC process-loss, robot-level PICO stop and hardware E-stop outcomes"
   ]
 }

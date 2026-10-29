@@ -79,8 +79,27 @@ requires a fresh setup. The operator recognized this as prior development-mode
 behavior and accepted the missing automatic mode restoration for gantry-only
 work. Untethered testing remains blocked.
 
-Next: inspect why the expected damping frame was not captured, establish the
-post-SONIC stock-controller ownership/handover behavior, and record the operator's
-visual observation. G1 hardware/firmware identity remains incomplete. Any
+An input-only PICO manager preflight then ported the previously missing
+A+B+X+Y full-release latch to PC2. Unit tests passed (2 tests), and no SONIC
+deployment subscribed to the manager during either live check. At source revision
+`dc86407cb94e3b335671677ece90b6fdae401471`, the first chord produced exactly one
+OFF-to-PLANNER transition and remained there after release; a second chord reached
+the shutdown path once. PICO samples during the chord interval were approximately
+72 Hz. The process nevertheless aborted after printing `Shutdown complete`
+(exit 134), so that attempt is preserved as a latch pass but teardown failure.
+
+Inspection found that the stop branch raised `SystemExit` and the manager never
+closed XRoboToolkit. Revision `632b6b71f974a3a9fe24eb920c210084bda44989`
+returns normally after publishing stop and explicitly closes the SDK. A second
+input-only live check produced exactly one OFF-to-PLANNER and one
+PLANNER-to-OFF transition, printed `Shutdown complete`, uninitialized the SDK and
+exited 0. This validates the chord latch and normal manager teardown in a live
+headset-only preflight. It does not validate stale-input behavior, robot stop,
+stock-controller handover or policy motion. Both local SONIC commits are two
+commits ahead of the NVlabs remote and were not pushed upstream.
+
+Next: inspect why the expected damping frame was not captured and establish the
+post-SONIC stock-controller ownership/handover behavior. G1 hardware/firmware
+identity remains incomplete. Any
 gantry-protected contact test needs separate preparation and authorization;
 untethered motion waits for reviewed stale-input and stop/handover outcomes.

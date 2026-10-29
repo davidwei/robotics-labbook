@@ -66,6 +66,20 @@ findings:
       recurring sparse-before-activation/fast-after-activation pattern merits a
       source-versus-transport timestamp capture, and mode-event/operator-video
       correlation is needed before interpreting the multiple transitions.
+  - date: 2026-10-30
+    scope: PC2 input-only PICO chord-latch and teardown preflight
+    evidence: >-
+      With no SONIC subscriber, local revision dc86407 produced exactly one
+      OFF-to-PLANNER transition that remained stable after full release and one
+      shutdown event, but the manager then aborted with exit 134. Revision 632b6b7
+      replaced the SystemExit stop path with a normal return and explicitly closed
+      XRoboToolkit. A live retest at approximately 71-73 Hz produced exactly one
+      OFF-to-PLANNER and one PLANNER-to-OFF transition, SDK uninitialization and
+      exit 0. Two latch unit tests and Python compilation passed.
+    interpretation: >-
+      The full-release chord latch and manager teardown passed this live input-only
+      preflight. This does not establish a bounded response to stale PICO input,
+      robot-level stop effectiveness or stock-controller handover.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-10-30
@@ -127,7 +141,7 @@ operator_decisions:
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
   - PC2 PICO input passed one 30-second window; decoder/encoder TensorRT builds passed, but exact runtime engines and exact-candidate simulation remain unvalidated.
-  - The earlier x86 controller-latch change is absent from the clean PC2 checkout and needs review before PICO mode transitions.
+  - The A+B+X+Y full-release latch is now ported and live-tested on PC2 at local revisions dc86407 and 632b6b7; these commits are not upstream, and only input-only transition/teardown behavior was tested.
   - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
   - Stale PICO and post-stop stock-controller behavior remain unvalidated and block untethered trials.
   - RUN-20261030-001 captured no damping frame or resumed stock LowCmd after local O; a delayed check also saw zero LowCmd and suspended joints relaxed, so further motion is held pending handover review.
