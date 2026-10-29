@@ -1,6 +1,7 @@
 # IDEA-20261027-002 — Verify SONIC with PICO 4 foot tracking
 
-Status: time-sensitive; ready for hardware inventory and input-only bring-up.
+Status: time-sensitive; preferred SONIC Sim2Sim result achieved; evidence cleanup
+and repeatability check remain.
 Project: PICO 4 loan evaluation / Unitree G1. Physical robot validation: not
 started and not authorized. Loan deadline: Friday, 2026-10-30; target completion of
 tracking evidence by Thursday, 2026-10-29.
@@ -201,3 +202,49 @@ The next preparation step is therefore to stop the unrelated GPU workload, insta
 the documented MuJoCo/teleop environments, obtain the matching SONIC deployment
 model set, install exact TensorRT 10.13 plus build dependencies, build the native
 deployment, and pass a non-PICO Sim2Sim smoke test before adding the live streamer.
+
+### SONIC Sim2Sim execution and full-body result
+
+The time-sensitive preferred result was achieved on 2026-10-28 with the borrowed
+PICO and both foot trackers: the operator entered SONIC full-body mode and tested
+it in the visible MuJoCo G1 simulation. This is software/simulation evidence only;
+no physical robot was connected, commanded or authorized.
+
+The run used NVIDIA source revision
+`1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b`, local TensorRT `10.13.3.9`, the
+generated SONIC TensorRT engines, the MuJoCo DDS simulator, the native deployment
+with `--input-type zmq_manager`, and the live PICO manager. The deployment reached
+`Init Done`. Before full-body control, planner mode remained stable after the
+operator pressed `9` to drop/reset the simulated G1. During full-body mode, the
+manager sustained approximately 49 Hz pose processing and roughly 56--66 Hz PICO
+input in sampled logs. The deployment continuously decoded protocol-v3 chunks with
+24 SMPL joints, 21 SMPL poses, encode mode `2` and motion name `streamed`; one
+sampled interval reported about 24 ms mean streaming-data delay. Changing SMPL and
+three-point tracking values establish a live rather than replayed stream. Following
+the operator's full-body test, all three processes remained alive and no new fall
+warning appeared in the sampled simulator output.
+
+One earlier full-body transition did produce repeated simulator fall warnings at
+approximately 0.19--0.20 m base height. Preserve this as an observed failure, not a
+successful stability claim. The operator subsequently clarified that the later
+test exercised full-body mode. A future repeat should capture synchronized video
+and bounded logs so commanded limb motion, simulated response and fall/no-fall
+outcome can be reviewed together.
+
+Bring-up required three local, uncommitted source changes: update the bundled CMake
+TensorRT finder for TensorRT 10.13 version macros and removal of `nvparsers`; make
+the deployment preflight check the available C++ compiler rather than require
+Clang; and latch the A+B+X+Y start/stop chord until all four buttons are released.
+The last change was prompted by an observed transient dropped-button sample while
+the chord was held, which otherwise generated a second edge and immediately
+returned PLANNER to OFF. The latch passed Python compilation and repository diff
+whitespace checks and then produced a stable OFF-to-PLANNER transition, but it has
+not received an upstream-quality automated test or review.
+
+Next agent action: preserve a short repeatability artifact before returning the
+loaned device: neutral start, OFF-to-PLANNER, PLANNER-to-POSE, small arm and
+left/right-foot motions, POSE-to-PLANNER, stop and restart. Capture synchronized
+viewer video plus bounded mode/latency/fall logs, and record exact model artifact
+identifiers. Treat the local compatibility and controller-latch patches as
+evaluation changes until reviewed separately. Real-G1 work remains a distinct,
+explicitly authorized physical-validation gate.
