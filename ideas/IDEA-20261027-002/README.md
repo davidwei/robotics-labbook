@@ -184,3 +184,20 @@ outside the labbook.
 Next agent action: preserve the working PICO/XRoboToolkit configuration and advance
 to SONIC visualization or Sim2Sim only. First verify the exact local source and
 checkpoint revisions and required artifacts; do not infer real-robot authorization.
+
+### SONIC Sim2Sim readiness check
+
+The clean local NVIDIA checkout is at revision
+`1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b`, but Sim2Sim is not yet runnable.
+Neither `.venv_sim` nor `.venv_teleop` exists; the deployment policy directories
+contain observation configuration only and no encoder/decoder ONNX files; no
+TensorRT installation or `TensorRT_ROOT` was found; and the `just` build tool is not
+installed. Docker is present but reports only `runc` runtimes, not an NVIDIA runtime.
+
+Host-level GPU inspection succeeds: two RTX 5090 GPUs, NVIDIA driver `595.99.02`,
+32,607 MiB each. At inspection time each GPU used about 30,317 MiB, consistent with
+the running vLLM workload, so GPU memory must be released before SONIC deployment.
+The next preparation step is therefore to stop the unrelated GPU workload, install
+the documented MuJoCo/teleop environments, obtain the matching SONIC deployment
+model set, install exact TensorRT 10.13 plus build dependencies, build the native
+deployment, and pass a non-PICO Sim2Sim smoke test before adding the live streamer.
