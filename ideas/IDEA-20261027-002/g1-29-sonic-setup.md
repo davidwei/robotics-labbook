@@ -5,7 +5,8 @@ motion. Launching the real SONIC deployment is itself a motion event because the
 controller immediately performs a three-second initialization interpolation.
 
 2026-10-30 operator update: SONIC and XRoboToolkit were installed in a local
-workspace on G1 PC2 for a fully unloaded gantry-suspended diagnostic. This is a
+workspace on G1 PC2 for a feet-clear initialization/stop diagnostic followed,
+if separately authorized, by gantry-protected contact tests. This is a
 new environment relative to the x86 topology recommended below. The current
 [PC2 operating order](../../sessions/2026-10-30-g1-sonic-pc2-suspended/in-lab.md)
 controls that diagnostic. Stale input and unknown stop/handover block loaded and

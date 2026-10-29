@@ -1,6 +1,21 @@
 {
   "artifacts": [
     {
+      "path": "/home/dwei/sonic/encoder_trt_build.log",
+      "sha256": "5c249427ee96467118e3277b229ca3133c9b26db8dfdb004999af82609910e4d",
+      "description": "TensorRT 10.7 offline encoder ONNX parse/build/deserialization passed on PC2 GPU; inference skipped."
+    },
+    {
+      "path": "/home/dwei/sonic/decoder_trt_build.log",
+      "sha256": "f3a882ae45639948c091a8a0304490b8a24ecc5622ea273c706fe540b95b2ee9",
+      "description": "TensorRT 10.7 offline decoder ONNX parse/build/deserialization passed on PC2 GPU; inference skipped."
+    },
+    {
+      "path": "/home/dwei/sonic/planner_trt_build.log",
+      "sha256": "983ee54ca9f3f85761958cbbb7511dbec311345a2ebe7773fd5771fcc5668530",
+      "description": "TensorRT 10.7 offline planner ONNX parse/build/deserialization passed on PC2 GPU; inference skipped."
+    },
+    {
       "path": "/home/dwei/sonic/captures/preflight-20261030-02.jsonl",
       "sha256": "5dec0ba89044e3a97fffcc9ec56fc318acdfb4e5671b4c76a3ca23d67e5eee56",
       "description": "Second 15-second read-only PC2 DDS preflight; all sampled CRC, finite state/IMU and body motor status checks passed. Stored locally on PC2."

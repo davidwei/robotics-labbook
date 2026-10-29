@@ -6,10 +6,13 @@ yet sufficient for a floor trial.
 
 ## Operator scope update — 2026-10-30
 
-The operator selected a fully **unloaded, gantry-suspended diagnostic** on G1-29.
-The unresolved stale-input response and stock-controller handover remain hard
-blockers for weight-bearing and untethered work, but may be measured under full
-suspension. This supersedes the earlier blanket block on suspended commissioning
+The operator selected a **gantry-protected diagnostic** on G1-29. The first
+initialization and local-stop run keeps the feet clear. Later walking-policy
+tests need controlled foot contact while the gantry remains ready to catch the
+robot; an unloaded policy may step repeatedly while seeking contact. The
+unresolved stale-input response and stock-controller handover remain hard
+blockers for **untethered** work, but may be measured under gantry protection.
+This supersedes the earlier blanket block on suspended commissioning
 in this document and the October 29 checklist. It does not make a stale stream or
 one damping-only stop safe, and it does not authorize command publication by
 itself. The first PC2 run is a new deployment environment relative to the
@@ -31,11 +34,14 @@ signals is not a reproducible failure record.
 For the first suspended motion run, keep both feet unloaded and observe only
 SONIC's automatic initialization, then a local `O` stop and the measured
 post-publication state. Test PICO stop, stale input, streamer/process loss and
-hardware E-stop as **separate** suspended runs after reviewing the preceding run.
+hardware E-stop as **separate** gantry-protected runs after reviewing the
+preceding run. The INIT state moves to the default pose and then
+WAIT_FOR_CONTROL; the walking policy starts only on a separate start signal.
 The safety operator stops immediately at an unexpected motion, tracking loss or
 stream warning; do not wait for autonomous recovery. Mode transitions and POSE
-motion remain later steps after fresh-input and controller-latch checks. Loaded
-planted-feet segments wait until stop and stale-input outcomes are reviewed.
+motion remain later steps after fresh-input and controller-latch checks and
+require controlled foot contact under the gantry. Untethered planted-feet
+segments wait until stop and stale-input outcomes are reviewed.
 
 ## Why the full-body path worked in the successful run
 
@@ -204,15 +210,10 @@ it does not authorize improvising the next gate.
    post-publication behavior. Restart and test A+B+X+Y stop. Test hardware E-stop
    according to the facility procedure. No loaded-leg trial proceeds until all
    three outcomes are understood and repeatable.
-5. With feet still unloaded, enter PLANNER idle only. After a stable interval,
-   visually match poses and enter POSE. Perform one small motion at a time: wrists,
-   elbows, shoulders, small torso rotation and only then small symmetric knee
-   flexion. Return to PLANNER between categories and inspect logs.
-6. Perform the planned dropout/occlusion tests only while safely suspended. Because
-   the current code may retain stale targets, a safety operator must stop at the
-   first warning rather than wait for autonomous recovery.
+5. Do not enter PLANNER/POSE with both feet clear. Move policy, dropout and
+   occlusion tests to a separately authorized gantry-protected contact run.
 
-### Gate 3 — weight-bearing on gantry
+### Gate 3 — controlled foot contact under gantry protection
 
 1. Review Gate 2 telemetry/video before lowering. Start with bilateral foot contact
    and the gantry carrying enough load to arrest a fall; do not begin on an
@@ -222,7 +223,9 @@ it does not authorize improvising the next gate.
 3. Enter POSE only after visual pose alignment. Progress one category per run:
    planted-feet arms; small torso rotation; shallow symmetric knee flexion; small
    lateral weight transfer with both feet planted.
-4. Stop and review after each category. Any slip, oscillation, unexpected direction,
+4. Test planned PICO stop, dropout and occlusion in separate runs with the safety
+   operator ready to stop at the first stale warning or unexpected motion.
+5. Stop and review after each category. Any slip, oscillation, unexpected direction,
    repeated correction, tracker jump, delay warning or need for a catch is a failed
    gate.
 

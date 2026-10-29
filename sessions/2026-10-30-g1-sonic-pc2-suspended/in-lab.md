@@ -1,13 +1,15 @@
 # PC2 suspended SONIC diagnostic — operating order
 
-Scope: fully unloaded G1-29 on a rated gantry. The objective is to measure
-initialization, stale-input and stop/handover outcomes with enough state to
-reconstruct an unexpected motion. Loaded and untethered trials are separate
-decisions. No step here authorizes a SONIC launch by itself.
+Scope: first, a brief feet-clear initialization/local-stop diagnostic on a rated
+gantry; later policy tests use controlled foot contact under gantry protection.
+The objective is to measure initialization, stale-input and stop/handover
+outcomes with enough state to reconstruct unexpected motion. Untethered trials
+remain a separate blocked decision. No step here authorizes a SONIC launch.
 
 1. **Inventory and clear the area.** Record G1 hardware, firmware, 29-DOF/ankle
-   mode, battery and E-stop state. Verify both feet are unloaded, every limb has
-   clearance, and the three-meter zone is clear. Assign a PICO operator and a
+   mode, battery and E-stop state. For the first run, verify both feet are clear
+   of the floor, every limb has clearance, and the three-meter zone is clear.
+   Assign a PICO operator and a
    separate safety operator who owns keyboard `O` and the facility E-stop.
 2. **Identify the existing command stream.** A read-only PC2 capture at 01:01
    already observed CRC-valid `rt/lowcmd` at about 182 Hz with zero sampled body
@@ -37,8 +39,10 @@ decisions. No step here authorizes a SONIC launch by itself.
 6. **Record separate motion authorization.** Reconfirm fresh LowState and torso
    IMU, exact wired interface, no unintended competing command publisher, local
    stop and E-stop roles, measured-versus-default standing pose and full gantry
-   unloading. SONIC launch itself releases stock motion control and begins a
-   roughly three-second 29-joint interpolation.
+   unloading for the first run. SONIC launch itself releases stock motion
+   control and begins a roughly three-second 29-joint interpolation. Source
+   inspection shows INIT then WAIT_FOR_CONTROL; the walking policy is not run
+   until a separate start signal.
 7. **First suspended run: initialization and local stop only.** Keep the PICO
    manager in `OFF`. Launch the pinned real deployment only under the recorded
    authorization, observe the initialization trajectory, then use local `O`.
@@ -49,11 +53,15 @@ decisions. No step here authorizes a SONIC launch by itself.
    exit alone is not a handover pass.
 8. **Review before the next run.** Preserve the full capture, exact times,
    video, console, source/model/engine hashes and a short operator observation.
-   Test PICO stop, deliberate PICO loss, streamer/process loss and the approved
-   hardware E-stop procedure in separate fresh suspended runs. Stop immediately
-   at a stale-input warning or unexpected motion; do not wait for autonomous
-   recovery. Advance to PLANNER/POSE motion only after the controller-latch and
-   fresh-input checks pass and the preceding stop outcome is understood.
+   Do not leave PLANNER/POSE running with feet clear: a balance or walking
+   policy may step while seeking ground contact. For later policy and PICO-loss
+   tests, plan controlled bilateral foot contact while the gantry remains ready
+   to catch the robot; authorize each run separately. Test PICO stop, deliberate
+   PICO loss, streamer/process loss and the approved hardware E-stop procedure
+   in separate fresh gantry-protected runs. Stop immediately at a stale-input
+   warning or unexpected motion; do not wait for autonomous recovery. Advance
+   to PLANNER/POSE only after the controller-latch and fresh-input checks pass
+   and the preceding stop outcome is understood.
 
 The read-only capture is an independent witness through SONIC shutdown. Its first
 five-second check captured about 192 LowState samples/s, not every DDS frame;

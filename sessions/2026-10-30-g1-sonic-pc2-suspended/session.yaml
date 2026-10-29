@@ -13,6 +13,7 @@ capture:
     - Activity before this agent session is not reconstructed.
     - G1 firmware, manufacture date, pelvis and motor-driver revision are not yet inventoried.
     - Existing rt/lowcmd publisher identity is unknown.
+    - Operator reported feet clear, limb clearance and E-stop at hand; distinct safety operator was not confirmed.
     - One 30-second PICO body stream passed; tracker firmware and repeated reconnect behavior remain unverified.
     - No physical SONIC command or motion run has occurred in this capture.
 runs: []
@@ -37,12 +38,16 @@ activities:
     end_local: 2026-10-30T01:34:11+08:00
     description: Input-only PICO body stream check passed a 30-second continuous window after XR service restart and headset reconnect.
     evidence: evidence.json
+  - type: software_validation
+    description: Offline TensorRT 10.7 parser/build/deserialization passed for encoder, decoder and planner; inference skipped.
+    evidence: evidence.json
 next_agent_action: >-
   Complete G1 identity and publisher inspection, exact-candidate engine/simulation
   checks, physical unloading/clearance and suspended diagnostic preparation.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
-  Rated gantry fully unloading feet, limb clearance, two operators, local O and
+  Rated gantry with feet clear for brief INIT/local-O run and controlled foot
+  contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
 physical_validation_status: read_only_and_pico_input_preflight_only

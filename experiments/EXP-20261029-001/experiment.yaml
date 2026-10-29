@@ -18,7 +18,7 @@ success_criteria:
   - A bounded read-only DDS preflight receives fresh CRC-valid LowState and torso IMU data with 29 finite body joint states and no unexplained motor error.
   - The exact source, dirty patch, encoder, decoder, observation config, planner and generated TensorRT engine hashes are preserved.
   - The selected low-latency model/config passes three instrumented planted-feet simulation rehearsals with no unexplained fall, uncommanded step, mode duplication or stream gap at or above 100 ms.
-  - Keyboard stop, PICO stop, process death and stale-stream outcomes are understood under suspension before any weight-bearing trial.
+  - Keyboard stop is observed during the feet-clear initialization run; PICO stop, process death and stale-stream outcomes are measured in separate gantry-protected runs before any untethered trial.
   - If separately authorized, the first physical demonstration completes only segments 0 through 5 of the planted-feet protocol without an abort condition or gantry catch.
 physical_validation_required: true
 related_repositories:
@@ -64,7 +64,7 @@ findings:
       recurring sparse-before-activation/fast-after-activation pattern merits a
       source-versus-transport timestamp capture, and mode-event/operator-video
       correlation is needed before interpreting the multiple transitions.
-readiness: suspended_diagnostic_conditional; loaded_and_untethered_blocked
+readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-10-30
     decision: >-
@@ -86,18 +86,40 @@ operator_decisions:
       working local O and facility E-stop, read-only preflight, explicit motion
       authorization for each suspended diagnostic.
     physical_validation_status: read-only preflight captured; suspended motion not started
+  - date: 2026-10-30
+    decision: >-
+      Clarification after the operator questioned feet-clear stepping: use full
+      unloading only for the brief INIT and local-O diagnostic, with PICO manager
+      OFF. Source inspection shows INIT then WAIT_FOR_CONTROL; SONIC's policy does
+      not run until a separate start signal. Later PLANNER/POSE and stale-input
+      tests require controlled foot contact under gantry protection. Unresolved
+      stale-input and handover behavior block untethered experiments, not every
+      gantry-protected contact experiment. This corrects the earlier blanket
+      weight-bearing block; each contact run still needs its own preparation and
+      operator authorization.
+    source: operator question and PC2 SONIC state-machine inspection
+    next_agent_action: >-
+      Finish command-owner and hardware inventory, review the first feet-clear
+      INIT/stop outcome, then plan separately authorized gantry-supported contact
+      tests with continuous base/torso IMU, joint, command and video capture.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: >-
+      Rated gantry and limb clearance, controlled contact for policy runs, two
+      operators, local O and facility E-stop, independent capture and explicit
+      authorization for each motion run.
+    physical_validation_status: read-only and PICO-input preflight only; no SONIC motion yet
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
-  - The PC2 low-latency installation has built but has not completed PICO input, TensorRT engine or exact-candidate simulation validation.
+  - PC2 PICO input passed one 30-second window; decoder/encoder TensorRT builds passed, but exact runtime engines and exact-candidate simulation remain unvalidated.
   - The earlier x86 controller-latch change is absent from the clean PC2 checkout and needs review before PICO mode transitions.
   - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
-  - Stale PICO and post-stop stock-controller behavior remain unvalidated and block loaded or untethered trials.
+  - Stale PICO and post-stop stock-controller behavior remain unvalidated and block untethered trials.
 authorization_boundary: >-
   This experiment record authorizes planning, software/simulation work and read-only
-  robot inspection only. Fully suspended diagnostic command publication requires
+  robot inspection only. The feet-clear INIT diagnostic command publication requires
   separate explicit operator authorization after its stated preflight and capture
-  conditions pass. Loaded and untethered trials require separate review and
-  authorization after stale-input and handover behavior are understood.
+  conditions pass. Gantry-protected foot-contact runs require separate preparation
+  and authorization. Untethered trials wait for stale-input and handover review.
 protocols:
   setup: ../../ideas/IDEA-20261027-002/g1-29-sonic-setup.md
   demo: ../../ideas/IDEA-20261027-002/planted-feet-full-body-demo.md

@@ -1,8 +1,8 @@
 # G1-29 PICO/SONIC PC2 preparation — 2026-10-30
 
-The operator selected a fully unloaded gantry-suspended diagnostic. Stale PICO
-input and unknown stock-controller handover remain blockers for loaded and
-untethered trials; the operator wants those outcomes measured under suspension
+The operator selected a gantry-protected diagnostic. Stale PICO input and
+unknown stock-controller handover remain blockers for untethered trials; the
+operator wants those outcomes measured under gantry protection
 with whole-body IMU/state capture. No SONIC motion was run in this capture.
 The [operating order](in-lab.md) records the revised suspended protocol.
 
@@ -51,9 +51,23 @@ closing summary line. Its intact JSONL records contain 176,249 LowState,
 285,636 torso IMU and 167,081 LowCmd messages; all captured LowState/LowCmd
 CRC checks passed. No SONIC deployment, control handover or motion occurred.
 
+The operator then questioned whether feet-clear suspension would make SONIC
+keep stepping. Source inspection found an INIT default-pose ramp followed by
+WAIT_FOR_CONTROL; the walking policy is entered only on a separate start signal.
+The operating order now limits feet-clear operation to the short INIT/local-O
+diagnostic. Later PLANNER/POSE tests call for controlled foot contact under the
+gantry, each separately authorized. The operator reported that both feet are
+now clear, limb clearance is established and an E-stop is at hand. A distinct
+safety operator and the current LowCmd publisher have not yet been confirmed.
+
+PC2 TensorRT 10.7 built and deserialized the low-latency encoder, decoder and
+planner ONNX models offline with `--skipInference`. This checks parser/build
+compatibility only; it is not a SONIC runtime inference or motion validation.
+
 Next: identify the existing command publisher and G1 hardware/firmware;
 verify the exact PC2 candidate and repeat PICO freshness before motion; arrange an operator
 and separate safety operator, full unloading and clearance, local `O` and E-stop,
 independent capture through the post-stop period, and explicit authorization
-before a suspended initialization/stop diagnostic. Loaded or untethered motion
-waits for review of stale-input and stop/handover outcomes.
+before a suspended initialization/stop diagnostic. Gantry-protected contact
+tests need separate preparation; untethered motion waits for review of
+stale-input and stop/handover outcomes.
