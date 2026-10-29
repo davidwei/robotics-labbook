@@ -220,3 +220,21 @@ PICO/tracker status, calibration and mode transitions. Preserve synchronized vid
 PICO pose chunks, target motion, measured q/dq/IMU, actions, motor status,
 temperature, torque estimate, stream/LowState age and the exact stop outcome. Record
 operator observations separately from telemetry-derived findings.
+
+## Post-run stale-stream observation
+
+After the initial full-body test, the operator observed the simulated robot
+continually walking backward as if trying to maintain balance. Concurrent logs
+showed the PICO manager reporting `device missing`, the deployment repeatedly
+printing `Motion streamed completed and waiting following motion`, and a streaming
+data mean delay of approximately `538489 ms` with about `5773 ms` standard
+deviation. The deployment remained in SMPL encode mode `2` and continued control on
+an exhausted/stale streamed reference.
+
+Classify this state as unstable/degraded even though the policy was still producing
+balance-recovery motion and MuJoCo had not emitted a new fall warning. It is not
+evidence of valid live teleoperation. This directly confirms that loss of the PICO
+body stream does not automatically produce a prompt safe stop in the tested path.
+Gate 0 must therefore demonstrate an explicit bounded stale-stream response before
+any physical launch; audio warning or continued tracking of the last reference is
+not an acceptable physical pass condition.
