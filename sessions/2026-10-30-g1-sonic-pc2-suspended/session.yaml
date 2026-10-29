@@ -16,7 +16,7 @@ capture:
     - Operator reported feet clear, limb clearance, E-stop at hand and a second person present; command publisher identity was not independently established.
     - One earlier 30-second PICO body stream passed; tracker firmware and repeated reconnect behavior remain unverified.
     - Live PICO latch and teardown passed without a SONIC subscriber; stale-input and robot stop behavior remain untested.
-runs: [RUN-20261030-001]
+runs: [RUN-20261030-001, RUN-20261030-002]
 activities:
   - type: preflight
     start_local: 2026-10-30T01:01:04+08:00
@@ -60,14 +60,25 @@ activities:
     end_local: 2026-10-30T02:08:47+08:00
     description: Live input-only PICO latch and teardown retest passed with one start, one stop, SDK uninitialization and exit 0.
     evidence: evidence.json
+  - type: preparation
+    start_local: 2026-10-30T02:16:06+08:00
+    end_local: 2026-10-30T02:21:43+08:00
+    description: Planner engine generated after a premature headset request; initialized SONIC instance stopped without policy activation and workflow reset.
+    evidence: evidence.json
+  - type: run
+    start_local: 2026-10-30T02:22:08+08:00
+    end_local: 2026-10-30T02:25:27+08:00
+    description: Fully suspended PICO start/stop run; policy interval exceeded planned duration and requires review.
+    run: RUN-20261030-002
+    evidence: evidence.json
 next_agent_action: >-
-  Prepare a separately authorized, fully suspended PICO/SONIC policy run with
-  independent whole-body state, IMU and LowCmd capture; measure stale-input and
-  local-stop outcomes without adding untethered-only watchdog complexity.
+  Review RUN-20261030-002's 22.54-second interval and measured 8.12 rad/s left-knee
+  speed before any repeat; only then prepare a separately authorized suspended
+  stale-input test without untethered-only watchdog complexity.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot
   contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: feet_clear_init_stop_diagnostic_and_input_only_pico_latch_complete_stale_input_and_handover_unresolved
+physical_validation_status: suspended_pico_start_stop_observed_duration_miss_under_review_stale_input_and_handover_unresolved

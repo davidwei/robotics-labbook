@@ -29,6 +29,7 @@ related_sessions:
   - SESSION-20261030-001
 related_runs:
   - RUN-20261030-001
+  - RUN-20261030-002
 findings:
   - date: 2026-10-28
     scope: simulation-only mode-transition rehearsal
@@ -80,6 +81,20 @@ findings:
       The full-release chord latch and manager teardown passed this live input-only
       preflight. This does not establish a bounded response to stale PICO input,
       robot-level stop effectiveness or stock-controller handover.
+  - date: 2026-10-30
+    scope: fully suspended live PICO planner start and stop
+    evidence: >-
+      RUN-20261030-002 logged exactly one OFF-to-PLANNER and one PLANNER-to-OFF
+      transition. SONIC entered IDLE planner control and exited normally on PICO
+      stop. The intended three-second interval lasted 22.54 seconds because the
+      confirmation/tool loop delayed the stop instruction. The operator observed
+      stepping attempts and feet tapping toward the floor. Maximum measured joint
+      speed was 8.12 rad/s at the left knee; no sampled motor error/status, command
+      or state CRC failure, recorder drop or callback failure occurred.
+    interpretation: >-
+      Live PICO start/stop worked under full suspension, but the interval-duration
+      miss and measured knee speed require review before repetition. This run did
+      not test stale input, ground contact, handover or untethered behavior.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-10-30
@@ -154,11 +169,11 @@ operator_decisions:
     physical_validation_status: tethered scope selected; suspended policy and stale-input outcomes not yet run
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
-  - PC2 PICO input passed one 30-second window; decoder/encoder TensorRT builds passed, but exact runtime engines and exact-candidate simulation remain unvalidated.
+  - PC2 PICO input passed one 30-second window and RUN-20261030-002 used the generated decoder, encoder and planner TensorRT engines; exact-candidate simulation remains unvalidated.
   - The A+B+X+Y full-release latch is now ported and live-tested on PC2 at local revisions dc86407 and 632b6b7; these commits are not upstream, and only input-only transition/teardown behavior was tested.
   - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
   - Stale PICO and post-stop stock-controller behavior remain unvalidated and block untethered trials.
-  - RUN-20261030-001 captured no damping frame or resumed stock LowCmd after local O; a delayed check also saw zero LowCmd and suspended joints relaxed, so further motion is held pending handover review.
+  - RUN-20261030-001 and RUN-20261030-002 captured no damping frame or resumed stock LowCmd after stop; suspended joints relaxed, and any repeat is held pending review of RUN-002's duration miss and knee speed.
 authorization_boundary: >-
   This experiment record authorizes planning, software/simulation work and read-only
   robot inspection only. The feet-clear INIT diagnostic command publication requires

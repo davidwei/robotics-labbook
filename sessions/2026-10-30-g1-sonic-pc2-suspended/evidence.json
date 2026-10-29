@@ -129,14 +129,54 @@
       "path": "/home/dwei/sonic/TensorRT-10.7.0.23.l4t.aarch64-gnu.cuda-12.6.tar.gz",
       "sha256": "b3028a82818a9daf6296f43d0cdecfa51eaea4552ffb6fe6fad5e6e1aea44da6",
       "description": "NVIDIA TensorRT 10.7 L4T/CUDA 12.6 archive installed in the PC2 workspace."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/planner/target_vel/V2/planner_planner_sonic.trt",
+      "sha256": "50e98ba9bfac4889c8db4b149b3a1b621996d9931db664edb7326eb23136a669",
+      "description": "PC2 planner TensorRT engine generated during preparation before RUN-20261030-002; 710 MiB as reported by SONIC."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/sonic-02.typescript",
+      "sha256": "40f5360f47986c233ac19b7bd14bf2d6331c547ef21dfc6e2e99a26841a058cd",
+      "description": "Preparation transcript that generated the planner engine, reached Init Done, then accepted local O without policy activation after the operator corrected the build ordering."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/wholebody-02.jsonl",
+      "sha256": "055b36d8876b2944224ec4e287a9d114a692d19a264171be730d3a250123c69a",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-002, including complete summary and retained post-stop interval."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/sonic-03.typescript",
+      "sha256": "10cbed0e6b2188c9f539cad76edd0db075e20c47d9b76c33d09aaf7f4ecdbc2f",
+      "description": "SONIC transcript for RUN-20261030-002: prebuilt engine load, Init Done, CONTROL entry, PICO stop and normal exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/manager-02.typescript",
+      "sha256": "5330e1857bd7e43d81600fed20fe3298372d19d8877a46220de4e2b6dd89fa39",
+      "description": "PICO manager transcript for RUN-20261030-002: stable approximately 72 Hz input and exactly one start and one stop transition with clean SDK shutdown."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/logs/q.csv",
+      "sha256": "b1e802b8e3d89499cf4d7c273588957eb5f2a7bf83d176cf2f5f9440c854b20a",
+      "description": "SONIC measured joint-position CSV for the 22.54-second RUN-20261030-002 policy interval."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/logs/dq.csv",
+      "sha256": "d1da77a4e5a1e7efde6490c1b7eb8bad98801970e1bc23ff8f0cba1b2014dd0b",
+      "description": "SONIC measured joint-velocity CSV; maximum absolute sampled value 8.121 rad/s at hardware joint 3."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/logs/motor_error.csv",
+      "sha256": "44913131a5e3d1e34471d4e8cd28e8a0253462afc8274d5a9bf47d05f7e1864a",
+      "description": "SONIC motor-error CSV for RUN-20261030-002; all sampled values zero."
     }
   ],
   "known_missing_evidence": [
     "G1 hardware and firmware inventory",
     "PICO tracker firmware and repeated reconnect reliability",
-    "TensorRT engine and exact-candidate simulation evidence",
+    "Exact-candidate simulation evidence",
     "Synchronized video",
     "Observed damping-frame publication and identified stock-controller resumption after local O",
-    "Stale PICO, SONIC process-loss, robot-level PICO stop and hardware E-stop outcomes"
+    "Stale PICO, SONIC process-loss and hardware E-stop outcomes"
   ]
 }
