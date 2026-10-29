@@ -44,6 +44,25 @@ findings:
       tracking reacquisition, or headset/application scheduling. This does not
       relax the physical pre-command freshness gate: a robot command must not be
       used to make an unhealthy input stream become healthy.
+  - date: 2026-10-28
+    scope: second simulation-only mode and terminal-outcome rehearsal
+    evidence: >-
+      After a clean XRoboToolkit PC-service/manager reconnect, the pre-activation
+      stream was again sparse (roughly 15-31 Hz EMA with sampled gaps up to about
+      584 ms). OFF -> PLANNER immediately coincided with recovery to about 64 Hz;
+      a sustained POSE interval held about 48-50 Hz pose output and approximately
+      51-69 Hz PICO input. Deployment stream delay mean/std was 17.492/10.448 ms.
+      Multiple logged POSE/PLANNER transitions occurred. At the end-of-run check,
+      the manager reported device missing and MuJoCo reported a fall (height 0.198
+      m); their exact ordering was not established. Local keyboard O produced an
+      emergency stop and the deployment exited normally.
+    interpretation: >-
+      Healthy active tracking performance was repeatable, but the end state failed
+      the stale-input/fall criteria and therefore is not a successful safety run.
+      The independent local O path remained effective in this simulation. The
+      recurring sparse-before-activation/fast-after-activation pattern merits a
+      source-versus-transport timestamp capture, and mode-event/operator-video
+      correlation is needed before interpreting the multiple transitions.
 readiness: gated
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
