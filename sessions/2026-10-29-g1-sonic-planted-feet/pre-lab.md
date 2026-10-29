@@ -2,6 +2,9 @@
 
 Date: 2026-10-29. Owner/operator: David Wei. Status: planned and gated.
 
+The operator-facing start, stop, abort and evidence checklist is in
+[in-lab.md](in-lab.md).
+
 ## Objective
 
 Use tomorrow's lab access to close the highest-value readiness gaps for
