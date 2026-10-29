@@ -238,3 +238,39 @@ body stream does not automatically produce a prompt safe stop in the tested path
 Gate 0 must therefore demonstrate an explicit bounded stale-stream response before
 any physical launch; audio warning or continued tracking of the last reference is
 not an acceptable physical pass condition.
+
+## Final simulation mode-transition rehearsal
+
+On 2026-10-28, a fresh simulation-only deployment reached `Init Done` using source
+revision `1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b`, the repository's
+`policy/release` encoder/decoder, `planner/target_vel/V2/planner_sonic.onnx`,
+MuJoCo on loopback DDS, XRoboToolkit PC Service and the PICO manager with NPZ
+recording enabled. This was a mode-transition rehearsal, not a complete pass of
+the planted-feet protocol and not validation of the intended low-latency physical
+candidate.
+
+Before the operator chords, sampled PICO device timestamp intervals were erratic:
+the reported EMA was approximately 14--36 Hz and individual sampled intervals were
+approximately 100--610 ms. The operator then fully pressed and released A+B+X+Y,
+waited in PLANNER, pressed and released A+X to enter POSE, and later returned with
+A+X. The logs recorded exactly one transition for each action:
+
+- `OFF -> PLANNER`;
+- `PLANNER -> POSE`;
+- `POSE -> PLANNER`.
+
+After the first transition, PICO device intervals became approximately 13--21 ms
+(about 59--69 Hz). During POSE, the pose loop sustained approximately 47.7--50.0
+Hz. The deployment reported streaming-data delay mean 17.477 ms and standard
+deviation 10.263 ms. These measurements show that the host pipeline was capable
+of the target rate during the active interval. They do not identify why input was
+sparse beforehand. Candidate explanations are PICO body-pipeline warm-up,
+tracker/body reacquisition, or headset/application scheduling; the evidence does
+not distinguish them.
+
+Operational implication: do not treat entering PLANNER as a remedy for a sparse
+stream on hardware. The physical pre-command gate remains at least 30 seconds of
+fresh input at 50 Hz or better with no 100 ms gap. If that gate is not satisfied,
+reacquire/restart tracking without publishing robot commands. A later diagnostic
+run should record every source timestamp and host arrival time continuously so
+device generation, transport batching and host scheduling can be separated.

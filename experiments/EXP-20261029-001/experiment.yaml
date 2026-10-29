@@ -26,7 +26,24 @@ related_repositories:
   - davidwei/robotics-labbook
 related_sessions:
   - SESSION-20261029-001
-findings: []
+findings:
+  - date: 2026-10-28
+    scope: simulation-only mode-transition rehearsal
+    evidence: >-
+      Before the operator chord, PicoReader samples were intermittent (roughly
+      14-36 Hz EMA with individual device-timestamp gaps of 100-610 ms). After one
+      fully released A+B+X+Y transition from OFF to PLANNER and one A+X transition
+      to POSE, the same process reported roughly 59-69 Hz PICO input, 47.7-50.0 Hz
+      pose-loop output, and deployment stream delay mean/std of 17.477/10.263 ms.
+      The manager logged exactly one OFF -> PLANNER, PLANNER -> POSE, and POSE ->
+      PLANNER transition.
+    interpretation: >-
+      The workstation and manager can sustain the required rates once tracking is
+      healthy. The exact cause of the pre-transition sparse device timestamps is
+      not established; likely candidates include tracker/body-pipeline warm-up,
+      tracking reacquisition, or headset/application scheduling. This does not
+      relax the physical pre-command freshness gate: a robot command must not be
+      used to make an unhealthy input stream become healthy.
 readiness: gated
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
