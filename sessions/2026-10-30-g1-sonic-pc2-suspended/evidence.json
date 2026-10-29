@@ -1,6 +1,16 @@
 {
   "artifacts": [
     {
+      "path": "/home/dwei/sonic/captures/preflight-20261030-02.jsonl",
+      "sha256": "5dec0ba89044e3a97fffcc9ec56fc318acdfb4e5671b4c76a3ca23d67e5eee56",
+      "description": "Second 15-second read-only PC2 DDS preflight; all sampled CRC, finite state/IMU and body motor status checks passed. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/captures/pico-preflight-20261030-01.jsonl",
+      "sha256": null,
+      "description": "Read-only DDS capture started 2026-10-30 01:18:39 CST for PICO preflight; still in progress at record time. Hash and coverage pending closure."
+    },
+    {
       "path": "/home/dwei/sonic/captures/preflight-20261030-01.jsonl",
       "sha256": "5d420d0a8dc6093a7f85af30b4ec5de41674e6e5bf57f300f06e8a9f66f0c72f",
       "description": "Five-second read-only PC2 DDS preflight: LowState, base/torso IMUs, LowCmd and receipt timestamps. Stored locally on PC2."

@@ -28,6 +28,14 @@ robot-controller process was found in the process inspection, but the publisher
 has not been identified. The recorder's LowState capture rate was about 192 Hz,
 so it does not claim every DDS message was preserved.
 
+At 01:17, a second 15-second read-only preflight received 2,924 LowState,
+4,834 torso IMU and 2,767 LowCmd samples. Every captured LowState and LowCmd
+passed CRC; all sampled 29-body q/dq and base/torso IMU values were finite,
+and all sampled body motor status codes were zero. Recorder drops and callback
+failures were zero. XRoboToolkit PC Service is running locally on PC2; a
+20-minute read-only DDS capture began at 01:18:39 for the PICO preflight.
+The PICO app has not yet connected, and SONIC has not commanded the robot.
+
 Next: identify the existing command publisher and G1 hardware/firmware;
 verify PICO/tracker freshness and the exact PC2 candidate; arrange an operator
 and separate safety operator, full unloading and clearance, local `O` and E-stop,

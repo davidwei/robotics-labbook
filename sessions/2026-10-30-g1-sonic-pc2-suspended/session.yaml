@@ -22,6 +22,15 @@ activities:
     end_local: 2026-10-30T01:01:09+08:00
     description: Independent read-only LowState, torso IMU and LowCmd DDS capture.
     evidence: evidence.json
+  - type: preflight
+    start_local: 2026-10-30T01:17:19+08:00
+    end_local: 2026-10-30T01:17:34+08:00
+    description: Second 15-second read-only DDS capture; CRC, finite values and motor status checked.
+    evidence: evidence.json
+  - type: preflight
+    start_local: 2026-10-30T01:18:39+08:00
+    description: XRoboToolkit PC Service running; 20-minute read-only DDS capture started for PICO preflight.
+    evidence: evidence.json
 next_agent_action: >-
   Complete G1 identity and publisher inspection, PICO input-only freshness,
   exact-candidate engine/simulation checks and suspended diagnostic preparation.
