@@ -4,7 +4,7 @@ owner: David Wei
 participants: [David Wei, Codex]
 location_label: G1 lab, PC2
 experiments: [EXP-20261029-001]
-status: in_progress
+status: ended_validation_incomplete
 capture:
   method: live
   sources: [operator_statement, codex_session, git, filesystem, read_only_dds]
@@ -87,12 +87,24 @@ activities:
     description: Headset-only replay capture confirmed nearly straight raw and converted knees; terminal chord briefly sampled frozen-upper-body mode before OFF.
     evidence: evidence.json
   - type: software_validation
-    description: Revision 007b33d added exact packets, continuous raw XR/controller capture, live/final validators and replay; Python compilation and four focused tests passed.
+    description: Revision 8d916d4 added exact packets, continuous raw XR/controller capture, live/final validators and replay; Python compilation and four focused tests passed.
+    evidence: evidence.json
+  - type: diagnostic
+    description: >-
+      Expanded input-only preflight captured 853 raw XR/controller samples but
+      rejected the stream: six gaps exceeded 100 ms, knees were 45.6/61.3
+      degrees and every body-pose frame was identical despite advancing device
+      timestamps.
+    evidence: evidence.json
+  - type: preparation
+    description: Isolated PC2 simulation environment was prepared and loopback MuJoCo/deployment startup was attempted; simulator LowState CRC remained zero and the deployment rejected it, so exact packet replay was not completed.
     evidence: evidence.json
 next_agent_action: >-
-  Run a short headset-only check of the expanded continuous input/controller
-  logger. Before any separately authorized physical repeat, require independent
-  DDS capture and validated manager capture to be active before SONIC launch and
+  Recalibrate both PICO ankle trackers and full-body tracking, then pass an
+  input-only check with upright knees, deliberate small arm motion, changing body
+  content and no device gap above 100 ms. Resolve simulator LowState CRC if exact
+  replay remains desired. Before any separately authorized physical repeat,
+  require independent DDS and validated manager capture before SONIC launch and
   retain both through at least 45 seconds after stop.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
@@ -100,4 +112,4 @@ prerequisites: >-
   contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: tethered_pose_entry_failed_straight_input_confirmed_downstream_cause_unresolved_replay_grade_capture_prepared
+physical_validation_status: session_ended_pose_entry_failed_reconnect_stream_frozen_and_bent_physical_repeat_blocked

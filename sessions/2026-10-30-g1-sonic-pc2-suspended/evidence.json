@@ -294,6 +294,26 @@
       "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/raw_body_poses.bin",
       "sha256": "3f7a2ea628d99030b5c1a41b184223b02bc3b4fc96e965a6d94a733ff1cb4546",
       "description": "250 raw XR 24-by-7 body poses aligned to outgoing POSE packets; knee and segment geometry remained nearly straight and stable."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/manager-preflight.typescript",
+      "sha256": "3c9b7239e19f2a8b325de918c44c60ae0081d6d79240436190a7dbad8d22c2c6",
+      "description": "Expanded input-only preflight transcript: reconnect, stable-looking reader reports, no controller chords and clean manager shutdown."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/pico-packets/metadata.json",
+      "sha256": "184d49354a599c8fbb5acb18b11408d7b2af55b0ba0da70b335b9314bb62b3d3",
+      "description": "Expanded capture metadata identifying exact-packet plus continuous raw-input files."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/pico-packets/input_samples.jsonl",
+      "sha256": "35a5894aa3d9f9795c109e5eee7f916989087f78a6862cb1758174808a665e8d",
+      "description": "853 continuous XR/controller sample records with device/host clocks and no pressed buttons; six device gaps exceeded 100 ms."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/pico-packets/input_body_poses.bin",
+      "sha256": "32932d2a348c3c7e0baf3328d2765846e9a328e9fafdcae5227d06d9dbb7eb63",
+      "description": "853 raw 24-by-7 XR body poses; every frame was identical and knee geometry remained fixed at 45.6/61.3 degrees."
     }
   ],
   "known_missing_evidence": [
@@ -302,7 +322,8 @@
     "Exact-candidate simulation evidence",
     "Synchronized video",
     "Raw PICO body-joint and outgoing SMPL pose packets for RUN-20261030-004",
-    "Continuous raw controller-button samples for the headset-only replay capture; added for the next run at SONIC revision 007b33d",
+    "Continuous raw controller-button samples for the first headset-only replay capture; added for the next run at SONIC revision 8d916d4",
+    "Persistent transcript for the incomplete PC2 loopback simulation startup and CRC rejection",
     "Observed damping-frame publication and identified stock-controller resumption after local O",
     "Stale PICO, SONIC process-loss and hardware E-stop outcomes"
   ]

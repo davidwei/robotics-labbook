@@ -184,7 +184,7 @@ prints only the pelvis entry rather than knee/ankle inputs. Lower-body tracking,
 coordinate/joint-order conversion and the policy transition remain competing
 hypotheses.
 
-Local SONIC revision `007b33de503bf54f14195e690413f8fae5089f73` adds
+Local SONIC revision `8d916d4384864aa3417bbe4eaa1944bfe4793c20` adds
 replay-grade capture before any repeat: exact manager ZMQ payloads across PLANNER,
 POSE, command and stop traffic; packet timestamps and mode tags; per-packet
 hashes; aligned raw 24-by-7 XR body poses; and continuous raw body/controller
@@ -206,7 +206,27 @@ The final four-button stop sample briefly produced
 issue not visible in the first physical run. The expanded logger now preserves
 continuous raw buttons so any recurrence is reconstructable.
 
-Next: validate the expanded continuous-input logger in a short headset-only check,
-then keep independent DDS, manager packet/input, SONIC CSV/console and optional
-video capture active through at least 45 seconds after any separately authorized
-physical stop. Untethered work remains blocked.
+The expanded logger then received 853 input-only samples over 14.73 seconds after
+another PICO reconnect. It rejected the stream: six device-timestamp gaps exceeded
+100 ms (maximum 359.9 ms; 167.3 ms still occurred in the final five seconds), raw
+left/right knee geometry was fixed at 45.6/61.3 degrees, and all 853 body-pose
+arrays were bit-for-bit identical despite advancing timestamps. No controller
+buttons were pressed. This anatomically bent, frozen stream is a credible source
+for a leg-tuck response and demonstrates that connection status alone is not a
+readiness signal.
+
+An isolated PC2 MuJoCo environment was also prepared for exact replay. Loopback
+simulator and deployment startup reached DDS communication, but simulator
+LowState messages carried CRC zero and the deployment rejected them. Exact packet
+replay was therefore not completed and no simulation conclusion was drawn.
+
+The lab session ended with G1 secured on the gantry and no SONIC deployment,
+PICO manager, simulator, replay process or independent recorder remaining.
+
+Next: recalibrate both ankle trackers/full-body tracking and pass an input-only
+upright/freshness check with one small arm motion before considering any physical
+repeat. Resolve simulator LowState CRC if exact replay remains desired. For every
+later physical run, keep independent DDS, exact manager packet/raw-input,
+SONIC CSV/console and optional synchronized video capture active from before
+initialization through at least 45 seconds after stop. Untethered work remains
+blocked.

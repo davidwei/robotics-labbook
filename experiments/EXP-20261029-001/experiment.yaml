@@ -127,6 +127,22 @@ findings:
       stop was effective. Telemetry confirms a rapid bilateral tuck but cannot
       attribute it to PICO input, conversion or policy response. Physical POSE
       repetition waits for replay-grade capture and offline diagnosis.
+  - date: 2026-10-30
+    scope: headset-only raw-input reproducibility diagnostics
+    evidence: >-
+      One 250-frame POSE capture showed nearly straight raw and converted knees
+      with stable leg lengths. After a later reconnect, the expanded logger
+      captured 853 input frames over 14.73 seconds while the operator stood
+      upright: all body arrays were bit-for-bit identical, knees were fixed at
+      45.6/61.3 degrees, and six timestamp gaps exceeded 100 ms. No controller
+      buttons were pressed.
+    interpretation: >-
+      XRoboToolkit connection and advancing timestamps do not guarantee a fresh or
+      anatomically valid body stream. The frozen/bent reconnect state is a credible
+      input-side mechanism for the physical tuck, but temporal correlation to
+      RUN-20261030-004 is unavailable because that run lacked raw input capture.
+      Recalibration plus an explicit motion/freshness gate is required before any
+      physical repeat.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-10-30
@@ -228,7 +244,7 @@ operator_decisions:
   - date: 2026-10-30
     decision: >-
       RUN-20261030-004 failed at POSE entry with rapid bilateral leg retraction.
-      Local SONIC revision 007b33d records exact manager packets, aligned raw XR
+      Local SONIC revision 8d916d4 records exact manager packets, aligned raw XR
       body poses and continuous raw body/controller samples across every manager
       mode. A headset-only capture showed nearly straight, stable raw and converted
       knee geometry, so the prior physical tuck is not explained by a bent input
@@ -240,7 +256,7 @@ operator_decisions:
       replay it only to simulation and inspect ankle/knee geometry and policy response.
     target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on PC2; simulation before robot actuation
     prerequisites: headset and ankle trackers, exact packet capture, read-only validator, simulation subscriber and explicit later authorization for any physical repeat
-    physical_validation_status: POSE entry failed; packet capture live-validated; continuous body/controller capture added and awaiting short live validation
+    physical_validation_status: POSE entry failed; expanded logger live-validated by rejecting a frozen/bent reconnect stream; physical repeat blocked
 hypotheses:
   - date: 2026-10-30
     statement: A larger feet-to-floor gap may cause SONIC to attempt harder stepping while suspended.
@@ -251,6 +267,8 @@ hypotheses:
       signals while contact remains absent; dynamics after contact would be a
       different experimental condition.
 current_blockers:
+  - Expanded input-only capture found a frozen, anatomically bent reconnect stream: all 853 body poses were identical, knee angles were 45.6/61.3 degrees and six timestamp gaps exceeded 100 ms. Recalibration and a passing upright/motion freshness check are required before any physical repeat.
+  - PC2 loopback MuJoCo/deployment startup exposed zero simulator LowState CRC values rejected by the deployment; exact packet replay was not completed.
   - RUN-20261030-004 produced a rapid bilateral leg tuck at POSE entry; raw PICO/SMPL lower-body packets were not captured, so physical POSE repetition waits for headset-only capture and simulation replay.
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
   - PC2 PICO input passed one 30-second window and RUN-20261030-002 used the generated decoder, encoder and planner TensorRT engines; exact-candidate simulation remains unvalidated.
