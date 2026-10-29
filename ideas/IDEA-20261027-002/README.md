@@ -251,3 +251,8 @@ explicitly authorized physical-validation gate.
 
 Post-run diagnosis and the proposed gated G1-29 physical protocol are in
 [the 2026-10-28 analysis and physical plan](g1-29-physical-plan-20261028.md).
+The initial planted-feet demonstration is specified in the
+[relatively safe full-body demo protocol](planted-feet-full-body-demo.md).
+Physical robot preparation, software requirements and the unresolved G1 firmware/
+hardware compatibility gate are documented in the
+[G1-29 SONIC setup checklist](g1-29-sonic-setup.md).
