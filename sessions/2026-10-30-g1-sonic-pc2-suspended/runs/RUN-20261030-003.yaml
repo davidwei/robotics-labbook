@@ -1,0 +1,60 @@
+id: RUN-20261030-003
+experiment: EXP-20261029-001
+session: SESSION-20261030-001
+type: run
+title: Tethered ground-contact IDLE control and PICO stop
+start_local: 2026-10-30T02:33:42+08:00
+end_local: 2026-10-30T02:39:32+08:00
+robot: G1-29, both soles on floor, full weight bearing, gantry catch-only
+software:
+  repository: NVlabs/GR00T-WholeBodyControl
+  checkout_revision: 632b6b71f974a3a9fe24eb920c210084bda44989
+  deployment_binary_revision: 1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b
+  source_tree: tracked files clean; local build and model artifacts untracked; checkout two commits ahead of origin
+  policy: gear_sonic_deploy/policy/low_latency/model_decoder.onnx
+  encoder: gear_sonic_deploy/policy/low_latency/model_encoder.onnx
+  observation_config: gear_sonic_deploy/policy/low_latency/observation_config.yaml
+  planner: gear_sonic_deploy/planner/target_vel/V2/planner_sonic.onnx
+  planner_engine_sha256: 50e98ba9bfac4889c8db4b149b3a1b621996d9931db664edb7326eb23136a669
+  decoder_engine_sha256: 8e4418f31672921593ec8dd370ffaf4706947ebf5b09594db6decb638a2e2b6c
+  encoder_engine_sha256: 66f7c4b08d5b377e0fd8ad74448ab5caa265eaf1af66bf42f096062c2b10161d
+  input_type: zmq_manager
+  network_interface: enP8p1s0
+conditions:
+  operator_reported:
+    - both soles flat and symmetric on a non-slip floor
+    - robot carried its normal weight
+    - gantry configured as fall catch without upward load or yaw bias
+    - second operator present with hardware E-stop ready
+  pico_stream_hz_approx: 71
+  interval_control: operator second A+B+X+Y chord after an independent five-second count
+  actual_policy_csv_duration_s: 12.28
+authorization: operator authorized ground-contact initialization and tethered IDLE baseline
+result: active_ground_contact_idle_stable_post_stop_self_support_absent
+observations:
+  - Clean launch loaded prebuilt engines and reached Init Done before PICO connection.
+  - Operator confirmed the robot was standing after initialization.
+  - Patched manager logged exactly one OFF-to-PLANNER and one PLANNER-to-OFF transition and shut down XR SDK cleanly.
+  - SONIC entered CONTROL with IDLE planner, received the PICO stop, printed Stop and exited normally with status 0.
+  - Operator reported firm standing before the second chord, with the gantry not carrying the robot.
+  - Policy CSV contains 613 rows over 12.28 seconds.
+  - Maximum measured leg-joint range was 0.613 rad at hardware joint 3 (left knee).
+  - Maximum overall measured joint speed was 6.262 rad/s at hardware joint 18 (left elbow).
+  - Base roll, pitch and yaw ranges during policy control were 0.0666, 0.1664 and 0.1574 rad.
+  - No sampled motor error/status, LowState/LowCmd CRC failure, recorder queue drop or callback failure occurred.
+  - After stop the robot could not remain standing and relied on the gantry, matching the prior development-mode observation.
+  - The retained post-stop capture lasted 60.23 seconds; no LowCmd resumed and maximum measured post-stop change was 0.359 rad at hardware joint 10 (right ankle pitch).
+capture:
+  coverage: partial
+  sources: [independent_dds_jsonl, deployment_console, pico_manager_console, sonic_csv, operator_statement]
+  known_gaps:
+    - No synchronized video is registered.
+    - No gantry load-cell measurement was available; active-phase unloading is based on operator observation.
+    - Transcript lines do not carry per-event timestamps; policy duration comes from SONIC CSV.
+    - The run did not deliberately interrupt PICO input and therefore provides no stale-input result.
+decision: >-
+  Treat active tethered ground-contact IDLE as physically demonstrated for this
+  run. Treat the second chord as a process/control stop only: it does not preserve
+  standing or restore stock control. Keep the gantry engaged through every stop,
+  and do not generalize to locomotion, stale input or untethered use.
+evidence: ../evidence.json

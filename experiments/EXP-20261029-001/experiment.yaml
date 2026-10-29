@@ -30,6 +30,7 @@ related_sessions:
 related_runs:
   - RUN-20261030-001
   - RUN-20261030-002
+  - RUN-20261030-003
 findings:
   - date: 2026-10-28
     scope: simulation-only mode-transition rehearsal
@@ -96,6 +97,19 @@ findings:
       Live PICO start/stop worked under full suspension. Preserve the measured
       duration and knee speed as evidence; they do not establish stale-input,
       ground-contact, handover or untethered behavior.
+  - date: 2026-10-30
+    scope: tethered full-weight-bearing ground-contact IDLE and PICO stop
+    evidence: >-
+      RUN-20261030-003 logged exactly one OFF-to-PLANNER and one PLANNER-to-OFF
+      transition. The operator reported firm standing with the gantry unloaded
+      during 12.28 seconds of IDLE planner control. No sampled motor error/status,
+      LowState/LowCmd CRC failure, recorder drop or callback failure occurred.
+      After stop, no LowCmd resumed during 60.23 seconds of retained capture; the
+      robot lost self-support and relied on the gantry.
+    interpretation: >-
+      Active tethered ground-contact IDLE was demonstrated for this run. The PICO
+      chord stops SONIC but does not preserve standing or restore stock control.
+      Stale-input, locomotion and untethered behavior remain unvalidated.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-10-30
@@ -195,8 +209,8 @@ current_blockers:
   - PC2 PICO input passed one 30-second window and RUN-20261030-002 used the generated decoder, encoder and planner TensorRT engines; exact-candidate simulation remains unvalidated.
   - The A+B+X+Y full-release latch is now ported and live-tested on PC2 at local revisions dc86407 and 632b6b7; these commits are not upstream, and only input-only transition/teardown behavior was tested.
   - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
-  - Stale PICO and post-stop stock-controller behavior remain unvalidated and block untethered trials.
-  - RUN-20261030-001 and RUN-20261030-002 captured no damping frame or resumed stock LowCmd after stop; suspended joints relaxed, so each repeat still needs gantry protection, independent capture and separate authorization.
+  - Stale PICO remains unvalidated and blocks untethered trials.
+  - RUN-20261030-003 reproduced absent post-stop self-support on the ground: no stock LowCmd resumed and the robot relaxed into the gantry, so every repeat needs gantry protection through post-stop, independent capture and separate authorization.
 authorization_boundary: >-
   This experiment record authorizes planning, software/simulation work and read-only
   robot inspection only. The feet-clear INIT diagnostic command publication requires

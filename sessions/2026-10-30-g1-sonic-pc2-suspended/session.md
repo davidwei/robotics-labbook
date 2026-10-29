@@ -132,8 +132,24 @@ through the expected downward foot excursion. Any intentional or actual floor
 tap changes the activity to a controlled-contact test and requires separate
 preparation and authorization.
 
-Next: prepare a separately authorized fully suspended stale-input test with a
-locally controlled stop and the same independent capture. Retain the measured
-knee-speed evidence when bounding the next run, and record foot clearance after
-`Init Done`. G1 hardware/firmware identity remains incomplete. Ground-contact and
-untethered work remain deferred.
+[RUN-20261030-003](runs/RUN-20261030-003.md) then tested tethered,
+full-weight-bearing ground contact with the gantry configured only as a fall
+catch. After ground-contact initialization, the operator executed the PICO
+start/count/stop sequence independently. During the 12.28-second IDLE planner
+interval, the operator reported firm standing and no gantry support. The manager
+logged one start and one stop, and SONIC exited normally. No sampled motor
+error/status, CRC failure or recorder drop occurred. Maximum leg range was 0.613
+rad at the left knee; base roll/pitch/yaw ranges were approximately
+3.8/9.5/9.0 degrees.
+
+The stop did not preserve standing. After the second chord, LowCmd publication
+ceased, no stock command resumed during 60.23 seconds of retained capture, and
+the robot relaxed into the gantry. The operator identified this as the same
+development-mode behavior seen previously. Thus active tethered IDLE standing
+was demonstrated, while stand-preserving stop and controller handover remain
+absent.
+
+Next: review whether the next tethered experiment should isolate stale PICO input
+or exercise a small bounded teleoperation motion. Every run must retain the gantry
+through and after stop because the robot does not remain standing when SONIC exits.
+G1 hardware/firmware identity remains incomplete; untethered work remains deferred.

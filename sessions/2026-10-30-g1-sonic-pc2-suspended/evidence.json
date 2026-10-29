@@ -169,6 +169,46 @@
       "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/logs/motor_error.csv",
       "sha256": "44913131a5e3d1e34471d4e8cd28e8a0253462afc8274d5a9bf47d05f7e1864a",
       "description": "SONIC motor-error CSV for RUN-20261030-002; all sampled values zero."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/preflight.jsonl",
+      "sha256": "8e6689f80ba3ef2bdd51dc6ca65ef47535b1f90fe9d52c482c4cd190b91efc3b",
+      "description": "Five-second read-only preflight before RUN-20261030-003: live LowState/torso IMU, zero LowCmd and complete summary."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/wholebody.jsonl",
+      "sha256": "d7c82e34419313b83ee3a6b1155847ae774d967138929ade9f0b30f4ee96dec6",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-003, including 60.23 seconds after the last command."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/sonic.typescript",
+      "sha256": "9437c7f5267688d756803ba46bcee01bf4d4ab24d53f48dc426b117e2941b714",
+      "description": "SONIC transcript for RUN-20261030-003: Init Done, CONTROL entry, PICO stop and normal exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/manager.typescript",
+      "sha256": "eccda9393fb320ff8acc7c68ca112ab496bd441e8a0297b948070b0e86e2c4a8",
+      "description": "PICO manager transcript for RUN-20261030-003: stable approximately 71 Hz input, one start and one stop transition, clean XR shutdown."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/q.csv",
+      "sha256": "2a4a3461926dc5add4bd868413426c0f915119bd31b4df87fd2985a7e1324b41",
+      "description": "SONIC measured joint positions for the 12.28-second ground-contact IDLE interval."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/dq.csv",
+      "sha256": "d476861116ffd94065234e9fe0bbdc23db4ec32643bf7e98035a3032ae8cbabf",
+      "description": "SONIC measured joint velocities for RUN-20261030-003; maximum absolute sampled value 6.262 rad/s at hardware joint 18."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/motor_error.csv",
+      "sha256": "4d49f5bf2d31de5b8d898018b3b2251e0a2352f46ba5592df4e002003e40a1df",
+      "description": "SONIC motor-error CSV for RUN-20261030-003; all sampled values zero."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/base_quat.csv",
+      "sha256": "c257993540c00038c69901e9e6960110685790ce05baf96e685df741d4634ecb",
+      "description": "SONIC base quaternion CSV used to compute policy-interval roll/pitch/yaw ranges."
     }
   ],
   "known_missing_evidence": [
