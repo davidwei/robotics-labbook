@@ -138,6 +138,20 @@ operator_decisions:
     target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
     prerequisites: rated gantry, explicit current-mode check, two operators, capture and separate run authorization
     physical_validation_status: feet-clear INIT/local-O observed; automatic stock-mode restoration absent
+  - date: 2026-10-30
+    decision: >-
+      Focus current work on fully gantry-tethered experiments. Defer watchdogs and
+      other complexity needed only for untethered operation. Suspended runs may
+      measure stale-input and stop behavior with independent whole-body state/IMU/
+      LowCmd capture and an E-stop operator; those outcomes do not clear untethered
+      use.
+    source: operator statement during the PC2 lab session
+    next_agent_action: >-
+      Prepare the next fully suspended, instrumented PICO/SONIC policy run and
+      request separate authorization immediately before launch.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: rated gantry fully unloading both feet, limb clearance, two operators, local O and facility E-stop, independent capture and explicit run authorization
+    physical_validation_status: tethered scope selected; suspended policy and stale-input outcomes not yet run
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
   - PC2 PICO input passed one 30-second window; decoder/encoder TensorRT builds passed, but exact runtime engines and exact-candidate simulation remain unvalidated.

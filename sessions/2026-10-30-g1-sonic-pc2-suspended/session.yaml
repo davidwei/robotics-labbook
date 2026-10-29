@@ -61,8 +61,9 @@ activities:
     description: Live input-only PICO latch and teardown retest passed with one start, one stop, SDK uninitialization and exit 0.
     evidence: evidence.json
 next_agent_action: >-
-  Complete G1 identity and command-owner inspection, then implement and validate
-  an independent stale-PICO outcome before any policy-motion test.
+  Prepare a separately authorized, fully suspended PICO/SONIC policy run with
+  independent whole-body state, IMU and LowCmd capture; measure stale-input and
+  local-stop outcomes without adding untethered-only watchdog complexity.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot

@@ -98,8 +98,14 @@ headset-only preflight. It does not validate stale-input behavior, robot stop,
 stock-controller handover or policy motion. Both local SONIC commits are two
 commits ahead of the NVlabs remote and were not pushed upstream.
 
-Next: inspect why the expected damping frame was not captured and establish the
-post-SONIC stock-controller ownership/handover behavior. G1 hardware/firmware
-identity remains incomplete. Any
-gantry-protected contact test needs separate preparation and authorization;
-untethered motion waits for reviewed stale-input and stop/handover outcomes.
+The operator then narrowed the active work to gantry-tethered experiments.
+Watchdogs and other complexity needed only for untethered use are deferred. The
+next experiment may therefore measure stale-input and stop behavior while fully
+suspended, with independent whole-body state/IMU/LowCmd capture and an E-stop
+operator; its result must not be generalized to untethered operation.
+
+Next: prepare a separately authorized, fully suspended PICO/SONIC policy run with
+independent whole-body state/IMU/LowCmd capture, then deliberately measure the
+stale-input and local-stop outcomes. G1 hardware/firmware identity remains
+incomplete. Any gantry-protected contact test needs separate preparation and
+authorization; untethered motion and untethered-only safeguards are deferred.
