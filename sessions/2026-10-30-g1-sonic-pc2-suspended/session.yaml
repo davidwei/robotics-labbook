@@ -74,7 +74,8 @@ activities:
 next_agent_action: >-
   Prepare a separately authorized suspended stale-input test without untethered-
   only watchdog complexity; retain the measured 8.12 rad/s left-knee speed when
-  bounding the next run.
+  bounding the next run, record foot clearance after Init Done, and preserve
+  clearance through the expected downward foot excursion.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot

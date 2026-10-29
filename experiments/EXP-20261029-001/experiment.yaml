@@ -168,6 +168,28 @@ operator_decisions:
     target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
     prerequisites: rated gantry fully unloading both feet, limb clearance, two operators, local O and facility E-stop, independent capture and explicit run authorization
     physical_validation_status: tethered scope selected; suspended policy and stale-input outcomes not yet run
+  - date: 2026-10-30
+    decision: >-
+      For the next suspended validation, position the feet near the floor after
+      Init Done but preserve clear separation through the planned motion envelope,
+      and record the initial clearance. Treat any intentional or actual foot-floor
+      contact as a separately prepared controlled-contact test.
+    source: operator setup refinement plus review of enabled policy observations
+    next_agent_action: >-
+      Define and record a measurable clearance and downward-excursion margin before
+      requesting authorization for the next suspended run.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: rated gantry, measured clearance after Init Done, expected foot-motion envelope, two operators, E-stop and independent capture
+    physical_validation_status: proposed near-floor suspended setup; not yet executed
+hypotheses:
+  - date: 2026-10-30
+    statement: A larger feet-to-floor gap may cause SONIC to attempt harder stepping while suspended.
+    status: unvalidated
+    note: >-
+      The enabled policy observations do not directly include foot clearance or
+      contact force. Near-floor placement cannot affect the policy through those
+      signals while contact remains absent; dynamics after contact would be a
+      different experimental condition.
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
   - PC2 PICO input passed one 30-second window and RUN-20261030-002 used the generated decoder, encoder and planner TensorRT engines; exact-candidate simulation remains unvalidated.

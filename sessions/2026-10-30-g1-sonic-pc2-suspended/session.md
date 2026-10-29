@@ -123,7 +123,17 @@ rad and no sampled motor error/status or CRC failure. No damping or resumed stoc
 LowCmd was captured after stop. This is a suspended PICO start/stop observation,
 not a stale-input test.
 
+For the next suspended validation, the operator proposed placing the feet close
+to, but still clear of, the floor because a larger gap might cause harder stepping
+attempts. The current enabled policy observations do not directly include foot
+clearance or contact force, so that causal explanation remains a hypothesis. The
+setup refinement is to record clearance after `Init Done` and preserve clearance
+through the expected downward foot excursion. Any intentional or actual floor
+tap changes the activity to a controlled-contact test and requires separate
+preparation and authorization.
+
 Next: prepare a separately authorized fully suspended stale-input test with a
 locally controlled stop and the same independent capture. Retain the measured
-knee-speed evidence when bounding the next run. G1 hardware/firmware identity
-remains incomplete. Ground-contact and untethered work remain deferred.
+knee-speed evidence when bounding the next run, and record foot clearance after
+`Init Done`. G1 hardware/firmware identity remains incomplete. Ground-contact and
+untethered work remain deferred.
