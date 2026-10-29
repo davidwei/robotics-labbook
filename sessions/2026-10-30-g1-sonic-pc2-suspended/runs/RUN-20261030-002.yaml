@@ -26,16 +26,16 @@ conditions:
     - limb workspace clear
     - second person present with hardware E-stop in hand
   pico_stream_hz_approx: 72
-  requested_policy_interval_s: 3
+  interval_control: operator second A+B+X+Y chord
   actual_policy_csv_duration_s: 22.54
 authorization: operator separately authorized suspended initialization and one brief policy activation
-result: pico_start_stop_complete_interval_exceeded_plan_review_required
+result: suspended_pico_start_stop_complete
 observations:
   - Clean relaunch loaded the prebuilt 710 MiB planner engine and reached Init Done without rebuilding it.
   - Patched manager logged exactly one OFF-to-PLANNER and one PLANNER-to-OFF transition; manager and XR SDK shut down cleanly.
   - SONIC entered CONTROL with the IDLE planner, received the PICO stop, printed Stop and exited normally with status 0.
   - Operator observed stepping attempts and feet tapping toward the floor while the robot was suspended, consistent with the earlier simulation.
-  - Policy CSV contains 1125 rows over 22.54 seconds; the intended three-second interval was exceeded because confirmation/tool latency delayed the stop instruction.
+  - Policy CSV contains 1125 rows over 22.54 seconds; the operator later clarified that this chord-to-chord duration was expected, superseding the initial protocol-miss interpretation.
   - Maximum measured policy-interval joint speed was 8.121 rad/s at hardware joint 3 (left knee).
   - Maximum measured policy-interval joint range was 0.821 rad at hardware joint 24 (right shoulder yaw); first-to-last change there was 0.760 rad.
   - Base yaw changed from 0.015 to 1.165 rad over the wider independent capture while the robot hung from the gantry.
@@ -51,8 +51,8 @@ capture:
     - The run did not deliberately interrupt PICO input and therefore provides no stale-input result.
     - No damping frame or stock-controller resumption was captured.
 decision: >-
-  Treat this as a successful suspended PICO start/stop-path observation but a
-  protocol-duration miss. Review the 22.54-second interval and 8.12 rad/s knee
-  speed before another policy activation. Do not generalize to ground contact,
-  stale input, handover or untethered use.
+  Treat this as a successful suspended PICO start/stop-path observation. Preserve
+  the measured 22.54-second interval and 8.12 rad/s knee speed as evidence, not as
+  a duration failure. Do not generalize to ground contact, stale input, handover
+  or untethered use.
 evidence: ../evidence.json

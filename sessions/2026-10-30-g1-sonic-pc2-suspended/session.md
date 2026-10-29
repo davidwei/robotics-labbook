@@ -114,16 +114,16 @@ engine and reached `Init Done` before the operator wore PICO.
 RUN-20261030-002 exercised the live PICO start and stop path with G1 fully
 suspended. Exactly one OFF-to-PLANNER and one PLANNER-to-OFF transition occurred;
 SONIC entered IDLE planner control and exited normally on the PICO stop. The
-intended three-second interval lasted 22.54 seconds because the confirmation/tool
-loop delayed the stop instruction. The operator observed stepping attempts and
-feet tapping toward the floor, as expected from simulation. Telemetry measured a
+chord-to-chord interval lasted 22.54 seconds; the operator later clarified that
+this extra length was expected, correcting the initial protocol-miss
+interpretation. The operator observed stepping attempts and feet tapping toward
+the floor, as expected from simulation. Telemetry measured a
 peak left-knee speed of 8.12 rad/s, a maximum right-shoulder-yaw range of 0.821
 rad and no sampled motor error/status or CRC failure. No damping or resumed stock
 LowCmd was captured after stop. This is a suspended PICO start/stop observation,
-not a stale-input test; another policy run is held for review.
+not a stale-input test.
 
-Next: review RUN-20261030-002's duration miss and knee-speed evidence before any
-repeat. If accepted, prepare a separately authorized fully suspended stale-input
-test with a locally controlled stop and the same independent capture. G1 hardware/
-firmware identity remains incomplete. Ground-contact and untethered work remain
-deferred.
+Next: prepare a separately authorized fully suspended stale-input test with a
+locally controlled stop and the same independent capture. Retain the measured
+knee-speed evidence when bounding the next run. G1 hardware/firmware identity
+remains incomplete. Ground-contact and untethered work remain deferred.

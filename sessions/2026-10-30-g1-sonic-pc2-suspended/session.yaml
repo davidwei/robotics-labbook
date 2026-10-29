@@ -68,17 +68,17 @@ activities:
   - type: run
     start_local: 2026-10-30T02:22:08+08:00
     end_local: 2026-10-30T02:25:27+08:00
-    description: Fully suspended PICO start/stop run; policy interval exceeded planned duration and requires review.
+    description: Fully suspended PICO start/stop run; operator later confirmed the 22.54-second chord-to-chord interval was expected.
     run: RUN-20261030-002
     evidence: evidence.json
 next_agent_action: >-
-  Review RUN-20261030-002's 22.54-second interval and measured 8.12 rad/s left-knee
-  speed before any repeat; only then prepare a separately authorized suspended
-  stale-input test without untethered-only watchdog complexity.
+  Prepare a separately authorized suspended stale-input test without untethered-
+  only watchdog complexity; retain the measured 8.12 rad/s left-knee speed when
+  bounding the next run.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot
   contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: suspended_pico_start_stop_observed_duration_miss_under_review_stale_input_and_handover_unresolved
+physical_validation_status: suspended_pico_start_stop_observed_stale_input_and_handover_unresolved

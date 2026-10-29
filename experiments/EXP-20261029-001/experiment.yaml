@@ -86,15 +86,16 @@ findings:
     evidence: >-
       RUN-20261030-002 logged exactly one OFF-to-PLANNER and one PLANNER-to-OFF
       transition. SONIC entered IDLE planner control and exited normally on PICO
-      stop. The intended three-second interval lasted 22.54 seconds because the
-      confirmation/tool loop delayed the stop instruction. The operator observed
+      stop. The chord-to-chord interval lasted 22.54 seconds; the operator later
+      clarified that this extra length was expected, correcting the initial
+      protocol-miss interpretation. The operator observed
       stepping attempts and feet tapping toward the floor. Maximum measured joint
       speed was 8.12 rad/s at the left knee; no sampled motor error/status, command
       or state CRC failure, recorder drop or callback failure occurred.
     interpretation: >-
-      Live PICO start/stop worked under full suspension, but the interval-duration
-      miss and measured knee speed require review before repetition. This run did
-      not test stale input, ground contact, handover or untethered behavior.
+      Live PICO start/stop worked under full suspension. Preserve the measured
+      duration and knee speed as evidence; they do not establish stale-input,
+      ground-contact, handover or untethered behavior.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-10-30
@@ -173,7 +174,7 @@ current_blockers:
   - The A+B+X+Y full-release latch is now ported and live-tested on PC2 at local revisions dc86407 and 632b6b7; these commits are not upstream, and only input-only transition/teardown behavior was tested.
   - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
   - Stale PICO and post-stop stock-controller behavior remain unvalidated and block untethered trials.
-  - RUN-20261030-001 and RUN-20261030-002 captured no damping frame or resumed stock LowCmd after stop; suspended joints relaxed, and any repeat is held pending review of RUN-002's duration miss and knee speed.
+  - RUN-20261030-001 and RUN-20261030-002 captured no damping frame or resumed stock LowCmd after stop; suspended joints relaxed, so each repeat still needs gantry protection, independent capture and separate authorization.
 authorization_boundary: >-
   This experiment record authorizes planning, software/simulation work and read-only
   robot inspection only. The feet-clear INIT diagnostic command publication requires
