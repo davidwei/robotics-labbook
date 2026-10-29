@@ -120,3 +120,36 @@ PC service, then perform a no-robot connection/schema test. Record status `WORKI
 24-joint pose shape, finite transforms, timestamp/FPS behavior, left/right ankle
 response, controller buttons, disconnect/reconnect and tracker occlusion. Do not start
 SONIC Sim2Sim until this input evidence is stable.
+
+## 2026-10-28 input-only bring-up
+
+The verified SDK29 APK was installed over authorized ADB on device serial
+`PA8150MGGB090263G` and reports package `com.xrobotoolkit.client`, version `1.1.1`,
+minimum SDK 29 and target SDK 32. Because installing the workstation Debian package
+requires interactive sudo, its payload was extracted into the LeRobot workspace and
+the official `RoboticsServiceProcess` was run directly with its packaged libraries.
+This is a temporary evaluation setup, not a system installation. The official
+XRoboToolkit Python binding `1.0.2` was built in an isolated Python 3.10 environment.
+
+The operator observed XRoboToolkit status `WORKING` with workstation IP
+`10.9.0.149`. A bounded, read-only 15-second probe then collected 747 samples and
+636 distinct nonzero stream timestamps. Headset and both controller poses were
+nonzero, establishing that PICO-to-service transport and the local Python SDK path
+work. No simulator or robot was started.
+
+The same probe reported `body_available=false`, zero body-timestamp updates and
+`motion_tracker_count=0`. PICO logs concurrently repeated
+`CentaurEngine AddTrackerImageData failed, can't found [NoTracker] tracker`. Treat
+this as a PICO tracker-recognition/calibration boundary, not evidence that
+XRoboToolkit transport or all PICO foot-tracking support has failed. Evidence JSON
+is retained locally at
+`/home/dwei/lerobot-dev/xrobotoolkit-evidence/probe-20261028-live.json`; it is not
+copied into the labbook because it contains live device poses.
+
+Next operator action: in the PICO Motion Tracker panel/app, unpair both trackers,
+pair each again by holding its button for six seconds until red/blue flashing, and
+complete both calibration sequences (controllers down at the sides, then look down
+until both ankle trackers are recognized). Keep tracker lights facing up and visible.
+Then reconfirm XRoboToolkit `Head`, `Controller`, `Send` and `Full body`, rerun the
+bounded probe, and require two trackers plus a finite 24-by-7 body pose before any
+SONIC Sim2Sim attempt.
