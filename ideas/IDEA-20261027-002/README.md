@@ -256,3 +256,6 @@ The initial planted-feet demonstration is specified in the
 Physical robot preparation, software requirements and the unresolved G1 firmware/
 hardware compatibility gate are documented in the
 [G1-29 SONIC setup checklist](g1-29-sonic-setup.md).
+Tomorrow's planned lab work is tracked in
+[EXP-20261029-001](../../experiments/EXP-20261029-001/experiment.yaml) and
+[SESSION-20261029-001](../../sessions/2026-10-29-g1-sonic-planted-feet/pre-lab.md).

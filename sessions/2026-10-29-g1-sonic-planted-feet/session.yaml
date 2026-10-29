@@ -1,0 +1,25 @@
+id: SESSION-20261029-001
+date: 2026-10-29
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: robotics lab
+experiments: [EXP-20261029-001]
+status: planned
+capture:
+  method: live
+  sources:
+    - codex_session
+    - git
+    - filesystem
+    - telemetry
+    - synchronized_video_if_motion_is_authorized
+  coverage: unknown
+  known_gaps:
+    - G1 system firmware and hardware revision not yet inventoried.
+    - PICO motion-tracker firmware versions not yet recorded.
+    - No physical SONIC run exists.
+runs: []
+agent_sessions: []
+notes: >-
+  Planned readiness, simulation and possibly gantry-suspended work for the borrowed
+  PICO loan window. No physical robot motion is authorized by this session record.

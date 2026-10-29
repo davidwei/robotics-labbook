@@ -1,0 +1,44 @@
+id: EXP-20261029-001
+title: PICO/SONIC planted-feet full-body control on G1-29
+project: unitree-g1
+owner: David Wei
+participants: [David Wei, Codex]
+status: proposed
+question: >-
+  Can the borrowed PICO 4 with two ankle trackers drive a deliberately bounded,
+  planted-feet SONIC full-body demonstration on the physical G1-29 without stale
+  input, pose discontinuity, uncommanded stepping or an unsafe stop outcome?
+hypothesis: >-
+  After exact hardware/firmware identification and repeatable instrumented
+  simulation, a gantry-supported G1-29 can track small arm, torso and symmetric
+  knee-flexion motions while both feet remain planted; this hypothesis is not yet
+  supported by physical evidence.
+success_criteria:
+  - G1 manufacture/hardware revision, 29-DOF embodiment, system firmware, ankle mode and active motion service are recorded before command publication.
+  - A bounded read-only DDS preflight receives fresh CRC-valid LowState and torso IMU data with 29 finite body joint states and no unexplained motor error.
+  - The exact source, dirty patch, encoder, decoder, observation config, planner and generated TensorRT engine hashes are preserved.
+  - The selected low-latency model/config passes three instrumented planted-feet simulation rehearsals with no unexplained fall, uncommanded step, mode duplication or stream gap at or above 100 ms.
+  - Keyboard stop, PICO stop, process death and stale-stream outcomes are understood under suspension before any weight-bearing trial.
+  - If separately authorized, the first physical demonstration completes only segments 0 through 5 of the planted-feet protocol without an abort condition or gantry catch.
+physical_validation_required: true
+related_repositories:
+  - NVlabs/GR00T-WholeBodyControl
+  - davidwei/robotics-labbook
+related_sessions:
+  - SESSION-20261029-001
+findings: []
+readiness: gated
+current_blockers:
+  - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
+  - The low-latency SONIC deployment package is not installed and validated on the candidate host.
+  - Three local source changes are not reviewed and pinned as a physical candidate.
+  - Stale PICO input continued simulated control for minutes; a bounded physical response is not validated.
+  - Normal stop and subsequent stock-controller/hardware behavior are not validated for this stack.
+authorization_boundary: >-
+  This experiment record authorizes planning, software/simulation work and read-only
+  robot inspection only. Physical command publication requires a separate explicit
+  operator authorization after the documented gates pass.
+protocols:
+  setup: ../../ideas/IDEA-20261027-002/g1-29-sonic-setup.md
+  demo: ../../ideas/IDEA-20261027-002/planted-feet-full-body-demo.md
+  analysis: ../../ideas/IDEA-20261027-002/g1-29-physical-plan-20261028.md
