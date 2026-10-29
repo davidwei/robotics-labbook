@@ -4,6 +4,14 @@ Status: pre-lab setup specification. No command in this document authorizes robo
 motion. Launching the real SONIC deployment is itself a motion event because the
 controller immediately performs a three-second initialization interpolation.
 
+2026-10-30 operator update: SONIC and XRoboToolkit were installed in a local
+workspace on G1 PC2 for a fully unloaded gantry-suspended diagnostic. This is a
+new environment relative to the x86 topology recommended below. The current
+[PC2 operating order](../../sessions/2026-10-30-g1-sonic-pc2-suspended/in-lab.md)
+controls that diagnostic. Stale input and unknown stop/handover block loaded and
+untethered trials; full suspension permits measuring them under separate motion
+authorization and independent whole-body IMU/state/command capture.
+
 ## Recommended topology for the first trial
 
 Use the already-tested x86_64 GPU workstation for the C++ SONIC deployment and

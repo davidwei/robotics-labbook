@@ -1,0 +1,55 @@
+{
+  "artifacts": [
+    {
+      "path": "/home/dwei/sonic/captures/preflight-20261030-01.jsonl",
+      "sha256": "5d420d0a8dc6093a7f85af30b4ec5de41674e6e5bf57f300f06e8a9f66f0c72f",
+      "description": "Five-second read-only PC2 DDS preflight: LowState, base/torso IMUs, LowCmd and receipt timestamps. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/capture_g1_wholebody.py",
+      "sha256": "de87c0378e608734d13f09572a9d61d6e17d0158ba04e7613dcce1f6edf6898e",
+      "description": "Independent read-only DDS capture script used for the preflight."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/target/release/g1_deploy_onnx_ref",
+      "sha256": "abbfe7fa69b66d33f92096d0476cc6f852457f40dd3b23f69c3aa1321628d739",
+      "description": "PC2 native SONIC binary built from NVlabs revision 1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b; not launched on robot."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/model_encoder.onnx",
+      "sha256": "60be43157f57d812f38bdbb740a5de5d5d070e8840d9edc16f02a91a6d06255b",
+      "description": "Low-latency SONIC encoder downloaded from nvidia/GEAR-SONIC."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/model_decoder.onnx",
+      "sha256": "c4ac2e74045e7cbfb568f15e6bf47ea7ce023df7a94322af50be223e0a628bab",
+      "description": "Matching low-latency SONIC decoder."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/observation_config.yaml",
+      "sha256": "582b9a273a3d69fbf49ae59b39295a3be2b4a295e195ef4cf674b5e2571c90ab",
+      "description": "Matching low-latency observation configuration."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/planner/target_vel/V2/planner_sonic.onnx",
+      "sha256": "39b553e197f62f077975ba38512bc04781a3fc37c2af7c6756e04629f760edea",
+      "description": "SONIC target-velocity planner ONNX file."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/thirdparty/roboticsservice_1.0.0.0_arm64.deb",
+      "sha256": "532c605dfa1a02b05b7c285b856c91771c78623cded30ef5b16ea371de49ed5f",
+      "description": "Bundled ARM64 XRoboToolkit PC Service package used for local extraction."
+    },
+    {
+      "path": "/home/dwei/sonic/TensorRT-10.7.0.23.l4t.aarch64-gnu.cuda-12.6.tar.gz",
+      "sha256": "b3028a82818a9daf6296f43d0cdecfa51eaea4552ffb6fe6fad5e6e1aea44da6",
+      "description": "NVIDIA TensorRT 10.7 L4T/CUDA 12.6 archive installed in the PC2 workspace."
+    }
+  ],
+  "known_missing_evidence": [
+    "G1 hardware and firmware inventory",
+    "PICO/tracker input-only capture on PC2",
+    "TensorRT engine and exact-candidate simulation evidence",
+    "Synchronized video and all suspended motion/stop outcomes"
+  ]
+}

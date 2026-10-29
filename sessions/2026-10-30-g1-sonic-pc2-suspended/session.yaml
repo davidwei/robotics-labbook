@@ -1,0 +1,33 @@
+id: SESSION-20261030-001
+date: 2026-10-30
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: G1 lab, PC2
+experiments: [EXP-20261029-001]
+status: in_progress
+capture:
+  method: live
+  sources: [operator_statement, codex_session, git, filesystem, read_only_dds]
+  coverage: partial
+  known_gaps:
+    - Activity before this agent session is not reconstructed.
+    - G1 firmware, manufacture date, pelvis and motor-driver revision are not yet inventoried.
+    - Existing rt/lowcmd publisher identity is unknown.
+    - PICO connection, tracker firmware and body stream have not been checked on PC2.
+    - No physical SONIC command or motion run has occurred in this capture.
+runs: []
+activities:
+  - type: preflight
+    start_local: 2026-10-30T01:01:04+08:00
+    end_local: 2026-10-30T01:01:09+08:00
+    description: Independent read-only LowState, torso IMU and LowCmd DDS capture.
+    evidence: evidence.json
+next_agent_action: >-
+  Complete G1 identity and publisher inspection, PICO input-only freshness,
+  exact-candidate engine/simulation checks and suspended diagnostic preparation.
+target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
+prerequisites: >-
+  Rated gantry fully unloading feet, limb clearance, two operators, local O and
+  facility E-stop, independent capture through post-stop, explicit motion
+  authorization before any SONIC launch.
+physical_validation_status: read_only_preflight_only

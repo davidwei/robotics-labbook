@@ -259,3 +259,24 @@ hardware compatibility gate are documented in the
 Tomorrow's planned lab work is tracked in
 [EXP-20261029-001](../../experiments/EXP-20261029-001/experiment.yaml) and
 [SESSION-20261029-001](../../sessions/2026-10-29-g1-sonic-planted-feet/pre-lab.md).
+
+## PC2 suspended-diagnostic checkpoint — 2026-10-30
+
+The operator chose a fully unloaded gantry-suspended diagnostic to measure the
+stale-input and stop/handover outcomes; these findings continue to block loaded
+and untethered work. The clean NVlabs source at `1fa5f7fa` was installed on G1
+PC2 with low-latency model files, TensorRT 10.7, local ARM64 XRoboToolkit service
+and a successful native C++ build. PC2 PICO input, model engines and a physical
+SONIC run are not yet validated. A five-second independent read-only DDS capture
+verified base/torso IMU and body states and observed an unidentified CRC-valid
+`rt/lowcmd` stream. See [the PC2 session](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md)
+and [updated operating order](../../sessions/2026-10-30-g1-sonic-pc2-suspended/in-lab.md).
+
+Next agent action: identify G1 hardware/firmware and the existing command
+publisher, finish PICO input-only and exact PC2 candidate checks, then prepare
+an independently recorded first suspended initialization/local-stop diagnostic.
+Prerequisites: rated gantry fully unloading the G1, separate safety operator,
+local stop and facility E-stop, synchronized video and whole-body IMU/state/
+LowCmd capture through post-stop, and separate explicit motion authorization.
+Target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2. Physical validation:
+read-only preflight only; suspended SONIC motion not started.

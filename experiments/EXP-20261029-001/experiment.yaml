@@ -3,7 +3,7 @@ title: PICO/SONIC planted-feet full-body control on G1-29
 project: unitree-g1
 owner: David Wei
 participants: [David Wei, Codex]
-status: proposed
+status: active
 question: >-
   Can the borrowed PICO 4 with two ankle trackers drive a deliberately bounded,
   planted-feet SONIC full-body demonstration on the physical G1-29 without stale
@@ -26,6 +26,7 @@ related_repositories:
   - davidwei/robotics-labbook
 related_sessions:
   - SESSION-20261029-001
+  - SESSION-20261030-001
 findings:
   - date: 2026-10-28
     scope: simulation-only mode-transition rehearsal
@@ -63,17 +64,40 @@ findings:
       recurring sparse-before-activation/fast-after-activation pattern merits a
       source-versus-transport timestamp capture, and mode-event/operator-video
       correlation is needed before interpreting the multiple transitions.
-readiness: gated
+readiness: suspended_diagnostic_conditional; loaded_and_untethered_blocked
+operator_decisions:
+  - date: 2026-10-30
+    decision: >-
+      The unresolved stale-PICO response and stock-controller handover block
+      weight-bearing and untethered experiments. They are questions to measure in
+      a fully unloaded, gantry-suspended diagnostic with a separate safety
+      operator, local keyboard stop, facility E-stop and independent whole-body
+      state/IMU/command capture. This decision does not claim those responses are
+      safe or that a launch has been authorized.
+    source: operator statement during the PC2 lab session
+    next_agent_action: >-
+      Verify robot identity and PC2 candidate; run the independent read-only
+      base/torso IMU, 35-slot LowState and LowCmd capture through the planned
+      suspended stop outcomes. Preserve timestamps, packet gaps, motor status,
+      commands, model/engine hashes and synchronized video.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: >-
+      Rated gantry fully unloading both feet, limb clearance, two operators,
+      working local O and facility E-stop, read-only preflight, explicit motion
+      authorization for each suspended diagnostic.
+    physical_validation_status: read-only preflight captured; suspended motion not started
 current_blockers:
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
-  - The low-latency SONIC deployment package is not installed and validated on the candidate host.
-  - Three local source changes are not reviewed and pinned as a physical candidate.
-  - Stale PICO input continued simulated control for minutes; a bounded physical response is not validated.
-  - Normal stop and subsequent stock-controller/hardware behavior are not validated for this stack.
+  - The PC2 low-latency installation has built but has not completed PICO input, TensorRT engine or exact-candidate simulation validation.
+  - The earlier x86 controller-latch change is absent from the clean PC2 checkout and needs review before PICO mode transitions.
+  - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
+  - Stale PICO and post-stop stock-controller behavior remain unvalidated and block loaded or untethered trials.
 authorization_boundary: >-
   This experiment record authorizes planning, software/simulation work and read-only
-  robot inspection only. Physical command publication requires a separate explicit
-  operator authorization after the documented gates pass.
+  robot inspection only. Fully suspended diagnostic command publication requires
+  separate explicit operator authorization after its stated preflight and capture
+  conditions pass. Loaded and untethered trials require separate review and
+  authorization after stale-input and handover behavior are understood.
 protocols:
   setup: ../../ideas/IDEA-20261027-002/g1-29-sonic-setup.md
   demo: ../../ideas/IDEA-20261027-002/planted-feet-full-body-demo.md

@@ -1,0 +1,36 @@
+# G1-29 PICO/SONIC PC2 preparation — 2026-10-30
+
+The operator selected a fully unloaded gantry-suspended diagnostic. Stale PICO
+input and unknown stock-controller handover remain blockers for loaded and
+untethered trials; the operator wants those outcomes measured under suspension
+with whole-body IMU/state capture. No SONIC motion was run in this capture.
+The [operating order](in-lab.md) records the revised suspended protocol.
+
+On G1 PC2 (`aarch64`, Ubuntu 22.04, Jetson L4T 36.4.3), NVlabs SONIC revision
+`1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b` was checked out. The
+low-latency encoder, decoder, matched observation config and planner were
+downloaded. TensorRT 10.7, CUDA 12.6 runtime/development files and ONNX Runtime
+1.16.3 were placed in the local workspace, and `g1_deploy_onnx_ref` built. The
+ARM64 XRoboToolkit PC Service was unpacked as a local installation because a
+system `dpkg` installation required an unavailable sudo password. Its five-second
+startup check stayed alive; the Python binding and PICO manager imported. PICO
+connection, TensorRT engine generation, exact-candidate simulation and full
+SONIC runtime behavior are not validated on PC2.
+
+A new independent **read-only** DDS recorder captured five seconds of G1
+LowState, base IMU, torso IMU and LowCmd on `enP8p1s0` (192.168.123.164).
+Counts were 962 LowState, 1,549 torso IMU and 911 LowCmd samples, with zero
+application queue drops and callback failures. Captured LowState and LowCmd
+CRC checks passed; 29 body q/dq and sampled base/torso quaternions were finite;
+all sampled body motor status codes were zero. A CRC-valid `rt/lowcmd` stream
+was already present, with zero Kp/Kd/tau in the sampled body slots. No PC2
+robot-controller process was found in the process inspection, but the publisher
+has not been identified. The recorder's LowState capture rate was about 192 Hz,
+so it does not claim every DDS message was preserved.
+
+Next: identify the existing command publisher and G1 hardware/firmware;
+verify PICO/tracker freshness and the exact PC2 candidate; arrange an operator
+and separate safety operator, full unloading and clearance, local `O` and E-stop,
+independent capture through the post-stop period, and explicit authorization
+before a suspended initialization/stop diagnostic. Loaded or untethered motion
+waits for review of stale-input and stop/handover outcomes.

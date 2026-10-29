@@ -4,6 +4,39 @@ Status: analysis and pre-lab design only. No physical motion is authorized by th
 document. The current simulation evidence includes one unexplained fall and is not
 yet sufficient for a floor trial.
 
+## Operator scope update — 2026-10-30
+
+The operator selected a fully **unloaded, gantry-suspended diagnostic** on G1-29.
+The unresolved stale-input response and stock-controller handover remain hard
+blockers for weight-bearing and untethered work, but may be measured under full
+suspension. This supersedes the earlier blanket block on suspended commissioning
+in this document and the October 29 checklist. It does not make a stale stream or
+one damping-only stop safe, and it does not authorize command publication by
+itself. The first PC2 run is a new deployment environment relative to the
+previously tested x86 workstation.
+
+Before any suspended launch, identify this robot's 29-DOF hardware/firmware and
+the existing `rt/lowcmd` publisher, inspect clearance and the gantry, assign
+separate PICO and safety operators, review local `O` and facility E-stop, pin the
+exact PC2 model/config/engine candidate, and record explicit motion authorization.
+Start an independent read-only capture **before** SONIC and leave it running
+through shutdown and post-stop observation. Capture receipt wall/monotonic times,
+CRC-valid LowState, all 29 body q/dq/estimated torque/motor status/temperature,
+base quaternion/gyro/accelerometer, torso quaternion/gyro/accelerometer,
+`rt/lowcmd` q/dq/Kp/Kd/tau and mode, PICO source/arrival timestamps, deployment
+action/mode/stream-age logs, synchronized video and operator observations.
+Record logger coverage and sample gaps; a capture that drops or omits material
+signals is not a reproducible failure record.
+
+For the first suspended motion run, keep both feet unloaded and observe only
+SONIC's automatic initialization, then a local `O` stop and the measured
+post-publication state. Test PICO stop, stale input, streamer/process loss and
+hardware E-stop as **separate** suspended runs after reviewing the preceding run.
+The safety operator stops immediately at an unexpected motion, tracking loss or
+stream warning; do not wait for autonomous recovery. Mode transitions and POSE
+motion remain later steps after fresh-input and controller-latch checks. Loaded
+planted-feet segments wait until stop and stale-input outcomes are reviewed.
+
 ## Why the full-body path worked in the successful run
 
 The earlier failures occurred at several different layers; they were not one SONIC
