@@ -153,3 +153,34 @@ until both ankle trackers are recognized). Keep tracker lights facing up and vis
 Then reconfirm XRoboToolkit `Head`, `Controller`, `Send` and `Full body`, rerun the
 bounded probe, and require two trackers plus a finite 24-by-7 body pose before any
 SONIC Sim2Sim attempt.
+
+### Tracker recovery and full-body result
+
+The operator synchronized the two foot trackers in the PICO system UI. Returning
+from the tracker UI initially left XRoboToolkit with a stale socket; relaunching the
+app and restoring status `WORKING` recovered transport. A subsequent 15-second
+read-only capture produced 693 distinct global stream timestamps and
+`body_available=true`. The returned schemas were finite and matched the documented
+shapes: body poses 24-by-7, velocities 24-by-6 and accelerations 24-by-6.
+
+A second 15-second movement capture produced 682 distinct global timestamps. During
+the operator's left-then-right foot movement sequence, reported position ranges were
+nonzero for both feet and ankles: left ankle `[0.3737, 0.1766, 0.5948]` m, right
+ankle `[0.2325, 0.3466, 0.5664]` m, left foot `[0.3711, 0.0924, 0.6705]` m and right
+foot `[0.2910, 0.2608, 0.6628]` m. These aggregate ranges establish responsive lower
+body output but do not by themselves prove left/right temporal independence; retain
+that distinction for visualization or time-series review.
+
+Two diagnostic limitations were observed: `num_motion_data_available()` remained
+zero and `get_body_timestamp_ns()` remained zero even while the global stream
+timestamp changed hundreds of times. The derived 24-joint full-body channel is
+therefore usable for the next SONIC input/visualization gate, but consumers should
+use or cross-check the advancing global timestamp rather than treating the body
+timestamp as valid. Local evidence files are
+`probe-20261028-fullbody.json` and `probe-20261028-foot-ranges.json` under the
+workspace `xrobotoolkit-evidence` directory; they contain live pose data and remain
+outside the labbook.
+
+Next agent action: preserve the working PICO/XRoboToolkit configuration and advance
+to SONIC visualization or Sim2Sim only. First verify the exact local source and
+checkpoint revisions and required artifacts; do not infer real-robot authorization.
