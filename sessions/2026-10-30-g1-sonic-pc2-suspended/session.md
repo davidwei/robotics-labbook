@@ -162,3 +162,36 @@ A+X back to PLANNER, standing verification, then PICO stop. Torso, pelvis,
 lower-body and locomotion motions are deferred. The gantry remains engaged through
 post-stop because RUN-20261030-003 showed that SONIC exit does not preserve
 standing.
+
+[RUN-20261030-004](runs/RUN-20261030-004.md) attempted that bounded POSE entry.
+The robot initially stood firmly in PLANNER and the operator reported visual pose
+alignment. Immediately after A+X and `PLANNER -> POSE`, both legs retracted into
+the air. Within 0.50 seconds, left/right knees moved from approximately
+0.249/0.208 rad to 1.960/2.200 rad and hip pitch moved from -0.085/+0.162 rad to
+-1.456/-1.751 rad. POSE output was approximately 31--33 Hz, below the earlier
+simulation rate.
+
+The operator intentionally pressed A+B+X+Y directly from POSE after observing the
+unexpected tuck. The resulting `POSE -> OFF` was a correct terminal stop, not a
+missed A+X return; the planned elbow cycle was intentionally aborted. The manager
+stopped cleanly, while SONIC timed out resetting the planner and aborted during
+CycloneDDS cleanup (exit 134). The operator confirmed the robot was secured on
+the gantry.
+
+The run cannot determine whether PICO requested the tuck. The manager did not
+record raw XR body joints or outgoing SMPL packets, and SONIC's console trace
+prints only the pelvis entry rather than knee/ankle inputs. Lower-body tracking,
+coordinate/joint-order conversion and the policy transition remain competing
+hypotheses.
+
+Local SONIC revision `13c7de14a64176a9ff927c3a4788b22f2aa50a23` adds
+replay-grade capture before any repeat: exact manager ZMQ payloads across PLANNER,
+POSE, command and stop traffic; packet timestamps and mode tags; per-packet
+hashes; and aligned raw 24-by-7 XR body poses. A read-only validator and explicit
+simulation replay tool passed three focused tests with the existing chord latch.
+The next-run wrappers require the capture directory.
+
+Next: perform a headset-only capture rehearsal, validate nonzero raw POSE packets,
+then replay the exact stream only against simulation. Do not repeat physical POSE
+until the bilateral tuck is reproduced or explained offline. Untethered work
+remains blocked.

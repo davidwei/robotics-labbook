@@ -16,7 +16,7 @@ capture:
     - Operator reported feet clear, limb clearance, E-stop at hand and a second person present; command publisher identity was not independently established.
     - One earlier 30-second PICO body stream passed; tracker firmware and repeated reconnect behavior remain unverified.
     - Live PICO latch and teardown passed without a SONIC subscriber; stale-input and robot stop behavior remain untested.
-runs: [RUN-20261030-001, RUN-20261030-002, RUN-20261030-003]
+runs: [RUN-20261030-001, RUN-20261030-002, RUN-20261030-003, RUN-20261030-004]
 activities:
   - type: preflight
     start_local: 2026-10-30T01:01:04+08:00
@@ -77,14 +77,20 @@ activities:
     description: Full-weight-bearing tethered IDLE stood firmly during control, then lost self-support after PICO stop and relied on the gantry.
     run: RUN-20261030-003
     evidence: evidence.json
+  - type: run
+    start_local: 2026-10-30T02:45:14+08:00
+    end_local: 2026-10-30T02:50:52+08:00
+    description: Tethered PLANNER-to-POSE entry caused rapid bilateral leg retraction; operator intentionally stopped with A+B+X+Y, and raw PICO lower-body input was not recorded.
+    run: RUN-20261030-004
+    evidence: evidence.json
 next_agent_action: >-
-  Prepare and separately authorize the selected tethered full-body POSE run:
-  PLANNER baseline, matched POSE entry, one slow symmetric elbow cycle, return to
-  PLANNER and stop. Retain the gantry through post-stop.
+  Add raw outgoing pose-packet capture to the PICO manager, then inspect a
+  stationary standing stream offline through the XR-to-SMPL conversion and policy
+  interface. Do not repeat physical POSE until the bilateral tuck is explained.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot
   contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: tethered_ground_contact_idle_active_phase_stable_post_stop_handover_absent_stale_input_unresolved
+physical_validation_status: tethered_pose_entry_failed_bilateral_leg_retraction_raw_pico_input_missing_stop_effective_teardown_fault

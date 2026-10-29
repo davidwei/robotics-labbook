@@ -1,0 +1,70 @@
+id: RUN-20261030-004
+experiment: EXP-20261029-001
+session: SESSION-20261030-001
+type: run
+title: Tethered ground-contact PICO POSE entry with bilateral leg retraction
+start_local: 2026-10-30T02:45:14+08:00
+end_local: 2026-10-30T02:50:52+08:00
+robot: G1-29, both soles initially on floor, full weight bearing, gantry catch-only
+software:
+  repository: NVlabs/GR00T-WholeBodyControl
+  checkout_revision: 632b6b71f974a3a9fe24eb920c210084bda44989
+  deployment_binary_revision: 1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b
+  source_tree: tracked files clean; local build and model artifacts untracked; checkout two commits ahead of origin
+  policy: gear_sonic_deploy/policy/low_latency/model_decoder.onnx
+  encoder: gear_sonic_deploy/policy/low_latency/model_encoder.onnx
+  observation_config: gear_sonic_deploy/policy/low_latency/observation_config.yaml
+  planner: gear_sonic_deploy/planner/target_vel/V2/planner_sonic.onnx
+  planner_engine_sha256: 50e98ba9bfac4889c8db4b149b3a1b621996d9931db664edb7326eb23136a669
+  decoder_engine_sha256: 8e4418f31672921593ec8dd370ffaf4706947ebf5b09594db6decb638a2e2b6c
+  encoder_engine_sha256: 66f7c4b08d5b377e0fd8ad74448ab5caa265eaf1af66bf42f096062c2b10161d
+  input_type: zmq_manager
+  network_interface: enP8p1s0
+conditions:
+  operator_reported:
+    - robot reset before the run and initially stood firmly with both feet on the floor
+    - gantry configured as a fall catch without upward load or yaw bias
+    - second operator present with hardware E-stop ready
+    - human and robot poses visually matched before A+X
+  pico_stream_hz_approx: 72
+  pose_loop_hz_observed: 31-33
+  actual_policy_csv_duration_s: 83.16
+  planner_rows: 3008
+  planner_span_s: 60.16
+  pose_rows: 1150
+  pose_span_s: 22.98
+authorization: operator authorized bounded tethered full-body POSE preflight and run
+result: failed_pose_entry_bilateral_leg_retraction_input_cause_unresolved
+observations:
+  - Five-second read-only preflight received 1515 LowState and 1458 torso-IMU samples, zero LowCmd, zero drops/callback failures and complete summary.
+  - SONIC loaded the prebuilt engines, reached Init Done and entered CONTROL after one OFF-to-PLANNER transition.
+  - Operator confirmed firm standing and visual pose alignment before A+X.
+  - Manager logged PLANNER-to-POSE; the operator observed both legs retract from the floor into the air immediately after A+X.
+  - Measured left/right knees changed from approximately 0.249/0.208 rad at POSE entry to 1.960/2.200 rad within 0.50 seconds.
+  - Measured left/right hip pitch changed from approximately -0.085/0.162 rad to -1.456/-1.751 rad over the same 0.50 seconds.
+  - During POSE, maximum measured leg-joint range was 2.198 rad at hardware joint 3 (left knee); maximum sampled joint speed was 19.281 rad/s at hardware joint 18 (left elbow).
+  - POSE base roll, pitch and yaw ranges were 0.245, 0.833 and 0.527 rad respectively.
+  - After observing the unexpected tuck, the operator intentionally pressed A+B+X+Y directly from POSE. The manager correctly logged POSE-to-OFF; the planned elbow cycle and POSE-to-PLANNER return were intentionally aborted.
+  - Manager shut down XRoboToolkit cleanly with exit 0. SONIC timed out after five seconds while resetting to an uninitialized planner, printed Stop, then hit a CycloneDDS cleanup assertion and exited 134.
+  - Independent capture retained 41.80 seconds after the last LowCmd and ended cleanly with 95688 LowState, 92545 torso-IMU and 30662 LowCmd records, zero drops/callback failures and zero captured CRC failures.
+  - Operator confirmed the robot was secured on the gantry after the run.
+capture:
+  coverage: partial
+  sources: [independent_dds_jsonl, deployment_console, pico_manager_console, sonic_csv, operator_statement]
+  known_gaps:
+    - Raw PICO/XRoboToolkit body-joint and outgoing SMPL pose packets were not recorded because the manager record directory was not enabled.
+    - SONIC console diagnostics print only SMPL joint 0 and pose 0, not knee or ankle inputs; this run cannot determine whether the PICO input itself requested leg flexion.
+    - No synchronized video is registered.
+    - No gantry load-cell or foot-contact measurement was available.
+    - Transcript lines do not carry per-event timestamps; mode durations come from SONIC CSV.
+hypotheses:
+  - statement: The leg tuck may originate in an incorrect tracked lower-body pose, coordinate/joint-order conversion, or an out-of-distribution PLANNER-to-POSE transition.
+    status: unresolved
+    note: Raw PICO/SMPL lower-body input is absent, so the alternatives cannot be separated from this run.
+decision: >-
+  Classify this as a failed POSE validation with a correct operator-initiated
+  terminal stop. Do not repeat POSE on the physical robot until every outgoing
+  PICO/SMPL packet is recorded and a stationary standing input is inspected
+  offline through the manager and policy interface. Preserve gantry support
+  through stop; this run does not clear untethered use.
+evidence: ../evidence.json

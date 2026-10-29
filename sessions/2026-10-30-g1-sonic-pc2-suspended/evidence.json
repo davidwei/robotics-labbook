@@ -209,6 +209,66 @@
       "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/base_quat.csv",
       "sha256": "c257993540c00038c69901e9e6960110685790ce05baf96e685df741d4634ecb",
       "description": "SONIC base quaternion CSV used to compute policy-interval roll/pitch/yaw ranges."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/preflight.jsonl",
+      "sha256": "c5b4fe0e010e64ff944d939aa1431920f3cf24c21a536fa4dc306b861cd8e22f",
+      "description": "Five-second read-only preflight before RUN-20261030-004: 1515 LowState, 1458 torso-IMU, zero LowCmd and complete summary."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/wholebody.jsonl",
+      "sha256": "c698b7e27c6a231bcfe7c8cb87606acf9a4cb90087f2fe101259246e43b0b0fc",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-004, including 41.80 seconds after the final LowCmd."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/sonic.typescript",
+      "sha256": "05e728a2c208925011be5ef4b5626af6dc26851b30b983d65eddc1ce4ac21ab5",
+      "description": "SONIC transcript: protocol-v3 POSE streaming, planner-reset timeout and CycloneDDS cleanup assertion with exit 134."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/manager.typescript",
+      "sha256": "8c8bbc970705e1422bae39f58b22d3ed52c21b14e398fc03da33d88a9338e11a",
+      "description": "PICO manager transcript: approximately 72 Hz input, PLANNER-to-POSE, 31-33 Hz PoseLoop, operator-initiated POSE-to-OFF and clean exit 0."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/recorder.typescript",
+      "sha256": "7d1d74dffc5dd45c0e84df019284b1f1f21195e1276bd0c3d65c6bbdc0c97661",
+      "description": "Independent recorder summary with counts, zero drops/callback failures and bounded receive gaps."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/run_sonic_zmq_manager.sh",
+      "sha256": "04d95adab098eb25ea321ec9e483859433ae104bf1107c02904ce0c898a54c8e",
+      "description": "Exact RUN-20261030-004 SONIC launch wrapper and model/config paths."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/q.csv",
+      "sha256": "0c725c59a515599c8178abe472247072d531ffe67c90e4c62c3ee6c31f8d5219",
+      "description": "Measured joint positions confirming rapid bilateral hip and knee flexion after POSE entry."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/dq.csv",
+      "sha256": "97d04e1f4f6cb256fdbc24abdc077719e4d6a1b79610875ed50bd7444a71801d",
+      "description": "Measured joint velocities; maximum absolute sampled value 19.281 rad/s at hardware joint 18 during POSE."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/motor_error.csv",
+      "sha256": "537462b8d2a304dbee6bffa621f45c052aeaa5108c6a38dcb96b5d826a62e7ac",
+      "description": "SONIC motor-error CSV for RUN-20261030-004; all sampled values zero."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/base_quat.csv",
+      "sha256": "03f8df1a521bc459f9ca218c6f3123f4735db1aa7652264db649676b7c9b4725",
+      "description": "Base quaternion CSV used to compute PLANNER and POSE roll/pitch/yaw ranges."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/encoder_mode.csv",
+      "sha256": "0fbee497e93260040269bf1383100e73d92327bd27ac78f87b45f38db4befe63",
+      "description": "Encoder mode log separating 60.16 seconds of planner mode from 22.98 seconds of SMPL POSE mode."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/motion_name.csv",
+      "sha256": "95bb8b69a80718ecc71bbdd5b327fffa9f82095e33d1464f368e33858067db5c",
+      "description": "Motion-name log identifying planner and streamed intervals."
     }
   ],
   "known_missing_evidence": [
@@ -216,6 +276,7 @@
     "PICO tracker firmware and repeated reconnect reliability",
     "Exact-candidate simulation evidence",
     "Synchronized video",
+    "Raw PICO body-joint and outgoing SMPL pose packets for RUN-20261030-004",
     "Observed damping-frame publication and identified stock-controller resumption after local O",
     "Stale PICO, SONIC process-loss and hardware E-stop outcomes"
   ]

@@ -31,6 +31,7 @@ related_runs:
   - RUN-20261030-001
   - RUN-20261030-002
   - RUN-20261030-003
+  - RUN-20261030-004
 findings:
   - date: 2026-10-28
     scope: simulation-only mode-transition rehearsal
@@ -110,6 +111,22 @@ findings:
       Active tethered ground-contact IDLE was demonstrated for this run. The PICO
       chord stops SONIC but does not preserve standing or restore stock control.
       Stale-input, locomotion and untethered behavior remain unvalidated.
+  - date: 2026-10-30
+    scope: tethered full-weight-bearing PLANNER-to-POSE entry
+    evidence: >-
+      RUN-20261030-004 began with firm PLANNER standing and operator-reported pose
+      alignment. Immediately after A+X, both legs retracted into the air. Within
+      0.50 seconds, left/right knees moved from 0.249/0.208 rad to 1.960/2.200 rad
+      and hip pitch moved from -0.085/+0.162 rad to -1.456/-1.751 rad. POSE output
+      ran at approximately 31-33 Hz. Raw PICO body joints and outgoing SMPL packets
+      were not recorded. The operator intentionally stopped directly from POSE
+      with A+B+X+Y. The manager stopped cleanly; SONIC later exited 134 after a
+      planner-reset timeout and CycloneDDS cleanup assertion.
+    interpretation: >-
+      The bounded POSE validation failed, while the operator-initiated terminal
+      stop was effective. Telemetry confirms a rapid bilateral tuck but cannot
+      attribute it to PICO input, conversion or policy response. Physical POSE
+      repetition waits for replay-grade capture and offline diagnosis.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-10-30
@@ -208,6 +225,20 @@ operator_decisions:
     target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
     prerequisites: full-weight-bearing planted feet, catch-only gantry, clear zone, local O and E-stop, fresh PICO stream, exact engines, independent capture, matched pose before A+X
     physical_validation_status: bounded tethered full-body POSE run selected; not yet executed
+  - date: 2026-10-30
+    decision: >-
+      RUN-20261030-004 failed at POSE entry with rapid bilateral leg retraction.
+      Local SONIC revision 13c7de1 now records exact manager packets and aligned
+      raw XR body poses. Validate a headset-only capture and replay it against
+      simulation before repeating POSE on the physical robot.
+    source: RUN-20261030-004 telemetry, operator observation and capture implementation
+    next_agent_action: >-
+      Run the recorded manager without a SONIC robot subscriber, collect a short
+      standing-to-POSE headset stream, validate packet/raw-pose completeness, then
+      replay it only to simulation and inspect ankle/knee geometry and policy response.
+    target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on PC2; simulation before robot actuation
+    prerequisites: headset and ankle trackers, exact packet capture, read-only validator, simulation subscriber and explicit later authorization for any physical repeat
+    physical_validation_status: POSE entry failed; replay-grade capture prepared but not live-validated
 hypotheses:
   - date: 2026-10-30
     statement: A larger feet-to-floor gap may cause SONIC to attempt harder stepping while suspended.
@@ -218,6 +249,7 @@ hypotheses:
       signals while contact remains absent; dynamics after contact would be a
       different experimental condition.
 current_blockers:
+  - RUN-20261030-004 produced a rapid bilateral leg tuck at POSE entry; raw PICO/SMPL lower-body packets were not captured, so physical POSE repetition waits for headset-only capture and simulation replay.
   - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
   - PC2 PICO input passed one 30-second window and RUN-20261030-002 used the generated decoder, encoder and planner TensorRT engines; exact-candidate simulation remains unvalidated.
   - The A+B+X+Y full-release latch is now ported and live-tested on PC2 at local revisions dc86407 and 632b6b7; these commits are not upstream, and only input-only transition/teardown behavior was tested.
