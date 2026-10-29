@@ -78,9 +78,9 @@ activities:
     run: RUN-20261030-003
     evidence: evidence.json
 next_agent_action: >-
-  Select and prepare either a tethered stale-PICO isolation run or a small bounded
-  tethered teleoperation motion. Retain the gantry through post-stop because SONIC
-  exit does not preserve standing or restore stock control.
+  Prepare and separately authorize the selected tethered full-body POSE run:
+  PLANNER baseline, matched POSE entry, one slow symmetric elbow cycle, return to
+  PLANNER and stop. Retain the gantry through post-stop.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot

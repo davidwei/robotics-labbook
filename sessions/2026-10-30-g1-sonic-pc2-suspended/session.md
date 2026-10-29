@@ -153,3 +153,12 @@ Next: review whether the next tethered experiment should isolate stale PICO inpu
 or exercise a small bounded teleoperation motion. Every run must retain the gantry
 through and after stop because the robot does not remain standing when SONIC exits.
 G1 hardware/firmware identity remains incomplete; untethered work remains deferred.
+
+The operator selected the next experiment as tethered PICO full-body control. The
+first POSE run is bounded to the existing demo's segments 0--2: ten-second PLANNER
+standing, visually matched A+X entry to POSE, five-second still hold, one slow
+symmetric elbow bend/restore below shoulder height, return to matched neutral,
+A+X back to PLANNER, standing verification, then PICO stop. Torso, pelvis,
+lower-body and locomotion motions are deferred. The gantry remains engaged through
+post-stop because RUN-20261030-003 showed that SONIC exit does not preserve
+standing.

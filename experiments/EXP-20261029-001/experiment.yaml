@@ -195,6 +195,19 @@ operator_decisions:
     target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
     prerequisites: rated gantry, measured clearance after Init Done, expected foot-motion envelope, two operators, E-stop and independent capture
     physical_validation_status: proposed near-floor suspended setup; not yet executed
+  - date: 2026-10-30
+    decision: >-
+      Advance from the successful active phase of RUN-20261030-003 to a tethered
+      full-body POSE run limited to PLANNER baseline, matched POSE entry, one slow
+      symmetric elbow bend/restore below shoulder height, return to PLANNER and
+      PICO stop. Defer torso, pelvis, lower-body and locomotion segments.
+    source: operator selection plus planted-feet full-body demo protocol
+    next_agent_action: >-
+      Complete read-only preflight and capture setup, reconfirm catch-only gantry,
+      two operators and pose alignment, then request separate launch authorization.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: full-weight-bearing planted feet, catch-only gantry, clear zone, local O and E-stop, fresh PICO stream, exact engines, independent capture, matched pose before A+X
+    physical_validation_status: bounded tethered full-body POSE run selected; not yet executed
 hypotheses:
   - date: 2026-10-30
     statement: A larger feet-to-floor gap may cause SONIC to attempt harder stepping while suspended.
