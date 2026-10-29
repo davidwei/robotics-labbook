@@ -248,3 +248,6 @@ viewer video plus bounded mode/latency/fall logs, and record exact model artifac
 identifiers. Treat the local compatibility and controller-latch patches as
 evaluation changes until reviewed separately. Real-G1 work remains a distinct,
 explicitly authorized physical-validation gate.
+
+Post-run diagnosis and the proposed gated G1-29 physical protocol are in
+[the 2026-10-28 analysis and physical plan](g1-29-physical-plan-20261028.md).
