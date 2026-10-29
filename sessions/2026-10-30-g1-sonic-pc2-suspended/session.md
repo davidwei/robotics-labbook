@@ -184,14 +184,29 @@ prints only the pelvis entry rather than knee/ankle inputs. Lower-body tracking,
 coordinate/joint-order conversion and the policy transition remain competing
 hypotheses.
 
-Local SONIC revision `13c7de14a64176a9ff927c3a4788b22f2aa50a23` adds
+Local SONIC revision `007b33de503bf54f14195e690413f8fae5089f73` adds
 replay-grade capture before any repeat: exact manager ZMQ payloads across PLANNER,
 POSE, command and stop traffic; packet timestamps and mode tags; per-packet
-hashes; and aligned raw 24-by-7 XR body poses. A read-only validator and explicit
-simulation replay tool passed three focused tests with the existing chord latch.
-The next-run wrappers require the capture directory.
+hashes; aligned raw 24-by-7 XR body poses; and continuous raw body/controller
+samples across OFF, calibration, PLANNER, POSE and stop. Read-only live-input and
+final-capture validators plus an explicit simulation replay tool passed four
+focused tests with the existing chord latch. Dedicated next-run wrappers require
+the independent robot recorder and PICO packet capture before SONIC launch.
 
-Next: perform a headset-only capture rehearsal, validate nonzero raw POSE packets,
-then replay the exact stream only against simulation. Do not repeat physical POSE
-until the bilateral tuck is reproduced or explained offline. Untethered work
-remains blocked.
+A headset-only integration capture preserved 421 replay packets over 15.04
+seconds: 167 planner, 250 pose and four command packets, with 250 aligned raw XR
+frames. Raw left/right knee geometry remained approximately 168.6--170.1 and
+168.6--169.9 degrees; converted SMPL knee geometry remained approximately
+163.5--165.2 and 168.5--169.8 degrees. Hip-to-ankle and ankle-to-foot lengths were
+stable. The captured human pose was therefore nearly straight and does not explain
+the physical robot's approximately 2.0--2.2 rad knee tuck.
+
+The final four-button stop sample briefly produced
+`POSE -> PLANNER_FROZEN_UPPER_BODY -> OFF`, exposing a controller-sample ordering
+issue not visible in the first physical run. The expanded logger now preserves
+continuous raw buttons so any recurrence is reconstructable.
+
+Next: validate the expanded continuous-input logger in a short headset-only check,
+then keep independent DDS, manager packet/input, SONIC CSV/console and optional
+video capture active through at least 45 seconds after any separately authorized
+physical stop. Untethered work remains blocked.

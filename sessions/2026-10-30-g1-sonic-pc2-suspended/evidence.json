@@ -269,6 +269,31 @@
       "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/motion_name.csv",
       "sha256": "95bb8b69a80718ecc71bbdd5b327fffa9f82095e33d1464f368e33858067db5c",
       "description": "Motion-name log identifying planner and streamed intervals."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/manager-input-only-02.typescript",
+      "sha256": "6d6754a0032525d4f6b5258be05fce1c305a1565a01593e8017e3e4b27cdfa9f",
+      "description": "Headset-only manager transcript with no SONIC subscriber: stable input, PLANNER/POSE interval, partial frozen-upper-body transition during terminal chord and clean exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/metadata.json",
+      "sha256": "94abb24c53d28061e254c4be0291c2655ebf8dcea7cadfaae198c55e9e431111",
+      "description": "Replay-capture format metadata for the headset-only diagnostic."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/packets.bin",
+      "sha256": "4cabbf96ad18191b3e9982b83382adf882b0476f0491743e5fe4920126b0c304",
+      "description": "Exact 421-packet ZMQ replay stream containing planner, pose and command payloads."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/packets.jsonl",
+      "sha256": "4946ec9fd9764d59afd6c1b9006ab6ea000524f5b7869582b09c56c4e7f41da1",
+      "description": "Per-packet offsets, sizes, SHA-256, clocks and stream modes for the headset-only replay stream."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/raw_body_poses.bin",
+      "sha256": "3f7a2ea628d99030b5c1a41b184223b02bc3b4fc96e965a6d94a733ff1cb4546",
+      "description": "250 raw XR 24-by-7 body poses aligned to outgoing POSE packets; knee and segment geometry remained nearly straight and stable."
     }
   ],
   "known_missing_evidence": [
@@ -277,6 +302,7 @@
     "Exact-candidate simulation evidence",
     "Synchronized video",
     "Raw PICO body-joint and outgoing SMPL pose packets for RUN-20261030-004",
+    "Continuous raw controller-button samples for the headset-only replay capture; added for the next run at SONIC revision 007b33d",
     "Observed damping-frame publication and identified stock-controller resumption after local O",
     "Stale PICO, SONIC process-loss and hardware E-stop outcomes"
   ]

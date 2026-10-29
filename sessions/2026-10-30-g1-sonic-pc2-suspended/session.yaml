@@ -83,14 +83,21 @@ activities:
     description: Tethered PLANNER-to-POSE entry caused rapid bilateral leg retraction; operator intentionally stopped with A+B+X+Y, and raw PICO lower-body input was not recorded.
     run: RUN-20261030-004
     evidence: evidence.json
+  - type: diagnostic
+    description: Headset-only replay capture confirmed nearly straight raw and converted knees; terminal chord briefly sampled frozen-upper-body mode before OFF.
+    evidence: evidence.json
+  - type: software_validation
+    description: Revision 007b33d added exact packets, continuous raw XR/controller capture, live/final validators and replay; Python compilation and four focused tests passed.
+    evidence: evidence.json
 next_agent_action: >-
-  Add raw outgoing pose-packet capture to the PICO manager, then inspect a
-  stationary standing stream offline through the XR-to-SMPL conversion and policy
-  interface. Do not repeat physical POSE until the bilateral tuck is explained.
+  Run a short headset-only check of the expanded continuous input/controller
+  logger. Before any separately authorized physical repeat, require independent
+  DDS capture and validated manager capture to be active before SONIC launch and
+  retain both through at least 45 seconds after stop.
 target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2
 prerequisites: >-
   Rated gantry with feet clear for brief INIT/local-O run and controlled foot
   contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: tethered_pose_entry_failed_bilateral_leg_retraction_raw_pico_input_missing_stop_effective_teardown_fault
+physical_validation_status: tethered_pose_entry_failed_straight_input_confirmed_downstream_cause_unresolved_replay_grade_capture_prepared

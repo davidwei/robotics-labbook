@@ -228,9 +228,11 @@ operator_decisions:
   - date: 2026-10-30
     decision: >-
       RUN-20261030-004 failed at POSE entry with rapid bilateral leg retraction.
-      Local SONIC revision 13c7de1 now records exact manager packets and aligned
-      raw XR body poses. Validate a headset-only capture and replay it against
-      simulation before repeating POSE on the physical robot.
+      Local SONIC revision 007b33d records exact manager packets, aligned raw XR
+      body poses and continuous raw body/controller samples across every manager
+      mode. A headset-only capture showed nearly straight, stable raw and converted
+      knee geometry, so the prior physical tuck is not explained by a bent input
+      pose. Validate the expanded logger before any separately authorized repeat.
     source: RUN-20261030-004 telemetry, operator observation and capture implementation
     next_agent_action: >-
       Run the recorded manager without a SONIC robot subscriber, collect a short
@@ -238,7 +240,7 @@ operator_decisions:
       replay it only to simulation and inspect ankle/knee geometry and policy response.
     target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on PC2; simulation before robot actuation
     prerequisites: headset and ankle trackers, exact packet capture, read-only validator, simulation subscriber and explicit later authorization for any physical repeat
-    physical_validation_status: POSE entry failed; replay-grade capture prepared but not live-validated
+    physical_validation_status: POSE entry failed; packet capture live-validated; continuous body/controller capture added and awaiting short live validation
 hypotheses:
   - date: 2026-10-30
     statement: A larger feet-to-floor gap may cause SONIC to attempt harder stepping while suspended.
