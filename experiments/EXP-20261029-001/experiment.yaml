@@ -27,6 +27,8 @@ related_repositories:
 related_sessions:
   - SESSION-20261029-001
   - SESSION-20261030-001
+related_runs:
+  - RUN-20261030-001
 findings:
   - date: 2026-10-28
     scope: simulation-only mode-transition rehearsal
@@ -114,6 +116,7 @@ current_blockers:
   - The earlier x86 controller-latch change is absent from the clean PC2 checkout and needs review before PICO mode transitions.
   - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
   - Stale PICO and post-stop stock-controller behavior remain unvalidated and block untethered trials.
+  - RUN-20261030-001 captured no damping frame or resumed stock LowCmd after local O; a delayed check also saw zero LowCmd and suspended joints relaxed, so further motion is held pending handover review.
 authorization_boundary: >-
   This experiment record authorizes planning, software/simulation work and read-only
   robot inspection only. The feet-clear INIT diagnostic command publication requires

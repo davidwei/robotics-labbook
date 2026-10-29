@@ -16,7 +16,7 @@ capture:
     - Operator reported feet clear, limb clearance and E-stop at hand; distinct safety operator was not confirmed.
     - One 30-second PICO body stream passed; tracker firmware and repeated reconnect behavior remain unverified.
     - No physical SONIC command or motion run has occurred in this capture.
-runs: []
+runs: [RUN-20261030-001]
 activities:
   - type: preflight
     start_local: 2026-10-30T01:01:04+08:00
@@ -41,6 +41,12 @@ activities:
   - type: software_validation
     description: Offline TensorRT 10.7 parser/build/deserialization passed for encoder, decoder and planner; inference skipped.
     evidence: evidence.json
+  - type: diagnostic
+    start_local: 2026-10-30T01:50:24+08:00
+    end_local: 2026-10-30T01:51:35+08:00
+    description: Feet-clear SONIC INIT and local-O stop; process exit observed, damping and stock-controller handover unresolved.
+    run: RUN-20261030-001
+    evidence: evidence.json
 next_agent_action: >-
   Complete G1 identity and publisher inspection, exact-candidate engine/simulation
   checks, physical unloading/clearance and suspended diagnostic preparation.
@@ -50,4 +56,4 @@ prerequisites: >-
   contact for later policy runs, limb clearance, two operators, local O and
   facility E-stop, independent capture through post-stop, explicit motion
   authorization before any SONIC launch.
-physical_validation_status: read_only_and_pico_input_preflight_only
+physical_validation_status: feet_clear_init_and_local_stop_diagnostic_complete_handover_unresolved

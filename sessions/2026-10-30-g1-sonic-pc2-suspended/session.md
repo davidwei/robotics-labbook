@@ -64,10 +64,21 @@ PC2 TensorRT 10.7 built and deserialized the low-latency encoder, decoder and
 planner ONNX models offline with `--skipInference`. This checks parser/build
 compatibility only; it is not a SONIC runtime inference or motion validation.
 
-Next: identify the existing command publisher and G1 hardware/firmware;
-verify the exact PC2 candidate and repeat PICO freshness before motion; arrange an operator
-and separate safety operator, full unloading and clearance, local `O` and E-stop,
-independent capture through the post-stop period, and explicit authorization
-before a suspended initialization/stop diagnostic. Gantry-protected contact
-tests need separate preparation; untethered motion waits for review of
-stale-input and stop/handover outcomes.
+In [RUN-20261030-001](runs/RUN-20261030-001.md), the operator explicitly
+authorized a feet-clear INIT/local-`O` diagnostic. SONIC used keyboard input and
+PICO never started policy control. The default-pose transition settled in about
+three seconds without sampled motor errors. Terminal polling delayed `O`, leaving
+the default pose commanded for about 26 additional seconds. The operator described
+the motion as smooth. `O` was accepted and
+the process exited normally. Independent capture saw command publication stop,
+but no damping frame or resumed stock LowCmd during 5.37 seconds of post-stop
+capture. Suspended joints relaxed by as much as 0.406 rad. A delayed three-second
+check still received zero LowCmd, confirming the prior stock stream had not
+resumed. This does not validate the stop/handover path. Further motion testing
+should not proceed in this state, and untethered testing remains blocked.
+
+Next: inspect why the expected damping frame was not captured, establish the
+post-SONIC stock-controller ownership/handover behavior, and record the operator's
+visual observation. G1 hardware/firmware identity remains incomplete. Any
+gantry-protected contact test needs separate preparation and authorization;
+untethered motion waits for reviewed stale-input and stop/handover outcomes.

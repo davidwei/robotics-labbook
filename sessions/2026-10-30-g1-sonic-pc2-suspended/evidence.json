@@ -1,6 +1,31 @@
 {
   "artifacts": [
     {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/wholebody.jsonl",
+      "sha256": "3f50a3c8bd911a60c60e9f10ed4557461bed131fb2cbe9c240780affc3e8ce37",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-001. Interrupted after 5.37 seconds post-stop; no closing summary line."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/console.typescript",
+      "sha256": "ed6b8d33c5c7400493bf6dfaf961c6233327687bb7fe129cf75eebe86fcc32f5",
+      "description": "SONIC console transcript for RUN-20261030-001, including Init Done, Stop and normal process exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/delayed-poststop.jsonl",
+      "sha256": "016d923737d500e84916753d8bba64c2dc2a75bf95d7c9b954a51eec3c7a6839",
+      "description": "Delayed three-second post-stop capture: 963 LowState, 906 torso IMU and zero LowCmd samples; complete summary present."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/run_init_stop.sh",
+      "sha256": "698b719a144f00aa9b4c21066ba1fe72d0676f7c21e4d3de0cbf7b4784c86f5b",
+      "description": "Exact keyboard-only launch script for RUN-20261030-001."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/policy_model_decoder.trt",
+      "sha256": "8e4418f31672921593ec8dd370ffaf4706947ebf5b09594db6decb638a2e2b6c",
+      "description": "Runtime-generated TensorRT decoder engine used by RUN-20261030-001."
+    },
+    {
       "path": "/home/dwei/sonic/encoder_trt_build.log",
       "sha256": "5c249427ee96467118e3277b229ca3133c9b26db8dfdb004999af82609910e4d",
       "description": "TensorRT 10.7 offline encoder ONNX parse/build/deserialization passed on PC2 GPU; inference skipped."
@@ -85,6 +110,8 @@
     "G1 hardware and firmware inventory",
     "PICO tracker firmware and repeated reconnect reliability",
     "TensorRT engine and exact-candidate simulation evidence",
-    "Synchronized video and all suspended motion/stop outcomes"
+    "Synchronized video",
+    "Observed damping-frame publication and identified stock-controller resumption after local O",
+    "PICO stop, stale-input, process-loss and hardware E-stop outcomes"
   ]
 }

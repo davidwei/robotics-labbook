@@ -1,0 +1,51 @@
+id: RUN-20261030-001
+experiment: EXP-20261029-001
+session: SESSION-20261030-001
+type: diagnostic
+title: Feet-clear SONIC INIT and local-O stop
+start_local: 2026-10-30T01:50:24+08:00
+end_local: 2026-10-30T01:51:35+08:00
+robot: G1-29 on gantry, both feet clear
+software:
+  repository: NVlabs/GR00T-WholeBodyControl
+  revision: 1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b
+  source_tree: tracked files clean; local build and model artifacts untracked
+  policy: gear_sonic_deploy/policy/low_latency/model_decoder.onnx
+  encoder: gear_sonic_deploy/policy/low_latency/model_encoder.onnx
+  observation_config: gear_sonic_deploy/policy/low_latency/observation_config.yaml
+  input_type: keyboard
+  network_interface: enP8p1s0
+conditions:
+  operator_reported:
+    - both feet clear of floor
+    - limbs and area clear
+    - second person present with facility E-stop available
+    - existing LowCmd presumed to be G1 stock because no other controller was known
+  pico_policy_start: false
+  planner_pose_control: false
+authorization: operator explicitly authorized INIT to WAIT_FOR_CONTROL followed by local O
+result: diagnostic_complete_stop_handover_unresolved
+observations:
+  - SONIC printed Init Done; local O was accepted and the process exited normally with status 0.
+  - Telemetry shows the default-pose transition settled in about three seconds with no sampled motor error.
+  - The default pose was then held for about 26 seconds before O because terminal output was returned after a 30-second poll.
+  - Nonzero-gain LowCmd publication lasted 29.405 seconds; maximum observed Kp 99.10, Kd 6.31 and feed-forward torque zero.
+  - The largest measured INIT joint displacement was -0.671 rad at hardware joint 18 (left elbow).
+  - After O, no LowCmd sample, damping frame or resumed stock command was observed during 5.37 seconds of post-stop capture.
+  - With the robot suspended, joints relaxed after command publication stopped; largest measured post-stop change was 0.406 rad at hardware joint 25 (right elbow).
+  - The operator visually described the INIT motion as smooth.
+  - A delayed three-second check captured 963 LowState and 906 torso IMU samples but zero LowCmd, confirming the prior stock stream had not resumed by 01:53:31.
+  - All captured LowState and LowCmd CRC checks passed; sampled motor status was zero and maximum sampled motor temperature was 51 C.
+capture:
+  coverage: partial
+  sources: [independent_dds_jsonl, deployment_console, sonic_metadata, operator_statement]
+  known_gaps:
+    - Independent DDS recorder was interrupted after the post-stop interval and has no closing summary record.
+    - SONIC CSV signal files are empty because the policy never entered CONTROL; metadata was written.
+    - No synchronized video is registered.
+    - No damping frame or stock-controller resumption was captured; a delayed check also saw no LowCmd.
+decision: >-
+  Do not treat local O or stock-controller handover as validated. Do not run an
+  further motion or untethered test. Review the stop implementation and command
+  ownership before a separately authorized follow-up.
+evidence: ../evidence.json
