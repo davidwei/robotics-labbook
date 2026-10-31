@@ -1,0 +1,17 @@
+{
+  "artifact": "so101-linux-20261031.tar.gz",
+  "bytes": 5038969,
+  "sha256": "ec4a074d6bb82d2b057f681f0fa4d7075d0f3dd11b9ff11de9ac870863d90a8f",
+  "release_tag": "so101-linux-20261031",
+  "download_url": "https://github.com/davidwei/robotics-labbook/releases/download/so101-linux-20261031/so101-linux-20261031.tar.gz",
+  "source_repository": "https://github.com/MoissanClub/lerobot",
+  "source_revision": "bd49580152521e054218c1f41dd5b9bfeacc3d75",
+  "validation": "Mac config generation/preflight passed; native Linux installation and hardware rehearsal pending",
+  "excluded": [
+    "recorded datasets/videos",
+    "credentials",
+    "Mac virtual environment"
+  ],
+  "remote_download_verified": true,
+  "manifest_verified": true
+}

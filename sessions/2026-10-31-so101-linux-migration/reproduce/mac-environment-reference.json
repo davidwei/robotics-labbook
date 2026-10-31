@@ -1,0 +1,489 @@
+{
+  "note": "Observed Intel Mac environment; reference only, not a Linux lock. Linux validation pending.",
+  "packages": [
+    {
+      "name": "accelerate",
+      "version": "1.15.0"
+    },
+    {
+      "name": "aiohappyeyeballs",
+      "version": "2.7.1"
+    },
+    {
+      "name": "aiohttp",
+      "version": "3.14.5"
+    },
+    {
+      "name": "aiosignal",
+      "version": "1.4.0"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "av",
+      "version": "15.1.0"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.19"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1"
+    },
+    {
+      "name": "cfgv",
+      "version": "3.5.0"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2"
+    },
+    {
+      "name": "cmake",
+      "version": "4.1.3"
+    },
+    {
+      "name": "coverage",
+      "version": "7.16.2"
+    },
+    {
+      "name": "datasets",
+      "version": "4.8.5"
+    },
+    {
+      "name": "debugpy",
+      "version": "1.8.22"
+    },
+    {
+      "name": "deepdiff",
+      "version": "8.6.2"
+    },
+    {
+      "name": "diffusers",
+      "version": "0.35.2"
+    },
+    {
+      "name": "dill",
+      "version": "0.4.1"
+    },
+    {
+      "name": "distlib",
+      "version": "0.4.4"
+    },
+    {
+      "name": "draccus",
+      "version": "0.10.0"
+    },
+    {
+      "name": "einops",
+      "version": "0.8.2"
+    },
+    {
+      "name": "Farama-Notifications",
+      "version": "0.0.6"
+    },
+    {
+      "name": "feetech-servo-sdk",
+      "version": "1.0.0"
+    },
+    {
+      "name": "filelock",
+      "version": "4.2.4"
+    },
+    {
+      "name": "frozenlist",
+      "version": "1.8.0"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.2.0"
+    },
+    {
+      "name": "gitdb",
+      "version": "4.0.12"
+    },
+    {
+      "name": "GitPython",
+      "version": "3.2.1"
+    },
+    {
+      "name": "gym-pusht",
+      "version": "0.1.8"
+    },
+    {
+      "name": "gymnasium",
+      "version": "1.4.0"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "hf-xet",
+      "version": "1.7.0"
+    },
+    {
+      "name": "hf_transfer",
+      "version": "0.1.9"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1"
+    },
+    {
+      "name": "huggingface-hub",
+      "version": "0.35.3"
+    },
+    {
+      "name": "identify",
+      "version": "2.6.20"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "ImageIO",
+      "version": "2.38.1"
+    },
+    {
+      "name": "imageio-ffmpeg",
+      "version": "0.6.0"
+    },
+    {
+      "name": "importlib_metadata",
+      "version": "9.0.1"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1"
+    },
+    {
+      "name": "inquirerpy",
+      "version": "0.3.4"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "jsonlines",
+      "version": "4.0.0"
+    },
+    {
+      "name": "lerobot",
+      "version": "0.4.4"
+    },
+    {
+      "name": "lerobot",
+      "version": "0.4.4"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4"
+    },
+    {
+      "name": "mergedeep",
+      "version": "1.3.4"
+    },
+    {
+      "name": "mock-serial",
+      "version": "0.0.1"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0"
+    },
+    {
+      "name": "multidict",
+      "version": "7.1.0"
+    },
+    {
+      "name": "multiprocess",
+      "version": "0.70.19"
+    },
+    {
+      "name": "mypy_extensions",
+      "version": "1.1.0"
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1"
+    },
+    {
+      "name": "nodeenv",
+      "version": "1.11.0"
+    },
+    {
+      "name": "numpy",
+      "version": "1.26.4"
+    },
+    {
+      "name": "opencv-python",
+      "version": "4.11.0.86"
+    },
+    {
+      "name": "opencv-python-headless",
+      "version": "4.11.0.86"
+    },
+    {
+      "name": "orderly-set",
+      "version": "5.5.0"
+    },
+    {
+      "name": "packaging",
+      "version": "25.0"
+    },
+    {
+      "name": "pandas",
+      "version": "3.0.6"
+    },
+    {
+      "name": "pfzy",
+      "version": "0.3.4"
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.13.5"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0"
+    },
+    {
+      "name": "pre_commit",
+      "version": "4.7.0"
+    },
+    {
+      "name": "prompt_toolkit",
+      "version": "3.0.53"
+    },
+    {
+      "name": "propcache",
+      "version": "0.5.4"
+    },
+    {
+      "name": "protobuf",
+      "version": "6.33.6"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2"
+    },
+    {
+      "name": "pyarrow",
+      "version": "21.0.0"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.11"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.1"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.1"
+    },
+    {
+      "name": "pygame",
+      "version": "2.6.1"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "pymunk",
+      "version": "6.11.1"
+    },
+    {
+      "name": "pynput",
+      "version": "1.8.2"
+    },
+    {
+      "name": "pyobjc-core",
+      "version": "12.2.2"
+    },
+    {
+      "name": "pyobjc-framework-ApplicationServices",
+      "version": "12.2.2"
+    },
+    {
+      "name": "pyobjc-framework-Cocoa",
+      "version": "12.2.2"
+    },
+    {
+      "name": "pyobjc-framework-CoreText",
+      "version": "12.2.2"
+    },
+    {
+      "name": "pyobjc-framework-Quartz",
+      "version": "12.2.2"
+    },
+    {
+      "name": "pyserial",
+      "version": "3.5"
+    },
+    {
+      "name": "pytest",
+      "version": "8.4.2"
+    },
+    {
+      "name": "pytest-cov",
+      "version": "7.1.0"
+    },
+    {
+      "name": "pytest-timeout",
+      "version": "2.4.0"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0"
+    },
+    {
+      "name": "python-discovery",
+      "version": "1.6.4"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "pyyaml-include",
+      "version": "1.4.1"
+    },
+    {
+      "name": "regex",
+      "version": "2026.9.29"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2"
+    },
+    {
+      "name": "rerun-sdk",
+      "version": "0.22.1"
+    },
+    {
+      "name": "ruff",
+      "version": "0.14.14"
+    },
+    {
+      "name": "safetensors",
+      "version": "0.8.0"
+    },
+    {
+      "name": "sentry-sdk",
+      "version": "2.72.0"
+    },
+    {
+      "name": "setuptools",
+      "version": "80.10.2"
+    },
+    {
+      "name": "shapely",
+      "version": "2.2.0"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0"
+    },
+    {
+      "name": "smmap",
+      "version": "5.0.3"
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0"
+    },
+    {
+      "name": "termcolor",
+      "version": "3.3.0"
+    },
+    {
+      "name": "toml",
+      "version": "0.10.2"
+    },
+    {
+      "name": "torch",
+      "version": "2.2.2"
+    },
+    {
+      "name": "torchvision",
+      "version": "0.17.2"
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.1"
+    },
+    {
+      "name": "typing-inspect",
+      "version": "0.9.0"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0"
+    },
+    {
+      "name": "virtualenv",
+      "version": "21.14.5"
+    },
+    {
+      "name": "wandb",
+      "version": "0.24.2"
+    },
+    {
+      "name": "wcwidth",
+      "version": "0.9.3"
+    },
+    {
+      "name": "xxhash",
+      "version": "4.0.2"
+    },
+    {
+      "name": "yarl",
+      "version": "1.25.1"
+    },
+    {
+      "name": "zipp",
+      "version": "4.1.1"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "source_revision": "bd49580152521e054218c1f41dd5b9bfeacc3d75",
+  "linux_validation": "pending",
+  "files": {
+    "README.md": "0dcaccf765d9d58746586b70e884c5b520b3a558817e2b5d33f5d88eeff40366",
+    "calibration/follower/follower-arm-01.json": "5de187e0901e4f394eae8affdacca9388f60f013b824dd7067a1bfc5eab8f4df",
+    "calibration/leader/leader-arm-01.json": "37c2595a0b03f5225793fb7f2cb793313a62eb79ac9802f6313c774f5018611d",
+    "configure.py": "22f89aecb6105d8590a909a685d327b445ea41968b84d4906ba886bba3dcad5c",
+    "demo_so101.sh": "317ceecfc86101280192ce190252d3ffbed7faa7ad84eea5fd87c923c526d800",
+    "lerobot-source.tar.gz": "fea165352f2afa3c7e8879a139908fe324ab454b3d2fc70ed3d46882c5bf7d38",
+    "mac-environment-reference.json": "607e4f07abf7c9e8ccb02c2b84e31aa46a17c56dc1d0b6c8fa288a53d302a1fe",
+    "record-template.json": "dd43a492a710cdc6387202a2bb91b5d3561b982f624ddd93873be629d00e3929"
+  }
+}

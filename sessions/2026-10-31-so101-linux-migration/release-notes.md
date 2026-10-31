@@ -1,0 +1,1 @@
+SO101 Linux migration package: exact source snapshot, calibration, config generator and guide. Source bd49580152521e054218c1f41dd5b9bfeacc3d75. Linux validation pending. Instructions: sessions/2026-10-31-so101-linux-migration/reproduce/README.md; SHA256: evidence.json. No datasets or credentials.
