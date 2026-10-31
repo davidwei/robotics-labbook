@@ -6,12 +6,33 @@
   "download_url": "https://github.com/davidwei/robotics-labbook/releases/download/so101-linux-20261031/so101-linux-20261031.tar.gz",
   "source_repository": "https://github.com/MoissanClub/lerobot",
   "source_revision": "bd49580152521e054218c1f41dd5b9bfeacc3d75",
-  "validation": "Mac config generation/preflight passed; native Linux installation and hardware rehearsal pending",
+  "validation": "Mac package preflight passed; Ubuntu 24.04.5 x86_64 install and a 20-second 10 Hz physical teleoperation run passed on 2026-10-31",
   "excluded": [
     "recorded datasets/videos",
     "credentials",
     "Mac virtual environment"
   ],
   "remote_download_verified": true,
-  "manifest_verified": true
+  "manifest_verified": true,
+  "linux_validation": {
+    "run": "RUN-20261031-001",
+    "os": "Ubuntu 24.04.5 LTS x86_64",
+    "kernel": "7.0.0-42-generic",
+    "python": "3.12.3",
+    "source_revision": "bd49580152521e054218c1f41dd5b9bfeacc3d75",
+    "teleop_hz": 10,
+    "teleop_duration_s": 20,
+    "telemetry_submitted": 200,
+    "telemetry_written": 200,
+    "telemetry_dropped": 0,
+    "operator_observation": "the teleops works",
+    "follower_calibration_sha256": "f6ed343f98122711cedf17b42f659b625ea61677e39fa8280316444e57a07f2c",
+    "leader_calibration_sha256": "05bd80d6a3ac89dae8a761233f15928c5e3ef41f3020ab3965bb09890c517391",
+    "warning_samples_over_10_deg": 8,
+    "maximum_observed_warning_error_deg": 16.395604395604394,
+    "post_run_torque_disabled": true,
+    "post_run_motor_status_zero": true,
+    "raw_telemetry_retained": false,
+    "raw_telemetry_gap": "Analyzer output-name replacement was a no-op for a filename not ending in .telemetry.jsonl and overwrote the input."
+  }
 }

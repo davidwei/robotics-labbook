@@ -1,0 +1,282 @@
+{
+  "arms": [
+    {
+      "all_status_zero": true,
+      "all_torque_disabled": true,
+      "calibration_matches": true,
+      "calibration_path": "calibration/leader/leader-arm-01.json",
+      "expected_calibration": {
+        "elbow_flex": {
+          "drive_mode": 0,
+          "homing_offset": -580,
+          "id": 3,
+          "range_max": 2977,
+          "range_min": 763
+        },
+        "gripper": {
+          "drive_mode": 0,
+          "homing_offset": -2017,
+          "id": 6,
+          "range_max": 2611,
+          "range_min": 1466
+        },
+        "shoulder_lift": {
+          "drive_mode": 0,
+          "homing_offset": -1201,
+          "id": 2,
+          "range_max": 3265,
+          "range_min": 895
+        },
+        "shoulder_pan": {
+          "drive_mode": 0,
+          "homing_offset": 1282,
+          "id": 1,
+          "range_max": 3332,
+          "range_min": 918
+        },
+        "wrist_flex": {
+          "drive_mode": 0,
+          "homing_offset": -1195,
+          "id": 4,
+          "range_max": 3134,
+          "range_min": 853
+        },
+        "wrist_roll": {
+          "drive_mode": 0,
+          "homing_offset": -1134,
+          "id": 5,
+          "range_max": 4095,
+          "range_min": 0
+        }
+      },
+      "label": "leader",
+      "motor_calibration": {
+        "elbow_flex": {
+          "drive_mode": 0,
+          "homing_offset": -580,
+          "id": 3,
+          "range_max": 2977,
+          "range_min": 763
+        },
+        "gripper": {
+          "drive_mode": 0,
+          "homing_offset": -2017,
+          "id": 6,
+          "range_max": 2611,
+          "range_min": 1466
+        },
+        "shoulder_lift": {
+          "drive_mode": 0,
+          "homing_offset": -1201,
+          "id": 2,
+          "range_max": 3265,
+          "range_min": 895
+        },
+        "shoulder_pan": {
+          "drive_mode": 0,
+          "homing_offset": 1282,
+          "id": 1,
+          "range_max": 3332,
+          "range_min": 918
+        },
+        "wrist_flex": {
+          "drive_mode": 0,
+          "homing_offset": -1195,
+          "id": 4,
+          "range_max": 3134,
+          "range_min": 853
+        },
+        "wrist_roll": {
+          "drive_mode": 0,
+          "homing_offset": -1134,
+          "id": 5,
+          "range_max": 4095,
+          "range_min": 0
+        }
+      },
+      "port": "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00",
+      "registers": {
+        "Present_Position": {
+          "elbow_flex": 2912,
+          "gripper": 1476,
+          "shoulder_lift": 897,
+          "shoulder_pan": 2097,
+          "wrist_flex": 2877,
+          "wrist_roll": 2106
+        },
+        "Present_Temperature": {
+          "elbow_flex": 25,
+          "gripper": 26,
+          "shoulder_lift": 25,
+          "shoulder_pan": 25,
+          "wrist_flex": 26,
+          "wrist_roll": 26
+        },
+        "Present_Voltage": {
+          "elbow_flex": 51,
+          "gripper": 51,
+          "shoulder_lift": 51,
+          "shoulder_pan": 52,
+          "wrist_flex": 52,
+          "wrist_roll": 51
+        },
+        "Status": {
+          "elbow_flex": 0,
+          "gripper": 0,
+          "shoulder_lift": 0,
+          "shoulder_pan": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0
+        },
+        "Torque_Enable": {
+          "elbow_flex": 0,
+          "gripper": 0,
+          "shoulder_lift": 0,
+          "shoulder_pan": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0
+        }
+      }
+    },
+    {
+      "all_status_zero": true,
+      "all_torque_disabled": true,
+      "calibration_matches": true,
+      "calibration_path": "calibration/follower/follower-arm-01.json",
+      "expected_calibration": {
+        "elbow_flex": {
+          "drive_mode": 0,
+          "homing_offset": 397,
+          "id": 3,
+          "range_max": 2985,
+          "range_min": 789
+        },
+        "gripper": {
+          "drive_mode": 0,
+          "homing_offset": -1861,
+          "id": 6,
+          "range_max": 2969,
+          "range_min": 1484
+        },
+        "shoulder_lift": {
+          "drive_mode": 0,
+          "homing_offset": 1941,
+          "id": 2,
+          "range_max": 3241,
+          "range_min": 842
+        },
+        "shoulder_pan": {
+          "drive_mode": 0,
+          "homing_offset": 1669,
+          "id": 1,
+          "range_max": 3147,
+          "range_min": 1141
+        },
+        "wrist_flex": {
+          "drive_mode": 0,
+          "homing_offset": -1763,
+          "id": 4,
+          "range_max": 3101,
+          "range_min": 775
+        },
+        "wrist_roll": {
+          "drive_mode": 0,
+          "homing_offset": 1945,
+          "id": 5,
+          "range_max": 4095,
+          "range_min": 0
+        }
+      },
+      "label": "follower",
+      "motor_calibration": {
+        "elbow_flex": {
+          "drive_mode": 0,
+          "homing_offset": 397,
+          "id": 3,
+          "range_max": 2985,
+          "range_min": 789
+        },
+        "gripper": {
+          "drive_mode": 0,
+          "homing_offset": -1861,
+          "id": 6,
+          "range_max": 2969,
+          "range_min": 1484
+        },
+        "shoulder_lift": {
+          "drive_mode": 0,
+          "homing_offset": 1941,
+          "id": 2,
+          "range_max": 3241,
+          "range_min": 842
+        },
+        "shoulder_pan": {
+          "drive_mode": 0,
+          "homing_offset": 1669,
+          "id": 1,
+          "range_max": 3147,
+          "range_min": 1141
+        },
+        "wrist_flex": {
+          "drive_mode": 0,
+          "homing_offset": -1763,
+          "id": 4,
+          "range_max": 3101,
+          "range_min": 775
+        },
+        "wrist_roll": {
+          "drive_mode": 0,
+          "homing_offset": 1945,
+          "id": 5,
+          "range_max": 4095,
+          "range_min": 0
+        }
+      },
+      "port": "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00",
+      "registers": {
+        "Present_Position": {
+          "elbow_flex": 2715,
+          "gripper": 1503,
+          "shoulder_lift": 865,
+          "shoulder_pan": 2024,
+          "wrist_flex": 2820,
+          "wrist_roll": 1972
+        },
+        "Present_Temperature": {
+          "elbow_flex": 32,
+          "gripper": 34,
+          "shoulder_lift": 32,
+          "shoulder_pan": 32,
+          "wrist_flex": 33,
+          "wrist_roll": 33
+        },
+        "Present_Voltage": {
+          "elbow_flex": 122,
+          "gripper": 122,
+          "shoulder_lift": 122,
+          "shoulder_pan": 122,
+          "wrist_flex": 122,
+          "wrist_roll": 122
+        },
+        "Status": {
+          "elbow_flex": 0,
+          "gripper": 0,
+          "shoulder_lift": 0,
+          "shoulder_pan": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0
+        },
+        "Torque_Enable": {
+          "elbow_flex": 0,
+          "gripper": 0,
+          "shoulder_lift": 0,
+          "shoulder_pan": 0,
+          "wrist_flex": 0,
+          "wrist_roll": 0
+        }
+      }
+    }
+  ],
+  "mode": "read_only_no_register_writes",
+  "timestamp_utc": "2026-10-31T19:16:00.493725+00:00"
+}

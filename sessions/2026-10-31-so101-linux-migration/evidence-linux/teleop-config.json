@@ -1,0 +1,30 @@
+{
+  "robot": {
+    "type": "so101_follower",
+    "port": "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00",
+    "id": "follower-arm-01",
+    "calibration_dir": "/home/dwei/lerobot-demo/calibration/follower",
+    "use_degrees": true,
+    "cameras": {},
+    "max_relative_target": null
+  },
+  "teleop": {
+    "type": "so101_leader",
+    "port": "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00",
+    "id": "leader-arm-01",
+    "calibration_dir": "/home/dwei/lerobot-demo/calibration/leader",
+    "use_degrees": true
+  },
+  "fps": 10,
+  "teleop_time_s": 20.0,
+  "display_data": false,
+  "play_sounds": false,
+  "catch_up_warning": {
+    "enabled": true,
+    "joint_error_threshold": 10.0,
+    "joint_error_thresholds": {},
+    "recovery_ratio": 0.8,
+    "warning_interval_s": 5.0,
+    "telemetry_path": "/home/dwei/lerobot-demo/outputs/teleop/teleop-divergence-20261031.jsonl"
+  }
+}

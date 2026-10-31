@@ -1,13 +1,13 @@
 id: 2026-10-31-so101-linux-migration
-status: prepared
+status: linux_teleop_validated
 mode: development
 robot: so101
 source_revision: bd49580152521e054218c1f41dd5b9bfeacc3d75
-physical_validation: linux_pending
-hardware_actuated: false
+physical_validation: linux_20s_teleop_passed
+hardware_actuated: true
 capture:
   method: mixed
   coverage: partial
-  sources: [operator_report, filesystem, git, software_checks]
-  known_gaps: [target_os_unknown, linux_install_untested, demo_episode_mapping_unknown]
-next_action: confirm_linux_target_then_install_and_rehearse
+  sources: [operator_report, filesystem, git, software_checks, motor_readback, teleop_console, telemetry_summary]
+  known_gaps: [raw_per_sample_telemetry_overwritten_by_analyzer, no_video_of_teleop, demo_episode_mapping_unknown, record_replay_not_yet_validated_on_linux]
+next_action: fix_analyzer_output_naming_then_run_short_10fps_record_replay_rehearsal

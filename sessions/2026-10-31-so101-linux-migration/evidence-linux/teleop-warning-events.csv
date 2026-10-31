@@ -1,0 +1,9 @@
+sample_index,utc,notification_logged,worst_error_joint,worst_error,arm_catch_up_time_s,limiting_joint,status
+75,2026-10-31T19:15:37.835867+00:00,False,shoulder_lift.pos,16.395604395604394,,,unavailable_nonconverging_or_missing_joint
+87,2026-10-31T19:15:39.040823+00:00,False,shoulder_pan.pos,10.10989010989011,,,unavailable_nonconverging_or_missing_joint
+122,2026-10-31T19:15:42.551729+00:00,False,elbow_flex.pos,11.868131868131869,,,unavailable_nonconverging_or_missing_joint
+133,2026-10-31T19:15:43.654062+00:00,False,wrist_flex.pos,10.417582417582416,,,unavailable_nonconverging_or_missing_joint
+138,2026-10-31T19:15:44.155656+00:00,False,shoulder_lift.pos,10.241758241758243,,,unavailable_nonconverging_or_missing_joint
+177,2026-10-31T19:15:48.062490+00:00,False,elbow_flex.pos,12.923076923076923,0.9603121829322467,shoulder_lift.pos,constant_speed_projection
+184,2026-10-31T19:15:48.763886+00:00,False,elbow_flex.pos,13.186813186813186,,,unavailable_nonconverging_or_missing_joint
+193,2026-10-31T19:15:49.664861+00:00,False,shoulder_lift.pos,10.945054945054945,,,unavailable_nonconverging_or_missing_joint

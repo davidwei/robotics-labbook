@@ -1,0 +1,57 @@
+id: RUN-20261031-001
+session: 2026-10-31-so101-linux-migration
+type: physical_run
+title: Native Linux SO101 teleoperation reproduction
+date_local: 2026-10-31
+timezone: America/Los_Angeles
+robot: SO101 leader and follower arms
+software:
+  repository: https://github.com/MoissanClub/lerobot
+  checkout_revision: bd49580152521e054218c1f41dd5b9bfeacc3d75
+  checkout_state: detached exact revision; tracked files clean
+  os: Ubuntu 24.04.5 LTS x86_64
+  kernel: 7.0.0-42-generic
+  python: 3.12.3
+  rerun_sdk: 0.26.2
+hardware:
+  leader_port: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00
+  follower_port: /dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00
+  high_wide_camera: /dev/video0
+  gripper_camera: /dev/video2
+  camera_read_test: both returned 640x480 frames
+calibration:
+  follower_sha256: f6ed343f98122711cedf17b42f659b625ea61677e39fa8280316444e57a07f2c
+  leader_sha256: 05bd80d6a3ac89dae8a761233f15928c5e3ef41f3020ab3965bb09890c517391
+  fresh_full_calibration: true
+  motor_register_match_before_run: true
+conditions:
+  mode: camera-free teleoperation
+  duration_s: 20
+  frequency_hz: 10
+  warning_threshold_deg: 10
+  gripper_excluded_from_warning: true
+  initial_alignment_max_error_deg: 4.5
+authorization: operator explicitly said ready and authorized the teleoperation run
+result: passed_functional_teleoperation_with_transient_tracking_lag
+operator_observation: the teleops works
+observations:
+  - Both arms connected and disconnected cleanly.
+  - Telemetry capture submitted 200 samples, wrote 200 and dropped zero.
+  - Eight samples exceeded the 10-degree warning threshold.
+  - Maximum observed warning error was 16.395604395604394 degrees at shoulder_lift.pos.
+  - Post-run calibration matched motor registers, motor status was zero and torque was disabled.
+capture:
+  coverage: partial
+  sources: [console_log, analyzer_report, warning_event_csv, calibration_files, preflight_readback, post_run_readback, operator_statement]
+  known_gaps:
+    - Original per-sample JSONL was overwritten by the analyzer output-name bug.
+    - No synchronized video was recorded.
+    - Catch-up projection is modeled rather than measured.
+    - Cameras were verified separately but not used in this teleoperation run.
+decision: >-
+  Treat the native Linux teleoperation path as functionally reproduced for this
+  short run. Preserve the transient warning result separately from the operator
+  pass. Fix analyzer output naming before another telemetry run, then perform a
+  short camera-enabled 10 Hz record/replay rehearsal if needed for the demo.
+evidence: ../evidence.json
+artifacts: ../evidence-linux/
