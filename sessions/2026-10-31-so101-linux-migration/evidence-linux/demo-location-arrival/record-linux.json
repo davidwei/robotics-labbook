@@ -37,7 +37,7 @@
   "dataset": {
     "repo_id": "local/so101_cameras_20261025_221116",
     "root": "/home/dwei/lerobot-demo/recordings/unused_launcher_overrides",
-    "single_task": "SO101 camera recording and replay comparison",
+    "single_task": "Pick up a candy",
     "fps": 10,
     "episode_time_s": 120,
     "reset_time_s": 0,
