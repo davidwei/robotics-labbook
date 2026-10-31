@@ -1,0 +1,53 @@
+INFO 2026-10-31 12:41:43 t_replay.py:171 {'dataset': {'episode': 0,
+             'fps': 30,
+             'repo_id': 'local/20261031_122309_001c2b60_run_5',
+             'root': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep000_d936902686/data'},
+ 'display_data': True,
+ 'display_recorded_cameras': True,
+ 'play_sounds': True,
+ 'recorded_preview_max_bytes': 256000000,
+ 'recorded_preview_width': 320,
+ 'robot': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/follower'),
+           'cameras': {'camera_0': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 1,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640},
+                       'camera_1': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 2,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'follower-arm-01',
+           'max_relative_target': None,
+           'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00',
+           'use_degrees': True},
+ 'video_backend': 'pyav'}
+INFO 2026-10-31 12:41:43 eo_utils.py:106 Using video codec: libsvtav1
+
+Filter:   0%|          | 0/268 [00:00<?, ? examples/s]
+Filter: 100%|██████████| 268/268 [00:00<00:00, 57082.75 examples/s]
+/home/dwei/lerobot-demo/.venv/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:9: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+  warnings.warn(
+INFO 2026-10-31 12:41:43 t_replay.py:141 Preparing reference previews before robot connection: 1 frames
+INFO 2026-10-31 12:41:44 t_replay.py:141 Preparing reference previews before robot connection: 100 frames
+INFO 2026-10-31 12:41:44 t_replay.py:141 Preparing reference previews before robot connection: 200 frames
+INFO 2026-10-31 12:41:46 a_opencv.py:179 OpenCVCamera(1) connected.
+INFO 2026-10-31 12:41:48 a_opencv.py:179 OpenCVCamera(2) connected.
+INFO 2026-10-31 12:41:48 follower.py:106 follower-arm-01 SOFollower connected.
+INFO 2026-10-31 12:41:48 ls/utils.py:227 Replaying episode
+/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_replay.py:146: DeprecationWarning: Use `set_time(sequence=…)` instead.
+    See: https://www.rerun.io/docs/reference/migration/migration-0-23 for more details.
+  rr.set_time_sequence("replay_frame", index)
+INFO 2026-10-31 12:42:16 a_opencv.py:592 OpenCVCamera(1) disconnected.
+INFO 2026-10-31 12:42:16 a_opencv.py:592 OpenCVCamera(2) disconnected.
+INFO 2026-10-31 12:42:16 follower.py:230 follower-arm-01 SOFollower disconnected.

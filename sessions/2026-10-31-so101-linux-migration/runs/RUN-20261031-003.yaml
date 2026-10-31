@@ -1,0 +1,33 @@
+id: RUN-20261031-003
+session: 2026-10-31-so101-linux-migration
+type: physical_replay
+title: Linux episode-0 replay with live and recorded camera views
+date_local: 2026-10-31
+robot: SO101 follower
+software_revision: bd49580152521e054218c1f41dd5b9bfeacc3d75
+recording_session: 20261031_122309_001c2b60_run_5
+episode: 0
+frames: 268
+dataset_fps: 10
+cameras:
+  high_wide_index: 1
+  gripper_index: 2
+result: passed
+exit_code: 0
+operator_observation: good now
+observations:
+  - Both live cameras connected before replay and disconnected afterward.
+  - Follower connected, executed the replay interval and disconnected cleanly.
+  - No traceback or error occurred in the successful replay log.
+post_run:
+  calibration_matches: true
+  all_motor_status_zero: true
+  all_torque_disabled: true
+capture:
+  coverage: partial
+  sources: [replay_config, replay_console, replay_result, post_run_motor_readback, operator_statement]
+  known_gaps: [no_quantitative_task_quality_score, no_independent_motion_capture, integer_camera_indices_remain_fragile]
+decision: >-
+  Treat episode-0 physical replay as validated on Linux. Reconfirm numeric camera
+  indices and view roles after any USB reconnect before recording or replay.
+artifacts: ../evidence-linux/replay-episode-0/

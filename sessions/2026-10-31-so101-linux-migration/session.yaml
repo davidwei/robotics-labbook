@@ -9,5 +9,5 @@ capture:
   method: mixed
   coverage: partial
   sources: [operator_report, filesystem, git, software_checks, motor_readback, teleop_console, telemetry_summary]
-  known_gaps: [raw_per_sample_telemetry_overwritten_by_analyzer, no_video_of_initial_teleop, demo_episode_mapping_unknown, replay_not_yet_validated_on_linux, physical_cause_of_high_wide_usb_reset_not_isolated, preview_cli_requires_fragile_integer_camera_indices]
-next_action: restart_launcher_with_current_camera_indices_1_and_2_then_retry_episode_0_replay
+  known_gaps: [raw_per_sample_telemetry_overwritten_by_analyzer, no_video_of_initial_teleop, demo_episode_mapping_unknown, physical_cause_of_high_wide_usb_reset_not_isolated, preview_cli_requires_fragile_integer_camera_indices]
+next_action: continue_recording_only_after_confirming_current_camera_indices_and_views

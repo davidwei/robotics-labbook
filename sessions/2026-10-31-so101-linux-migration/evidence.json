@@ -72,5 +72,17 @@
     "failed_replay_actions_sent": 0,
     "post_failed_replay_status_zero": true,
     "post_failed_replay_torque_disabled": true
+  },
+  "linux_replay_validation": {
+    "run": "RUN-20261031-003",
+    "recording_session": "20261031_122309_001c2b60_run_5",
+    "episode": 0,
+    "frames": 268,
+    "camera_indices": {"high_wide": 1, "gripper": 2},
+    "exit_code": 0,
+    "operator_observation": "good now",
+    "post_replay_calibration_matches": true,
+    "post_replay_status_zero": true,
+    "post_replay_torque_disabled": true
   }
 }
