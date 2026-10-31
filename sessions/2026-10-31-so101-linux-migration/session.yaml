@@ -1,0 +1,13 @@
+id: 2026-10-31-so101-linux-migration
+status: prepared
+mode: development
+robot: so101
+source_revision: bd49580152521e054218c1f41dd5b9bfeacc3d75
+physical_validation: linux_pending
+hardware_actuated: false
+capture:
+  method: mixed
+  coverage: partial
+  sources: [operator_report, filesystem, git, software_checks]
+  known_gaps: [target_os_unknown, linux_install_untested, demo_episode_mapping_unknown]
+next_action: confirm_linux_target_then_install_and_rehearse

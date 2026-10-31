@@ -1,0 +1,11 @@
+# SO101 successful demo and Linux migration preparation
+
+Operator reports the existing setup successfully served a demo with25children. This is participant-count evidence from operator report, not a verified claim of25saved episodes or a reliability estimate. Exact demo boundary and participant-to-episode mapping were not reconstructed. Local October26 session metadata includes15committed episodes in090148_79ce134d_trial_10fps and3in092933_c0911cc5_trial_10fps, plus earlier trial sessions; no new robot motion performed for this preparation.
+
+Prepared a portable source/calibration package from MoissanClub/lerobot lab/so101-intel-warning-20261023 revision bd49580152521e054218c1f41dd5b9bfeacc3d75. Contains historical source snapshot, current leader/follower calibration,10FPS record template, path/port/camera config generator, wrapper and provisional Ubuntu/Debian desktop instructions. Source unchanged. Mac virtual environment, recordings and credentials excluded. Current dependency resolution is platform-specific and Linux install has not been tested. Target distro/CPU and remote-access preference requested from operator, pending.
+
+Transfer guide covers serial group permissions, stable serial paths, camera capture-node/view identification, speech-dispatcher audio, local graphical Rerun, calibration confirmation, record/replay rehearsal and resume. Important limitation: Linux checkpoint storage currently uses full copies instead of APFS clones; retained cumulative checkpoints can grow approximately quadratically. Measure disk/staging costs before large collection.
+
+Artifact local: `/Users/dwei/lerobot/outputs/migration/so101-linux-20261031.tar.gz` (about5MB); SHA256 31300f77479006487feaeeaa02abcfeba0f65653477abbf7de3b96cc9ac549fd. Detailed guide and per-file manifest are inside archive. Config generator exercised using temporary paths and Linux-style ports; hardware-free config preflight performed on Mac. Linux physical validation pending. Raw artifacts remain local, no recordings uploaded.
+
+Next action: confirm target OS/architecture/access; transfer package, install native Linux environment, identify ports/views, test audio and imports, short10FPS record/replay, then demo. No automatic change to existing Mac setup.
