@@ -3,9 +3,15 @@
 Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earlier project history is not reconstructed here.
 
 - Experiment: [G1 embodiment compatibility](../../experiments/EXP-20261009-001/experiment.yaml).
-- Active safety validation: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
-  software-complete at LeRobot `a65596cb`, physical validation pending.
+- Follow-up idea: [native G1-23 MuJoCo embodiment support](../../ideas/IDEA-20261027-001/README.md),
+  based on the maintainer guidance after PR #4651 approval.
+- Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
+  software candidate at LeRobot `a65596cb`; physical validation failed at RUN-006
+  and further physical tests remain stopped pending offline analysis and a new
+  operator decision.
 - Sessions:
+  - [2026-10-30 PC2 SONIC installation and read-only suspended-session preflight](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md).
+  - [2026-10-29 planned PICO/SONIC G1-29 readiness and planted-feet demo](../../sessions/2026-10-29-g1-sonic-planted-feet/pre-lab.md).
   - [2026-10-16 handover validation preparation](../../sessions/2026-10-16-g1-handover/session.md).
   - [2026-10-15 G1 VR camera validation (partial pass; headset pending)](../../sessions/2026-10-15-g1-vr-camera/session.md).
   - [2026-10-08 G1-29 MuJoCo regression](../../sessions/2026-10-08-g1-29-mujoco-regression/session.md).
@@ -23,3 +29,8 @@ are recorded in the [experiment](../../experiments/EXP-20261009-001/experiment.y
 Initial G1-23 validation is therefore no longer listed as unperformed; attaching
 peer provenance remains open. The earlier G1-29 session record remains historical
 and its post-lab review is still pending.
+
+PR #4651 merged into `huggingface/lerobot:main` on 2026-10-19 at merge commit
+`3991580a5673f5f0219a4e8835a5f973eeccf9a7`. The maintainer-endorsed simulation
+follow-up is tracked separately in IDEA-20261027-001; it requires coordinated
+LeRobot and Hub-model changes and does not extend the physical-validation claim.

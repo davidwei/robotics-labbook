@@ -1,9 +1,39 @@
 # IDEA-20261015-003 — Controlled return and handover to the stock controller
 
-- Status: validation_failed for random scenario 1 (RUN-006); further physical tests stopped by operator.
+- Status: long-running safety research; physical validation failed for random
+  scenario 1 (RUN-006) and further physical tests remain stopped by the operator.
 - Target: MoissanClub/lerobot, work/g1-vr-physical; PC2/G1-29 guarded arm controller.
-- Physical validation: pending; RUN-20261015-009/010 expose current fault/exit gaps.
+- Physical validation: failed for the current candidate at RUN-006; future
+  validation is paused. RUN-20261015-009/010 exposed earlier fault/exit gaps.
 - Operator requirement: return to stock requires much more care to avoid a dangerous trajectory.
+
+## Operator risk decision — 2026-10-27
+
+Treat return-to-stock safety as a long-running research thread rather than a
+near-term feature-completion task. The operator identifies a difficult tradeoff
+between incident frequency and incident severity:
+
+- A simple, predictable return behavior may fail more often or permit smaller
+  incidents, but its limited mechanism can make failures easier to understand and
+  bound.
+- A more sophisticated dynamic supervisor may prevent more incidents, yet its
+  additional state, model and transition interactions can create rarer but less
+  predictable failures with greater damage when they occur.
+
+This is the operator's risk framing, not a validated quantitative comparison of the
+candidate controllers. Do not optimize only for the number of observed incidents or
+equate additional gates/dynamics with monotonic safety improvement. Compare designs
+across at least incident likelihood, plausible severity, predictability,
+detectability, recovery behavior, dependence on valid feedback/models and failure
+behavior when software, transport or state estimation is degraded.
+
+Keep the simple Unitree-style behavior as an auditable reference case, not as a
+claim of adequate safety. Introduce sophistication only when it addresses a defined
+failure mode and its own failure envelope can be tested. Prefer offline
+reconstruction, simulation, invariant checking and staged evidence collection;
+preserve independent emergency control. No immediate physical continuation or
+controller implementation is authorized by this decision, and RUN-006 remains the
+controlling physical evidence.
 
 ## Implementation checkpoint
 

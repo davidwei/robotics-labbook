@@ -1,0 +1,288 @@
+id: EXP-20261029-001
+title: PICO/SONIC planted-feet full-body control on G1-29
+project: unitree-g1
+owner: David Wei
+participants: [David Wei, Codex]
+status: active
+question: >-
+  Can the borrowed PICO 4 with two ankle trackers drive a deliberately bounded,
+  planted-feet SONIC full-body demonstration on the physical G1-29 without stale
+  input, pose discontinuity, uncommanded stepping or an unsafe stop outcome?
+hypothesis: >-
+  After exact hardware/firmware identification and repeatable instrumented
+  simulation, a gantry-supported G1-29 can track small arm, torso and symmetric
+  knee-flexion motions while both feet remain planted; this hypothesis is not yet
+  supported by physical evidence.
+success_criteria:
+  - G1 manufacture/hardware revision, 29-DOF embodiment, system firmware, ankle mode and active motion service are recorded before command publication.
+  - A bounded read-only DDS preflight receives fresh CRC-valid LowState and torso IMU data with 29 finite body joint states and no unexplained motor error.
+  - The exact source, dirty patch, encoder, decoder, observation config, planner and generated TensorRT engine hashes are preserved.
+  - The selected low-latency model/config passes three instrumented planted-feet simulation rehearsals with no unexplained fall, uncommanded step, mode duplication or stream gap at or above 100 ms.
+  - Keyboard stop is observed during the feet-clear initialization run; PICO stop, process death and stale-stream outcomes are measured in separate gantry-protected runs before any untethered trial.
+  - If separately authorized, the first physical demonstration completes only segments 0 through 5 of the planted-feet protocol without an abort condition or gantry catch.
+physical_validation_required: true
+related_repositories:
+  - NVlabs/GR00T-WholeBodyControl
+  - davidwei/robotics-labbook
+related_sessions:
+  - SESSION-20261029-001
+  - SESSION-20261030-001
+related_runs:
+  - RUN-20261030-001
+  - RUN-20261030-002
+  - RUN-20261030-003
+  - RUN-20261030-004
+findings:
+  - date: 2026-10-28
+    scope: simulation-only mode-transition rehearsal
+    evidence: >-
+      Before the operator chord, PicoReader samples were intermittent (roughly
+      14-36 Hz EMA with individual device-timestamp gaps of 100-610 ms). After one
+      fully released A+B+X+Y transition from OFF to PLANNER and one A+X transition
+      to POSE, the same process reported roughly 59-69 Hz PICO input, 47.7-50.0 Hz
+      pose-loop output, and deployment stream delay mean/std of 17.477/10.263 ms.
+      The manager logged exactly one OFF -> PLANNER, PLANNER -> POSE, and POSE ->
+      PLANNER transition.
+    interpretation: >-
+      The workstation and manager can sustain the required rates once tracking is
+      healthy. The exact cause of the pre-transition sparse device timestamps is
+      not established; likely candidates include tracker/body-pipeline warm-up,
+      tracking reacquisition, or headset/application scheduling. This does not
+      relax the physical pre-command freshness gate: a robot command must not be
+      used to make an unhealthy input stream become healthy.
+  - date: 2026-10-28
+    scope: second simulation-only mode and terminal-outcome rehearsal
+    evidence: >-
+      After a clean XRoboToolkit PC-service/manager reconnect, the pre-activation
+      stream was again sparse (roughly 15-31 Hz EMA with sampled gaps up to about
+      584 ms). OFF -> PLANNER immediately coincided with recovery to about 64 Hz;
+      a sustained POSE interval held about 48-50 Hz pose output and approximately
+      51-69 Hz PICO input. Deployment stream delay mean/std was 17.492/10.448 ms.
+      Multiple logged POSE/PLANNER transitions occurred. At the end-of-run check,
+      the manager reported device missing and MuJoCo reported a fall (height 0.198
+      m); their exact ordering was not established. Local keyboard O produced an
+      emergency stop and the deployment exited normally.
+    interpretation: >-
+      Healthy active tracking performance was repeatable, but the end state failed
+      the stale-input/fall criteria and therefore is not a successful safety run.
+      The independent local O path remained effective in this simulation. The
+      recurring sparse-before-activation/fast-after-activation pattern merits a
+      source-versus-transport timestamp capture, and mode-event/operator-video
+      correlation is needed before interpreting the multiple transitions.
+  - date: 2026-10-30
+    scope: PC2 input-only PICO chord-latch and teardown preflight
+    evidence: >-
+      With no SONIC subscriber, local revision dc86407 produced exactly one
+      OFF-to-PLANNER transition that remained stable after full release and one
+      shutdown event, but the manager then aborted with exit 134. Revision 632b6b7
+      replaced the SystemExit stop path with a normal return and explicitly closed
+      XRoboToolkit. A live retest at approximately 71-73 Hz produced exactly one
+      OFF-to-PLANNER and one PLANNER-to-OFF transition, SDK uninitialization and
+      exit 0. Two latch unit tests and Python compilation passed.
+    interpretation: >-
+      The full-release chord latch and manager teardown passed this live input-only
+      preflight. This does not establish a bounded response to stale PICO input,
+      robot-level stop effectiveness or stock-controller handover.
+  - date: 2026-10-30
+    scope: fully suspended live PICO planner start and stop
+    evidence: >-
+      RUN-20261030-002 logged exactly one OFF-to-PLANNER and one PLANNER-to-OFF
+      transition. SONIC entered IDLE planner control and exited normally on PICO
+      stop. The chord-to-chord interval lasted 22.54 seconds; the operator later
+      clarified that this extra length was expected, correcting the initial
+      protocol-miss interpretation. The operator observed
+      stepping attempts and feet tapping toward the floor. Maximum measured joint
+      speed was 8.12 rad/s at the left knee; no sampled motor error/status, command
+      or state CRC failure, recorder drop or callback failure occurred.
+    interpretation: >-
+      Live PICO start/stop worked under full suspension. Preserve the measured
+      duration and knee speed as evidence; they do not establish stale-input,
+      ground-contact, handover or untethered behavior.
+  - date: 2026-10-30
+    scope: tethered full-weight-bearing ground-contact IDLE and PICO stop
+    evidence: >-
+      RUN-20261030-003 logged exactly one OFF-to-PLANNER and one PLANNER-to-OFF
+      transition. The operator reported firm standing with the gantry unloaded
+      during 12.28 seconds of IDLE planner control. No sampled motor error/status,
+      LowState/LowCmd CRC failure, recorder drop or callback failure occurred.
+      After stop, no LowCmd resumed during 60.23 seconds of retained capture; the
+      robot lost self-support and relied on the gantry.
+    interpretation: >-
+      Active tethered ground-contact IDLE was demonstrated for this run. The PICO
+      chord stops SONIC but does not preserve standing or restore stock control.
+      Stale-input, locomotion and untethered behavior remain unvalidated.
+  - date: 2026-10-30
+    scope: tethered full-weight-bearing PLANNER-to-POSE entry
+    evidence: >-
+      RUN-20261030-004 began with firm PLANNER standing and operator-reported pose
+      alignment. Immediately after A+X, both legs retracted into the air. Within
+      0.50 seconds, left/right knees moved from 0.249/0.208 rad to 1.960/2.200 rad
+      and hip pitch moved from -0.085/+0.162 rad to -1.456/-1.751 rad. POSE output
+      ran at approximately 31-33 Hz. Raw PICO body joints and outgoing SMPL packets
+      were not recorded. The operator intentionally stopped directly from POSE
+      with A+B+X+Y. The manager stopped cleanly; SONIC later exited 134 after a
+      planner-reset timeout and CycloneDDS cleanup assertion.
+    interpretation: >-
+      The bounded POSE validation failed, while the operator-initiated terminal
+      stop was effective. Telemetry confirms a rapid bilateral tuck but cannot
+      attribute it to PICO input, conversion or policy response. Physical POSE
+      repetition waits for replay-grade capture and offline diagnosis.
+  - date: 2026-10-30
+    scope: headset-only raw-input reproducibility diagnostics
+    evidence: >-
+      One 250-frame POSE capture showed nearly straight raw and converted knees
+      with stable leg lengths. After a later reconnect, the expanded logger
+      captured 853 input frames over 14.73 seconds while the operator stood
+      upright: all body arrays were bit-for-bit identical, knees were fixed at
+      45.6/61.3 degrees, and six timestamp gaps exceeded 100 ms. No controller
+      buttons were pressed.
+    interpretation: >-
+      XRoboToolkit connection and advancing timestamps do not guarantee a fresh or
+      anatomically valid body stream. The frozen/bent reconnect state is a credible
+      input-side mechanism for the physical tuck, but temporal correlation to
+      RUN-20261030-004 is unavailable because that run lacked raw input capture.
+      Recalibration plus an explicit motion/freshness gate is required before any
+      physical repeat.
+readiness: gantry_diagnostic_conditional; untethered_blocked
+operator_decisions:
+  - date: 2026-10-30
+    decision: >-
+      The unresolved stale-PICO response and stock-controller handover block
+      weight-bearing and untethered experiments. They are questions to measure in
+      a fully unloaded, gantry-suspended diagnostic with a separate safety
+      operator, local keyboard stop, facility E-stop and independent whole-body
+      state/IMU/command capture. This decision does not claim those responses are
+      safe or that a launch has been authorized.
+    source: operator statement during the PC2 lab session
+    next_agent_action: >-
+      Verify robot identity and PC2 candidate; run the independent read-only
+      base/torso IMU, 35-slot LowState and LowCmd capture through the planned
+      suspended stop outcomes. Preserve timestamps, packet gaps, motor status,
+      commands, model/engine hashes and synchronized video.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: >-
+      Rated gantry fully unloading both feet, limb clearance, two operators,
+      working local O and facility E-stop, read-only preflight, explicit motion
+      authorization for each suspended diagnostic.
+    physical_validation_status: read-only preflight captured; suspended motion not started
+  - date: 2026-10-30
+    decision: >-
+      Clarification after the operator questioned feet-clear stepping: use full
+      unloading only for the brief INIT and local-O diagnostic, with PICO manager
+      OFF. Source inspection shows INIT then WAIT_FOR_CONTROL; SONIC's policy does
+      not run until a separate start signal. Later PLANNER/POSE and stale-input
+      tests require controlled foot contact under gantry protection. Unresolved
+      stale-input and handover behavior block untethered experiments, not every
+      gantry-protected contact experiment. This corrects the earlier blanket
+      weight-bearing block; each contact run still needs its own preparation and
+      operator authorization.
+    source: operator question and PC2 SONIC state-machine inspection
+    next_agent_action: >-
+      Finish command-owner and hardware inventory, review the first feet-clear
+      INIT/stop outcome, then plan separately authorized gantry-supported contact
+      tests with continuous base/torso IMU, joint, command and video capture.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: >-
+      Rated gantry and limb clearance, controlled contact for policy runs, two
+      operators, local O and facility E-stop, independent capture and explicit
+      authorization for each motion run.
+    physical_validation_status: read-only and PICO-input preflight only; no SONIC motion yet
+  - date: 2026-10-30
+    decision: >-
+      RUN-20261030-001 confirmed that SONIC exit did not restore the prior command
+      stream. The operator recognized this as the previously observed development-
+      mode behavior and accepts it for gantry-only work. Treat SONIC local O as
+      process/control publication stop, not automatic return to stock mode. Each
+      further gantry run needs a fresh setup; untethered use remains blocked.
+    source: RUN-20261030-001 telemetry and operator interpretation
+    next_agent_action: >-
+      Preserve explicit mode ownership in each run and provide a deliberate stock-
+      mode restoration procedure when restoration is required.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: rated gantry, explicit current-mode check, two operators, capture and separate run authorization
+    physical_validation_status: feet-clear INIT/local-O observed; automatic stock-mode restoration absent
+  - date: 2026-10-30
+    decision: >-
+      Focus current work on fully gantry-tethered experiments. Defer watchdogs and
+      other complexity needed only for untethered operation. Suspended runs may
+      measure stale-input and stop behavior with independent whole-body state/IMU/
+      LowCmd capture and an E-stop operator; those outcomes do not clear untethered
+      use.
+    source: operator statement during the PC2 lab session
+    next_agent_action: >-
+      Prepare the next fully suspended, instrumented PICO/SONIC policy run and
+      request separate authorization immediately before launch.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: rated gantry fully unloading both feet, limb clearance, two operators, local O and facility E-stop, independent capture and explicit run authorization
+    physical_validation_status: tethered scope selected; suspended policy and stale-input outcomes not yet run
+  - date: 2026-10-30
+    decision: >-
+      For the next suspended validation, position the feet near the floor after
+      Init Done but preserve clear separation through the planned motion envelope,
+      and record the initial clearance. Treat any intentional or actual foot-floor
+      contact as a separately prepared controlled-contact test.
+    source: operator setup refinement plus review of enabled policy observations
+    next_agent_action: >-
+      Define and record a measurable clearance and downward-excursion margin before
+      requesting authorization for the next suspended run.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: rated gantry, measured clearance after Init Done, expected foot-motion envelope, two operators, E-stop and independent capture
+    physical_validation_status: proposed near-floor suspended setup; not yet executed
+  - date: 2026-10-30
+    decision: >-
+      Advance from the successful active phase of RUN-20261030-003 to a tethered
+      full-body POSE run limited to PLANNER baseline, matched POSE entry, one slow
+      symmetric elbow bend/restore below shoulder height, return to PLANNER and
+      PICO stop. Defer torso, pelvis, lower-body and locomotion segments.
+    source: operator selection plus planted-feet full-body demo protocol
+    next_agent_action: >-
+      Complete read-only preflight and capture setup, reconfirm catch-only gantry,
+      two operators and pose alignment, then request separate launch authorization.
+    target: G1-29 with NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: full-weight-bearing planted feet, catch-only gantry, clear zone, local O and E-stop, fresh PICO stream, exact engines, independent capture, matched pose before A+X
+    physical_validation_status: bounded tethered full-body POSE run selected; not yet executed
+  - date: 2026-10-30
+    decision: >-
+      RUN-20261030-004 failed at POSE entry with rapid bilateral leg retraction.
+      Local SONIC revision 8d916d4 records exact manager packets, aligned raw XR
+      body poses and continuous raw body/controller samples across every manager
+      mode. A headset-only capture showed nearly straight, stable raw and converted
+      knee geometry, so the prior physical tuck is not explained by a bent input
+      pose. Validate the expanded logger before any separately authorized repeat.
+    source: RUN-20261030-004 telemetry, operator observation and capture implementation
+    next_agent_action: >-
+      Run the recorded manager without a SONIC robot subscriber, collect a short
+      standing-to-POSE headset stream, validate packet/raw-pose completeness, then
+      replay it only to simulation and inspect ankle/knee geometry and policy response.
+    target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on PC2; simulation before robot actuation
+    prerequisites: headset and ankle trackers, exact packet capture, read-only validator, simulation subscriber and explicit later authorization for any physical repeat
+    physical_validation_status: POSE entry failed; expanded logger live-validated by rejecting a frozen/bent reconnect stream; physical repeat blocked
+hypotheses:
+  - date: 2026-10-30
+    statement: A larger feet-to-floor gap may cause SONIC to attempt harder stepping while suspended.
+    status: unvalidated
+    note: >-
+      The enabled policy observations do not directly include foot clearance or
+      contact force. Near-floor placement cannot affect the policy through those
+      signals while contact remains absent; dynamics after contact would be a
+      different experimental condition.
+current_blockers:
+  - Expanded input-only capture found a frozen, anatomically bent reconnect stream: all 853 body poses were identical, knee angles were 45.6/61.3 degrees and six timestamp gaps exceeded 100 ms. Recalibration and a passing upright/motion freshness check are required before any physical repeat.
+  - PC2 loopback MuJoCo/deployment startup exposed zero simulator LowState CRC values rejected by the deployment; exact packet replay was not completed.
+  - RUN-20261030-004 produced a rapid bilateral leg tuck at POSE entry; raw PICO/SMPL lower-body packets were not captured, so physical POSE repetition waits for headset-only capture and simulation replay.
+  - G1 firmware, manufacture date, pelvis revision and motor-driver revision are not recorded.
+  - PC2 PICO input passed one 30-second window and RUN-20261030-002 used the generated decoder, encoder and planner TensorRT engines; exact-candidate simulation remains unvalidated.
+  - The A+B+X+Y full-release latch is now ported and live-tested on PC2 at local revisions dc86407 and 632b6b7; these commits are not upstream, and only input-only transition/teardown behavior was tested.
+  - A current rt/lowcmd stream was observed in read-only capture; its publisher must be identified before SONIC command publication.
+  - Stale PICO remains unvalidated and blocks untethered trials.
+  - RUN-20261030-003 reproduced absent post-stop self-support on the ground: no stock LowCmd resumed and the robot relaxed into the gantry, so every repeat needs gantry protection through post-stop, independent capture and separate authorization.
+authorization_boundary: >-
+  This experiment record authorizes planning, software/simulation work and read-only
+  robot inspection only. The feet-clear INIT diagnostic command publication requires
+  separate explicit operator authorization after its stated preflight and capture
+  conditions pass. Gantry-protected foot-contact runs require separate preparation
+  and authorization. Untethered trials wait for stale-input and handover review.
+protocols:
+  setup: ../../ideas/IDEA-20261027-002/g1-29-sonic-setup.md
+  demo: ../../ideas/IDEA-20261027-002/planted-feet-full-body-demo.md
+  analysis: ../../ideas/IDEA-20261027-002/g1-29-physical-plan-20261028.md

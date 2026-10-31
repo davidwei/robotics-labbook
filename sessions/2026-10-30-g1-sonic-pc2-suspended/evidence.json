@@ -1,0 +1,330 @@
+{
+  "artifacts": [
+    {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/wholebody.jsonl",
+      "sha256": "3f50a3c8bd911a60c60e9f10ed4557461bed131fb2cbe9c240780affc3e8ce37",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-001. Interrupted after 5.37 seconds post-stop; no closing summary line."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/console.typescript",
+      "sha256": "ed6b8d33c5c7400493bf6dfaf961c6233327687bb7fe129cf75eebe86fcc32f5",
+      "description": "SONIC console transcript for RUN-20261030-001, including Init Done, Stop and normal process exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/delayed-poststop.jsonl",
+      "sha256": "016d923737d500e84916753d8bba64c2dc2a75bf95d7c9b954a51eec3c7a6839",
+      "description": "Delayed three-second post-stop capture: 963 LowState, 906 torso IMU and zero LowCmd samples; complete summary present."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-init-stop-01/run_init_stop.sh",
+      "sha256": "698b719a144f00aa9b4c21066ba1fe72d0676f7c21e4d3de0cbf7b4784c86f5b",
+      "description": "Exact keyboard-only launch script for RUN-20261030-001."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/policy_model_decoder.trt",
+      "sha256": "8e4418f31672921593ec8dd370ffaf4706947ebf5b09594db6decb638a2e2b6c",
+      "description": "Runtime-generated TensorRT decoder engine used by RUN-20261030-001."
+    },
+    {
+      "path": "/home/dwei/sonic/encoder_trt_build.log",
+      "sha256": "5c249427ee96467118e3277b229ca3133c9b26db8dfdb004999af82609910e4d",
+      "description": "TensorRT 10.7 offline encoder ONNX parse/build/deserialization passed on PC2 GPU; inference skipped."
+    },
+    {
+      "path": "/home/dwei/sonic/decoder_trt_build.log",
+      "sha256": "f3a882ae45639948c091a8a0304490b8a24ecc5622ea273c706fe540b95b2ee9",
+      "description": "TensorRT 10.7 offline decoder ONNX parse/build/deserialization passed on PC2 GPU; inference skipped."
+    },
+    {
+      "path": "/home/dwei/sonic/planner_trt_build.log",
+      "sha256": "983ee54ca9f3f85761958cbbb7511dbec311345a2ebe7773fd5771fcc5668530",
+      "description": "TensorRT 10.7 offline planner ONNX parse/build/deserialization passed on PC2 GPU; inference skipped."
+    },
+    {
+      "path": "/home/dwei/sonic/captures/preflight-20261030-02.jsonl",
+      "sha256": "5dec0ba89044e3a97fffcc9ec56fc318acdfb4e5671b4c76a3ca23d67e5eee56",
+      "description": "Second 15-second read-only PC2 DDS preflight; all sampled CRC, finite state/IMU and body motor status checks passed. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/captures/pico-preflight-20261030-01.jsonl",
+      "sha256": "514121119cc746447c3210845e049535d620ab563f2bd57b055bea9c2cc95051",
+      "description": "Read-only DDS capture 01:18:39-01:34:20 CST for PICO preflight. Interrupted without closing summary; 176249 LowState, 285636 torso IMU, 167081 LowCmd records, no captured CRC failures. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/captures/pico-body-20261030-06.jsonl",
+      "sha256": "c99d5fee2a61638bb92db71cb27a3e0a160ff74cb828b5aab60e14a9dc824565",
+      "description": "Input-only PICO body pose capture and passing 30.02-second freshness summary after local XR service restart and PICO reconnect. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/check_pico_body.py",
+      "sha256": "8b1060ab22e2b0dbacc06986ba34248696a6b970f9a5924429ebf93da290cf13",
+      "description": "Read-only PICO SDK 24-joint stream check version used for the earlier passing window; subsequently corrected because it did not gate the receive-gap maximum."
+    },
+    {
+      "path": "/home/dwei/sonic/check_pico_body.py",
+      "sha256": "de6e1432e55c6c09c23ae6845a523b50068a7af1effec221cb44f36262a0a390",
+      "description": "Corrected checker content: receive gaps at or above 100 ms reset the window and the pass condition checks both device and receive gaps."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/body-freshness.jsonl",
+      "sha256": "d584cbabe6191967ff6be662c80c5df6d93dd388d2995a0ef23fdf21bd00393a",
+      "description": "Rejected freshness attempt: old checker reported pass despite a 1046 ms receive gap; retained as evidence of the checker defect, not a freshness pass."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/body-freshness-02.jsonl",
+      "sha256": "bdcdf245e60d5f3f25020a269e67e7c7ccba50a936b2ce929b7f7dc9723f9c16",
+      "description": "Corrected freshness-check attempt; failed after the XR service lost TestDevice. It is not a passing 30-second window."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/manager-02.typescript",
+      "sha256": "f09066ef735075bd1ddaa34ebfc7830eca071f1f9c6822708dab10f8c017880a",
+      "description": "First live latch preflight at SONIC revision dc86407: one OFF-to-PLANNER event and one shutdown event, followed by process abort exit 134. No SONIC subscriber was running."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-pico-latch-preflight-01/manager-03.typescript",
+      "sha256": "9e6bdf6750b2d55c3a430ad3a2785bc7efbb9701a577d86cf40a3c51056f825e",
+      "description": "Clean live latch/teardown retest at SONIC revision 632b6b7: exactly one OFF-to-PLANNER and one PLANNER-to-OFF transition, SDK uninitialized, exit 0. No SONIC subscriber was running."
+    },
+    {
+      "path": "/home/dwei/sonic/captures/preflight-20261030-01.jsonl",
+      "sha256": "5d420d0a8dc6093a7f85af30b4ec5de41674e6e5bf57f300f06e8a9f66f0c72f",
+      "description": "Five-second read-only PC2 DDS preflight: LowState, base/torso IMUs, LowCmd and receipt timestamps. Stored locally on PC2."
+    },
+    {
+      "path": "/home/dwei/sonic/capture_g1_wholebody.py",
+      "sha256": "de87c0378e608734d13f09572a9d61d6e17d0158ba04e7613dcce1f6edf6898e",
+      "description": "Independent read-only DDS capture script used for the preflight."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/target/release/g1_deploy_onnx_ref",
+      "sha256": "abbfe7fa69b66d33f92096d0476cc6f852457f40dd3b23f69c3aa1321628d739",
+      "description": "PC2 native SONIC binary built from NVlabs revision 1fa5f7fa3966cbd4845c4e641d13c3f0cd5b0d9b; not launched on robot."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/model_encoder.onnx",
+      "sha256": "60be43157f57d812f38bdbb740a5de5d5d070e8840d9edc16f02a91a6d06255b",
+      "description": "Low-latency SONIC encoder downloaded from nvidia/GEAR-SONIC."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/model_decoder.onnx",
+      "sha256": "c4ac2e74045e7cbfb568f15e6bf47ea7ce023df7a94322af50be223e0a628bab",
+      "description": "Matching low-latency SONIC decoder."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/policy/low_latency/observation_config.yaml",
+      "sha256": "582b9a273a3d69fbf49ae59b39295a3be2b4a295e195ef4cf674b5e2571c90ab",
+      "description": "Matching low-latency observation configuration."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/planner/target_vel/V2/planner_sonic.onnx",
+      "sha256": "39b553e197f62f077975ba38512bc04781a3fc37c2af7c6756e04629f760edea",
+      "description": "SONIC target-velocity planner ONNX file."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/thirdparty/roboticsservice_1.0.0.0_arm64.deb",
+      "sha256": "532c605dfa1a02b05b7c285b856c91771c78623cded30ef5b16ea371de49ed5f",
+      "description": "Bundled ARM64 XRoboToolkit PC Service package used for local extraction."
+    },
+    {
+      "path": "/home/dwei/sonic/TensorRT-10.7.0.23.l4t.aarch64-gnu.cuda-12.6.tar.gz",
+      "sha256": "b3028a82818a9daf6296f43d0cdecfa51eaea4552ffb6fe6fad5e6e1aea44da6",
+      "description": "NVIDIA TensorRT 10.7 L4T/CUDA 12.6 archive installed in the PC2 workspace."
+    },
+    {
+      "path": "/home/dwei/sonic/GR00T-WholeBodyControl/gear_sonic_deploy/planner/target_vel/V2/planner_planner_sonic.trt",
+      "sha256": "50e98ba9bfac4889c8db4b149b3a1b621996d9931db664edb7326eb23136a669",
+      "description": "PC2 planner TensorRT engine generated during preparation before RUN-20261030-002; 710 MiB as reported by SONIC."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/sonic-02.typescript",
+      "sha256": "40f5360f47986c233ac19b7bd14bf2d6331c547ef21dfc6e2e99a26841a058cd",
+      "description": "Preparation transcript that generated the planner engine, reached Init Done, then accepted local O without policy activation after the operator corrected the build ordering."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/wholebody-02.jsonl",
+      "sha256": "055b36d8876b2944224ec4e287a9d114a692d19a264171be730d3a250123c69a",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-002, including complete summary and retained post-stop interval."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/sonic-03.typescript",
+      "sha256": "10cbed0e6b2188c9f539cad76edd0db075e20c47d9b76c33d09aaf7f4ecdbc2f",
+      "description": "SONIC transcript for RUN-20261030-002: prebuilt engine load, Init Done, CONTROL entry, PICO stop and normal exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/manager-02.typescript",
+      "sha256": "5330e1857bd7e43d81600fed20fe3298372d19d8877a46220de4e2b6dd89fa39",
+      "description": "PICO manager transcript for RUN-20261030-002: stable approximately 72 Hz input and exactly one start and one stop transition with clean SDK shutdown."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/logs/q.csv",
+      "sha256": "b1e802b8e3d89499cf4d7c273588957eb5f2a7bf83d176cf2f5f9440c854b20a",
+      "description": "SONIC measured joint-position CSV for the 22.54-second RUN-20261030-002 policy interval."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/logs/dq.csv",
+      "sha256": "d1da77a4e5a1e7efde6490c1b7eb8bad98801970e1bc23ff8f0cba1b2014dd0b",
+      "description": "SONIC measured joint-velocity CSV; maximum absolute sampled value 8.121 rad/s at hardware joint 3."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-suspended-pico-stale-01/logs/motor_error.csv",
+      "sha256": "44913131a5e3d1e34471d4e8cd28e8a0253462afc8274d5a9bf47d05f7e1864a",
+      "description": "SONIC motor-error CSV for RUN-20261030-002; all sampled values zero."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/preflight.jsonl",
+      "sha256": "8e6689f80ba3ef2bdd51dc6ca65ef47535b1f90fe9d52c482c4cd190b91efc3b",
+      "description": "Five-second read-only preflight before RUN-20261030-003: live LowState/torso IMU, zero LowCmd and complete summary."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/wholebody.jsonl",
+      "sha256": "d7c82e34419313b83ee3a6b1155847ae774d967138929ade9f0b30f4ee96dec6",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-003, including 60.23 seconds after the last command."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/sonic.typescript",
+      "sha256": "9437c7f5267688d756803ba46bcee01bf4d4ab24d53f48dc426b117e2941b714",
+      "description": "SONIC transcript for RUN-20261030-003: Init Done, CONTROL entry, PICO stop and normal exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/manager.typescript",
+      "sha256": "eccda9393fb320ff8acc7c68ca112ab496bd441e8a0297b948070b0e86e2c4a8",
+      "description": "PICO manager transcript for RUN-20261030-003: stable approximately 71 Hz input, one start and one stop transition, clean XR shutdown."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/q.csv",
+      "sha256": "2a4a3461926dc5add4bd868413426c0f915119bd31b4df87fd2985a7e1324b41",
+      "description": "SONIC measured joint positions for the 12.28-second ground-contact IDLE interval."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/dq.csv",
+      "sha256": "d476861116ffd94065234e9fe0bbdc23db4ec32643bf7e98035a3032ae8cbabf",
+      "description": "SONIC measured joint velocities for RUN-20261030-003; maximum absolute sampled value 6.262 rad/s at hardware joint 18."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/motor_error.csv",
+      "sha256": "4d49f5bf2d31de5b8d898018b3b2251e0a2352f46ba5592df4e002003e40a1df",
+      "description": "SONIC motor-error CSV for RUN-20261030-003; all sampled values zero."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-idle-01/logs/base_quat.csv",
+      "sha256": "c257993540c00038c69901e9e6960110685790ce05baf96e685df741d4634ecb",
+      "description": "SONIC base quaternion CSV used to compute policy-interval roll/pitch/yaw ranges."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/preflight.jsonl",
+      "sha256": "c5b4fe0e010e64ff944d939aa1431920f3cf24c21a536fa4dc306b861cd8e22f",
+      "description": "Five-second read-only preflight before RUN-20261030-004: 1515 LowState, 1458 torso-IMU, zero LowCmd and complete summary."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/wholebody.jsonl",
+      "sha256": "c698b7e27c6a231bcfe7c8cb87606acf9a4cb90087f2fe101259246e43b0b0fc",
+      "description": "Independent LowState, base/torso IMU and LowCmd capture for RUN-20261030-004, including 41.80 seconds after the final LowCmd."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/sonic.typescript",
+      "sha256": "05e728a2c208925011be5ef4b5626af6dc26851b30b983d65eddc1ce4ac21ab5",
+      "description": "SONIC transcript: protocol-v3 POSE streaming, planner-reset timeout and CycloneDDS cleanup assertion with exit 134."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/manager.typescript",
+      "sha256": "8c8bbc970705e1422bae39f58b22d3ed52c21b14e398fc03da33d88a9338e11a",
+      "description": "PICO manager transcript: approximately 72 Hz input, PLANNER-to-POSE, 31-33 Hz PoseLoop, operator-initiated POSE-to-OFF and clean exit 0."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/recorder.typescript",
+      "sha256": "7d1d74dffc5dd45c0e84df019284b1f1f21195e1276bd0c3d65c6bbdc0c97661",
+      "description": "Independent recorder summary with counts, zero drops/callback failures and bounded receive gaps."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/run_sonic_zmq_manager.sh",
+      "sha256": "04d95adab098eb25ea321ec9e483859433ae104bf1107c02904ce0c898a54c8e",
+      "description": "Exact RUN-20261030-004 SONIC launch wrapper and model/config paths."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/q.csv",
+      "sha256": "0c725c59a515599c8178abe472247072d531ffe67c90e4c62c3ee6c31f8d5219",
+      "description": "Measured joint positions confirming rapid bilateral hip and knee flexion after POSE entry."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/dq.csv",
+      "sha256": "97d04e1f4f6cb256fdbc24abdc077719e4d6a1b79610875ed50bd7444a71801d",
+      "description": "Measured joint velocities; maximum absolute sampled value 19.281 rad/s at hardware joint 18 during POSE."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/motor_error.csv",
+      "sha256": "537462b8d2a304dbee6bffa621f45c052aeaa5108c6a38dcb96b5d826a62e7ac",
+      "description": "SONIC motor-error CSV for RUN-20261030-004; all sampled values zero."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/base_quat.csv",
+      "sha256": "03f8df1a521bc459f9ca218c6f3123f4735db1aa7652264db649676b7c9b4725",
+      "description": "Base quaternion CSV used to compute PLANNER and POSE roll/pitch/yaw ranges."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/encoder_mode.csv",
+      "sha256": "0fbee497e93260040269bf1383100e73d92327bd27ac78f87b45f38db4befe63",
+      "description": "Encoder mode log separating 60.16 seconds of planner mode from 22.98 seconds of SMPL POSE mode."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-01/logs/motion_name.csv",
+      "sha256": "95bb8b69a80718ecc71bbdd5b327fffa9f82095e33d1464f368e33858067db5c",
+      "description": "Motion-name log identifying planner and streamed intervals."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/manager-input-only-02.typescript",
+      "sha256": "6d6754a0032525d4f6b5258be05fce1c305a1565a01593e8017e3e4b27cdfa9f",
+      "description": "Headset-only manager transcript with no SONIC subscriber: stable input, PLANNER/POSE interval, partial frozen-upper-body transition during terminal chord and clean exit."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/metadata.json",
+      "sha256": "94abb24c53d28061e254c4be0291c2655ebf8dcea7cadfaae198c55e9e431111",
+      "description": "Replay-capture format metadata for the headset-only diagnostic."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/packets.bin",
+      "sha256": "4cabbf96ad18191b3e9982b83382adf882b0476f0491743e5fe4920126b0c304",
+      "description": "Exact 421-packet ZMQ replay stream containing planner, pose and command payloads."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/packets.jsonl",
+      "sha256": "4946ec9fd9764d59afd6c1b9006ab6ea000524f5b7869582b09c56c4e7f41da1",
+      "description": "Per-packet offsets, sizes, SHA-256, clocks and stream modes for the headset-only replay stream."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-02/pico-packets/raw_body_poses.bin",
+      "sha256": "3f7a2ea628d99030b5c1a41b184223b02bc3b4fc96e965a6d94a733ff1cb4546",
+      "description": "250 raw XR 24-by-7 body poses aligned to outgoing POSE packets; knee and segment geometry remained nearly straight and stable."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/manager-preflight.typescript",
+      "sha256": "3c9b7239e19f2a8b325de918c44c60ae0081d6d79240436190a7dbad8d22c2c6",
+      "description": "Expanded input-only preflight transcript: reconnect, stable-looking reader reports, no controller chords and clean manager shutdown."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/pico-packets/metadata.json",
+      "sha256": "184d49354a599c8fbb5acb18b11408d7b2af55b0ba0da70b335b9314bb62b3d3",
+      "description": "Expanded capture metadata identifying exact-packet plus continuous raw-input files."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/pico-packets/input_samples.jsonl",
+      "sha256": "35a5894aa3d9f9795c109e5eee7f916989087f78a6862cb1758174808a665e8d",
+      "description": "853 continuous XR/controller sample records with device/host clocks and no pressed buttons; six device gaps exceeded 100 ms."
+    },
+    {
+      "path": "/home/dwei/sonic/runs/20261030-ground-contact-pose-03/pico-packets/input_body_poses.bin",
+      "sha256": "32932d2a348c3c7e0baf3328d2765846e9a328e9fafdcae5227d06d9dbb7eb63",
+      "description": "853 raw 24-by-7 XR body poses; every frame was identical and knee geometry remained fixed at 45.6/61.3 degrees."
+    }
+  ],
+  "known_missing_evidence": [
+    "G1 hardware and firmware inventory",
+    "PICO tracker firmware and repeated reconnect reliability",
+    "Exact-candidate simulation evidence",
+    "Synchronized video",
+    "Raw PICO body-joint and outgoing SMPL pose packets for RUN-20261030-004",
+    "Continuous raw controller-button samples for the first headset-only replay capture; added for the next run at SONIC revision 8d916d4",
+    "Persistent transcript for the incomplete PC2 loopback simulation startup and CRC rejection",
+    "Observed damping-frame publication and identified stock-controller resumption after local O",
+    "Stale PICO, SONIC process-loss and hardware E-stop outcomes"
+  ]
+}
