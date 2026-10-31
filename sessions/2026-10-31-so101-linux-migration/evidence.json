@@ -34,5 +34,24 @@
     "post_run_motor_status_zero": true,
     "raw_telemetry_retained": false,
     "raw_telemetry_gap": "Analyzer output-name replacement was a no-op for a filename not ending in .telemetry.jsonl and overwrote the input."
+  },
+  "linux_recording_session": {
+    "run": "RUN-20261031-002",
+    "session_name": "20261031_122309_001c2b60_run_5",
+    "target_episodes": 5,
+    "committed_episodes": 1,
+    "committed_episode_frames": 268,
+    "committed_episode_duration_s": 26.8,
+    "committed_episode_telemetry_dropped": 0,
+    "committed_episode_warning_requests": 7,
+    "committed_episode_max_observed_error_deg": 23.560439560439562,
+    "failed_recording_telemetry_samples": 215,
+    "failed_recording_telemetry_dropped": 0,
+    "failure": "OpenCVCamera(0) read thread stopped; subsequent preview could not open camera 0",
+    "dataset_parquet_sha256": "e0c766606d2a6ade1b5cdac66d792c29704af955dce70ac3afd66b48f0c0841e",
+    "camera_0_video_sha256": "de233eee0efa3a8d44829bd670278b7d49d53b026edc403f916766c3877cea06",
+    "camera_1_video_sha256": "0af771ee86695e8d74bfec31fa1e1b30c96bcffa17a95ca59ebda33d246ff950",
+    "episode_0_telemetry_sha256": "1072bd74ca63c8ca48f1416c3058588153b5bcaa724f943c67b15645b2c2709c",
+    "videos_retained": "local only under the session dataset"
   }
 }

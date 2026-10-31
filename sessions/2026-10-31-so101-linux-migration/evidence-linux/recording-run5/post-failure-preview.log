@@ -1,0 +1,10 @@
+[ WARN:0@0.091] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video0): can't open camera by index
+[ERROR:0@0.092] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_camera_views.py", line 182, in <module>
+    main()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_camera_views.py", line 104, in main
+    raise RuntimeError(
+RuntimeError: Cannot open camera 0; check connection/Terminal camera permission or choose --indices

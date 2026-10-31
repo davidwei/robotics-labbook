@@ -1,0 +1,49 @@
+id: RUN-20261031-002
+session: 2026-10-31-so101-linux-migration
+type: physical_recording
+title: First target-five Linux recording attempts
+date_local: 2026-10-31
+robot: SO101 leader and follower arms with two cameras
+software_revision: bd49580152521e054218c1f41dd5b9bfeacc3d75
+recording_session: 20261031_122309_001c2b60_run_5
+target_episodes: 5
+committed_episodes: 1
+attempts:
+  - id: ep000_e101b35ff8
+    result: failed_before_recording
+    failure: leader motor 6 input-voltage error reading Homing_Offset
+  - id: ep000_d936902686
+    result: committed
+    dataset_episode: 0
+    frames: 268
+    duration_s: 26.8
+    telemetry_submitted: 268
+    telemetry_written: 268
+    telemetry_dropped: 0
+    warning_requests: 7
+    maximum_observed_error_deg: 23.560439560439562
+    maximum_error_joint: elbow_flex.pos
+    videos:
+      camera_0: {codec: h264, width: 640, height: 480, fps: 10, frames: 268, sha256: de233eee0efa3a8d44829bd670278b7d49d53b026edc403f916766c3877cea06}
+      camera_1: {codec: h264, width: 640, height: 480, fps: 10, frames: 268, sha256: 0af771ee86695e8d74bfec31fa1e1b30c96bcffa17a95ca59ebda33d246ff950}
+    parquet_sha256: e0c766606d2a6ade1b5cdac66d792c29704af955dce70ac3afd66b48f0c0841e
+    telemetry_sha256: 1072bd74ca63c8ca48f1416c3058588153b5bcaa724f943c67b15645b2c2709c
+  - id: ep001_4db97a11bb
+    result: failed_not_committed
+    failure: OpenCVCamera(0) read thread is not running
+    telemetry_submitted: 215
+    telemetry_written: 215
+    telemetry_dropped: 0
+post_failure_preview: camera 0 could not be opened
+dataset_pointer: attempts/ep000_d936902686/data
+operator_task_quality_observation: not_collected
+post_run_motor_readback: not_performed
+capture:
+  coverage: partial
+  sources: [session_metadata, attempt_metadata, console_logs, joint_telemetry, parquet_metadata, ffprobe, midpoint_video_frames]
+  known_gaps: [no_operator_task_quality_result, no_post_failure_motor_readback, videos_local_only, failed_attempt_camera_frames_not_committed]
+decision: >-
+  Preserve episode 0 as valid recorded data. Do not count the camera-failed
+  episode-1 attempt. Restore and verify camera 0, then resume the exact session
+  to continue toward five committed episodes.
+artifacts: ../evidence-linux/recording-run5/

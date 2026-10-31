@@ -1,0 +1,147 @@
+INFO 2026-10-31 12:25:23 t_record.py:450 {'catch_up_warning': {'enabled': True,
+                      'joint_error_threshold': 10.0,
+                      'joint_error_thresholds': {},
+                      'recovery_ratio': 0.8,
+                      'telemetry_path': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep001_4db97a11bb/joint_telemetry.jsonl',
+                      'warning_interval_s': 5.0},
+ 'dataset': {'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 300,
+             'fps': 10,
+             'num_episodes': 1,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': False,
+             'push_to_hub': False,
+             'rename_map': {},
+             'repo_id': 'local/20261031_122309_001c2b60_run_5',
+             'reset_time_s': 0,
+             'root': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep001_4db97a11bb/data',
+             'single_task': 'SO101 camera recording and replay comparison',
+             'streaming_encoding': False,
+             'tags': None,
+             'vcodec': 'h264',
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': True,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_port': None,
+ 'manual_control': True,
+ 'manual_control_file': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep001_4db97a11bb/controls.txt',
+ 'play_sounds': True,
+ 'policy': None,
+ 'resume': True,
+ 'robot': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/follower'),
+           'cameras': {'camera_0': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 0,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640},
+                       'camera_1': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 2,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'follower-arm-01',
+           'max_relative_target': None,
+           'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00',
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/leader'),
+            'id': 'leader-arm-01',
+            'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00',
+            'use_degrees': True}}
+INFO 2026-10-31 12:25:23 eo_utils.py:106 Using video codec: h264
+INFO 2026-10-31 12:25:25 a_opencv.py:179 OpenCVCamera(0) connected.
+INFO 2026-10-31 12:25:26 a_opencv.py:179 OpenCVCamera(2) connected.
+INFO 2026-10-31 12:25:26 follower.py:106 follower-arm-01 SOFollower connected.
+INFO 2026-10-31 12:25:26 so_leader.py:79 leader-arm-01 SOLeader connected.
+INFO 2026-10-31 12:25:26 t_record.py:560 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-10-31 12:25:26 ecording.py:107 MANUAL WAITING (launcher controls)
+INFO 2026-10-31 12:25:26 ecording.py:107 MANUAL RECORDING (launcher controls)
+INFO 2026-10-31 12:25:26 ls/utils.py:227 Recording episode 1
+WARNING 2026-10-31 12:25:47 _monitor.py:139 slow down event=211 sample_monotonic=11467.411976641 joint=shoulder_lift.pos error=12.176 threshold=10.000
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 12:25:47 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+Exception in thread OpenCVCamera(0)_read_loop:
+Traceback (most recent call last):
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 445, in _read_loop
+    raw_frame = self._read_from_hardware()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 346, in _read_from_hardware
+    raise RuntimeError(f"{self} read failed (status={ret}).")
+RuntimeError: OpenCVCamera(0) read failed (status=False).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 462, in _read_loop
+    raise RuntimeError(f"{self} exceeded maximum consecutive read failures.") from e
+RuntimeError: OpenCVCamera(0) exceeded maximum consecutive read failures.
+INFO 2026-10-31 12:25:47 ls/utils.py:227 Stop recording
+[ WARN:0@29.077] global cap_v4l.cpp:804 requestBuffers VIDEOIO(V4L2:/dev/video0): failed VIDIOC_REQBUFS: errno=19 (No such device)
+INFO 2026-10-31 12:25:49 a_opencv.py:592 OpenCVCamera(0) disconnected.
+INFO 2026-10-31 12:25:49 a_opencv.py:592 OpenCVCamera(2) disconnected.
+INFO 2026-10-31 12:25:49 follower.py:230 follower-arm-01 SOFollower disconnected.
+INFO 2026-10-31 12:25:49 o_leader.py:156 leader-arm-01 SOLeader disconnected.
+INFO 2026-10-31 12:25:49 telemetry.py:81 Joint telemetry: path=/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep001_4db97a11bb/joint_telemetry.jsonl submitted=215 written=215 dropped=0 error=None
+INFO 2026-10-31 12:25:49 ls/utils.py:227 Exiting
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 687, in <module>
+    main()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 683, in main
+    record()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/configs/parser.py", line 233, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 590, in record
+    manual_episodes(
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/manual_recording.py", line 71, in manual_episodes
+    run_phase(dataset, keyboard.poll)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 568, in run_manual_phase
+    record_loop(
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/datasets/image_writer.py", line 36, in wrapper
+    raise e
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/datasets/image_writer.py", line 29, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 360, in record_loop
+    obs = robot.get_observation()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/robots/so_follower/so_follower.py", line 190, in get_observation
+    obs_dict[cam_key] = cam.read_latest()
+                        ^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 550, in read_latest
+    raise RuntimeError(f"{self} read thread is not running.")
+RuntimeError: OpenCVCamera(0) read thread is not running.
+Waiting for image writer to terminate...

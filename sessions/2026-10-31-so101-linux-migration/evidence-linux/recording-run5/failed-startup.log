@@ -1,0 +1,108 @@
+INFO 2026-10-31 12:23:25 t_record.py:450 {'catch_up_warning': {'enabled': True,
+                      'joint_error_threshold': 10.0,
+                      'joint_error_thresholds': {},
+                      'recovery_ratio': 0.8,
+                      'telemetry_path': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep000_e101b35ff8/joint_telemetry.jsonl',
+                      'warning_interval_s': 5.0},
+ 'dataset': {'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 300,
+             'fps': 10,
+             'num_episodes': 1,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': False,
+             'push_to_hub': False,
+             'rename_map': {},
+             'repo_id': 'local/20261031_122309_001c2b60_run_5',
+             'reset_time_s': 0,
+             'root': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep000_e101b35ff8/data',
+             'single_task': 'SO101 camera recording and replay comparison',
+             'streaming_encoding': False,
+             'tags': None,
+             'vcodec': 'h264',
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': True,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_port': None,
+ 'manual_control': True,
+ 'manual_control_file': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep000_e101b35ff8/controls.txt',
+ 'play_sounds': True,
+ 'policy': None,
+ 'resume': False,
+ 'robot': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/follower'),
+           'cameras': {'camera_0': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 0,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640},
+                       'camera_1': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 2,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'follower-arm-01',
+           'max_relative_target': None,
+           'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00',
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/leader'),
+            'id': 'leader-arm-01',
+            'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00',
+            'use_degrees': True}}
+INFO 2026-10-31 12:23:25 eo_utils.py:106 Using video codec: h264
+INFO 2026-10-31 12:23:27 a_opencv.py:179 OpenCVCamera(0) connected.
+INFO 2026-10-31 12:23:28 a_opencv.py:179 OpenCVCamera(2) connected.
+INFO 2026-10-31 12:23:28 follower.py:106 follower-arm-01 SOFollower connected.
+INFO 2026-10-31 12:23:28 ls/utils.py:227 Stop recording
+INFO 2026-10-31 12:23:29 a_opencv.py:592 OpenCVCamera(0) disconnected.
+INFO 2026-10-31 12:23:30 a_opencv.py:592 OpenCVCamera(2) disconnected.
+INFO 2026-10-31 12:23:30 follower.py:230 follower-arm-01 SOFollower disconnected.
+INFO 2026-10-31 12:23:30 o_leader.py:156 leader-arm-01 SOLeader disconnected.
+INFO 2026-10-31 12:23:30 ls/utils.py:227 Exiting
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 687, in <module>
+    main()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 683, in main
+    record()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/configs/parser.py", line 233, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 544, in record
+    teleop.connect()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 39, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/teleoperators/so_leader/so_leader.py", line 72, in connect
+    if not self.is_calibrated and calibrate:
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/teleoperators/so_leader/so_leader.py", line 83, in is_calibrated
+    return self.bus.is_calibrated
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/feetech/feetech.py", line 233, in is_calibrated
+    motors_calibration = self.read_calibration()
+                         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/feetech/feetech.py", line 257, in read_calibration
+    self.read("Homing_Offset", motor, normalize=False) if self.protocol_version == 0 else 0
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/motors_bus.py", line 1005, in read
+    value, _, _ = self._read(addr, length, id_, num_retry=num_retry, raise_on_error=True, err_msg=err_msg)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/motors_bus.py", line 1046, in _read
+    raise RuntimeError(f"{err_msg} {self.packet_handler.getRxPacketError(error)}")
+RuntimeError: Failed to read 'Homing_Offset' on id_=6 after 1 tries. [RxPacketError] Input voltage error!
