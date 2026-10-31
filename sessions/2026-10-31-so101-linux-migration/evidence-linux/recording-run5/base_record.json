@@ -8,7 +8,7 @@
     "cameras": {
       "camera_0": {
         "type": "opencv",
-        "index_or_path": "/dev/v4l/by-id/usb-USB_Camera_USB_Camera_20250807114148-video-index0",
+        "index_or_path": 1,
         "width": 640,
         "height": 480,
         "fps": 30,
@@ -16,7 +16,7 @@
       },
       "camera_1": {
         "type": "opencv",
-        "index_or_path": "/dev/v4l/by-id/usb-Innomaker_Innomaker-U20CAM-1080p-S1_SN0001-video-index0",
+        "index_or_path": 2,
         "width": 640,
         "height": 480,
         "fps": 30,

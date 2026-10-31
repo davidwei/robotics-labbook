@@ -38,7 +38,10 @@ post_failure_preview: camera 0 could not be opened
 camera_follow_up:
   kernel_event: high/wide USB path 5-1.2 disconnected and re-enumerated with error -71
   node_change: /dev/video0 to /dev/video1
-  stable_paths_installed: true
+  stable_paths_direct_opencv_tested: true
+  stable_paths_installed: false
+  stable_path_blocker: pinned camera preview CLI --indices accepts integers only
+  active_indices: {high_wide: 1, gripper: 2}
   concurrent_stream_test_s: 20
   high_wide_frames_ok: 489
   gripper_frames_ok: 575
