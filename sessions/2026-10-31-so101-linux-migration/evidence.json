@@ -84,5 +84,21 @@
     "post_replay_calibration_matches": true,
     "post_replay_status_zero": true,
     "post_replay_torque_disabled": true
+  },
+  "demo_location_arrival": {
+    "run": "RUN-20261031-004",
+    "leader_serial_present": true,
+    "follower_serial_present": true,
+    "camera_0_role": "high/wide",
+    "camera_0_index": 2,
+    "camera_1_role": "gripper",
+    "camera_1_index": 0,
+    "camera_frames": "both 640x480; auto-exposure settled after warm-up",
+    "usb_reset_in_inspected_venue_interval": false,
+    "config_parse_passed": true,
+    "calibration_matches": true,
+    "all_motor_status_zero": true,
+    "all_torque_disabled": true,
+    "hardware_actuated": false
   }
 }

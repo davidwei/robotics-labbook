@@ -10,4 +10,4 @@ capture:
   coverage: partial
   sources: [operator_report, filesystem, git, software_checks, motor_readback, teleop_console, telemetry_summary]
   known_gaps: [raw_per_sample_telemetry_overwritten_by_analyzer, no_video_of_initial_teleop, demo_episode_mapping_unknown, physical_cause_of_high_wide_usb_reset_not_isolated, preview_cli_requires_fragile_integer_camera_indices]
-next_action: perform_demo_location_handoff_preflight_before_motion_or_collection
+next_action: confirm_task_and_consent_then_run_venue_camera_soak_and_short_record_replay_rehearsal

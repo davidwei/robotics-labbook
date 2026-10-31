@@ -1,0 +1,33 @@
+id: RUN-20261031-004
+session: 2026-10-31-so101-linux-migration
+type: venue_preflight
+title: Demo-location read-only arrival preflight
+date_local: 2026-10-31
+robot: SO101 leader and follower arms
+hardware_actuated: false
+devices:
+  leader_serial_present: true
+  follower_serial_present: true
+  cameras:
+    camera_0: {role: high_wide, index: 2, capture_node: /dev/video2, frame: 640x480}
+    camera_1: {role: gripper, index: 0, capture_node: /dev/video0, frame: 640x480}
+  metadata_only_nodes: [/dev/video1, /dev/video3]
+camera_observations:
+  startup_overexposure: true
+  auto_exposure_settled_after_warmup: true
+  usb_reset_in_inspected_interval: false
+arm_readback:
+  calibration_matches: true
+  all_motor_status_zero: true
+  all_torque_disabled: true
+  leader_voltage_v_approx: [5.1, 5.2]
+  follower_voltage_v_approx: [12.2, 12.3]
+  leader_temperature_c: 20
+  follower_temperature_c_range: [24, 26]
+result: passed_read_only_arrival_preflight
+remaining_gates: [exact_task_label, recording_authorization, venue_camera_soak, short_record_save_replay_rehearsal]
+decision: >-
+  Permit only the next explicitly authorized rehearsal step after confirming the
+  task and recording policy. Do not infer production-collection readiness from
+  this read-only arrival check.
+artifacts: ../evidence-linux/demo-location-arrival/

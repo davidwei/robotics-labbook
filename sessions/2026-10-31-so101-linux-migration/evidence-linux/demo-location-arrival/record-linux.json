@@ -1,0 +1,53 @@
+{
+  "robot": {
+    "type": "so101_follower",
+    "port": "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00",
+    "id": "follower-arm-01",
+    "calibration_dir": "/home/dwei/lerobot-demo/calibration/follower",
+    "use_degrees": true,
+    "cameras": {
+      "camera_0": {
+        "type": "opencv",
+        "index_or_path": 2,
+        "width": 640,
+        "height": 480,
+        "fps": 30,
+        "rotation": 0
+      },
+      "camera_1": {
+        "type": "opencv",
+        "index_or_path": 0,
+        "width": 640,
+        "height": 480,
+        "fps": 30,
+        "rotation": 0
+      }
+    },
+    "max_relative_target": null
+  },
+  "teleop": {
+    "type": "so101_leader",
+    "port": "/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00",
+    "id": "leader-arm-01",
+    "calibration_dir": "/home/dwei/lerobot-demo/calibration/leader",
+    "use_degrees": true
+  },
+  "display_data": true,
+  "play_sounds": true,
+  "dataset": {
+    "repo_id": "local/so101_cameras_20261025_221116",
+    "root": "/home/dwei/lerobot-demo/recordings/unused_launcher_overrides",
+    "single_task": "SO101 camera recording and replay comparison",
+    "fps": 10,
+    "episode_time_s": 120,
+    "reset_time_s": 0,
+    "num_episodes": 1,
+    "video": true,
+    "push_to_hub": false,
+    "vcodec": "h264"
+  },
+  "catch_up_warning": {
+    "enabled": true,
+    "telemetry_path": "/home/dwei/lerobot-demo/outputs/unused_launcher_overrides.jsonl"
+  }
+}
