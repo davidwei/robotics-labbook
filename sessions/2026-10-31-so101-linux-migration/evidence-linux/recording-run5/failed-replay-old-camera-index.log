@@ -1,0 +1,68 @@
+INFO 2026-10-31 12:32:55 t_replay.py:171 {'dataset': {'episode': 0,
+             'fps': 30,
+             'repo_id': 'local/20261031_122309_001c2b60_run_5',
+             'root': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_122309_001c2b60_run_5/attempts/ep000_d936902686/data'},
+ 'display_data': True,
+ 'display_recorded_cameras': True,
+ 'play_sounds': True,
+ 'recorded_preview_max_bytes': 256000000,
+ 'recorded_preview_width': 320,
+ 'robot': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/follower'),
+           'cameras': {'camera_0': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 0,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640},
+                       'camera_1': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 2,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'follower-arm-01',
+           'max_relative_target': None,
+           'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00',
+           'use_degrees': True},
+ 'video_backend': 'pyav'}
+INFO 2026-10-31 12:32:55 eo_utils.py:106 Using video codec: libsvtav1
+
+Filter:   0%|          | 0/268 [00:00<?, ? examples/s]
+Filter: 100%|██████████| 268/268 [00:00<00:00, 57432.73 examples/s]
+/home/dwei/lerobot-demo/.venv/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:9: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+  warnings.warn(
+INFO 2026-10-31 12:32:55 t_replay.py:141 Preparing reference previews before robot connection: 1 frames
+INFO 2026-10-31 12:32:56 t_replay.py:141 Preparing reference previews before robot connection: 100 frames
+INFO 2026-10-31 12:32:57 t_replay.py:141 Preparing reference previews before robot connection: 200 frames
+[ WARN:0@5.117] global cap_v4l.cpp:914 open VIDEOIO(V4L2:/dev/video0): can't open camera by index
+[ERROR:0@5.117] global obsensor_uvc_stream_channel.cpp:163 getStreamChannelGroup Camera index out of range
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_replay.py", line 235, in <module>
+    main()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_replay.py", line 231, in main
+    replay()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/configs/parser.py", line 233, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_replay.py", line 201, in replay
+    robot.connect()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 39, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/robots/so_follower/so_follower.py", line 103, in connect
+    cam.connect()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 39, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 163, in connect
+    raise ConnectionError(
+ConnectionError: Failed to open OpenCVCamera(0).Run `lerobot-find-cameras opencv` to find available cameras.

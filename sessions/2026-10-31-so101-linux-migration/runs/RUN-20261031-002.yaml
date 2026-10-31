@@ -35,6 +35,21 @@ attempts:
     telemetry_written: 215
     telemetry_dropped: 0
 post_failure_preview: camera 0 could not be opened
+camera_follow_up:
+  kernel_event: high/wide USB path 5-1.2 disconnected and re-enumerated with error -71
+  node_change: /dev/video0 to /dev/video1
+  stable_paths_installed: true
+  concurrent_stream_test_s: 20
+  high_wide_frames_ok: 489
+  gripper_frames_ok: 575
+  failed_reads: 0
+  new_kernel_disconnects: 0
+  replay_attempt_with_old_node:
+    exit_code: 1
+    actions_sent: 0
+    post_check_calibration_matches: true
+    post_check_status_zero: true
+    post_check_torque_disabled: true
 dataset_pointer: attempts/ep000_d936902686/data
 operator_task_quality_observation: not_collected
 post_run_motor_readback: not_performed

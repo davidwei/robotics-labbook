@@ -53,5 +53,22 @@
     "camera_1_video_sha256": "0af771ee86695e8d74bfec31fa1e1b30c96bcffa17a95ca59ebda33d246ff950",
     "episode_0_telemetry_sha256": "1072bd74ca63c8ca48f1416c3058588153b5bcaa724f943c67b15645b2c2709c",
     "videos_retained": "local only under the session dataset"
+  },
+  "camera_failure_diagnosis": {
+    "camera": "high/wide USB Camera serial 20250807114148",
+    "usb_path": "5-1.2",
+    "kernel_event": "USB disconnect followed by error -71 and re-enumeration",
+    "old_node": "/dev/video0",
+    "new_node": "/dev/video1",
+    "stable_path": "/dev/v4l/by-id/usb-USB_Camera_USB_Camera_20250807114148-video-index0",
+    "configuration_corrected": true,
+    "concurrent_stream_test_s": 20,
+    "high_wide_frames_ok": 489,
+    "gripper_frames_ok": 575,
+    "failed_reads": 0,
+    "new_kernel_disconnects_during_test": 0,
+    "failed_replay_actions_sent": 0,
+    "post_failed_replay_status_zero": true,
+    "post_failed_replay_torque_disabled": true
   }
 }
