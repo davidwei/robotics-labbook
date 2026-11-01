@@ -1,0 +1,122 @@
+INFO 2026-10-31 17:02:29 t_record.py:450 {'catch_up_warning': {'enabled': True,
+                      'joint_error_threshold': 10.0,
+                      'joint_error_thresholds': {},
+                      'recovery_ratio': 0.8,
+                      'telemetry_path': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_170155_e8de36e4_venue_rehearsal/attempts/ep000_cbd1cf0063/joint_telemetry.jsonl',
+                      'warning_interval_s': 5.0},
+ 'dataset': {'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 300,
+             'fps': 10,
+             'num_episodes': 1,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': False,
+             'push_to_hub': False,
+             'rename_map': {},
+             'repo_id': 'local/20261031_170155_e8de36e4_venue_rehearsal',
+             'reset_time_s': 0,
+             'root': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_170155_e8de36e4_venue_rehearsal/attempts/ep000_cbd1cf0063/data',
+             'single_task': 'Pick up a candy',
+             'streaming_encoding': False,
+             'tags': None,
+             'vcodec': 'h264',
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': True,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_port': None,
+ 'manual_control': True,
+ 'manual_control_file': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_170155_e8de36e4_venue_rehearsal/attempts/ep000_cbd1cf0063/controls.txt',
+ 'play_sounds': True,
+ 'policy': None,
+ 'resume': False,
+ 'robot': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/follower'),
+           'cameras': {'camera_0': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 2,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640},
+                       'camera_1': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 0,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'follower-arm-01',
+           'max_relative_target': None,
+           'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00',
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/leader'),
+            'id': 'leader-arm-01',
+            'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00',
+            'use_degrees': True}}
+INFO 2026-10-31 17:02:29 eo_utils.py:106 Using video codec: h264
+INFO 2026-10-31 17:02:30 a_opencv.py:179 OpenCVCamera(2) connected.
+INFO 2026-10-31 17:02:31 a_opencv.py:179 OpenCVCamera(0) connected.
+INFO 2026-10-31 17:02:31 follower.py:106 follower-arm-01 SOFollower connected.
+INFO 2026-10-31 17:02:31 so_leader.py:79 leader-arm-01 SOLeader connected.
+INFO 2026-10-31 17:02:31 t_record.py:560 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-10-31 17:02:31 ecording.py:107 MANUAL WAITING (launcher controls)
+INFO 2026-10-31 17:02:31 ecording.py:107 MANUAL RECORDING (launcher controls)
+INFO 2026-10-31 17:02:31 ls/utils.py:227 Recording episode 0
+WARNING 2026-10-31 17:02:31 _monitor.py:139 slow down event=1 sample_monotonic=1289.234533934 joint=shoulder_pan.pos error=15.209 threshold=10.000
+WARNING 2026-10-31 17:02:41 _monitor.py:139 slow down event=101 sample_monotonic=1299.241099833 joint=shoulder_pan.pos error=10.374 threshold=10.000
+WARNING 2026-10-31 17:02:42 _monitor.py:139 slow down event=111 sample_monotonic=1300.241482407 joint=shoulder_pan.pos error=10.725 threshold=10.000
+WARNING 2026-10-31 17:02:49 _monitor.py:139 slow down event=177 sample_monotonic=1306.845783268 joint=shoulder_lift.pos error=25.978 threshold=10.000
+WARNING 2026-10-31 17:02:51 _monitor.py:139 slow down event=200 sample_monotonic=1309.146699889 joint=shoulder_lift.pos error=11.297 threshold=10.000
+WARNING 2026-10-31 17:02:57 _monitor.py:139 slow down event=253 sample_monotonic=1314.450487723 joint=shoulder_lift.pos error=11.121 threshold=10.000
+WARNING 2026-10-31 17:02:58 _monitor.py:139 slow down event=265 sample_monotonic=1315.650863390 joint=shoulder_lift.pos error=10.330 threshold=10.000
+WARNING 2026-10-31 17:03:01 _monitor.py:139 slow down event=299 sample_monotonic=1319.053298156 joint=shoulder_pan.pos error=10.286 threshold=10.000
+WARNING 2026-10-31 17:03:08 _monitor.py:139 slow down event=362 sample_monotonic=1325.357090175 joint=shoulder_pan.pos error=10.110 threshold=10.000
+WARNING 2026-10-31 17:03:09 _monitor.py:139 slow down event=379 sample_monotonic=1327.058390919 joint=shoulder_pan.pos error=11.516 threshold=10.000
+WARNING 2026-10-31 17:03:15 _monitor.py:139 slow down event=432 sample_monotonic=1332.361761611 joint=shoulder_lift.pos error=12.791 threshold=10.000
+WARNING 2026-10-31 17:03:16 _monitor.py:139 slow down event=443 sample_monotonic=1333.462212296 joint=wrist_flex.pos error=10.242 threshold=10.000
+INFO 2026-10-31 17:03:21 ecording.py:107 MANUAL SAVING (launcher controls)
+INFO 2026-10-31 17:03:21 ls/utils.py:227 Saving
+
+Map:   0%|          | 0/495 [00:00<?, ? examples/s]
+Map: 100%|██████████| 495/495 [00:00<00:00, 6681.26 examples/s]
+INFO 2026-10-31 17:03:23 eo_utils.py:106 Using video codec: h264
+INFO 2026-10-31 17:03:23 eo_utils.py:106 Using video codec: h264
+[libx264 @ 0x2a8ec540] frame I:248   Avg QP:25.85  size: 19128
+[libx264 @ 0x2a8ec540] frame P:247   Avg QP:30.45  size:   863
+[libx264 @ 0x2a8ec540] mb I  I16..4:  5.2% 79.9% 14.8%
+[libx264 @ 0x2a8ec540] mb P  I16..4:  0.2%  0.5%  0.2%  P16..4: 19.6%  2.5%  1.4%  0.0%  0.0%    skip:75.6%
+[libx264 @ 0x2a8ec540] 8x8 transform intra:79.7% inter:73.7%
+[libx264 @ 0x2a8ec540] coded y,uvDC,uvAC intra: 85.0% 46.5% 17.0% inter: 2.8% 2.8% 0.1%
+[libx264 @ 0x2a8ec540] i16 v,h,dc,p:  8% 19% 37% 36%
+[libx264 @ 0x2a8ec540] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu:  8% 11% 39%  7%  7%  6%  7%  6%  9%
+[libx264 @ 0x2a8ec540] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 15% 15% 22%  7% 11%  9%  9%  6%  6%
+[libx264 @ 0x2a8ec540] i8c dc,h,v,p: 74% 13% 12%  2%
+[libx264 @ 0x2a8ec540] Weighted P-Frames: Y:16.6% UV:0.4%
+[libx264 @ 0x2a8ec540] kb/s:801.12
+[libx264 @ 0x2a8ec540] frame I:256   Avg QP:26.79  size: 11996
+[libx264 @ 0x2a8ec540] frame P:239   Avg QP:30.06  size:  1860
+[libx264 @ 0x2a8ec540] mb I  I16..4:  5.3% 83.4% 11.3%
+[libx264 @ 0x2a8ec540] mb P  I16..4:  0.9%  3.2%  0.3%  P16..4: 37.1%  4.5%  1.7%  0.0%  0.0%    skip:52.3%
+[libx264 @ 0x2a8ec540] 8x8 transform intra:83.0% inter:88.9%
+[libx264 @ 0x2a8ec540] coded y,uvDC,uvAC intra: 74.2% 52.9% 17.1% inter: 9.3% 9.5% 0.1%
+[libx264 @ 0x2a8ec540] i16 v,h,dc,p: 17% 24% 26% 32%
+[libx264 @ 0x2a8ec540] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 14% 11% 30%  7%  9%  8%  7%  6%  8%
+[libx264 @ 0x2a8ec540] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 20% 14% 21%  8% 11%  9%  7%  5%  5%
+[libx264 @ 0x2a8ec540] i8c dc,h,v,p: 72% 12% 13%  3%
+[libx264 @ 0x2a8ec540] Weighted P-Frames: Y:25.9% UV:6.3%
+[libx264 @ 0x2a8ec540] kb/s:568.17
+INFO 2026-10-31 17:03:27 recording.py:84 SAVED episode 0 (1/1 this launch)
+INFO 2026-10-31 17:03:27 ls/utils.py:227 Stop recording
+INFO 2026-10-31 17:03:28 a_opencv.py:592 OpenCVCamera(2) disconnected.
+INFO 2026-10-31 17:03:28 a_opencv.py:592 OpenCVCamera(0) disconnected.
+INFO 2026-10-31 17:03:28 follower.py:230 follower-arm-01 SOFollower disconnected.
+INFO 2026-10-31 17:03:28 o_leader.py:156 leader-arm-01 SOLeader disconnected.
+INFO 2026-10-31 17:03:28 telemetry.py:81 Joint telemetry: path=/home/dwei/lerobot-demo/outputs/demo/so101/20261031_170155_e8de36e4_venue_rehearsal/attempts/ep000_cbd1cf0063/joint_telemetry.jsonl submitted=495 written=495 dropped=0 error=None
+INFO 2026-10-31 17:03:28 ls/utils.py:227 Exiting

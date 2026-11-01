@@ -104,5 +104,21 @@
     "people_visible_in_inspected_snapshots": false,
     "production_task": "Pick up a candy",
     "production_config_sha256": "c6f3fbbaf92a92dc7b026583af4674a54c22a28b743ea0e04db5480850ea0d94"
+  },
+  "venue_rehearsal": {
+    "run": "RUN-20261031-005",
+    "session_name": "20261031_170155_e8de36e4_venue_rehearsal",
+    "committed_episodes": 2,
+    "episode_frames": [495, 448],
+    "episode_duration_s": [49.5, 44.8],
+    "telemetry_dropped": [0, 0],
+    "failed_attempt_committed": false,
+    "failed_attempt_events": ["gripper camera disconnect", "follower gripper motor-6 overload response during torque-disable cleanup"],
+    "post_failure_status_zero": true,
+    "post_failure_torque_disabled": true,
+    "voice_prompt": "You can start pick up",
+    "voice_source_revision": "6107246ad28fd3c7b9d6c3bd9c3161bce634ef67",
+    "voice_source_branch": "lab/so101-venue-voice-20261031",
+    "voice_validation": "focused regression direct execution, py_compile and git diff check passed; pytest and Ruff unavailable"
   }
 }

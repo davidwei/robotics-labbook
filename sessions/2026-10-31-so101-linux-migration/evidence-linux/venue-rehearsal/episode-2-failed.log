@@ -1,0 +1,174 @@
+INFO 2026-10-31 17:05:11 t_record.py:450 {'catch_up_warning': {'enabled': True,
+                      'joint_error_threshold': 10.0,
+                      'joint_error_thresholds': {},
+                      'recovery_ratio': 0.8,
+                      'telemetry_path': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_170155_e8de36e4_venue_rehearsal/attempts/ep002_030c8b522d/joint_telemetry.jsonl',
+                      'warning_interval_s': 5.0},
+ 'dataset': {'encoder_queue_maxsize': 30,
+             'encoder_threads': None,
+             'episode_time_s': 300,
+             'fps': 10,
+             'num_episodes': 1,
+             'num_image_writer_processes': 0,
+             'num_image_writer_threads_per_camera': 4,
+             'private': False,
+             'push_to_hub': False,
+             'rename_map': {},
+             'repo_id': 'local/20261031_170155_e8de36e4_venue_rehearsal',
+             'reset_time_s': 0,
+             'root': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_170155_e8de36e4_venue_rehearsal/attempts/ep002_030c8b522d/data',
+             'single_task': 'Pick up a candy',
+             'streaming_encoding': False,
+             'tags': None,
+             'vcodec': 'h264',
+             'video': True,
+             'video_encoding_batch_size': 1},
+ 'display_compressed_images': True,
+ 'display_data': True,
+ 'display_ip': None,
+ 'display_port': None,
+ 'manual_control': True,
+ 'manual_control_file': '/home/dwei/lerobot-demo/outputs/demo/so101/20261031_170155_e8de36e4_venue_rehearsal/attempts/ep002_030c8b522d/controls.txt',
+ 'play_sounds': True,
+ 'policy': None,
+ 'resume': True,
+ 'robot': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/follower'),
+           'cameras': {'camera_0': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 2,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640},
+                       'camera_1': {'backend': <Cv2Backends.ANY: 0>,
+                                    'color_mode': <ColorMode.RGB: 'rgb'>,
+                                    'fourcc': None,
+                                    'fps': 30,
+                                    'height': 480,
+                                    'index_or_path': 0,
+                                    'rotation': <Cv2Rotation.NO_ROTATION: 0>,
+                                    'warmup_s': 1,
+                                    'width': 640}},
+           'disable_torque_on_disconnect': True,
+           'id': 'follower-arm-01',
+           'max_relative_target': None,
+           'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6080137-if00',
+           'use_degrees': True},
+ 'teleop': {'calibration_dir': PosixPath('/home/dwei/lerobot-demo/calibration/leader'),
+            'id': 'leader-arm-01',
+            'port': '/dev/serial/by-id/usb-1a86_USB_Single_Serial_5AE6054817-if00',
+            'use_degrees': True}}
+INFO 2026-10-31 17:05:11 eo_utils.py:106 Using video codec: h264
+INFO 2026-10-31 17:05:12 a_opencv.py:179 OpenCVCamera(2) connected.
+INFO 2026-10-31 17:05:13 a_opencv.py:179 OpenCVCamera(0) connected.
+INFO 2026-10-31 17:05:13 follower.py:106 follower-arm-01 SOFollower connected.
+INFO 2026-10-31 17:05:13 so_leader.py:79 leader-arm-01 SOLeader connected.
+INFO 2026-10-31 17:05:13 t_record.py:560 Streaming encoding is disabled. If you have capable hardware, consider enabling it for way faster episode saving. --dataset.streaming_encoding=true --dataset.encoder_threads=2 # --dataset.vcodec=auto. More info in the documentation: https://huggingface.co/docs/lerobot/streaming_video_encoding
+INFO 2026-10-31 17:05:13 ecording.py:107 MANUAL WAITING (launcher controls)
+INFO 2026-10-31 17:05:13 ecording.py:107 MANUAL RECORDING (launcher controls)
+INFO 2026-10-31 17:05:13 ls/utils.py:227 Recording episode 2
+WARNING 2026-10-31 17:05:13 _monitor.py:139 slow down event=1 sample_monotonic=1450.956490936 joint=shoulder_pan.pos error=24.703 threshold=10.000
+WARNING 2026-10-31 17:05:14 _monitor.py:139 slow down event=11 sample_monotonic=1451.957057135 joint=shoulder_pan.pos error=12.308 threshold=10.000
+WARNING 2026-10-31 17:05:16 _monitor.py:139 slow down event=32 sample_monotonic=1454.058326151 joint=elbow_flex.pos error=14.681 threshold=10.000
+WARNING 2026-10-31 17:05:17 _monitor.py:139 slow down event=42 sample_monotonic=1455.058892500 joint=elbow_flex.pos error=10.374 threshold=10.000
+WARNING 2026-10-31 17:05:18 _monitor.py:139 slow down event=53 sample_monotonic=1456.159866124 joint=elbow_flex.pos error=13.363 threshold=10.000
+WARNING 2026-10-31 17:05:30 _monitor.py:139 slow down event=167 sample_monotonic=1467.566784793 joint=elbow_flex.pos error=10.549 threshold=10.000
+WARNING 2026-10-31 17:05:41 _monitor.py:139 slow down event=284 sample_monotonic=1479.274383363 joint=elbow_flex.pos error=10.989 threshold=10.000
+WARNING 2026-10-31 17:05:44 _monitor.py:139 slow down event=308 sample_monotonic=1481.675828948 joint=elbow_flex.pos error=10.637 threshold=10.000
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+WARNING 2026-10-31 17:05:45 a_opencv.py:460 Error reading frame in background thread for OpenCVCamera(0): OpenCVCamera(0) read failed (status=False).
+Exception in thread OpenCVCamera(0)_read_loop:
+Traceback (most recent call last):
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 445, in _read_loop
+    raw_frame = self._read_from_hardware()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 346, in _read_from_hardware
+    raise RuntimeError(f"{self} read failed (status={ret}).")
+RuntimeError: OpenCVCamera(0) read failed (status=False).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 462, in _read_loop
+    raise RuntimeError(f"{self} exceeded maximum consecutive read failures.") from e
+RuntimeError: OpenCVCamera(0) exceeded maximum consecutive read failures.
+INFO 2026-10-31 17:05:45 ls/utils.py:227 Stop recording
+Traceback (most recent call last):
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 590, in record
+    manual_episodes(
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/manual_recording.py", line 71, in manual_episodes
+    run_phase(dataset, keyboard.poll)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 568, in run_manual_phase
+    record_loop(
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/datasets/image_writer.py", line 36, in wrapper
+    raise e
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/datasets/image_writer.py", line 29, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 360, in record_loop
+    obs = robot.get_observation()
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/robots/so_follower/so_follower.py", line 190, in get_observation
+    obs_dict[cam_key] = cam.read_latest()
+                        ^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/cameras/opencv/camera_opencv.py", line 550, in read_latest
+    raise RuntimeError(f"{self} read thread is not running.")
+RuntimeError: OpenCVCamera(0) read thread is not running.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 687, in <module>
+    main()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 683, in main
+    record()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/configs/parser.py", line 233, in wrapper_inner
+    response = fn(cfg, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/scripts/lerobot_record.py", line 664, in record
+    robot.disconnect()
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/robots/so_follower/so_follower.py", line 226, in disconnect
+    self.bus.disconnect(self.config.disable_torque_on_disconnect)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/motors_bus.py", line 546, in disconnect
+    self.disable_torque(num_retry=5)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/feetech/feetech.py", line 297, in disable_torque
+    self.write("Torque_Enable", motor, TorqueMode.DISABLED.value, num_retry=num_retry)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/utils/decorators.py", line 29, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/motors_bus.py", line 1081, in write
+    self._write(addr, length, id_, int_value, num_retry=num_retry, raise_on_error=True, err_msg=err_msg)
+  File "/home/dwei/lerobot-demo/lerobot-src/src/lerobot/motors/motors_bus.py", line 1107, in _write
+    raise RuntimeError(f"{err_msg} {self.packet_handler.getRxPacketError(error)}")
+RuntimeError: Failed to write 'Torque_Enable' on id_=6 with '0' after 6 tries. [RxPacketError] Overload error!
+Waiting for image writer to terminate...
+FATAL: exception not rethrown

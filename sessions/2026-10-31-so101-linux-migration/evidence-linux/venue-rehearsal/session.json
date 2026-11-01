@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "source_revision": "bd49580152521e054218c1f41dd5b9bfeacc3d75",
+  "repo_id": "local/20261031_170155_e8de36e4_venue_rehearsal",
+  "target_episodes": 20,
+  "created_utc": "2026-11-01T00:01:55.290243+00:00",
+  "current_episode": 1,
+  "committed_count": 2,
+  "calibration_sha256": {
+    "robot": "f6ed343f98122711cedf17b42f659b625ea61677e39fa8280316444e57a07f2c",
+    "teleop": "05bd80d6a3ac89dae8a761233f15928c5e3ef41f3020ab3965bb09890c517391"
+  },
+  "source_config": "/home/dwei/lerobot-demo/record-linux.json"
+}

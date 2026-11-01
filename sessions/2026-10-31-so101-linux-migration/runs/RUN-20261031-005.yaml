@@ -1,0 +1,31 @@
+id: RUN-20261031-005
+session: 2026-10-31-so101-linux-migration
+type: physical_recording_rehearsal
+title: Venue candy-pickup recording rehearsal
+date_local: 2026-10-31
+recording_session: 20261031_170155_e8de36e4_venue_rehearsal
+executed_source_revision: bd49580152521e054218c1f41dd5b9bfeacc3d75
+task: Pick up a candy
+committed:
+  - {episode: 0, frames: 495, duration_s: 49.5, telemetry_dropped: 0}
+  - {episode: 1, frames: 448, duration_s: 44.8, telemetry_dropped: 0}
+failed_attempt:
+  episode: 2
+  committed: false
+  camera_event: gripper camera read failure and disconnect
+  motor_event: follower gripper ID 6 overload reply during torque-disable cleanup
+post_failure_readback:
+  calibration_matches: true
+  all_status_zero: true
+  all_torque_disabled: true
+  follower_temperature_c_range: [24, 28]
+  follower_voltage_v_range: [12.2, 12.3]
+current_camera_mapping: {high_wide: 2, gripper: 0}
+voice_change:
+  phrase: You can start pick up
+  source_revision: 6107246ad28fd3c7b9d6c3bd9c3161bce634ef67
+  source_branch: lab/so101-venue-voice-20261031
+  validation: focused direct regression, py_compile and git diff check passed; pytest and Ruff unavailable
+result: two_valid_episodes_one_uncommitted_camera_and_gripper_fault_attempt
+next_gate: inspect_unpowered_gripper_freedom_then_create_new_short_rehearsal
+artifacts: ../evidence-linux/venue-rehearsal/

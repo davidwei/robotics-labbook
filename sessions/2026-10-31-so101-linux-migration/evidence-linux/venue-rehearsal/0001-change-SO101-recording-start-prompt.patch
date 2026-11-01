@@ -1,0 +1,51 @@
+From 6107246ad28fd3c7b9d6c3bd9c3161bce634ef67 Mon Sep 17 00:00:00 2001
+From: David Wei <davidwei@acm.org>
+Date: Sat, 31 Oct 2026 17:20:40 -0700
+Subject: [PATCH] change SO101 recording start prompt
+
+---
+ src/lerobot/utils/manual_recording.py | 2 +-
+ tests/utils/test_manual_recording.py  | 5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/lerobot/utils/manual_recording.py b/src/lerobot/utils/manual_recording.py
+index 68b14823..21a50388 100644
+--- a/src/lerobot/utils/manual_recording.py
++++ b/src/lerobot/utils/manual_recording.py
+@@ -67,7 +67,7 @@ def manual_episodes(dataset, events, keyboard, run_phase, max_episodes, say):
+         if events["stop_recording"]:
+             break
+         keyboard.set_phase("recording")
+-        say(f"Recording episode {dataset.num_episodes}")
++        say("You can start pick up")
+         run_phase(dataset, keyboard.poll)
+         if events["rerecord_episode"]:
+             if dataset.episode_buffer is not None:
+diff --git a/tests/utils/test_manual_recording.py b/tests/utils/test_manual_recording.py
+index efe98e01..86d98348 100644
+--- a/tests/utils/test_manual_recording.py
++++ b/tests/utils/test_manual_recording.py
+@@ -41,6 +41,7 @@ def test_two_explicit_starts_and_finishes_no_wait_frames_recorded():
+     k = Keyboard(e)
+     d = Dataset()
+     phases = []
++    spoken = []
+ 
+     def run(dataset, poll):
+         phases.append(k.phase)
+@@ -50,9 +51,11 @@ def test_two_explicit_starts_and_finishes_no_wait_frames_recorded():
+             dataset.episode_buffer["size"] = 20
+             apply_key(e, k.phase, "f")
+ 
+-    assert manual_episodes(d, e, k, run, 2, lambda _: None) == 2
++    assert manual_episodes(d, e, k, run, 2, spoken.append) == 2
+     assert phases == ["waiting", "recording", "waiting", "recording"]
+     assert d.saved == [20, 20]
++    assert spoken.count("You can start pick up") == 2
++    assert all(not message.startswith("Recording episode") for message in spoken)
+ 
+ 
+ def test_discard_does_not_increment_then_save_and_quit():
+-- 
+2.43.0
+
