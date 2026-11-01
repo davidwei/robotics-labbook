@@ -1,0 +1,107 @@
+From cae94f7293bc1fc0b4e40a171f4d493a74b426fb Mon Sep 17 00:00:00 2001
+From: David Wei <davidwei@acm.org>
+Date: Sat, 31 Oct 2026 17:22:33 -0700
+Subject: [PATCH] add SO101 return-to-start voice prompt
+
+---
+ src/lerobot/utils/manual_recording.py | 10 +++++++++-
+ tests/utils/test_manual_recording.py  | 10 ++++++++--
+ 2 files changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/src/lerobot/utils/manual_recording.py b/src/lerobot/utils/manual_recording.py
+index 21a50388..0fbdedcf 100644
+--- a/src/lerobot/utils/manual_recording.py
++++ b/src/lerobot/utils/manual_recording.py
+@@ -18,6 +18,8 @@ def apply_key(events, phase, key):
+         events["exit_early"] = True
+         if key == "d":
+             events["rerecord_episode"] = True
++        else:
++            events["finish_requested"] = True
+ 
+ 
+ class ManualKeyboard:
+@@ -37,6 +39,7 @@ class ManualKeyboard:
+         self.phase = phase
+         self.events["exit_early"] = False
+         self.events["rerecord_episode"] = False
++        self.events["finish_requested"] = False
+         # Keys typed during saving must not silently start the next recording.
+         if self.original is not None:
+             termios.tcflush(sys.stdin.fileno(), termios.TCIFLUSH)
+@@ -77,8 +80,12 @@ def manual_episodes(dataset, events, keyboard, run_phase, max_episodes, say):
+         if dataset.episode_buffer is None or dataset.episode_buffer["size"] == 0:
+             say("No frames recorded")
+             return saved
++        finish_requested = events.get("finish_requested", False)
+         keyboard.set_phase("saving")
+-        say("Saving")
++        if finish_requested:
++            say("Please slowly return the robot back to original position.")
++        else:
++            say("Saving")
+         dataset.save_episode()
+         saved += 1
+         logging.info("SAVED episode %s (%s/%s this launch)", dataset.num_episodes - 1, saved, max_episodes)
+@@ -104,6 +111,7 @@ class FileKeyboard:
+         self.phase = phase
+         self.events["exit_early"] = False
+         self.events["rerecord_episode"] = False
++        self.events["finish_requested"] = False
+         logging.info("MANUAL %s (launcher controls)", phase.upper())
+ 
+     def poll(self):
+diff --git a/tests/utils/test_manual_recording.py b/tests/utils/test_manual_recording.py
+index 86d98348..479d8800 100644
+--- a/tests/utils/test_manual_recording.py
++++ b/tests/utils/test_manual_recording.py
+@@ -55,6 +55,7 @@ def test_two_explicit_starts_and_finishes_no_wait_frames_recorded():
+     assert phases == ["waiting", "recording", "waiting", "recording"]
+     assert d.saved == [20, 20]
+     assert spoken.count("You can start pick up") == 2
++    assert spoken.count("Please slowly return the robot back to original position.") == 2
+     assert all(not message.startswith("Recording episode") for message in spoken)
+ 
+ 
+@@ -63,6 +64,7 @@ def test_discard_does_not_increment_then_save_and_quit():
+     k = Keyboard(e)
+     d = Dataset()
+     actions = iter(["d", "q"])
++    spoken = []
+ 
+     def run(dataset, poll):
+         if dataset is None:
+@@ -71,8 +73,9 @@ def test_discard_does_not_increment_then_save_and_quit():
+             dataset.episode_buffer["size"] = 12
+             apply_key(e, k.phase, next(actions))
+ 
+-    assert manual_episodes(d, e, k, run, 25, lambda _: None) == 1
++    assert manual_episodes(d, e, k, run, 25, spoken.append) == 1
+     assert d.discarded == 1 and d.saved == [12]
++    assert "Please slowly return the robot back to original position." not in spoken
+ 
+ 
+ def test_quit_waiting_never_creates_empty_episode():
+@@ -92,6 +95,7 @@ def test_five_minute_timeout_can_save_without_finish_key():
+     e = events()
+     d = Dataset()
+     k = Keyboard(e)
++    spoken = []
+ 
+     def run(dataset, poll):
+         if dataset is None:
+@@ -99,8 +103,10 @@ def test_five_minute_timeout_can_save_without_finish_key():
+         else:
+             dataset.episode_buffer["size"] = 9000  # Timed control loop returned normally.
+ 
+-    assert manual_episodes(d, e, k, run, 1, lambda _: None) == 1
++    assert manual_episodes(d, e, k, run, 1, spoken.append) == 1
+     assert d.saved == [9000]
++    assert "Saving" in spoken
++    assert "Please slowly return the robot back to original position." not in spoken
+ 
+ 
+ def test_file_control_consumes_once_and_discard_exits_attempt(tmp_path):
+-- 
+2.43.0
+

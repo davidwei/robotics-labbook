@@ -26,6 +26,9 @@ voice_change:
   source_revision: 6107246ad28fd3c7b9d6c3bd9c3161bce634ef67
   source_branch: lab/so101-venue-voice-20261031
   validation: focused direct regression, py_compile and git diff check passed; pytest and Ruff unavailable
+  explicit_finish_phrase: Please slowly return the robot back to original position.
+  explicit_finish_revision: cae94f7293bc1fc0b4e40a171f4d493a74b426fb
+  explicit_finish_scope: Right Arrow or F only; discard excluded; timeout retains Saving
 result: two_valid_episodes_one_uncommitted_camera_and_gripper_fault_attempt
 next_gate: inspect_unpowered_gripper_freedom_then_create_new_short_rehearsal
 artifacts: ../evidence-linux/venue-rehearsal/

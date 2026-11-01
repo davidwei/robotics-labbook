@@ -119,6 +119,9 @@
     "voice_prompt": "You can start pick up",
     "voice_source_revision": "6107246ad28fd3c7b9d6c3bd9c3161bce634ef67",
     "voice_source_branch": "lab/so101-venue-voice-20261031",
-    "voice_validation": "focused regression direct execution, py_compile and git diff check passed; pytest and Ruff unavailable"
+    "voice_validation": "focused regression direct execution, py_compile and git diff check passed; pytest and Ruff unavailable",
+    "finish_voice_prompt": "Please slowly return the robot back to original position.",
+    "finish_voice_source_revision": "cae94f7293bc1fc0b4e40a171f4d493a74b426fb",
+    "finish_voice_scope": "Right Arrow or F explicit finish only; discard excluded; timeout retains Saving"
   }
 }
