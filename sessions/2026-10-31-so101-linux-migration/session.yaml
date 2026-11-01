@@ -1,5 +1,5 @@
 id: 2026-10-31-so101-linux-migration
-status: linux_teleop_validated
+status: demo_complete_data_audit_pending
 mode: development
 robot: so101
 source_revision: bd49580152521e054218c1f41dd5b9bfeacc3d75
@@ -8,7 +8,7 @@ hardware_actuated: true
 capture:
   method: mixed
   coverage: partial
-  sources: [operator_report, filesystem, git, software_checks, motor_readback, teleop_console, telemetry_summary]
+  sources: [operator_report, filesystem, git, software_checks, motor_readback, teleop_console, telemetry_summary, process_check]
   known_gaps: [raw_per_sample_telemetry_overwritten_by_analyzer, no_video_of_initial_teleop, demo_episode_mapping_unknown, physical_cause_of_high_wide_usb_reset_not_isolated, preview_cli_requires_fragile_integer_camera_indices, gripper_camera_reported_broken, one_camera_record_replay_not_yet_validated]
 active_source_revision: 546d61bc373ef05b3754df6f024e6a1b8156f153
-next_action: create_a_new_one_episode_high_wide_only_recording_and_replay_before_production_collection
+next_action: inventory_and_back_up_all_demo_recordings_then_audit_episode_integrity_and_camera_schema

@@ -142,5 +142,20 @@
       "evidence-linux/one-camera/record-linux-one-camera.json",
       "evidence-linux/one-camera/0001-support-one-camera-SO101-demo-recording.patch"
     ]
+  },
+  "demo_closeout": {
+    "timestamp": "2026-10-31T20:53:45-07:00",
+    "operator_report": "all demos are finished",
+    "active_lerobot_processes": 0,
+    "process_patterns_checked": [
+      "lerobot_so101_demo",
+      "lerobot_camera_views",
+      "lerobot_record",
+      "lerobot_replay",
+      "lerobot_teleoperate"
+    ],
+    "dataset_inventory_complete": false,
+    "episode_integrity_audited": false,
+    "task_quality_reviewed": false
   }
 }
