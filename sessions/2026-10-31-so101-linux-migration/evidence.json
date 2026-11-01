@@ -154,7 +154,15 @@
       "lerobot_replay",
       "lerobot_teleoperate"
     ],
-    "dataset_inventory_complete": false,
+    "dataset_inventory_complete": true,
+    "session_directories": 16,
+    "committed_episodes": 126,
+    "final_dataset_metadata_episodes": 126,
+    "session_counter_metadata_mismatches": 0,
+    "pre_main_collection_episodes": 8,
+    "apparent_main_demo_collection_episodes": 118,
+    "two_camera_schema_episodes": 50,
+    "one_camera_schema_episodes": 76,
     "episode_integrity_audited": false,
     "task_quality_reviewed": false
   }
