@@ -123,5 +123,24 @@
     "finish_voice_prompt": "Please slowly return the robot back to original position.",
     "finish_voice_source_revision": "cae94f7293bc1fc0b4e40a171f4d493a74b426fb",
     "finish_voice_scope": "Right Arrow or F explicit finish only; discard excluded; timeout retains Saving"
+  },
+  "one_camera_transition": {
+    "operator_report": "gripper/wrist camera broke",
+    "scope": "future recordings only; historical two-camera sessions unchanged",
+    "active_camera_role": "high/wide",
+    "active_camera_key": "camera_0",
+    "active_camera_index": 2,
+    "captured_frame": "640x480 direct OpenCV read passed",
+    "recording_fps": 10,
+    "source_branch": "lab/so101-venue-voice-20261031",
+    "source_revision": "546d61bc373ef05b3754df6f024e6a1b8156f153",
+    "config_sha256": "00c6f5fbbdf850cf42ffb397f15b9ff95d584b2ae997f8269b21b3e9b2c4a46e",
+    "software_validation": "py_compile, config/calibration check, focused one-camera save regression and git diff check passed",
+    "physical_record_replay_validated": false,
+    "schema_note": "new data contains observation.images.camera_0 only; earlier data also contains camera_1",
+    "artifacts": [
+      "evidence-linux/one-camera/record-linux-one-camera.json",
+      "evidence-linux/one-camera/0001-support-one-camera-SO101-demo-recording.patch"
+    ]
   }
 }

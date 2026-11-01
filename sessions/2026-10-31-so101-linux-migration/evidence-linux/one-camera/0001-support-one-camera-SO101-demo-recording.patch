@@ -1,0 +1,152 @@
+From 546d61bc373ef05b3754df6f024e6a1b8156f153 Mon Sep 17 00:00:00 2001
+From: David Wei <davidwei@acm.org>
+Date: Sat, 31 Oct 2026 18:51:51 -0700
+Subject: [PATCH] support one-camera SO101 demo recording
+
+---
+ src/lerobot/scripts/lerobot_camera_views.py | 40 ++++++++++++++++-----
+ src/lerobot/scripts/lerobot_so101_demo.py   |  3 +-
+ tests/scripts/test_camera_views.py          | 19 +++++++++-
+ 3 files changed, 51 insertions(+), 11 deletions(-)
+
+diff --git a/src/lerobot/scripts/lerobot_camera_views.py b/src/lerobot/scripts/lerobot_camera_views.py
+index 2ebce332..65a3b66e 100644
+--- a/src/lerobot/scripts/lerobot_camera_views.py
++++ b/src/lerobot/scripts/lerobot_camera_views.py
+@@ -22,6 +22,15 @@ def rotate_image(image, degrees):
+     return cv2.rotate(image, codes[degrees]) if degrees else image
+ 
+ 
++def validate_camera_selection(indices, rotations):
++    if not indices:
++        raise ValueError("Choose at least one camera index")
++    if len(set(indices)) != len(indices):
++        raise ValueError("Choose distinct camera indices")
++    if len(rotations) != len(indices):
++        raise ValueError("Provide one rotation per camera index")
++
++
+ def save_views(directory, views):
+     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+     paths = [directory / "record.json", directory / "replay.json"]
+@@ -75,14 +84,18 @@ def save_views(directory, views):
+ 
+ def main():
+     p = argparse.ArgumentParser(description=__doc__)
+-    p.add_argument("--indices", type=int, nargs=2, default=[0, 1])
++    p.add_argument("--indices", type=int, nargs="+", default=[0, 1])
+     p.add_argument("--config-dir", type=Path, required=True)
+     p.add_argument("--preview-only", action="store_true")
+     p.add_argument("--no-controls", action="store_true", help="Background preview owned by demo launcher")
+-    p.add_argument("--rotations", type=int, nargs=2, choices=[0, 90, 180, -90], default=[0, 0])
++    p.add_argument("--rotations", type=int, nargs="+", choices=[0, 90, 180, -90])
+     args = p.parse_args()
+-    if len(set(args.indices)) != 2:
+-        p.error("Choose two distinct indices")
++    if args.rotations is None:
++        args.rotations = [0] * len(args.indices)
++    try:
++        validate_camera_selection(args.indices, args.rotations)
++    except ValueError as exc:
++        p.error(str(exc))
+     for filename in ("record.json", "replay.json"):
+         if not args.preview_only and not (args.config_dir / filename).is_file():
+             p.error(f"Missing {filename}")
+@@ -129,12 +142,18 @@ def main():
+         rr.send_blueprint(
+             rrb.Blueprint(
+                 rrb.Horizontal(
+-                    *[rrb.Spatial2DView(name=f"camera_{i}", origin=f"camera_{i}") for i in range(2)]
++                    *[rrb.Spatial2DView(name=f"camera_{i}", origin=f"camera_{i}") for i in range(len(views))]
+                 )
+             )
+         )
++        rotate_commands = " | ".join(f"rotate {i}" for i in range(len(views)))
++        commands = (
++            "swap | " + rotate_commands + " | save | quit"
++            if len(views) > 1
++            else rotate_commands + " | save | quit"
++        )
+         print(
+-            "Cover one lens to identify its view. Commands + Enter: swap | rotate 0 | rotate 1 | save | quit",
++            f"Confirm each view. Commands + Enter: {commands}",
+             flush=True,
+         )
+         frames = 0
+@@ -156,8 +175,11 @@ def main():
+                 command = sys.stdin.readline().strip().lower()
+                 if command == "swap":
+                     views.reverse()
+-                elif command in ("rotate 0", "rotate 1"):
+-                    slot = int(command[-1])
++                elif command.startswith("rotate ") and command.removeprefix("rotate ").isdigit():
++                    slot = int(command.removeprefix("rotate "))
++                    if slot >= len(views):
++                        print(f"No camera_{slot}; valid slots are 0 through {len(views) - 1}")
++                        continue
+                     rotations = [0, 90, 180, -90]
+                     view = views[slot]
+                     view["rotation"] = rotations[(rotations.index(view["rotation"]) + 1) % 4]
+@@ -170,7 +192,7 @@ def main():
+                 elif command == "quit":
+                     break
+                 else:
+-                    print("Commands: swap | rotate 0 | rotate 1 | save | quit")
++                    print(f"Commands: {commands}")
+             time.sleep(0.01)
+     finally:
+         for capture in captures:
+diff --git a/src/lerobot/scripts/lerobot_so101_demo.py b/src/lerobot/scripts/lerobot_so101_demo.py
+index 61b90be7..f4584623 100644
+--- a/src/lerobot/scripts/lerobot_so101_demo.py
++++ b/src/lerobot/scripts/lerobot_so101_demo.py
+@@ -346,7 +346,8 @@ def main():
+         from lerobot.scripts.lerobot_record import RecordConfig
+ 
+         cfg = draccus.parse(RecordConfig, config_path=str(args.config.resolve()), args=[])
+-        assert len(cfg.robot.cameras) == 2
++        if not cfg.robot.cameras:
++            raise ValueError("Configure at least one camera")
+         for d in (cfg.robot, cfg.teleop):
+             if not (d.calibration_dir / (d.id + ".json")).is_file():
+                 raise ValueError("Missing calibration")
+diff --git a/tests/scripts/test_camera_views.py b/tests/scripts/test_camera_views.py
+index 414e0365..1f5b9014 100644
+--- a/tests/scripts/test_camera_views.py
++++ b/tests/scripts/test_camera_views.py
+@@ -5,7 +5,7 @@ import cv2
+ import numpy as np
+ import pytest
+ 
+-from lerobot.scripts.lerobot_camera_views import rotate_image, save_views
++from lerobot.scripts.lerobot_camera_views import rotate_image, save_views, validate_camera_selection
+ from lerobot.scripts.lerobot_replay import prepare_recorded_previews, show_replay_frame
+ 
+ 
+@@ -36,6 +36,23 @@ def test_view_save_preserves_calibration_and_replay_dataset_match(tmp_path):
+     assert rotate_image(np.zeros((2, 3, 3), np.uint8), 90).shape == (3, 2, 3)
+ 
+ 
++def test_one_camera_selection_and_save(tmp_path):
++    validate_camera_selection([2], [0])
++    record = {
++        "robot": {"calibration_dir": "keep_this", "cameras": {}},
++        "dataset": {"repo_id": "local/old", "root": str(tmp_path / "datasets/old")},
++    }
++    replay = {
++        "robot": {"calibration_dir": "keep_this", "cameras": {}},
++        "dataset": {"repo_id": "local/old", "root": str(tmp_path / "datasets/old"), "episode": 0},
++    }
++    for name, cfg in [("record", record), ("replay", replay)]:
++        (tmp_path / (name + ".json")).write_text(json.dumps(cfg))
++    cameras = save_views(tmp_path, [{"index": 2, "rotation": 0, "width": 640, "height": 480}])
++    assert list(cameras) == ["camera_0"]
++    assert cameras["camera_0"]["index_or_path"] == 2
++
++
+ class Dataset:
+     meta = SimpleNamespace(video_keys=["observation.images.camera_0", "observation.images.camera_1"])
+     hf_dataset = [{"episode_index": 0}, {"episode_index": 1}, {"episode_index": 1}]
+-- 
+2.43.0
+
