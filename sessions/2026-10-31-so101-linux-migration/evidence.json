@@ -164,6 +164,18 @@
     "two_camera_schema_episodes": 50,
     "one_camera_schema_episodes": 76,
     "episode_integrity_audited": false,
-    "task_quality_reviewed": false
+    "task_quality_reviewed": false,
+    "departure": {
+      "timestamp": "2026-10-31T20:55:14-07:00",
+      "operator_status": "leaving venue",
+      "decision": "post-process episodes before training",
+      "active_lerobot_processes": 0,
+      "demo_tree_size": "5.4G",
+      "filesystem_available": "1.5T",
+      "raw_recordings_modified_during_closeout": false,
+      "backup_complete": false,
+      "postprocessing_complete": false,
+      "training_started": false
+    }
   }
 }
