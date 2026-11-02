@@ -96,3 +96,10 @@ Reusable procedure: [return-to-stock physical test protocol](return-to-stock-tes
 RUN-006 operator follow-up: forward robot movement and progressively growing arm oscillations that did not stop. An apparent self-reinforcing loop is the operator's interpretation, not an established root cause. Preserve this observation when reviewing the return controller and whole-body interaction.
 
 RUN-006 reproduction code: [remote archive branch](https://github.com/MoissanClub/lerobot/tree/archive/g1-vr-physical-failure), pinned to [commit 75911f64](https://github.com/MoissanClub/lerobot/commit/75911f64cee1c9b365fffc25914a5ddd9145731e). See the [reconstruction handoff](../../sessions/2026-10-16-g1-handover/runs/RUN-20261016-006-reconstruction.md) for the data archive and launch dependencies.
+
+## Session evidence index
+
+- [October 15 preparation/faults](../../sessions/2026-10-15-g1-vr-camera/session.md): originating exit/authority-release problem.
+- [October 16 handover trials](../../sessions/2026-10-16-g1-handover/session.md): controlling evidence; prepared-pose RUN-005 succeeded, arbitrary-pose RUN-006 failed. The prepared procedure above is historical and is not permission to resume the stopped series.
+- [October 30 SONIC session](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md): separate whole-body stack stopped publishing without automatic stock restoration; robot relaxed into gantry.
+- [November 3 physical cleanup](../../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md): explicit stock `ai` / FSM 1 restoration and timed readback. This is a separate cleanup observation, not validation of the failed Arm SDK return trajectory. Next action remains offline RUN-006 review.

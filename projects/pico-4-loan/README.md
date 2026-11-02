@@ -32,3 +32,14 @@ Time-box: treat Thursday, 2026-10-29 as the evidence deadline and retain Friday 
 recovery, final inventory and return buffer. Minimum useful evidence is the exact
 device identity plus a calibrated tracking/schema capture; do not consume the loan
 window on real-robot preparation before that evidence is secured.
+
+## Recorded session progress
+
+The October 30 return deadline above is the original plan. Later session labels extend through November 3; a revised loan/return date is not documented. This index reports the checked-in evidence, not current equipment availability.
+
+- [October 29 SONIC readiness/demo plan](../../sessions/2026-10-29-g1-sonic-planted-feet/pre-lab.md): planned only.
+- [October 30 PC2 bring-up and physical diagnostics](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md): input transport and gantry-protected tests; unexpected POSE leg tuck, no automatic stock handover, later bent/frozen PICO capture.
+- [November 3 voice/controller dry rehearsal](../../sessions/2026-11-03-g1-sonic-pico-voice-dryrun/session.md): input-only arming sequence; posture must match the operator.
+- [November 3 physical workflow](../../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md): one completed sequence, repeat protocol deviation and recorder gap; stock damp restored explicitly at cleanup.
+
+The Isaac Teleop October 27–28 attempts are documented inside [IDEA-20261027-003](../../ideas/IDEA-20261027-003/README.md), with no standalone session found. SONIC simulation/input evidence does not resolve that browser compatibility boundary. Next: align the physical input/command/state evidence; reconfirm loan availability and recalibrate after headset removal before any later authorized test. Gantry-only restrictions remain.

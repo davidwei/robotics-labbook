@@ -56,3 +56,8 @@ minimal cross-repository implementation plan. Prerequisites: access to current
 LeRobot main and the Hub model repository, confirmation of available G1-23 model
 assets and their licensing/provenance. Recommended execution is offline first; no
 robot or lab access is required for discovery and software validation.
+
+## Session evidence index
+
+- [October 8 G1-29 MuJoCo regression](../../sessions/2026-10-08-g1-29-mujoco-regression/session.md): antecedent embodiment work; G1-23 simulation explicitly unsupported, G1-29 instability also reproduced on upstream parent.
+- [October 9 G1-29 physical regression](../../sessions/2026-10-09-g1-29-regression/session.md): hardware compatibility context for the earlier PR; no native G1-23 simulator test. No implementation session for this follow-up was found. Keep discovery as next action.

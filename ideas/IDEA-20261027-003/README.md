@@ -135,3 +135,10 @@ and proceed with XRoboToolkit/SONIC input-only bring-up. If an official PICO upd
 later provides Chrome 125 or newer, repeat the H.264 test and validate one
 controller/arm at a time, release-to-freeze, bilateral control, tracking loss and clean
 shutdown. Motion-tracker exposure through Isaac Teleop remains unanswered.
+
+## Session evidence index
+
+No standalone session record was found for the October 27–28 Isaac Teleop attempts; the development evidence and local output references are preserved above. Do not invent a session or infer successful visual/controller validation from first-frame delivery.
+
+- [October 15 G1 VR/camera session](../../sessions/2026-10-15-g1-vr-camera/session.md): prior camera/CloudXR context, not borrowed-PICO compatibility evidence.
+- [October 30 XRoboToolkit/SONIC](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md), [November 3 dry rehearsal](../../sessions/2026-11-03-g1-sonic-pico-voice-dryrun/session.md), and [November 3 physical session](../../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md): alternative backend progressed; none establishes Isaac Teleop browser compatibility. Keep the documented browser boundary as the recorded blocker; verify versions anew before reopening.

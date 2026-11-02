@@ -36,3 +36,8 @@ then implement metadata-to-client-parameter plumbing when this task is selected.
 Prerequisites: frame-channel path supplied to PC2 integration, readable metadata,
 and confirmation of hosted client query parameters. Ready for design/implementation,
 not yet implemented or validated. Do not change defaults during the current test.
+
+## Session evidence index
+
+- [October 15 camera session](../../sessions/2026-10-15-g1-vr-camera/session.md): source for capture/render-size distinctions and camera metadata requirements; see the linked analysis above.
+- The [PICO Isaac Teleop development evidence](../IDEA-20261027-003/README.md) records a later H.264 connection-helper adaptation inside an environment. It has no standalone session record and does not establish implementation or acceptance of this camera-metadata redirect proposal.

@@ -18,6 +18,12 @@ The lab book therefore optimizes for **learning per hour of physical robot acces
 
 See [docs/design.md](docs/design.md) for the design.
 
+## Research indexes and operating synthesis
+
+- [Session-to-idea/project audit](docs/session-reference-audit.md): every checked-in session and evidence boundaries.
+- [Draft session-derived lab protocol](docs/lab-protocol.md): staged preparation, execution, stop verification and closeout.
+- Projects: [Unitree G1](projects/unitree-g1/README.md), [PICO evaluation](projects/pico-4-loan/README.md), [SO-101](projects/so101/README.md).
+
 ## Source-of-truth principle
 
 This repository is the **research index and knowledge layer**, not a copy of every artifact.

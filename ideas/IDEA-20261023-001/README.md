@@ -1,7 +1,7 @@
 # IDEA-20261023-001 — SO101 pickup mode after loss of synchronization
 
-Status: ready_for_lab for a supervised state-machine prototype; physical validation pending. Dataset recording integration remains planned.
-Target: MoissanClub/lerobot, SO101 leader/follower. Physical validation: pending.
+Status: prototype physically exercised on October 23; pickup recovery incomplete. Later standard recording/replay does not validate this state machine.
+Target: MoissanClub/lerobot, SO101 leader/follower. Project: [SO-101](../../projects/so101/README.md). Physical validation: incomplete; motor replacement and recalibration changed the setup.
 
 The operator requests a pickup mode when the follower is stuck or out of sync:
 disengage following, prompt the operator to align the leader with the measured
@@ -127,3 +127,10 @@ Advisory only; no motor-command refusal implemented. Future enforcement should c
 ## Follower 12 V motor replacement — 2026-10-24
 
 The operator reported replacing every SO-101 follower motor with a 12 V variant. This resolves the intended variant choice but not physical validation: labels/part numbers, supply delivery, bus configuration, calibration and tracking performance have not yet been captured. See [the active lab session](../../sessions/2026-10-24-so101-12v-follower/session.md). Next action: torque-disabled electrical/bus preflight and follower recalibration before any separately authorized low-speed motion.
+
+## Session evidence index
+
+- [October 15 G1 VR](../../sessions/2026-10-15-g1-vr-camera/session.md): conceptual source only; virtual transition continuity did not validate a physical hold.
+- [October 23 SO-101](../../sessions/2026-10-23-so101-reassembly-warning/session.md), [handoff](../../sessions/2026-10-23-so101-reassembly-warning/handoff.md), and [directional trial](directional-trial-20261023.md): reached Tracking/Awaiting alignment; pickup did not complete. Later implementation details above supersede the original proposed-only wording.
+- [October 24 maintenance/diagnostics](../../sessions/2026-10-24-so101-12v-follower/session.md): voltage audit, isolated motor-3 travel and post-reinstall calibration recorded; installed folded-pose powered hold remained untested at closeout. This supersedes the earlier uncaptured-voltage/calibration next action, without resolving installed overload causality.
+- [October 25 standard rehearsal](../../sessions/2026-10-25-so101-teleop-preparation/session.md) and [October 31 Linux/demo](../../sessions/2026-10-31-so101-linux-migration/session.md): later teleop/record/replay evidence uses standard launchers, not proof that pickup or the preferred folded-rest hold passed. Next: reconcile current assembly/calibration and prototype-specific hold/recovery evidence before another pickup trial.

@@ -1,10 +1,12 @@
 # IDEA-20261027-002 — Verify SONIC with PICO 4 foot tracking
 
-Status: time-sensitive; preferred SONIC Sim2Sim result achieved; evidence cleanup
-and repeatability check remain.
-Project: PICO 4 loan evaluation / Unitree G1. Physical robot validation: not
-started and not authorized. Loan deadline: Friday, 2026-10-30; target completion of
-tracking evidence by Thursday, 2026-10-29.
+Status: Sim2Sim demonstrated; gantry-protected physical testing recorded, with
+post-lab analysis and stale-input validation unresolved.
+Projects: [PICO evaluation](../../projects/pico-4-loan/README.md) /
+[Unitree G1](../../projects/unitree-g1/README.md). Physical validation: limited
+gantry-protected evidence only; untethered work remains blocked.
+The original October 30 loan deadline is historical; later records do not establish
+a revised return date. See the session evidence index below for current recorded outcomes.
 
 ## Objective and scope
 
@@ -280,3 +282,12 @@ local stop and facility E-stop, synchronized video and whole-body IMU/state/
 LowCmd capture through post-stop, and separate explicit motion authorization.
 Target: G1-29, NVlabs/GR00T-WholeBodyControl on PC2. Physical validation:
 read-only preflight only; suspended SONIC motion not started.
+
+## Session evidence index
+
+- [October 29 pre-lab plan](../../sessions/2026-10-29-g1-sonic-planted-feet/pre-lab.md): planned readiness and bounded demo, no execution evidence in this session.
+- [October 30 PC2 session](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md): four physical runs; INIT/PICO start-stop and tethered IDLE standing observed, stop did not restore stock control, POSE entry caused unexpected leg tuck. Raw-input capture was added; later input-only captures exposed bent/frozen tracking. Cause of the physical tuck remains unresolved.
+- [November 3 input-only rehearsal](../../sessions/2026-11-03-g1-sonic-pico-voice-dryrun/session.md): voice/full-release arming gate and posture/freshness checks; no policy motion.
+- [November 3 physical session](../../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md): one completed headset sequence, repeat with six POSE cycles outside the requested single cycle, DDS recorder gap, and explicit stock damp restoration at cleanup. This supersedes the earlier read-only-only checkpoint; it does not validate stale-input behavior or untethered use.
+
+Next agent action: align raw PICO/buttons, exact outgoing packets, SONIC CSV and robot telemetry; explain repeat transitions and retain the capture gap. Target: PC2/G1-29 SONIC. Before a later separately authorized physical run: gantry, two operators, calibrated trackers after any headset removal, verified posture/freshness and continuous independent capture. No further motion is authorized by this summary.

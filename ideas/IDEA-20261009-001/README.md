@@ -1,9 +1,9 @@
 # G1 VR teleoperation performance improvements
 
-**Status:** in development; P1 and P4 implemented in software, manual validation pending.
+**Status:** partial validation; camera recovery and input endurance tested on October 15; controller-age target missed and physical E2E remains blocked on handover.
 **Owner:** David Wei  
 **Date:** 2026-10-09  
-**Last updated:** 2026-10-10
+**Last updated:** session-reference audit at source revision `0cb4f24`
 **Code target:** `MoissanClub/lerobot`, branch `work/g1-vr-physical`.
 
 ## Research motivation
@@ -141,3 +141,8 @@ P4 physical validation has not started. Next action: operator video check as a
 diagnostic, then investigate publication contention before declaring P1 complete.
 
 Subsequent Oct 15 update: operator verified step 3 with no observed regression. Streaming trace review measured about 18 FPS at 4096×4032 encoded output; see the session analysis. Next action is a lower-resolution headset comparison. Contention optimization is deferred provisionally; P1 strict zero-skips criterion remains unmet and P4 physical validation remains pending. Camera-aware redirect work is tracked in IDEA-20261015-001.
+
+## Session evidence index
+
+- [October 15 VR/camera validation](../../sessions/2026-10-15-g1-vr-camera/session.md): pause recovery and endurance captured; accepted controller-age p95 31.9 ms missed the 12 ms target. Preparation faults prevented physical E2E pickup/following. Original checklist above remains the test design, not a completed checklist.
+- [October 16 handover](../../sessions/2026-10-16-g1-handover/session.md): dependency evidence; RUN-006 failed and further arm-handover trials were stopped. Next action: review handover evidence before resuming physical E2E.

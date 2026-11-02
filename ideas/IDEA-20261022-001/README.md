@@ -1,8 +1,8 @@
 # IDEA-20261022-001 — Warn when an SO follower trails its leader
 
-Project: SO-101 / LeRobot. Status: ready for lab.
+Project: [SO-101 / LeRobot](../../projects/so101/README.md). Status: partial physical validation; threshold selection unresolved.
 Target: `MoissanClub/lerobot`, branch `so101demo`.
-Physical validation: pending; no SO-101 hardware was moved or tested.
+Physical validation: audible warning confirmed on October 23; later teleoperation/recording logged warning events. Catch-up estimates and threshold accuracy remain unvalidated.
 
 Objective: during SO leader/follower teleoperation and recording, warn the operator when any of the
 five commanded arm joints exceeds its configured tracking-error threshold. Exclude the gripper because
@@ -56,3 +56,10 @@ projection accuracy remain unverified. Pickup recovery is deferred to
 ## Session closeout — 2026-10-23
 
 See [session handoff](../../sessions/2026-10-23-so101-reassembly-warning/handoff.md). Audible angular-error warning physically confirmed; catch-up-time accuracy and threshold selection unresolved. Pickup recovery and manual recording gates remain proposed/unimplemented. Next agent action: review static PD residual and reachable limits before threshold decisions, then specify pickup hold/resume policy. Target: MoissanClub/lerobot, SO101; prerequisites: operator, verified setup/calibration and clear workspace. Physical validation remains incomplete.
+
+## Session evidence index
+
+- [October 23 reassembly/warnings](../../sessions/2026-10-23-so101-reassembly-warning/session.md): audible warning confirmed; 2-degree monitor slow for 99.55% of samples, persistent elbow residual, no validated catch-up-time threshold.
+- [October 24 12 V maintenance/diagnostics](../../sessions/2026-10-24-so101-12v-follower/session.md): changed hardware/calibration; overload reproduced before Tracking. Earlier thresholds cannot be carried over as validated.
+- [October 25 recording/replay rehearsal](../../sessions/2026-10-25-so101-teleop-preparation/session.md): downstream standard workflow, not a dedicated detector-accuracy experiment.
+- [October 31 Linux/demo](../../sessions/2026-10-31-so101-linux-migration/session.md): warning events in teleoperation/recording; raw teleop JSONL was overwritten by the analyzer. Do not treat projected catch-up as measured recovery. Next: characterize settled residuals on the current calibrated setup before threshold tuning.

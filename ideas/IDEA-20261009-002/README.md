@@ -39,3 +39,7 @@ GPU acceleration may become useful if profiling shows that CPU video decode (for
 ## Next action
 
 Defer implementation. Revisit after P1/P2 baseline measurements and per-stage camera profiling are available.
+
+## Session evidence index
+
+- [October 15 camera session](../../sessions/2026-10-15-g1-vr-camera/session.md) and [analysis](../../sessions/2026-10-15-g1-vr-camera/analysis.md): CPU-path baseline/recovery and publication contention are relevant prerequisites. No dedicated GPU-pipeline experiment or evidence that GPU conversion is the needed remedy was found. Keep profiling-first/deferred status.
