@@ -1,0 +1,40 @@
+{
+  "session_id": "SESSION-20261103-002",
+  "run_id": "RUN-20261103-001",
+  "artifacts": [
+    {
+      "type": "code_revision",
+      "repository": "/home/dwei/sonic/GR00T-WholeBodyControl",
+      "revision": "20105809c6339ea1215542615e146f975c94081c",
+      "description": "Voice-gated PICO controller workflow used for the physical run"
+    },
+    {
+      "type": "whole_body_dds_capture",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-02/wholebody.jsonl",
+      "size_bytes": 393137225,
+      "description": "LowState, torso IMU and LowCmd capture retained through more than 45 seconds post-stop"
+    },
+    {
+      "type": "pico_packet_capture",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-02/pico-packets",
+      "input_samples": 3499,
+      "outgoing_packets": 1766,
+      "description": "Raw/input body poses plus indexed outgoing manager packets"
+    },
+    {
+      "type": "sonic_csv_logs",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-02/logs",
+      "description": "Actions, measured state, IMU, motor status, motion and encoder-mode logs"
+    },
+    {
+      "type": "failed_setup_attempt",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-01",
+      "description": "Preserved first attempt in which controller events preceded SONIC readiness; no policy run occurred"
+    }
+  ],
+  "known_missing": [
+    "synchronized operator video",
+    "standalone terminal transcript",
+    "completed post-lab time alignment and motion analysis"
+  ]
+}

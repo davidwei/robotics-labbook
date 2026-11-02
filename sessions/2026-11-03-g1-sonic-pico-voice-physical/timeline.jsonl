@@ -1,0 +1,11 @@
+{"event":"capture_started","source":"wholebody.jsonl","wall_ns":1793640208133390910,"note":"Independent DDS recorder started before SONIC."}
+{"event":"attempt_01_stopped","source":"codex_session","note":"Controller events preceded SONIC Init Done; no policy control started. Local O stopped deployment."}
+{"event":"attempt_02_planner_start","source":"pico-packets/packets.jsonl","wall_ns":1793640425826827992,"sequence":0,"mode":"PLANNER"}
+{"event":"attempt_02_pose_entered","source":"codex_session_and_packet_capture","note":"Manager and deployment reported streamed POSE mode."}
+{"event":"attempt_02_returned_to_planner","source":"codex_session","note":"Headset A+X changed POSE to PLANNER."}
+{"event":"attempt_02_stop","source":"pico-packets/packets.jsonl","wall_ns":1793640488542451361,"sequence":1765,"mode":"OFF"}
+{"event":"manager_shutdown","source":"codex_session","note":"PICO manager exited 0 after SDK uninitialization."}
+{"event":"deployment_cleanup","source":"codex_session","note":"SONIC reached normal stop/cleanup, then CycloneDDS prevent_callbacks assertion occurred."}
+{"event":"operator_observation","source":"operator_statement","text":"a successful run"}
+{"event":"capture_stopped","source":"wholebody.jsonl","wall_ns":1793640567773063845,"counts":{"lowstate":98021,"torso_imu":94929,"lowcmd":27834},"queue_dropped":0,"callback_failures":0}
+{"event":"operating_rule","source":"operator_statement","text":"Every time the PICO is removed from the head, recalibrate the foot trackers before another physical policy start."}

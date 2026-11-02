@@ -28,11 +28,13 @@ related_sessions:
   - SESSION-20261029-001
   - SESSION-20261030-001
   - SESSION-20261103-001
+  - SESSION-20261103-002
 related_runs:
   - RUN-20261030-001
   - RUN-20261030-002
   - RUN-20261030-003
   - RUN-20261030-004
+  - RUN-20261103-001
 findings:
   - date: 2026-10-28
     scope: simulation-only mode-transition rehearsal
@@ -163,8 +165,38 @@ findings:
       requires a fresh tracked-posture/freshness/motion confirmation before the
       start chord. This strengthens the input-side mechanism hypothesis but does
       not retrospectively establish the cause of RUN-20261030-004.
+  - date: 2026-11-03
+    scope: gantry-protected physical headset-only PLANNER/POSE sequence
+    evidence: >-
+      At SONIC revision 20105809c6339ea1215542615e146f975c94081c,
+      RUN-20261103-001 completed A+B arm, A+B+X+Y PLANNER start, A+X POSE
+      entry, A+X return to PLANNER and A+B+X+Y stop without requiring the
+      operator to return to the terminal after calibration. The manager shut
+      down cleanly and the operator reported “a successful run.” Independent
+      capture retained 98,021 LowState, 94,929 torso-IMU and 27,834 LowCmd
+      samples with no drops or callback failures. SONIC reached its stop path
+      before a CycloneDDS cleanup assertion.
+    interpretation: >-
+      One gantry-protected physical execution of the voice/controller workflow
+      succeeded under the recorded conditions. This does not establish repeated
+      reliability, stale-input safety, untethered readiness or automatic stock-
+      controller handover. Post-lab packet/command/state alignment remains pending.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
+  - date: 2026-11-03
+    decision: >-
+      Every time the PICO headset is removed from the operator's head, recalibrate
+      the foot/ankle trackers. Before another physical policy start, reconfirm that
+      PICO-reported posture matches the actual standing posture and that the fresh,
+      changing, upright input gate passes. Headset removal invalidates the prior
+      calibration/arm acceptance.
+    source: operator instruction after RUN-20261103-001
+    next_agent_action: >-
+      Encode headset removal as a mandatory procedural reset and do not treat a
+      prior passing gate as valid for a later donning of the headset.
+    target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: recalibrated foot trackers and repeated tracked-posture confirmation
+    physical_validation_status: one physical voice/controller sequence succeeded; repeated reliability untested
   - date: 2026-11-03
     decision: >-
       Before every physical SONIC policy run, confirm that the PICO-tracked posture

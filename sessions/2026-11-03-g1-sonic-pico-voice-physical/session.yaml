@@ -1,0 +1,31 @@
+id: SESSION-20261103-002
+date: 2026-11-03
+owner: David Wei
+participants: [David Wei, second safety operator, Codex]
+location_label: G1 lab, PC2
+experiments: [EXP-20261029-001]
+status: ended_physical_run_complete_postlab_pending
+capture:
+  method: live
+  sources: [operator_statement, codex_session, git, filesystem, pico_raw_input, robot_dds_telemetry, sonic_csv_logs]
+  coverage: partial
+  known_gaps:
+    - No synchronized operator video.
+    - Terminal output is retained in the Codex session rather than a standalone transcript.
+    - Deep PICO-to-command-to-state alignment has not yet been performed.
+activities:
+  - type: diagnostic
+    description: First launch attempt stopped after initialization-ordering caused headset controller events to precede SONIC readiness; policy control did not start.
+  - type: run
+    run_id: RUN-20261103-001
+    description: Gantry-protected physical PLANNER to POSE to PLANNER sequence, followed by headset stop.
+    evidence: evidence.json
+operator_observation: a successful run
+next_agent_action: >-
+  Align PICO packet, SONIC CSV and DDS telemetry timelines; review physical motion
+  and cleanup assertion without upgrading this single success into a reliability claim.
+target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on physical G1-29
+prerequisites: >-
+  For every later run, recalibrate foot trackers after any headset removal and
+  reconfirm tracked posture/freshness before arming; retain gantry and two-operator safety.
+physical_validation_status: one_gantry_protected_headset_only_sequence_successful

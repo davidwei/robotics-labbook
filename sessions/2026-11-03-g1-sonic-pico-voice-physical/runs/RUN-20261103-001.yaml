@@ -1,0 +1,51 @@
+id: RUN-20261103-001
+date: 2026-11-03
+experiment: EXP-20261029-001
+session: SESSION-20261103-002
+robot: Unitree G1-29
+classification: physical_run
+objective: >-
+  Complete the voice-gated headset-only PLANNER -> POSE -> PLANNER -> OFF sequence
+  without returning to the terminal after calibration acceptance.
+code:
+  repository: /home/dwei/sonic/GR00T-WholeBodyControl
+  revision: 20105809c6339ea1215542615e146f975c94081c
+  branch: main
+  tracked_worktree: clean
+  untracked_runtime_artifacts_present: true
+configuration:
+  network_interface: enP8p1s0
+  control_hz: 50
+  planner_hz: 10
+  voice_backend: unitree
+  voice_language: en
+  voice_speaker_id: 1
+  voice_interval_s: 10
+  sequence: [AB_arm, ABXY_start, AX_enter_pose, AX_leave_pose, ABXY_stop]
+safety:
+  gantry: catch_only_retained_through_post_stop
+  operators: 2
+  facility_estop: available
+  local_keyboard_o: available
+  motion_envelope: cleared
+result: successful_operator_observation
+observations:
+  - The manager emitted PLANNER, POSE, PLANNER and OFF in the expected order.
+  - The manager shut down cleanly after the headset stop chord.
+  - SONIC reached its normal stop path, then CycloneDDS asserted during cleanup.
+  - The operator reported: a successful run.
+capture_summary:
+  lowstate: 98021
+  torso_imu: 94929
+  lowcmd: 27834
+  queue_dropped: 0
+  callback_failures: 0
+  max_receive_gap_ms:
+    lowstate: 29.087201
+    torso_imu: 28.179506
+    lowcmd: 40.724716
+limitations:
+  - Single run only; reliability is not established.
+  - No synchronized operator video.
+  - Detailed telemetry alignment and motion review remain pending.
+  - Stale-input response and automatic stock-controller handover remain unvalidated.

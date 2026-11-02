@@ -10,6 +10,7 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   and further physical tests remain stopped pending offline analysis and a new
   operator decision.
 - Sessions:
+  - [2026-11-03 PICO voice/controller physical run](../../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md).
   - [2026-11-03 PICO voice/controller input-only dry rehearsal](../../sessions/2026-11-03-g1-sonic-pico-voice-dryrun/session.md).
   - [2026-10-30 PC2 SONIC installation and read-only suspended-session preflight](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md).
   - [2026-10-29 planned PICO/SONIC G1-29 readiness and planted-feet demo](../../sessions/2026-10-29-g1-sonic-planted-feet/pre-lab.md).
