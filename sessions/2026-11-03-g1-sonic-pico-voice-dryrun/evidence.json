@@ -1,0 +1,28 @@
+{
+  "session_id": "SESSION-20261103-001",
+  "artifacts": [
+    {
+      "type": "code_revision",
+      "repository": "/home/dwei/sonic/GR00T-WholeBodyControl",
+      "revision": "20105809c6339ea1215542615e146f975c94081c",
+      "description": "Voice-gated PICO calibration and dry-run state machine"
+    },
+    {
+      "type": "pico_input_capture",
+      "path": "/home/dwei/sonic/runs/20261103-pico-voice-dryrun-01/pico-packets",
+      "coverage": "multiple_attempts_mixed",
+      "description": "Raw body/controller input; includes setup failures and the completed dry sequence"
+    },
+    {
+      "type": "dryrun_output_guard",
+      "path": "/home/dwei/sonic/runs/20261103-pico-voice-dryrun-01/pico-packets/packets.jsonl",
+      "size_bytes": 0,
+      "description": "Zero-byte packet index confirms no ZMQ manager/policy/POSE packets were emitted"
+    }
+  ],
+  "known_missing": [
+    "standalone terminal transcript",
+    "synchronized operator video",
+    "raw PICO input aligned to RUN-20261030-004"
+  ]
+}

@@ -1,0 +1,29 @@
+id: SESSION-20261103-001
+date: 2026-11-03
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: G1 lab, PC2
+experiments: [EXP-20261029-001]
+status: ended_input_only_dryrun_complete_physical_policy_blocked
+capture:
+  method: live
+  sources: [operator_statement, codex_session, git, filesystem, pico_raw_input]
+  coverage: partial
+  known_gaps:
+    - Terminal output is retained in the Codex session rather than a standalone transcript.
+    - The packet directory combines several setup attempts and contains long tracking gaps.
+activities:
+  - type: development
+    description: Added voice-guided tracking status, action prompts and a mandatory A+B arm gate.
+  - type: diagnostic
+    description: Input-only PICO dry rehearsal; no SONIC deployment or robot policy process ran.
+    evidence: evidence.json
+next_agent_action: >-
+  Collect a new timestamped input-only capture, confirm tracked posture matches the
+  operator, and review the gate evidence before requesting separate authorization
+  for any gantry-protected physical policy run.
+target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on PC2
+prerequisites: >-
+  Calibrated headset and ankle trackers, voice-gated recorded manager, independent
+  capture, gantry/two-operator safety setup and separate motion authorization
+physical_validation_status: input_only_dry_sequence_passed_no_robot_policy_motion

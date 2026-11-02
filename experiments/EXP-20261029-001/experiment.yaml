@@ -27,6 +27,7 @@ related_repositories:
 related_sessions:
   - SESSION-20261029-001
   - SESSION-20261030-001
+  - SESSION-20261103-001
 related_runs:
   - RUN-20261030-001
   - RUN-20261030-002
@@ -143,8 +144,48 @@ findings:
       RUN-20261030-004 is unavailable because that run lacked raw input capture.
       Recalibration plus an explicit motion/freshness gate is required before any
       physical repeat.
+  - date: 2026-11-03
+    scope: PICO voice-guided input-only dry rehearsal
+    evidence: >-
+      With no SONIC deployment and dry-run ZMQ output suppressed, live PICO input
+      repeatedly initialized with tracked knees bent while the operator reported
+      physically straight knees. Other intervals were frozen, intermittent or
+      disconnected. After recalibration, the five seconds before the accepted
+      A+B arm chord contained 320 samples over 4.988 seconds, maximum device gap
+      35.634 ms, minimum tracked knee angles 163.77/160.71 degrees and changing
+      pose content. The operator completed A+B arm, A+B+X+Y dry start, A+X enter
+      POSE, A+X leave POSE and A+B+X+Y stop. Packet capture files remained zero
+      bytes, confirming that dry-run sent no manager/policy/POSE packets.
+    interpretation: >-
+      An XR connection and the operator's physical stance are insufficient
+      readiness evidence: ankle/full-body tracking can initialize in a bent or
+      frozen pose that does not match the operator. Every physical policy run
+      requires a fresh tracked-posture/freshness/motion confirmation before the
+      start chord. This strengthens the input-side mechanism hypothesis but does
+      not retrospectively establish the cause of RUN-20261030-004.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
+  - date: 2026-11-03
+    decision: >-
+      Before every physical SONIC policy run, confirm that the PICO-tracked posture
+      matches the operator's physical posture. Require an upright five-second
+      window, both tracked knee angles at least 150 degrees, no device gap above
+      100 ms and changing body-pose content. A+B arms only after this gate passes;
+      all buttons must then be released before A+B+X+Y can start. Any mismatch,
+      frozen stream, stale stream or reconnection invalidates the arm state and
+      requires recalibration. Voice prompts must describe PICO-reported geometry,
+      not claim the operator is physically bent.
+    source: operator observation and SESSION-20261103-001 input-only dry rehearsal
+    next_agent_action: >-
+      Use the voice-gated recorded manager at SONIC revision
+      20105809c6339ea1215542615e146f975c94081c for the next input-only preflight;
+      preserve a new timestamped capture and review it before requesting separate
+      authorization for robot policy motion.
+    target: PICO/XRoboToolkit and NVlabs/GR00T-WholeBodyControl on PC2
+    prerequisites: >-
+      Calibrated headset and ankle trackers, English Unitree speaker ID 1,
+      replay-grade PICO capture and no SONIC policy start until the gate passes
+    physical_validation_status: input-only dry sequence passed; robot policy motion not run
   - date: 2026-10-30
     decision: >-
       The unresolved stale-PICO response and stock-controller handover block
