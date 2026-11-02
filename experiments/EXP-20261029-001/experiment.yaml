@@ -35,6 +35,7 @@ related_runs:
   - RUN-20261030-003
   - RUN-20261030-004
   - RUN-20261103-001
+  - RUN-20261103-002
 findings:
   - date: 2026-10-28
     scope: simulation-only mode-transition rehearsal
@@ -181,6 +182,23 @@ findings:
       succeeded under the recorded conditions. This does not establish repeated
       reliability, stale-input safety, untethered readiness or automatic stock-
       controller handover. Post-lab packet/command/state alignment remains pending.
+  - date: 2026-11-03
+    scope: repeat physical workflow and explicit stock-controller cleanup
+    evidence: >-
+      RUN-20261103-002 passed the voice gate after an intermittent interval
+      correctly invalidated the first arm, but then recorded six PLANNER-to-POSE
+      and six POSE-to-PLANNER transitions rather than the requested single cycle.
+      Local O stopped SONIC. The 600-second DDS recorder expired before the final
+      interval; later post-stop capture saw 14,636 LowState, 13,931 torso-IMU and
+      zero LowCmd samples. Cleanup selected stock service ai and reasserted FSM 1;
+      five timed readbacks through 5 seconds and a final independent query returned
+      FSM 1. All experiment processes and ports 5556/5557/60061 were closed.
+    interpretation: >-
+      The repeat is a protocol deviation, not a second successful-run result. The
+      input gate blocked one intermittent-tracking start as designed. Stock control
+      can be restored explicitly with motion-switcher service ai plus FSM 1, but
+      automatic SONIC handover remains absent. The repeated A+X transitions and
+      missing continuous DDS stop interval require post-lab review.
 readiness: gantry_diagnostic_conditional; untethered_blocked
 operator_decisions:
   - date: 2026-11-03

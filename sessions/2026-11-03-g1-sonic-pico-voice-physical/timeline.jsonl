@@ -9,3 +9,17 @@
 {"event":"operator_observation","source":"operator_statement","text":"a successful run"}
 {"event":"capture_stopped","source":"wholebody.jsonl","wall_ns":1793640567773063845,"counts":{"lowstate":98021,"torso_imu":94929,"lowcmd":27834},"queue_dropped":0,"callback_failures":0}
 {"event":"operating_rule","source":"operator_statement","text":"Every time the PICO is removed from the head, recalibrate the foot trackers before another physical policy start."}
+{"event":"repeat_preflight","run_id":"RUN-20261103-002","source":"/tmp/g1-repeat-preflight-02.jsonl","counts":{"lowstate":1525,"torso_imu":1449,"lowcmd":0},"crc_invalid":0,"motor_status_nonzero_samples":0,"max_abs_joint_velocity_rad_s":0.0668523461}
+{"event":"repeat_calibration_invalidated","run_id":"RUN-20261103-002","source":"codex_session","note":"First accepted arm was invalidated by intermittent tracking; start was blocked until a new passing window and arm."}
+{"event":"repeat_planner_start","run_id":"RUN-20261103-002","source":"pico-packets/packets.jsonl","wall_ns":1793641975173217791,"sequence":0,"mode":"PLANNER"}
+{"event":"repeat_mode_transitions","run_id":"RUN-20261103-002","source":"pico-packets/packets.jsonl","planner_to_pose":6,"pose_to_planner":6,"note":"Exceeded requested single POSE cycle."}
+{"event":"repeat_initial_capture_expired","run_id":"RUN-20261103-002","source":"wholebody.jsonl","wall_ns":1793642313919843914,"counts":{"lowstate":170816,"torso_imu":165572,"lowcmd":68424},"queue_dropped":0,"callback_failures":0}
+{"event":"repeat_local_o_stop","run_id":"RUN-20261103-002","source":"codex_session","note":"Local O stopped SONIC after repeated mode toggles; exact wall timestamp unavailable."}
+{"event":"repeat_manager_off","run_id":"RUN-20261103-002","source":"pico-packets/packets.jsonl","wall_ns":1793642410918726693,"sequence":11432,"mode":"OFF"}
+{"event":"repeat_operator_statement","run_id":"RUN-20261103-002","source":"operator_statement","text":"we are done"}
+{"event":"poststop_capture","source":"poststop-wholebody.jsonl","counts":{"lowstate":14636,"torso_imu":13931,"lowcmd":0},"queue_dropped":0,"callback_failures":0}
+{"event":"stock_normal_restore_failed","source":"motion_switcher_and_loco_rpc","select_normal_code":7004,"damp_code":3102,"mode_after":""}
+{"event":"stock_ai_restore_succeeded","source":"motion_switcher_and_loco_rpc","select_ai_code":0,"set_fsm_1_code":0,"mode_after":"ai"}
+{"event":"stock_damp_reasserted","source":"loco_rpc","set_fsm_1_code":0,"readbacks":[{"after_s":0.1,"fsm_id":1},{"after_s":0.5,"fsm_id":1},{"after_s":1.0,"fsm_id":1},{"after_s":2.0,"fsm_id":1},{"after_s":5.0,"fsm_id":1}]}
+{"event":"stock_damp_final_verification","source":"motion_switcher_loco_rpc_and_stock-damp-reassert.jsonl","mode":"ai","fsm_id":1,"counts":{"lowstate":3736,"torso_imu":6061,"lowcmd":3540},"crc_invalid":0,"motor_status_nonzero_samples":0,"max_abs_joint_velocity_rad_s":0.0839939713}
+{"event":"environment_cleanup","source":"process_and_port_inspection","stopped":["g1_deploy_onnx_ref","pico_manager_thread_server.py","capture_g1_wholebody.py","RoboticsServiceProcess"],"closed_ports":[5556,5557,60061]}

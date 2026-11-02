@@ -1,6 +1,6 @@
 {
   "session_id": "SESSION-20261103-002",
-  "run_id": "RUN-20261103-001",
+  "run_ids": ["RUN-20261103-001", "RUN-20261103-002"],
   "artifacts": [
     {
       "type": "code_revision",
@@ -30,11 +30,46 @@
       "type": "failed_setup_attempt",
       "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-01",
       "description": "Preserved first attempt in which controller events preceded SONIC readiness; no policy run occurred"
+    },
+    {
+      "type": "repeat_run_artifacts",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-03",
+      "description": "PICO packets, SONIC CSV logs, initial DDS capture, post-stop capture and stock-controller handover captures"
+    },
+    {
+      "type": "repeat_initial_dds_capture",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-03/wholebody.jsonl",
+      "size_bytes": 733972478,
+      "coverage": "expired_before_final_stop"
+    },
+    {
+      "type": "repeat_pico_packet_index",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-03/pico-packets/packets.jsonl",
+      "size_bytes": 4553690,
+      "input_samples": 15690,
+      "outgoing_packets": 11433
+    },
+    {
+      "type": "poststop_dds_capture",
+      "path": "/home/dwei/sonic/runs/20261103-ground-contact-voice-03/poststop-wholebody.jsonl",
+      "size_bytes": 49239197,
+      "description": "50-second post-stop state capture; zero LowCmd"
+    },
+    {
+      "type": "stock_controller_handover_captures",
+      "paths": [
+        "/home/dwei/sonic/runs/20261103-ground-contact-voice-03/stock-damp-handover.jsonl",
+        "/home/dwei/sonic/runs/20261103-ground-contact-voice-03/stock-ai-damp-handover.jsonl",
+        "/home/dwei/sonic/runs/20261103-ground-contact-voice-03/stock-damp-reassert.jsonl"
+      ],
+      "description": "Failed normal-mode attempt, successful ai selection, damp reassertion and verification"
     }
   ],
   "known_missing": [
     "synchronized operator video",
     "standalone terminal transcript",
-    "completed post-lab time alignment and motion analysis"
+    "completed post-lab time alignment and motion analysis",
+    "continuous DDS coverage across the repeat run's final interval and stop",
+    "operator physical-behavior observation for RUN-20261103-002"
   ]
 }

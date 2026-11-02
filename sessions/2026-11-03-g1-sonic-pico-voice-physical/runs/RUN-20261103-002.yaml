@@ -1,0 +1,71 @@
+id: RUN-20261103-002
+date: 2026-11-03
+experiment: EXP-20261029-001
+session: SESSION-20261103-002
+robot: Unitree G1-29
+classification: physical_run_with_protocol_deviation
+objective: >-
+  Repeat the voice-gated headset-only PLANNER -> POSE -> PLANNER -> OFF sequence
+  once, without returning to the terminal after calibration acceptance.
+code:
+  repository: /home/dwei/sonic/GR00T-WholeBodyControl
+  revision: 20105809c6339ea1215542615e146f975c94081c
+  branch: main
+  tracked_worktree: clean
+  untracked_runtime_artifacts_present: true
+safety:
+  gantry: catch_only_retained_through_cleanup
+  operators: 2
+  facility_estop: available
+  local_keyboard_o: available_and_used
+  motion_envelope: cleared
+preflight:
+  lowstate_samples: 1525
+  torso_imu_samples: 1449
+  lowcmd_samples: 0
+  crc_invalid: 0
+  nonfinite_values: 0
+  motor_status_nonzero_samples: 0
+  max_abs_joint_velocity_rad_s: 0.0668523461
+result: protocol_deviation_local_o_stop
+observations:
+  - An intermittent-tracking interval invalidated the first accepted arm and blocked start until recalibration evidence passed again.
+  - Exact packet capture contains six PLANNER-to-POSE and six POSE-to-PLANNER transitions before final OFF.
+  - Local O stopped SONIC after repeated toggles exceeded the requested single cycle; SONIC reached its normal stop path.
+  - The PICO manager subsequently emitted OFF and shut down cleanly.
+  - The operator stated that the run was done but supplied no separate physical-behavior assessment.
+capture:
+  pico_input_samples: 15690
+  outgoing_packets: 11433
+  wholebody_initial:
+    path: /home/dwei/sonic/runs/20261103-ground-contact-voice-03/wholebody.jsonl
+    lowstate: 170816
+    torso_imu: 165572
+    lowcmd: 68424
+    queue_dropped: 0
+    callback_failures: 0
+  poststop:
+    path: /home/dwei/sonic/runs/20261103-ground-contact-voice-03/poststop-wholebody.jsonl
+    lowstate: 14636
+    torso_imu: 13931
+    lowcmd: 0
+    queue_dropped: 0
+    callback_failures: 0
+known_gap: >-
+  The 600-second initial DDS recorder expired 96.999 seconds before the PICO
+  manager's final OFF packet. The later post-stop capture is not continuous with it.
+cleanup:
+  stock_service: ai
+  final_fsm_id: 1
+  final_fsm_label: damp
+  verification: >-
+    Select ai and SetFsmId(1) returned zero; five readbacks through 5 seconds and
+    a final independent query returned FSM 1. Final 20-second capture had no CRC,
+    finite-value or motor-status failures and max joint speed 0.084 rad/s.
+  stopped_processes: [sonic_deployment, pico_manager, recorders, RoboticsServiceProcess]
+  closed_ports: [5556, 5557, 60061]
+limitations:
+  - No synchronized operator video.
+  - Exact local-O wall timestamp is unavailable from a standalone transcript.
+  - Physical behavior during the repeated cycles was not described by the operator.
+  - Detailed packet/command/state alignment remains pending.
