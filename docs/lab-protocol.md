@@ -33,6 +33,16 @@ Operator guidance added during protocol review: operational rehearsal before the
 
 Sources: [Oct 9 DDS preflight](../sessions/2026-10-09-g1-29-regression/session.md), [Oct 23 reassembly](../sessions/2026-10-23-so101-reassembly-warning/session.md), [Oct 24 motor/calibration audit](../sessions/2026-10-24-so101-12v-follower/session.md), [Oct 25 camera identification](../sessions/2026-10-25-so101-teleop-preparation/session.md), [Oct 31 venue/USB re-enumeration](../sessions/2026-10-31-so101-linux-migration/session.md).
 
+### In-lab dry run before physical execution
+
+Before the physical experiment, conduct a dry run of the complete operational flow with physical movement disabled. Use the actual lab setup, operator roles, headset/controllers, calibration sequence, voice prompts and intended controls so the operator knows what to expect during the real run. Suppress robot actuation explicitly—for example, use an input-only/mock mode with no motor-command publisher or physical policy output. Do not rely on the operator staying still to prevent movement.
+
+Rehearse readiness announcements, controller/tracker calibration and verification, arming, start, mode transitions, the bounded task sequence, stop and cleanup. Confirm that prompts are audible, actions and acknowledgments are clear, and the operator and safety operator know their next steps. Represent any step that cannot be exercised without movement with a clearly identified simulated acknowledgment; record what remains untested.
+
+After the walkthrough, review surprises or unclear steps with the operator, correct the flow and repeat the affected portion as needed. Then explicitly distinguish the transition from dry-run mode to the separately authorized physical run, confirming the intended configuration and capture readiness. Completing the dry run establishes familiarity with the workflow; physical response, stop and handover still require their own evidence.
+
+Basis: operator-requested addition to this protocol, informed by the [input-only PICO rehearsal](../sessions/2026-11-03-g1-sonic-pico-voice-dryrun/session.md) and [physical startup-ordering failure](../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md).
+
 ## 3. Prepare independent capture before control
 
 - Allocate new non-overwriting run/artifact paths. Confirm storage headroom and that analyzers write to a distinct destination; retain raw inputs unchanged. October 31's analyzer overwrote its own telemetry because the input filename lacked the expected suffix.
@@ -47,7 +57,7 @@ Sources: [Oct 16 false closure marker and post-close observation](../sessions/20
 
 1. Read-only connectivity/state checks.
 2. Camera/headset/input-only checks, without a policy subscriber or motor publisher where applicable.
-3. Offline/mock/simulation checks of the exact candidate, preserving their limits.
+3. Confirm pre-lab offline/mock/simulation results for the exact candidate, then conduct the in-lab operational dry run with physical movement disabled. Review the sequence with the operator before enabling physical execution.
 4. Separately authorized, supported physical initialization/hold, then one small motion or mode transition with measurable criteria.
 5. Stop, inspect results and obtain the required operator decision before expanding the sequence or repeating after a fault.
 
