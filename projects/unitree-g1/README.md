@@ -3,6 +3,15 @@
 Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earlier project history is not reconstructed here.
 
 - Experiment: [G1 embodiment compatibility](../../experiments/EXP-20261009-001/experiment.yaml).
+- **Next lab visit (planned 2026-11-11):** [CloudXR no-ADB client-first bookmark experiment](../../experiments/EXP-20261111-001/plan.md)
+  ([experiment definition](../../experiments/EXP-20261111-001/experiment.yaml)).
+  Test whether the NVIDIA-hosted client remembers each server IP across certificate acceptance,
+  browser restart, and a second server, versus bookmarking each server's locally hosted
+  `https://HOST:48322/client/` page. Success means entering each server IP no more than
+  once during setup and never retyping it on subsequent bookmarked visits. Browser/headset
+  connectivity only; no physical robot motion. Record actual results before deciding
+  whether [IsaacCapture PR #1170](https://github.com/NVIDIA/IsaacCapture/pull/1170)
+  adds value over NVIDIA's documented client-first flow.
 - Follow-up idea: [native G1-23 MuJoCo embodiment support](../../ideas/IDEA-20261027-001/README.md),
   based on the maintainer guidance after PR #4651 approval.
 - Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
