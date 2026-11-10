@@ -1,0 +1,90 @@
+id: EXP-20261111-001
+title: CloudXR no-ADB client-first connection and persistent one-time host entry
+project: unitree-g1
+owner: David Wei
+status: planned
+planned_date: 2026-11-11
+mode: pre-lab; headset/browser-only validation
+question: >-
+  With NVIDIA's documented client-first CloudXR flow and no ADB, can an operator
+  enter each server's IP address only once, then use a bookmark on subsequent
+  sessions without retyping the IP or port? Which bookmark works better:
+  the NVIDIA-hosted web client with saved connection settings, or the
+  server-hosted /client/ page?
+hypothesis: >-
+  Starting in the NVIDIA web client preserves the manually entered host while
+  accepting the self-signed certificate in a separate tab; saved client settings
+  may retain the IP across reloads and browser restarts. A bookmark to
+  https://HOST:48322/client/ may provide a simpler per-host entry point if
+  the matching local client is hosted, but persistence and auto-selection of
+  the host are not assumed. Storage may be localStorage, IndexedDB, cookies,
+  or other browser state and must not be inferred from persistence alone.
+primary_success_criteria:
+  - >-
+    For each tested server, the first client-first connection requires at most
+    one manual server-IP entry, with no repeat after certificate acceptance.
+  - >-
+    At least one bookmark strategy restores the correct server IP and port with
+    zero manual re-entry after page reload and full browser close/reopen.
+  - >-
+    The server is still correctly selected after a headset restart if that
+    restart can be performed, and the resumed flow reaches connection or an
+    independently diagnosed browser/runtime compatibility boundary.
+  - >-
+    For two available servers, switching A to B to A never silently connects
+    to the wrong server; record whether each server requires only its own
+    initial entry and whether separate bookmarks isolate the endpoints.
+  - >-
+    The result identifies which bookmark URL to keep and documents how
+    connection settings persist, or marks the storage mechanism unknown.
+planned_trials:
+  - T1 fresh client-first certificate acceptance on server A
+  - T2 reload, browser restart, and (if feasible) headset reboot using hosted-client bookmark
+  - T3 server-hosted /client/ bookmark when local hosting is enabled
+  - T4 second server B and A-to-B-to-A switching if B is available
+  - T5 record storage mechanism if inspectable without changing actual site data
+reference_urls:
+  - https://github.com/NVIDIA/IsaacCapture/pull/1170#issuecomment-6665746778
+  - https://github.com/NVIDIA/IsaacCapture/blob/main/docs/source/teleop/quick_start.rst
+  - https://github.com/davidwei/robotics-labbook/blob/main/ideas/IDEA-20261027-003/README.md
+  - https://github.com/davidwei/robotics-labbook/blob/main/ideas/IDEA-20261015-001/README.md
+related_repositories:
+  - NVIDIA/IsaacCapture
+  - davidwei/robotics-labbook
+related_ideas:
+  - IDEA-20261027-003
+  - IDEA-20261015-001
+target_hardware: >-
+  Meta Quest with supported browser preferred; PICO only if its browser meets
+  the deployed NVIDIA client version's requirements. Use simulator or
+  connection-only CloudXR service, not a physical robot.
+prerequisites:
+  - >-
+    Confirm headset/browser version, workstation, installed IsaacCapture/CloudXR
+    version, active IP and port, Wi-Fi access, TLS/certificate state, and
+    hosted-client URL/version (initial candidate: v1.6.152).
+  - >-
+    Use NVIDIA's unmodified documented client-first path: do not start at
+    the certificate URL or use the PR 1170 /connect/ helper.
+  - >-
+    If using https://HOST:48322/client/, confirm the service actually hosts
+    the static web client; the bare / URL is only the certificate endpoint.
+  - >-
+    If comparing two hosts, ensure both are known, independently reachable,
+    and have separately identified CloudXR services.
+safety: >-
+  Browser/headset connectivity only. No G1/SO-101 command publishing or physical
+  motion is authorized. Do not change unrelated headset/browser site data.
+evidence_to_capture:
+  - Browser and headset versions, exact client URLs (without private tokens), server labels and IP/port
+  - Number of manual host-IP and port entries for every trial
+  - Client field values before/after certificate acceptance, reload, restart, and host switch
+  - Screenshots or short operator notes for certificate, connection, and error outcomes
+  - Observed preference/storage persistence; storage mechanism only if directly inspected
+  - Runtime/CloudXR logs for connection attempts and codec/browser compatibility failures
+readiness: ready_for_headset_only_validation; physical_robot_not_required
+physical_validation_status: not started; no robot motion required or authorized
+next_agent_action: >-
+  On 2026-11-11 run the bounded headset/browser protocol in plan.md;
+  record observed pass/fail in an evidence/session record without assuming
+  browser persistence or interpreting a PICO version failure as a workflow failure.
