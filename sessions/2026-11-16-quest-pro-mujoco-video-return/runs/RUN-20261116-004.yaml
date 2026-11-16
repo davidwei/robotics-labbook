@@ -1,0 +1,54 @@
+id: RUN-20261116-004
+date: 2026-11-16
+experiment: EXP-20261116-001
+session: SESSION-20261116-002
+classification: physical_headset_simulation_run
+objective: Display live MuJoCo desktop return in Quest while exercising bilateral grip-controlled simulation.
+code:
+  sender_status: local_snapshot
+  sender_revision_v2_sha256: d592340f2b9a2dec6a52b0b5e939b5e859c6a159ff950c9e1ee8f58550807192
+  sender_reference_revision: 8bedc7bb225628235f97b6e51bfde5a2a3704031
+  quest_client_inspected_revision: 07a28333341629008187e988b73b48bced316092
+  python_sample_revision: 79e5cb8a56e3455515ce1b476e993c764ec58739
+configuration:
+  quest_release: v1.0.1
+  video_source: ZEDMINI
+  capture: X11 display :1 at 1920x1080
+  transform: 1280x720 monoscopic view duplicated side-by-side to 2560x720
+  requested_video: H.264 2560x720 60fps 4000000bps
+  encoder: FFmpeg h264_nvenc Main level 4.2, zero latency, no B frames
+  simulator_scale_factor: 0.5
+  simulator_visualize_placo: false
+preflight:
+  sender_unit_tests_v2: 3_passed
+  wrapped_control_mock: 10_AUD_framed_access_units_received
+  competing_sdk_client: none
+  tracking_service_pid: 80174
+result: pass_bounded_combined_video_and_control
+observations:
+  - Operator saw the Linux desktop/MuJoCo view in the Quest headset.
+  - Sustained stream began at 2026-11-16T15:07:56-08:00 and received CLOSE_CAMERA at 15:11:08-08:00.
+  - Sender reported approximately 60fps and 2.7-3.0Mbit/s, reaching 11400 frames before close.
+  - Operator reported right, left and bimanual simulated-arm motion while viewing the return stream.
+  - Operator reported that the arm did not follow controller repositioning after grip release.
+  - A tracking reconnect was required before simultaneous control worked.
+  - Exact simulator, sender and recorder PIDs were absent after deliberate stop; PC Service remained running intentionally.
+deviations:
+  - Initial v1 candidate omitted the Android TCP outer packet wrapper and produced green/error headset output without sending video.
+  - Corrected v2 first physical stream ended after its first access unit with broken pipe; the second Listen attempt was sustained.
+  - Simulator console lacks hand activation/deactivation lines, so the control result relies on operator observation and desktop video.
+capture:
+  evidence_root: /home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence/video-return-7Ky3bWE4
+  desktop_video: desktop-recording.mp4
+  desktop_video_sha256: 1b91a4d35da55e2b746246ad4b236123dd6c798ab52497d1bd07a3ce2cd68930
+  desktop_video_duration_s: 2193.533333
+  desktop_video_format: H.264 1920x1080 15fps
+  sender_v1_log_sha256: 1f8575962287166c818f8c1921a1dc077c52eb024241f968393397fd6078b9ce
+  sender_v2_log_sha256: 4da0e083501027334ad23be3063eb5c887ace692478448fc46b4285b7936c301
+  simulator_log_sha256: e3c7286eb6cba31b786ed4ec616c2928413c436cd667081a91caf459c96dcccf
+limitations:
+  - Single bounded physical-headset run and operator report.
+  - Duplicated monoscopic desktop view, not calibrated stereo.
+  - Sender frame rate is not an independent measurement of headset presentation rate.
+  - No quantitative latency, image integrity, joint trajectory or long-run reliability measurement.
+  - No physical robot was connected or commanded.

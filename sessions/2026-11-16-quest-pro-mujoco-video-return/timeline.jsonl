@@ -1,0 +1,9 @@
+{"time":"2026-11-16T14:34:39-08:00","type":"run_boundary","detail":"Created evidence root, snapshotted sender v1, started desktop recording, sender and simulator."}
+{"time":"2026-11-16T15:00:58-08:00","type":"failed_attempt","detail":"Quest connected; v1 rejected the Android outer packet wrapper. Operator later reported green square and data reception error. No video access unit was sent."}
+{"time":"2026-11-16T15:04:43-08:00","type":"software_validation","detail":"Corrected wrapper parsing passed three tests and a full wrapped-control mock receiving ten H.264 access units."}
+{"time":"2026-11-16T15:07:30-08:00","type":"diagnostic","detail":"Corrected sender connected and sent one access unit; video connection ended with broken pipe and headset sent CLOSE_CAMERA."}
+{"time":"2026-11-16T15:07:56-08:00","type":"run_start","detail":"Second corrected Listen attempt connected to Quest 10.9.0.127:12345 and began sustained 2560x720 H.264 streaming."}
+{"time":"2026-11-16T15:08:00-08:00","type":"operator_observation","time_precision":"approximate","detail":"Operator reported seeing the desktop in the headset. Tracking reconnect restored controller operation after a stale connection."}
+{"time":"2026-11-16T15:09:00-08:00","type":"operator_observation","time_precision":"approximate","detail":"Operator reported right and left simulated arms moved during same-side grip stages while viewing the return stream."}
+{"time":"2026-11-16T15:10:00-08:00","type":"operator_observation","time_precision":"approximate","detail":"Operator reported released-grip reposition did not move the arm, then reported bimanual control working."}
+{"time":"2026-11-16T15:11:08-08:00","type":"run_stop","detail":"Headset sent CLOSE_CAMERA after 11400 logged frames; stream ended. Simulator, sender and recorder were deliberately stopped and exact PIDs were absent."}

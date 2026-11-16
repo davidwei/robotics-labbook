@@ -3,16 +3,17 @@ title: MuJoCo desktop video return to Meta Quest Pro during XRoboToolkit control
 project: unitree-g1
 owner: David Wei
 participants: [David Wei, Codex]
-status: ready_for_lab
+status: validation_pending
 prepared_date: 2026-11-16
 timezone: America/Los_Angeles
 planned_execution_date: 2026-11-16
+actual_execution_date: 2026-11-16
 mode: development_and_in_lab_simulation
 environment_type: simulation_with_physical_headset
-readiness: headset_run_ready_after_final_port_and_process_preflight
+readiness: bounded_combined_run_passed_review_pending
 physical_validation_required: true
 physical_validation_scope: Meta Quest Pro display and Touch Pro controllers only; no physical robot
-physical_validation_status: not_started
+physical_validation_status: quest_display_and_bilateral_simulation_control_observed
 physical_robot_validation_status: not_in_scope
 question: >-
   Can the released XRoboToolkit Quest v1.0.1 client display a live H.264
@@ -62,7 +63,8 @@ candidate:
     inspected_revision: 8bedc7bb225628235f97b6e51bfde5a2a3704031
   desktop_sender:
     path: /home/dwei/meta_quest_xrobotoolkit/mujoco-quest-video-sender/quest_video_sender.py
-    status: local_experimental_candidate_to_snapshot_at_run_boundary
+    status: successful_local_snapshot_not_yet_in_tracked_repository
+    successful_snapshot_sha256: d592340f2b9a2dec6a52b0b5e939b5e859c6a159ff950c9e1ee8f58550807192
     capture: X11 display :1 at 1920x1080
     transform: scale_to_1280x720_then_duplicate_side_by_side
     codec: H.264 Main level 4.2 via FFmpeg h264_nvenc
@@ -97,15 +99,24 @@ fallbacks:
   - If control and video interfere, isolate video-only and tracking-only paths before another combined attempt.
   - If the Quest does not connect to TCP 13579, verify the desktop listener and same-LAN reachability before changing code.
 related_experiments: [EXP-20261115-001]
-related_sessions: []
-findings: []
+related_sessions: [SESSION-20261116-002]
+findings:
+  - status: proposed
+    statement: >-
+      The released Quest v1.0.1 client displayed a duplicated monoscopic Linux
+      desktop return while right, left and bimanual controller stages operated
+      the stock dual-UR5e MuJoCo simulation in one bounded run.
+    evidence: SESSION-20261116-002 RUN-20261116-004
+    limitations: >-
+      Single operator-observed run without synchronized controller/joint
+      telemetry, Quest-side recording, quantitative latency or physical robot.
 review:
   status: pending
-  note: Protocol and local mock receiver passed; physical headset display has not yet been tested.
+  note: Physical headset display and combined qualitative control passed; desktop video review remains pending.
 planning_provenance:
   labbook_revision: aa8d2b6
   sources: [upstream_quest_source, upstream_orin_sender_source, local_mock_receiver, operator_request]
 next_agent_action: >-
-  Create a new run evidence directory, snapshot/hash the sender, verify ports and
-  processes, start sender/simulator/desktop capture, then ask the operator to
-  perform only the headset Listen and bounded controller stages.
+  Review the desktop video around the successful stages. If the sender will be
+  reused, move it into a tracked repository with stronger packet-fragmentation
+  tests and a repeatable run wrapper; plan latency/integrity measurement separately.

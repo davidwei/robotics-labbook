@@ -1,0 +1,32 @@
+id: SESSION-20261116-002
+date: 2026-11-16
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: simulation lab, local Ubuntu desktop
+experiments: [EXP-20261116-001]
+status: ended_bounded_combined_run_passed_review_pending
+mode: development_and_in_lab_simulation
+hardware:
+  headset: Meta Quest Pro
+  controllers: two Touch Pro controllers
+  gpu: NVIDIA GeForce RTX 5090
+  physical_robot: none
+capture:
+  method: live
+  sources: [operator_observation, codex_session, sender_logs, simulator_console, desktop_video, filesystem]
+  coverage: partial
+  known_gaps:
+    - No Quest-side screenshot or recording of the returned view.
+    - No synchronized controller or MuJoCo joint telemetry.
+    - Simulator console did not emit hand-activation lines for the observed movements.
+activities:
+  - type: development
+    description: Implemented and locally tested a protocol-compatible X11-to-Quest H.264 sender.
+  - type: diagnostic
+    description: Preserved the failed real-Quest attempt caused by a missing outer control-packet wrapper.
+  - type: run
+    run_id: RUN-20261116-004
+    description: Sustained headset desktop return with right, left, released-grip and bimanual simulation stages.
+result: bounded_combined_video_return_and_control_passed_review_pending
+next_agent_action: review_desktop_video_then_track_sender_and_design_end_to_end_health_ack_if_prioritized
+physical_validation_status: quest_display_and_controllers_exercised_no_physical_robot

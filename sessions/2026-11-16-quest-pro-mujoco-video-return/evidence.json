@@ -1,0 +1,42 @@
+{
+  "evidence_root": "/home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence/video-return-7Ky3bWE4",
+  "artifacts": [
+    {
+      "path": "desktop-recording.mp4",
+      "sha256": "1b91a4d35da55e2b746246ad4b236123dd6c798ab52497d1bd07a3ce2cd68930",
+      "size_bytes": 98148589,
+      "duration_seconds": 2193.533333,
+      "role": "desktop evidence spanning preflight, failures, recovery and combined run"
+    },
+    {
+      "path": "sender.log",
+      "sha256": "1f8575962287166c818f8c1921a1dc077c52eb024241f968393397fd6078b9ce",
+      "role": "v1 failed control-wrapper attempt"
+    },
+    {
+      "path": "sender-v2.log",
+      "sha256": "4da0e083501027334ad23be3063eb5c887ace692478448fc46b4285b7936c301",
+      "role": "corrected sender physical stream evidence"
+    },
+    {
+      "path": "simulator.log",
+      "sha256": "e3c7286eb6cba31b786ed4ec616c2928413c436cd667081a91caf459c96dcccf",
+      "role": "simulator lifecycle, reconnect and parse-warning evidence"
+    },
+    {
+      "path": "code-snapshot-v1-failed-control-framing/quest_video_sender.py",
+      "sha256": "810354f7585b52b09783476ea4e99c7e9c6a32313821f9d44998a18c3ae50c0a",
+      "role": "failed initial physical candidate"
+    },
+    {
+      "path": "code-snapshot-v2/quest_video_sender.py",
+      "sha256": "d592340f2b9a2dec6a52b0b5e939b5e859c6a159ff950c9e1ee8f58550807192",
+      "role": "successful corrected candidate"
+    }
+  ],
+  "known_missing": [
+    "Quest-side recording or screenshot",
+    "synchronized controller and joint telemetry",
+    "independent headset presentation-rate and latency measurement"
+  ]
+}
