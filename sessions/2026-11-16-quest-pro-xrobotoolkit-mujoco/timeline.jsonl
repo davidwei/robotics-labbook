@@ -1,0 +1,15 @@
+{"time_local":"2026-11-16T11:10:18-08:00","type":"session_start","detail":"EXP-20261115-001 execution workspace created."}
+{"type":"preflight","detail":"Release APK/PC Service hashes verified; PC Service extracted rather than system-installed; Python sample pinned at 79e5cb8a56e3455515ce1b476e993c764ec58739."}
+{"type":"dependency_deviation","detail":"Pinned cmeel-urdfdom 4.0.1 and cmeel-tinyxml2 10.0.0 after ABI diagnostics; pip check passed."}
+{"type":"diagnostic","detail":"First 120-second input capture was all zero because required app toggles were not yet enabled; retained as input-6L3ibYh1."}
+{"type":"run","run_id":"RUN-20261116-001","detail":"Passing 120-second input capture retained at input-HyV4Pb8B; required motion/grip evidence preceded a 31-second frozen tail."}
+{"time_utc":"2026-11-16T21:46:04+00:00","type":"run","run_id":"RUN-20261116-002","detail":"Initial MuJoCo attempt; concurrent SDK diagnostics and missing recording invalidated control interpretation."}
+{"type":"diagnostic","detail":"Repeated zero-stream checks occurred while Quest UI reported WORKING; app/panel pause state and stale PC forwarding were investigated."}
+{"type":"development","detail":"Unbuilt Quest motion-status source draft deferred to IDEA-20261116-001; not executed."}
+{"type":"recovery","detail":"Released Quest app force-stopped; exact PC Service PID stopped and restarted; saved IP reselected; 7-second probe then showed 129 source changes and finite poses."}
+{"time_utc":"2026-11-16T22:15:49+00:00","type":"run","run_id":"RUN-20261116-003","detail":"Clean transport repeat launched with verified direct FFmpeg capture and no competing SDK probe."}
+{"time_utc":"2026-11-16T22:16:18+00:00","type":"observation","run_id":"RUN-20261116-003","detail":"Console logged right_hand activated; right-arm pose change visible."}
+{"time_utc":"2026-11-16T22:17:26+00:00","type":"observation","run_id":"RUN-20261116-003","detail":"Console logged left_hand activated; left-arm pose change visible; brief unintended opposite-side activations also occurred."}
+{"time_utc":"2026-11-16T22:18:04+00:00","type":"observation","run_id":"RUN-20261116-003","detail":"Both-hand activation and bimanual visual evidence retained."}
+{"time_utc":"2026-11-16T22:19:10+00:00","type":"stop","run_id":"RUN-20261116-003","detail":"Teleoperation stopped message printed and recorded PID absent; wrapper status 137 shows 10-second kill escalation, so clean exit is not claimed."}
+

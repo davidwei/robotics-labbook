@@ -1,0 +1,18 @@
+{
+  "session": "SESSION-20261116-001",
+  "external_root": "/home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence",
+  "artifacts": [
+    {"id": "r1-snapshots", "path": "input-HyV4Pb8B/sdk-snapshots.jsonl", "size_bytes": 2294411, "sha256": "661159d70263310a0d68b3aa45e278d049e131401515c7c6e64425f2b9ab19f5"},
+    {"id": "r1-analysis", "path": "input-HyV4Pb8B/r1-analysis.json", "sha256": "13ddce51b6c03d0d57d9194a56c2350fcbf8cb6c2a9a43da18005403314d4d44"},
+    {"id": "r2-console", "path": "simulation-ziujKiFY/console.txt", "sha256": "c1d09500a27f383b8324395774353ae3f79d4a266be668990ded257b29a0f517"},
+    {"id": "r3-video", "path": "simulation-F7V5xLDU/screen-recording.mp4", "size_bytes": 25259327, "sha256": "fcdc2b636b694c7fe73fcebae7ccdee4f197dc7b18289ca98ad64b6977354687"},
+    {"id": "r3-console", "path": "simulation-F7V5xLDU/console.txt", "sha256": "19844d34634964d230ba070a32dba7c723c0c4189d6ff4a5116fc77bf02eafe8"},
+    {"id": "r3-right", "path": "simulation-F7V5xLDU/right-held.png", "sha256": "935d2838d27cf147326e0ab7f0a7afc624c919ccf965429cfd1960d133b3b396"},
+    {"id": "r3-left", "path": "simulation-F7V5xLDU/left-held.png", "sha256": "9aca130379c4643eaa9f346b29616f4a46976bdee8e6ba5fab0c72589024b664"},
+    {"id": "r3-bimanual", "path": "simulation-F7V5xLDU/bimanual-held.png", "sha256": "c2da438ae1b0987f7f9ce8913c08d4b115641f1e47ff32bf08d63d9738ae16dd"},
+    {"id": "quest-clean-restart-panel", "path": "quest-panel-after-clean-restart.png", "sha256": "1877d2b70b2557116d25956ca87e234f06b432aaf57c63c06e24022b2c5e7a3f"}
+  ],
+  "known_missing": ["R2 desktop video", "synchronized numeric MuJoCo joint telemetry", "recorded voice-prompt audio"],
+  "retention": "External evidence remains in the local experiment workspace and is not copied into Git."
+}
+

@@ -1,0 +1,39 @@
+id: SESSION-20261116-001
+date: 2026-11-16
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: simulation lab, local Ubuntu desktop
+experiments: [EXP-20261115-001]
+status: ended_minimum_useful_result_met_control_review_pending
+mode: development_and_in_lab_simulation
+hardware:
+  headset: Meta Quest Pro
+  controllers: two Touch Pro controllers
+  physical_robot: none
+capture:
+  method: live
+  sources: [operator_actions, codex_session, filesystem, sdk_snapshots, simulator_console, desktop_video, adb_screenshots]
+  coverage: partial
+  known_gaps:
+    - No headset-view video beyond discrete ADB screenshots.
+    - R2 desktop recording was not created; discrete screenshots and console remain.
+    - R3 has no numerical MuJoCo joint telemetry or synchronized controller trace.
+    - Voice prompts were not recorded as audio; callout times are approximate file/timeline events.
+activities:
+  - type: preflight
+    description: Verified release artifacts, extracted PC Service, installed isolated Python dependencies and rendered the stock dual-UR5e model.
+  - type: run
+    run_id: RUN-20261116-001
+    description: Input-only Quest/controller compatibility capture.
+  - type: diagnostic
+    run_id: RUN-20261116-002
+    description: Initial MuJoCo attempt compromised by concurrent SDK probes and missing planned recording.
+  - type: run
+    run_id: RUN-20261116-003
+    description: Clean transport restart followed by bilateral and bimanual MuJoCo control evidence.
+  - type: development
+    description: Deferred an unbuilt in-headset controller motion-status draft to IDEA-20261116-001.
+result: minimum_useful_result_met_full_success_pending
+next_agent_action: review_R3_video_then_repeat_clutch_sequence_if_needed_track_exit_hang_separately
+physical_validation_status: quest_and_controllers_exercised_no_physical_robot
+

@@ -3,16 +3,17 @@ title: Meta Quest Pro controller input to Linux dual-UR5e MuJoCo via XRoboToolki
 project: unitree-g1
 owner: David Wei
 participants: []
-status: proposed
+status: validation_pending
 prepared_date: 2026-11-15
 timezone: America/Los_Angeles
-planned_execution_date: null
+planned_execution_date: 2026-11-16
+actual_execution_date: 2026-11-16
 mode: development
 environment_type: simulation
-readiness: preparation_required
+readiness: minimum_useful_result_met_clutch_repeat_review_pending
 physical_validation_required: true
 physical_validation_scope: Meta Quest Pro and Touch Pro controllers only; no physical robot
-physical_validation_status: not_started
+physical_validation_status: quest_input_and_bilateral_simulation_observed_shutdown_abnormal
 physical_robot_validation_status: not_in_scope
 question: >-
   Can XRoboToolkit-Quest v1.0.1 on Meta Quest Pro supply usable head and controller
@@ -130,11 +131,24 @@ related_repositories:
   - XR-Robotics/XRoboToolkit-Teleop-Sample-Python
 related_experiments:
   - EXP-20261111-001
-related_sessions: []
-findings: []
+related_sessions: [SESSION-20261116-001]
+findings:
+  - status: proposed
+    statement: >-
+      The released Quest v1.0.1 client and Linux PC Service delivered responsive
+      Meta Quest Pro controller/grip input to both arms of the stock dual-UR5e
+      MuJoCo example after a clean app/service restart.
+    evidence: SESSION-20261116-001 RUN-20261116-001 and RUN-20261116-003
+    limitations: >-
+      Single setup/run; brief unintended grip activations, no numerical joint
+      telemetry, and timeout kill escalation after the stop handler.
 review:
   status: pending
-  note: Operational plan only; no measured results or validated compatibility findings.
+  note: >-
+    Minimum useful VR-control result captured. Video review and clutch
+    repeatability remain in this experiment; the post-Ctrl+C process-exit defect
+    is tracked as a separate software-lifecycle issue and does not negate the
+    observed control result.
 planning_provenance:
   labbook_revision: 0d10331006ba6b453aa1d81e52542511f626646d
   sources: [current_github_sources, release_metadata, labbook_skill, draft_lab_protocol]
@@ -146,7 +160,6 @@ plan_checks:
   metadata_syntax: experiment.yaml parsed successfully
   runtime_validation: Not performed; no procedure commands, installation, or headset tests executed
 next_agent_action: >-
-  Prepare the isolated Linux desktop environment and pass the offline import/model/viewer
-  gates, then run the input-only Quest Pro check. Follow procedure.md and record the
-  actual execution date and evidence. Stop at the first unresolved gate; retain a
-  partial or blocked result rather than assuming later stages passed.
+  Review the R3 video, then perform one short isolated right/left
+  grip-release-reposition-regrip repeat if full clutch validation is still
+  desired. Track the process-exit hang separately from VR control.

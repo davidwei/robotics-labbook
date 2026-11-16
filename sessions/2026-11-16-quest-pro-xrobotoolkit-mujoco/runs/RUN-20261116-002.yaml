@@ -1,0 +1,23 @@
+id: RUN-20261116-002
+date: 2026-11-16
+experiment: EXP-20261115-001
+session: SESSION-20261116-001
+classification: diagnostic_simulation_run
+objective: Exercise the initial bounded right/left/bimanual MuJoCo sequence.
+code:
+  python_sample_revision: 79e5cb8a56e3455515ce1b476e993c764ec58739
+configuration:
+  scale_factor: 0.5
+  visualize_placo: false
+result: invalidated_by_observer_instrumentation_and_capture_gap
+observations:
+  - A separate SDK client read right grip 1.0, but the simulator console recorded no corresponding activation.
+  - Additional SDK probes may have competed with or disrupted the simulator stream; this is a hypothesis, not a confirmed SDK limitation.
+  - Saved MuJoCo screenshots did not establish a valid control sequence.
+  - The planned screen recording file was not created.
+  - Ctrl+C printed the stop message, followed by native abnormal-shutdown output; wrapper status was 124.
+artifacts:
+  console: /home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence/simulation-ziujKiFY/console.txt
+  console_sha256: c1d09500a27f383b8324395774353ae3f79d4a266be668990ded257b29a0f517
+limitations: Do not use this run to decide nominal controller-to-arm compatibility.
+

@@ -1,0 +1,29 @@
+id: RUN-20261116-001
+date: 2026-11-16
+experiment: EXP-20261115-001
+session: SESSION-20261116-001
+classification: input_only_run
+objective: Verify live head/controller poses, handed movement and both side-grip press/release states before simulation.
+code:
+  python_sample_revision: 79e5cb8a56e3455515ce1b476e993c764ec58739
+  quest_release: v1.0.1
+  pc_service_release: v1.0.0
+configuration:
+  polling_target_hz: 20
+  duration_s: 120
+  head: true
+  controller: true
+  send: true
+result: passed_with_post_sequence_stream_freeze
+observations:
+  - 2400 samples completed in 120.00005422 seconds with 1737 source timestamp changes.
+  - Head, left-controller and right-controller poses were finite and independently responsive.
+  - Right grip exceeded 0.9 for samples 722-799; left grip exceeded 0.9 for samples 965-1012.
+  - Both final grip values were zero.
+  - Source values repeated for the final 31 seconds after the required sequence; this tail is not treated as live tracking.
+artifacts:
+  snapshots: /home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence/input-HyV4Pb8B/sdk-snapshots.jsonl
+  snapshots_sha256: 661159d70263310a0d68b3aa45e278d049e131401515c7c6e64425f2b9ab19f5
+  analysis: /home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence/input-HyV4Pb8B/r1-analysis.json
+limitations: Cached sequential getters are not raw packets and do not expose per-controller validity or clock synchronization.
+

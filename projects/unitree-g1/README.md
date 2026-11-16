@@ -2,12 +2,12 @@
 
 Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earlier project history is not reconstructed here.
 
-- **Quest Pro simulation test (proposed; execution date TBD):** [XRoboToolkit Quest → Linux → dual-UR5e MuJoCo](../../experiments/EXP-20261115-001/plan.md)
+- **Quest Pro simulation test (minimum useful result captured 2026-11-16):** [XRoboToolkit Quest → Linux → dual-UR5e MuJoCo](../../experiments/EXP-20261115-001/plan.md)
   ([operating procedure](../../experiments/EXP-20261115-001/procedure.md),
   [experiment definition](../../experiments/EXP-20261115-001/experiment.yaml)).
-  Validate the native Quest client, input transport, grip/clutch controls, restart and
-  verified stop on a stock simulation before a G1 adapter. Preparation required;
-  no installation, headset test, simulation run, or physical-robot validation completed.
+  The released client produced passing input evidence and bilateral motion in the stock
+  simulation after a clean app/service restart. Clutch isolation had operator deviations,
+  and the stop handler required timeout kill escalation; full validation remains pending.
 - Experiment: [G1 embodiment compatibility](../../experiments/EXP-20261009-001/experiment.yaml).
 - **Next lab visit (planned 2026-11-11):** [CloudXR no-ADB client-first bookmark experiment](../../experiments/EXP-20261111-001/plan.md)
   ([experiment definition](../../experiments/EXP-20261111-001/experiment.yaml)).
@@ -27,6 +27,7 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   and further physical tests remain stopped pending offline analysis and a new
   operator decision.
 - Sessions:
+  - [2026-11-16 Quest Pro XRoboToolkit dual-UR5e MuJoCo](../../sessions/2026-11-16-quest-pro-xrobotoolkit-mujoco/session.md).
   - [2026-11-03 PICO voice/controller physical run](../../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md).
   - [2026-11-03 PICO voice/controller input-only dry rehearsal](../../sessions/2026-11-03-g1-sonic-pico-voice-dryrun/session.md).
   - [2026-10-30 PC2 SONIC bring-up and four gantry-protected physical diagnostics](../../sessions/2026-10-30-g1-sonic-pc2-suspended/session.md).

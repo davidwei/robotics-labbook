@@ -1,0 +1,37 @@
+id: RUN-20261116-003
+date: 2026-11-16
+experiment: EXP-20261115-001
+session: SESSION-20261116-001
+classification: simulation_run_with_clutch_and_shutdown_deviations
+objective: Repeat bilateral and bimanual control after a clean Quest-app and PC-Service restart, with the simulator as the only SDK client.
+code:
+  python_sample_revision: 79e5cb8a56e3455515ce1b476e993c764ec58739
+  tracked_worktree: clean
+configuration:
+  scale_factor: 0.5
+  visualize_placo: false
+  quest_release: v1.0.1
+  pc_service_release: v1.0.0
+preflight:
+  source_changes_in_7s: 129
+  grips: [0.0, 0.0]
+  screen_recording_verified_before_launch: true
+result: bilateral_motion_observed_minimum_useful_pass_full_gate_pending
+observations:
+  - The simulator console logged right_hand activation and the right simulated arm visibly changed pose.
+  - The simulator console logged left_hand activation and the left simulated arm visibly changed pose.
+  - A later stage logged both hands active and preserved bimanual visual evidence.
+  - Multiple brief unintended grip activations/deactivations occurred during repositioning; clean clutch independence was not established.
+  - Ctrl+C printed Teleoperation stopped and the recorded PID was later absent.
+  - The timeout wrapper status was 137 after the 10-second kill escalation; normal process exit is not established.
+capture:
+  video: /home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence/simulation-F7V5xLDU/screen-recording.mp4
+  video_sha256: fcdc2b636b694c7fe73fcebae7ccdee4f197dc7b18289ca98ad64b6977354687
+  video_duration_s: 204.6
+  video_format: H.264 1920x1080 15fps
+  console: /home/dwei/meta_quest_xrobotoolkit/xrbt-quest-mujoco.da7RUqYj/evidence/simulation-F7V5xLDU/console.txt
+  console_sha256: 19844d34634964d230ba070a32dba7c723c0c4189d6ff4a5116fc77bf02eafe8
+limitations:
+  - Qualitative visual evidence only; no numeric joint trajectory or synchronized controller telemetry.
+  - Single restart run with operator clutch deviations; repeatability is not established.
+
