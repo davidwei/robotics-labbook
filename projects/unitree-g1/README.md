@@ -20,6 +20,8 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   adds value over NVIDIA's documented client-first flow.
 - Follow-up idea: [native G1-23 MuJoCo embodiment support](../../ideas/IDEA-20261027-001/README.md),
   based on the maintainer guidance after PR #4651 approval.
+- Quest diagnostic idea: [in-headset controller motion/grip status](../../ideas/IDEA-20261116-001/README.md),
+  with an unbuilt local Unity source draft; baseline released-client debugging remains the current priority.
 - Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
   implementation began at LeRobot `a65596cb`; later candidate physical validation failed at RUN-006
   and further physical tests remain stopped pending offline analysis and a new
