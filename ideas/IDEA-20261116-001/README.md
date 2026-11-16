@@ -1,8 +1,8 @@
 # IDEA-20261116-001 — Add in-headset controller motion diagnostics to XRoboToolkit Quest
 
-Status: proposed; local source draft exists, but it has not been compiled, installed, or tested.  
-Project: [Unitree G1](../../projects/unitree-g1/README.md). Related experiment: [EXP-20261115-001](../../experiments/EXP-20261115-001/plan.md).  
-Target: `XR-Robotics/XRoboToolkit-Unity-Client-Quest`; Meta Quest Pro and Touch Pro controllers.  
+Status: proposed; local source draft exists, but it has not been compiled, installed, or tested.
+Project: [Unitree G1](../../projects/unitree-g1/README.md). Related experiment: [EXP-20261115-001](../../experiments/EXP-20261115-001/plan.md).
+Target: `XR-Robotics/XRoboToolkit-Unity-Client-Quest`; Meta Quest Pro and Touch Pro controllers.
 Physical validation: not started. No physical robot is in scope.
 
 ## Objective
@@ -36,4 +36,3 @@ The dirty local draft is not a durable code revision and is not evidence of a wo
 Prerequisites: Unity `2021.3.45f2`, its Android build module, a valid Unity license, resolved Meta XR packages, authorized Quest ADB installation, and a preserved released-app fallback. The current desktop has no Unity editor or detected license.
 
 Next agent action: defer toolchain installation until the released client/MuJoCo baseline is resolved or this diagnostic is explicitly prioritized. Then build the separate package, inspect compile/build reports, install alongside the released app, and validate `LOST`/`STILL`/`MOVING`, grip values, Send-off behavior, and PC stream correspondence. Do not replace the released APK or generalize a UI indication into transport/simulator validation.
-
