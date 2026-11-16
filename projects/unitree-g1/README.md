@@ -8,6 +8,11 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   The released client produced passing input evidence and bilateral motion in the stock
   simulation after a clean app/service restart. Clutch isolation had operator deviations,
   and the stop handler required timeout kill escalation; full validation remains pending.
+- **Quest Pro MuJoCo video return (ready for bounded headset run 2026-11-16):**
+  [live desktop return during controller operation](../../experiments/EXP-20261116-001/plan.md)
+  ([experiment definition](../../experiments/EXP-20261116-001/experiment.yaml)).
+  A local protocol-compatible sender passed a mock Quest receiver preflight; the
+  released headset decoder/display and simultaneous control path remain to be tested.
 - Experiment: [G1 embodiment compatibility](../../experiments/EXP-20261009-001/experiment.yaml).
 - **Next lab visit (planned 2026-11-11):** [CloudXR no-ADB client-first bookmark experiment](../../experiments/EXP-20261111-001/plan.md)
   ([experiment definition](../../experiments/EXP-20261111-001/experiment.yaml)).

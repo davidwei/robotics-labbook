@@ -1,0 +1,111 @@
+id: EXP-20261116-001
+title: MuJoCo desktop video return to Meta Quest Pro during XRoboToolkit control
+project: unitree-g1
+owner: David Wei
+participants: [David Wei, Codex]
+status: ready_for_lab
+prepared_date: 2026-11-16
+timezone: America/Los_Angeles
+planned_execution_date: 2026-11-16
+mode: development_and_in_lab_simulation
+environment_type: simulation_with_physical_headset
+readiness: headset_run_ready_after_final_port_and_process_preflight
+physical_validation_required: true
+physical_validation_scope: Meta Quest Pro display and Touch Pro controllers only; no physical robot
+physical_validation_status: not_started
+physical_robot_validation_status: not_in_scope
+question: >-
+  Can the released XRoboToolkit Quest v1.0.1 client display a live H.264
+  return view of the Linux MuJoCo desktop while its independent tracking path
+  simultaneously controls the stock dual-UR5e simulation?
+hypothesis: >-
+  A desktop sender implementing the upstream OPEN_CAMERA control packet and
+  length-prefixed H.264 access-unit protocol can deliver a duplicated
+  monoscopic 2560x720 view through the released Quest decoder without
+  preventing controller/grip input from reaching MuJoCo.
+scope:
+  includes:
+    - Released XRoboToolkit Quest v1.0.1 app on Meta Quest Pro
+    - Existing Linux PC Service and validated controller transport
+    - Stock dual-UR5e MuJoCo simulator
+    - X11 desktop capture duplicated side-by-side for the Quest stereo presentation path
+    - H.264 NVENC stream requested through the app's ZEDMINI Listen workflow
+    - Concurrent qualitative video continuity and bilateral control observation
+  excludes:
+    - Physical robot commands or motion
+    - Calibrated stereo rendering, depth correctness or camera intrinsics
+    - Quantitative motion-to-photon latency, image-quality or packet-loss characterization
+    - Unity/Quest app rebuild
+    - General reliability beyond the bounded run
+success_criteria:
+  - Offline mock Quest control/receiver test accepts an OPEN_CAMERA request and receives at least ten correctly framed H.264 access units.
+  - The released Quest app requests the stream and the sender logs a connection to the headset video receiver on TCP 12345.
+  - The operator sees and identifies the live MuJoCo desktop view in the headset for at least 30 seconds without a black or frozen view.
+  - While viewing the return stream, deliberate right- and left-grip motions each produce recognizable same-side simulated-arm motion.
+  - A deliberate grip-release pause leaves the corresponding arm still while the return view continues updating.
+  - Evidence preserves the sender log, simulator log, desktop recording, exact sender snapshot/hash, and operator headset-view observation.
+minimum_useful_experiment:
+  - Quest OPEN_CAMERA request received with requested dimensions, rate and target address preserved
+  - Sender connects back to Quest port 12345 and sends the first H.264 access unit
+  - Operator reports whether a recognizable live desktop image appears
+candidate:
+  quest:
+    release: v1.0.1
+    package_id: com.xrobotoolkit.client.quest
+    apk_sha256: c8a077451e7f6b66ca688668d7b32f5a6a6c19a8c0fa4657f2e1344493c174df
+  quest_client_source:
+    repository: XR-Robotics/XRoboToolkit-Unity-Client-Quest
+    inspected_revision: 07a28333341629008187e988b73b48bced316092
+    note: Local source has an unrelated unbuilt controller-status draft; the released APK remains installed and is the test client.
+  upstream_sender_reference:
+    repository: XR-Robotics/XRoboToolkit-Orin-Video-Sender
+    inspected_revision: 8bedc7bb225628235f97b6e51bfde5a2a3704031
+  desktop_sender:
+    path: /home/dwei/meta_quest_xrobotoolkit/mujoco-quest-video-sender/quest_video_sender.py
+    status: local_experimental_candidate_to_snapshot_at_run_boundary
+    capture: X11 display :1 at 1920x1080
+    transform: scale_to_1280x720_then_duplicate_side_by_side
+    codec: H.264 Main level 4.2 via FFmpeg h264_nvenc
+    requested_output: 2560x720 up to 60fps and 4Mbps
+network:
+  desktop_ipv4: 10.9.0.149
+  quest_ipv4_last_observed: 10.9.0.127
+  video_control_tcp: 13579
+  quest_video_receiver_tcp: 12345
+  tracking_pc_service_tcp: 63901
+  sdk_grpc: 60061
+controls:
+  stream_source: ZEDMINI
+  stream_action: Quest Camera panel Listen, then enter desktop bare IPv4
+  arm_enable: same-side side grip greater than 0.9
+  stop_motion: release both grips
+  stop_video: close the remote camera window or exit the Quest app, then stop the sender
+safety:
+  - Simulation only; no physical robot process or command path may be started.
+  - Begin with small deliberate controller movements and both grips released.
+  - Stop immediately for visual discomfort, disorientation, black/frozen display, or unexpected sustained arm motion.
+  - Maintain a clear headset operating area and remove the headset before desktop recovery work.
+evidence_to_capture:
+  - Exact code hashes and sender command
+  - Sender control request, target, first frame, periodic frame/rate logs and exit
+  - Simulator console and PID boundary
+  - Desktop screen recording covering stream start and control stages
+  - Operator report of headset image continuity, comfort and recognizable motion
+  - Quest screenshot or screen recording if available without destabilizing the run
+fallbacks:
+  - If the decoder is black, retry once at 30fps while retaining 2560x720 H.264.
+  - If control and video interfere, isolate video-only and tracking-only paths before another combined attempt.
+  - If the Quest does not connect to TCP 13579, verify the desktop listener and same-LAN reachability before changing code.
+related_experiments: [EXP-20261115-001]
+related_sessions: []
+findings: []
+review:
+  status: pending
+  note: Protocol and local mock receiver passed; physical headset display has not yet been tested.
+planning_provenance:
+  labbook_revision: aa8d2b6
+  sources: [upstream_quest_source, upstream_orin_sender_source, local_mock_receiver, operator_request]
+next_agent_action: >-
+  Create a new run evidence directory, snapshot/hash the sender, verify ports and
+  processes, start sender/simulator/desktop capture, then ask the operator to
+  perform only the headset Listen and bounded controller stages.
