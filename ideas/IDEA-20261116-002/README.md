@@ -150,6 +150,136 @@ Current LeRobot `main` may not expose the historical `embodiment` field in this
 exact form. The discovery pass must reconcile the merged embodiment work with the
 current `UnitreeG1Config` and avoid designing against an obsolete constructor.
 
+## Ownership boundary: LeRobot upstream versus Moissan extensions
+
+Use a two-stage ownership model: broadly reusable robot capability belongs in
+LeRobot and its model repository, while source-specific VR integration incubates
+as a normal third-party LeRobot plugin under MoissanClub. Do not require a forked
+LeRobot control loop to run the plugin.
+
+### What should be part of LeRobot upstream
+
+LeRobot should own behavior that is intrinsic to the supported robot or required
+by every control source:
+
+| Upstream responsibility | Rationale |
+| --- | --- |
+| `UnitreeG1` robot lifecycle, simulation/hardware transport, observations, command publication and shutdown | These are robot responsibilities independent of whether commands come from VR, a leader device or a policy. |
+| Explicit G1-29/G1-23 embodiment selection and startup validation | The selected robot model, action space and observation space must be authoritative for every LeRobot user. |
+| Joint enums/names, controlled-DoF metadata, limits and action/observation features for each embodiment | Source adapters must not carry private copies of the robot contract. |
+| MuJoCo environment plumbing for each supported embodiment and end effector | Simulation model selection must not depend on a VR plugin. |
+| Native G1 model assets in the established `lerobot/unitree-g1-mujoco` Hub repository, with version/provenance information | Large robot assets already have a separate upstream distribution path; they should not be duplicated in the plugin. |
+| Reusable G1 forward/inverse kinematics and dynamics utilities that accept explicit embodiment profiles | IK needed by multiple teleoperators, policies or diagnostics is a robot capability, not an XR transport feature. |
+| Existing `Teleoperator`, config registry, plugin discovery and standard teleoperation loop | These are the stable extension points the Moissan package should consume. |
+| Small generic interface improvements proven necessary by more than this plugin | Examples could include better action-processor configuration or standardized device-health reporting, but only after a concrete gap is demonstrated. |
+
+The upstream G1-23 contribution should be useful without a headset: a program
+should be able to select a native G1-23 robot/simulator, inspect the correct
+features, run its kinematics and reject incompatible actions using only LeRobot.
+This work remains coordinated with
+[IDEA-20261027-001](../IDEA-20261027-001/README.md).
+
+Do not put XRoboToolkit or CloudXR SDK dependencies, Quest/PICO UI behavior,
+headset reconnect rules, desktop streaming, experiment launchers or site-specific
+network defaults into the upstream `UnitreeG1` robot.
+
+### What should live under MoissanClub
+
+Incubate the integration in
+[`MoissanClub/unitree_g1_lerobot`](https://github.com/MoissanClub/unitree_g1_lerobot)
+or, if Phase 0 finds a clean repository split more maintainable, a dedicated
+MoissanClub repository distributed as `lerobot_teleoperator_g1_vr`. The package
+should remain installable against an unmodified supported LeRobot revision.
+
+MoissanClub should initially own:
+
+- `XRInputSource` and the normalized XR sample contract;
+- `XRoboToolkitSource` and `CloudXRSource`, including optional SDK dependencies,
+  lifecycle, source-specific timestamps and coordinate conversion;
+- the shared clutch/rebase/freshness/fail-hold/re-clutch state machine;
+- `G1VRTeleoperator`, which composes source, interaction controller and retargeter;
+- VR retargeting policy: controller-to-end-effector scaling, workspace policy,
+  reference-pose behavior, IK seeding and target-hold semantics;
+- thin G1-29 and G1-23 retargeter adapters over upstream kinematics and embodiment
+  metadata;
+- source conformance fixtures, recorded XR traces, simulation acceptance tests,
+  diagnostics and launch configurations;
+- headset-facing status integration and the separate video-return tool or
+  sidecar configuration;
+- compatibility declarations identifying supported LeRobot, SDK and model-asset
+  revisions.
+
+If G1-23 IK does not yet exist upstream, it may be implemented in the Moissan
+repository to unblock simulation research, but it must use an explicit G1-23
+model/profile and remain clearly marked as an extension candidate. Avoid copying
+the same solver into both repositories. Once the solver is independently tested
+and no longer depends on XR semantics, propose it upstream and reduce the
+Moissan retargeter to a thin adapter.
+
+An illustrative Moissan package layout is:
+
+```text
+src/lerobot_teleoperator_g1_vr/
+  config.py
+  teleoperator.py
+  xr/
+    base.py
+    sample.py
+    xrobotoolkit.py
+    cloudxr.py
+  interaction/
+    clutch.py
+    health.py
+  retargeting/
+    base.py
+    g1_29.py
+    g1_23.py
+  diagnostics.py
+tests/
+  fixtures/xr_traces/
+  test_source_contract.py
+  test_clutch_and_stale_input.py
+  test_g1_29_retargeting.py
+  test_g1_23_retargeting.py
+  test_lerobot_plugin.py
+```
+
+The video sender can remain in the same repository during incubation, but as a
+separate process and dependency group. It must not be imported by the command
+loop or be required for headless simulation tests.
+
+### Promotion rule
+
+Move a component from MoissanClub to LeRobot only when all of the following are
+true:
+
+1. it is useful beyond one headset SDK or one Moissan experiment;
+2. its API has survived both XRoboToolkit and CloudXR integration, or another
+   comparably independent caller;
+3. it has deterministic unit tests plus simulation evidence;
+4. optional proprietary/vendor dependencies can remain outside LeRobot core;
+5. upstream maintainers agree with the public interface and maintenance burden;
+6. moving it eliminates duplication rather than creating a second implementation.
+
+Likely promotion candidates are native G1-23 model selection, embodiment metadata
+and source-independent G1 kinematics. The XR SDK adapters, clutch UX and video
+return are likely to remain Moissan extensions. A generic XR schema or health
+interface should not be proposed upstream until two independent sources expose a
+stable common contract.
+
+### Dependency direction
+
+Dependencies must point in one direction:
+
+```text
+Moissan VR plugin -> public LeRobot interfaces -> G1 robot/model implementation
+```
+
+LeRobot must never import the Moissan plugin, XRoboToolkit, CloudXR or the video
+sender. The Moissan plugin may use only public LeRobot behavior or narrowly scoped
+upstream additions; it should not monkey-patch private classes or carry a forked
+copy of `lerobot-teleoperate`.
+
 ## Phased plan
 
 ### Phase 0 — Pin current interfaces and prove the baseline
@@ -161,6 +291,8 @@ current `UnitreeG1Config` and avoid designing against an obsolete constructor.
 3. Inventory the existing CloudXR G1-29 operator and the successful XRoboToolkit
    Quest/dual-UR5e path as behavior references, not as architecture to copy.
 4. Decide the external plugin repository/package location and dependency boundary.
+5. Produce an upstream-versus-Moissan ownership manifest for every proposed
+   module and identify any missing public LeRobot interface before implementation.
 
 Exit: one recorded, reproducible G1-29 simulation baseline and a versioned set of
 interfaces. No VR implementation begins against an unverified source tree.
@@ -248,6 +380,9 @@ plugin repository during Phase 0; do not leave the reusable adapter only in an
 untracked experiment directory. Likely dependencies include current LeRobot,
 XRoboToolkit SDK, the existing G1 kinematics stack and the CloudXR input client.
 Keep transport SDKs optional so installing one source does not require the other.
+The current candidate incubation repository is `MoissanClub/unitree_g1_lerobot`;
+use a dedicated plugin package/repository if that produces a clearer release and
+dependency boundary than adding more operator code to the existing project.
 
 For each phase preserve the code revision, environment lock, model/asset revision,
 configuration, normalized input trace, IK diagnostics, commanded and observed
