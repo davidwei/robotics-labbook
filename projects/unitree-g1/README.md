@@ -27,6 +27,10 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   adds value over NVIDIA's documented client-first flow.
 - Follow-up idea: [native G1-23 MuJoCo embodiment support](../../ideas/IDEA-20261027-001/README.md),
   based on the maintainer guidance after PR #4651 approval.
+- Architecture plan: [composable VR teleoperation for XRoboToolkit/CloudXR and
+  G1-29/G1-23](../../ideas/IDEA-20261116-002/README.md). The first milestone is
+  G1-29 MuJoCo through standard LeRobot interfaces; G1-23 depends on native model
+  support, and no physical robot motion is authorized by the plan.
 - Quest diagnostic idea: [in-headset controller motion/grip status](../../ideas/IDEA-20261116-001/README.md),
   with an unbuilt local Unity source draft; baseline released-client debugging remains the current priority.
 - Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
