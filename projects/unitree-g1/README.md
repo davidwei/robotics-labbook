@@ -2,6 +2,12 @@
 
 Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earlier project history is not reconstructed here.
 
+- **Quest Pro simulation test (proposed; execution date TBD):** [XRoboToolkit Quest → Linux → dual-UR5e MuJoCo](../../experiments/EXP-20261115-001/plan.md)
+  ([operating procedure](../../experiments/EXP-20261115-001/procedure.md),
+  [experiment definition](../../experiments/EXP-20261115-001/experiment.yaml)).
+  Validate the native Quest client, input transport, grip/clutch controls, restart and
+  verified stop on a stock simulation before a G1 adapter. Preparation required;
+  no installation, headset test, simulation run, or physical-robot validation completed.
 - Experiment: [G1 embodiment compatibility](../../experiments/EXP-20261009-001/experiment.yaml).
 - **Next lab visit (planned 2026-11-11):** [CloudXR no-ADB client-first bookmark experiment](../../experiments/EXP-20261111-001/plan.md)
   ([experiment definition](../../experiments/EXP-20261111-001/experiment.yaml)).

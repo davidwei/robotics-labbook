@@ -1,0 +1,152 @@
+id: EXP-20261115-001
+title: Meta Quest Pro controller input to Linux dual-UR5e MuJoCo via XRoboToolkit
+project: unitree-g1
+owner: David Wei
+participants: []
+status: proposed
+prepared_date: 2026-11-15
+timezone: America/Los_Angeles
+planned_execution_date: null
+mode: development
+environment_type: simulation
+readiness: preparation_required
+physical_validation_required: true
+physical_validation_scope: Meta Quest Pro and Touch Pro controllers only; no physical robot
+physical_validation_status: not_started
+physical_robot_validation_status: not_in_scope
+question: >-
+  Can XRoboToolkit-Quest v1.0.1 on Meta Quest Pro supply usable head and controller
+  data through the Linux PC Service and Python SDK to operate the stock dual-UR5e
+  MuJoCo simulation with explicit clutch, restart, and stop behavior?
+hypothesis: >-
+  The existing Quest client can serve as a native input source for this stock
+  simulation after Linux dependencies, networking, and controller reference
+  behavior are verified. Quest Pro support and reliable stop/reconnect behavior
+  are not assumed from Quest 3 development or from an installed APK.
+scope:
+  includes:
+    - Physical Quest Pro and two Touch Pro controllers
+    - Ubuntu 24.04 x86_64 desktop with a local graphical session
+    - Controller and head pose transport and input-only observation
+    - Stock dual-UR5e MuJoCo simulation displayed on the Linux desktop
+    - Grip-based relative control, clutch/reposition, clean restart, process stop
+  excludes:
+    - Physical G1, SO-101, UR, or other robot command publishing
+    - G1/Revo2 hardware integration or whole-body control
+    - Natural hand tracking and hand retargeting
+    - Robot camera streaming or rendered simulation video returned to the headset
+    - Unity rebuild, SDK modernization, and unreviewed control changes
+    - Proven motion safety or quantitative latency/accuracy claims
+success_criteria:
+  - Hash-verified released APK launches on the identified Quest Pro and controllers operate its UI.
+  - The correct Linux PC Service connects and Python receives changing poses and advancing source timestamps.
+  - Each grip reports released and greater-than-0.9 squeezed states with correct handedness.
+  - The actual MuJoCo example renders and the same-side simulated arm follows deliberate grip-enabled motion.
+  - Grip release and regrip establish the expected relative reference without an unexplained large jump.
+  - A clean restart repeats a bounded left/right sequence with fresh input and released grips checked first.
+  - The simulator exits through its explicit terminal stop path and process absence is independently checked.
+  - Evidence preserves failed attempts, candidate identity, capture boundaries, and known gaps.
+minimum_useful_experiment:
+  - APK launch on Quest Pro
+  - Input-only evidence from both controllers and grips
+  - One arm responds in actual MuJoCo
+  - Deliberate simulator stop and verified process exit
+candidate:
+  quest:
+    repository: XR-Robotics/XRoboToolkit-Unity-Client-Quest
+    release: v1.0.1
+    tag_commit: 05ad3f081e64c400d8eda34c0efdf711c47f6b3a
+    package_id: com.xrobotoolkit.client.quest
+    artifact: XRoboToolkit-Quest-1.0.1.apk
+    sha256: c8a077451e7f6b66ca688668d7b32f5a6a6c19a8c0fa4657f2e1344493c174df
+  pc_service:
+    repository: XR-Robotics/XRoboToolkit-PC-Service
+    release: v1.0.0
+    artifact: XRoboToolkit_PC_Service_1.0.0_ubuntu_24.04_amd64.deb
+    sha256: bce661f0be0b8a246ceecb2e5f1675a81c26b834648dc7fdf23f8c0bfe2a5d19
+    source_audit_commit: 85bac4dbc1fd5cef42c74a160d9c30aa3491f122
+    note: Release binary identity is the asset hash; current source audit is not asserted to identify its build.
+  python_sample:
+    repository: XR-Robotics/XRoboToolkit-Teleop-Sample-Python
+    commit: 79e5cb8a56e3455515ce1b476e993c764ec58739
+    entry_point: scripts/simulation/teleop_dual_ur5e_mujoco.py
+    xml: assets/universal_robots_ur5e/scene_dual_arm.xml
+    urdf: assets/universal_robots_ur5e/dual_ur5e.urdf
+    scale_factor: 0.5
+    visualize_placo: false
+  python_environment:
+    python: "3.12"
+    xrobotoolkit_sdk: "1.1.0"
+    mujoco: "3.3.7"
+    placo: "0.9.18"
+    installation_scope: Simulation-only dependencies; source imported through PYTHONPATH
+    full_resolved_lock: To be captured before the headset portion; not yet generated
+    validation: Source-reviewed proposed baseline; not installed or executed
+network:
+  headset_to_pc_tcp_port: 63901
+  discovery_udp_destination_port: 29888
+  sdk_grpc_default: "127.0.0.1:60061"
+  manual_connection: Bare reachable Linux LAN IPv4 address
+controls:
+  arm_enable: Same-side side grip greater than 0.9
+  initial_a_toggle: disabled
+  initial_hand_tracking: disabled
+  initial_remote_vision: disabled
+  normal_stop: Release grips while Send is on, stop simulation with Ctrl+C, verify exit, then Send off
+  reconnect: Simulator stopped first; verify fresh released-grip input before restarting
+planned_activities:
+  - P0-P4 environment, installation, graphics, APK, service/network preflight
+  - R1 input-only diagnostic run with SDK snapshot capture
+  - P5 audible operator workflow rehearsal
+  - R2 bounded right/left/bimanual MuJoCo run
+  - R3 clean-restart repetition
+  - D1 optional reconnect diagnostic with simulator stopped
+  - C0-C1 cleanup, evidence verification, and closeout
+prerequisites:
+  - Confirm actual Ubuntu release, x86_64 architecture, Python, desktop graphics, and free storage.
+  - Enable Quest developer mode and authorize the intended Linux computer through ADB.
+  - Confirm headset/controller identity, charge, reachable LAN, and operator/observer roles.
+  - Download exact release artifacts and verify checksums.
+  - Pass dependency imports, CLI help, model load, and local viewer before headset control.
+  - Confirm fresh changing input and released grips; connection status alone is insufficient.
+evidence_to_capture:
+  - Host/headset/controller identity and software/build versions
+  - Source revisions, dirty state, model/assets hashes, package freeze and install report
+  - New per-session and per-run artifact paths with wall-clock/timezone/monotonic context
+  - SDK snapshots with source timestamp, head/controller poses, and grips
+  - Exact simulation command, console output, exit code, PID/port checks
+  - Desktop video or explicit visual observation notes and video-unavailable gap
+  - Failed starts, warnings, protocol deviations, cleanup, hashes, and backup status
+evidence_limits:
+  - SDK polling captures latest snapshots, not every source frame or raw network packets.
+  - Stock simulation does not provide B-button logging or an independent live state telemetry recorder.
+  - Visual response cannot establish numeric endpoint accuracy or end-to-end latency.
+  - New timestamps alone do not establish correct or unfrozen tracking.
+  - No physical robot behavior or safety is evaluated.
+related_repositories:
+  - XR-Robotics/XRoboToolkit-Unity-Client-Quest
+  - XR-Robotics/XRoboToolkit-PC-Service
+  - XR-Robotics/XRoboToolkit-PC-Service-Pybind
+  - XR-Robotics/XRoboToolkit-Teleop-Sample-Python
+related_experiments:
+  - EXP-20261111-001
+related_sessions: []
+findings: []
+review:
+  status: pending
+  note: Operational plan only; no measured results or validated compatibility findings.
+planning_provenance:
+  labbook_revision: 0d10331006ba6b453aa1d81e52542511f626646d
+  sources: [current_github_sources, release_metadata, labbook_skill, draft_lab_protocol]
+  working_mode: Remote GitHub main inspected directly; no second canonical notebook created
+plan_checks:
+  source_and_operational_review: completed
+  shell_syntax: All 18 Bash blocks in procedure.md parsed with bash -n
+  python_syntax: All 3 embedded Python snippets parsed with ast.parse
+  metadata_syntax: experiment.yaml parsed successfully
+  runtime_validation: Not performed; no procedure commands, installation, or headset tests executed
+next_agent_action: >-
+  Prepare the isolated Linux desktop environment and pass the offline import/model/viewer
+  gates, then run the input-only Quest Pro check. Follow procedure.md and record the
+  actual execution date and evidence. Stop at the first unresolved gate; retain a
+  partial or blocked result rather than assuming later stages passed.
