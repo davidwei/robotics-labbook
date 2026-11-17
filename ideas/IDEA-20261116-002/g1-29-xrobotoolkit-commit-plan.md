@@ -1,6 +1,6 @@
 # G1-29 + XRoboToolkit implementation — commit-by-commit plan
 
-Date: 2026-11-16. Status: in development; Commits 1–3 completed and pushed.
+Date: 2026-11-16. Status: in development; Commits 1–4 completed and pushed.
 Scope: simulation only. Primary target: the MoissanClub third-party
 LeRobot plugin repository `MoissanClub/lerobot_teleoperator_g1_vr`, confirmed on
 2026-11-16 with default branch `main` at initial observed revision
@@ -67,9 +67,33 @@ Commit 3 completed on 2026-11-16:
 - Physical scope: no headset, vendor SDK, LeRobot runtime, GPU, simulator, DDS or
   physical robot used
 
-Next implementation action: Commit 4, wrap the known-working CloudXR controller
-reader behind `XRInputSource` with golden behavior tests and no live-headset
-requirement.
+Commit 4 completed on 2026-11-16:
+
+- Repository: `MoissanClub/lerobot_teleoperator_g1_vr`
+- Branch: `feat/cloudxr-source`, stacked on Commit 3
+- Commit: `de5ad6c17ec82c0a2d04a59c37785649e4874d78`
+- Adapter: `CloudXRSource` wraps the established LeRobot `XRControllers` lifecycle
+  and optional `VideoControllerSession` construction behind `XRInputSource`
+- Dependency boundary: LeRobot, Isaac Teleop, OpenXR, CUDA and video imports are
+  delayed until the default reader factory is used during `connect()`; injected
+  readers keep unit tests vendor-free
+- Behavior: one backend read per sample; acquisition timestamp preserved for
+  freshness; cached/future/missing frames become stale; invalid controller data
+  is isolated to the affected side; raw actions are copied into JSON-compatible
+  trace input
+- Verification: 58 plugin tests passed under Python 3.12; 17 focused adapter
+  tests also passed in the pinned G1/CloudXR environment; Ruff lint/format,
+  source/wheel builds and isolated base-wheel import passed; actual pinned
+  input-only and video-backed `XRControllers` objects constructed without opening
+  OpenXR
+- Physical scope: no headset, live CloudXR session, GPU rendering, simulator,
+  DDS or physical robot used
+
+The integration bridge was intentionally not changed in Commit 4. Its switch to
+the plugin remains in the later source-selection/integration commits so the
+adapter is independently reviewable. Next implementation action: Commit 5,
+isolate G1-29 XR retargeting behind the source-independent `G1Retargeter`
+contract.
 
 ## Repository and branching strategy
 
@@ -238,8 +262,8 @@ Changes:
 
 - Wrap the existing `XRControllers`/`VideoControllerSession` construction in a
   `CloudXRSource` implementation.
-- Make the bridge consume only `XRInputSource`; remove direct CloudXR reads from
-  the control loop.
+- Keep the adapter independent of the bridge; make the bridge consume only
+  `XRInputSource` in the later source-selection/integration commit.
 - Keep CloudXR process startup, video session and shutdown behavior unchanged.
 - Add a fake CloudXR reader test proving field mapping, one read per loop,
   bimanual independence and cleanup.
