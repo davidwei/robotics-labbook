@@ -30,3 +30,11 @@ At 13:10 local, the `idle-release` headset trace captured 597 samples over 9.983
 
 The subsequent `right-motion` attempt preserved 598 structurally valid samples over 9.996 seconds at 59.7 Hz, but every source payload was zero with timestamp zero and state `stale`. The validator correctly failed: no ready sample, no controller tracking, no right-grip engagement, and no motion. Its backend log connected to PC Service but, unlike the successful idle run, never reported `device found`. This attempt is retained as reconnect-failure evidence and must not be used for calibration. Reconnect the Quest app before recapturing `right-motion`.
 
+## Calibration and trace-workflow redesign
+
+Software commits `cb57454` and `21fe96f` redesign script 2 around one persistent XRoboToolkit connection and one headset handoff. The versioned plan captures four static position anchors (natural down, full up, full forward, full horizontal open), six static palm-orientation anchors (up, down, inward, outward, forward, backward), then six unilateral motion-validation traces. Instructions are spoken before a countdown so motion begins only after “Start now.” Each segment is validated immediately and may be attempted up to three times per invocation. Rerunning script 2 skips passing segments and retries only missing or failed segments.
+
+Calibration observations and experiment traces are now semantically and physically separate. Static observations, reports, and the immutable anchor set live under `calibration/`; dynamic trajectories and reports live under `traces/` and `trace-reports/`. Motion recording is blocked until every calibration anchor passes, and each motion attempt records the SHA-256 identity of its anchor set. The anchor set explicitly states that it is an observation set and that the controller-to-robot transform has not yet been solved.
+
+Focused software verification passed: shell syntax, Ruff format/lint, and 24 tests covering synthetic static/dynamic trace gates, explicit prompts, representative-pose summaries, resumable selection, calibration/trace storage separation, and the existing supervised G1-29 path. No headset run has yet exercised this revised workflow.
+

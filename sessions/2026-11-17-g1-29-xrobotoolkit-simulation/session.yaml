@@ -36,7 +36,9 @@ activities:
     description: Added bounded measured-seed clipping and continuous JSONL telemetry after the run failure.
   - type: diagnostic
     description: idle-release trace passed at 59.7 Hz; subsequent right-motion trace failed because all XR source samples were stale and the Quest device was not rediscovered.
+  - type: development
+    description: Commits cb57454 and 21fe96f added a resumable single-connection calibration-anchor and motion-trace workflow with immediate quality checks, three attempts per run, and distinct immutable artifact types; 24 focused tests passed, without a new headset run.
 result: qualitative_end_to_end_milestone_observed_full_live_gate_failed
-next_agent_action: reconnect_quest_and_recapture_right_motion_then_analyze_controller_to_robot_frame_calibration
+next_agent_action: run_revised_script_2_to_collect_static_calibration_anchors_then_motion_traces_and_solve_controller_to_robot_transform
 physical_validation_status: quest_and_controllers_exercised_no_physical_robot
 
