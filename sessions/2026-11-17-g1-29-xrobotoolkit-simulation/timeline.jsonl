@@ -8,3 +8,5 @@
 {"time_local":"2026-11-17T11:04:30-08:00","type":"failure","run_id":"RUN-20261117-001","detail":"Live control terminated with ValueError: Seed exceeds joint limits; video stream ended and all owned processes cleaned up."}
 {"time_local":"2026-11-17T11:04:56-08:00","type":"run_end","run_id":"RUN-20261117-001","detail":"Operator confirmed headset removed; run retained as a partial high-level milestone, not a full acceptance pass."}
 {"type":"development","detail":"Plugin fix 5017cc3 added bounded measured-seed clipping and diagnostics; integration commit dcdc0d1 added continuously flushed JSONL telemetry and the complete guided workflow."}
+{"time_local":"2026-11-17T13:11:06-08:00","type":"diagnostic","detail":"idle-release XRoboToolkit trace passed validation: 597 samples over 9.983 seconds at 59.7 Hz, 100% tracking on both controllers, and no grip engagement."}
+{"time_local":"2026-11-17T13:12:42-08:00","type":"diagnostic_failure","detail":"right-motion trace recorded 598 stale zero payloads with timestamp zero; backend connected to PC Service but never rediscovered the Quest device. Trace retained as reconnect-failure evidence and rejected for calibration."}

@@ -21,6 +21,7 @@ capture:
     - The live worktree was dirty and was committed only after the run; dcdc0d1 includes post-run evidence improvements and is not an exact pre-run tree checkpoint.
     - No headset-view recording or quantitative controller-to-end-effector calibration measurement was captured.
     - Quest video sent for only about three seconds before the control-path failure.
+    - The first right-motion calibration capture contained only stale zero payloads after the Quest device failed to reappear for the second recorder connection.
 activities:
   - type: preflight
     description: Workstation, pinned packages, PC Service, GPU/NVENC, desktop display, speaker and no-DDS checks passed.
@@ -33,7 +34,9 @@ activities:
     description: Guided XRoboToolkit live G1-29 MuJoCo control and Quest video attempt.
   - type: development
     description: Added bounded measured-seed clipping and continuous JSONL telemetry after the run failure.
+  - type: diagnostic
+    description: idle-release trace passed at 59.7 Hz; subsequent right-motion trace failed because all XR source samples were stale and the Quest device was not rediscovered.
 result: qualitative_end_to_end_milestone_observed_full_live_gate_failed
-next_agent_action: analyze_and_test_controller_to_robot_frame_calibration_then_repeat_short_live_run_at_5017cc3_and_dcdc0d1
+next_agent_action: reconnect_quest_and_recapture_right_motion_then_analyze_controller_to_robot_frame_calibration
 physical_validation_status: quest_and_controllers_exercised_no_physical_robot
 

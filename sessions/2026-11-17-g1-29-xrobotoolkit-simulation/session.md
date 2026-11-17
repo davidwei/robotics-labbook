@@ -24,3 +24,9 @@ The session supports a qualitative G1-29 XRoboToolkit-to-MuJoCo milestone: input
 
 The next high-information work is headset-free analysis of the recorded/raw coordinate conventions and a deliberate calibration trace suite before repeating the short live run at plugin `5017cc3` and integration `dcdc0d1`. Calibration correction and the small seed-limit tolerance are separate issues and should remain separate commits/findings.
 
+## Calibration trace capture follow-up
+
+At 13:10 local, the `idle-release` headset trace captured 597 samples over 9.983 seconds at 59.7 Hz. Both controllers were tracked for 100% of the samples, neither grip engaged, and the validator passed the `idle` expectation. Residual idle displacement was 0.041 m left and 0.017 m right; residual rotation was 0.121 rad left and 0.105 rad right. These values include operator/controller settling and are not yet a calibrated noise-floor measurement.
+
+The subsequent `right-motion` attempt preserved 598 structurally valid samples over 9.996 seconds at 59.7 Hz, but every source payload was zero with timestamp zero and state `stale`. The validator correctly failed: no ready sample, no controller tracking, no right-grip engagement, and no motion. Its backend log connected to PC Service but, unlike the successful idle run, never reported `device found`. This attempt is retained as reconnect-failure evidence and must not be used for calibration. Reconnect the Quest app before recapturing `right-motion`.
+
