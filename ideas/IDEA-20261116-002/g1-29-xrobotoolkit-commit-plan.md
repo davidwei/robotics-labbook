@@ -1,7 +1,7 @@
 # G1-29 + XRoboToolkit implementation — commit-by-commit plan
 
-Date: 2026-11-16. Status: proposed; no implementation commits made by this
-plan. Scope: simulation only. Primary target: the MoissanClub third-party
+Date: 2026-11-16. Status: in development; Commit 1 completed and pushed. Scope:
+simulation only. Primary target: the MoissanClub third-party
 LeRobot plugin repository `MoissanClub/lerobot_teleoperator_g1_vr`, confirmed on
 2026-11-16 with default branch `main` at initial observed revision
 `a257fe5b7311e36c910e4e240e3ba9d3caff2707`.
@@ -9,6 +9,30 @@ LeRobot plugin repository `MoissanClub/lerobot_teleoperator_g1_vr`, confirmed on
 runner. Target result: the released XRoboToolkit Quest app controls both G1-29
 arms in MuJoCo while preserving a source-independent path for later CloudXR and
 G1-23 work.
+
+## Implementation progress
+
+Commit 1 completed on 2026-11-16:
+
+- Repository: `MoissanClub/unitree_g1_lerobot`
+- Branch: `integration/g1-29-xrobotoolkit`
+- Commit: `02d79efe293e33ecb84f4fc3b4a10bf207300987`
+- Baseline: 100 synthetic frames, `0.2631 rad` maximum motion and 54 distinct
+  camera frames; clean launcher completion
+- Contract: pinned LeRobot revision, Python/key dependency versions, G1-29 URDF
+  SHA-256 and 14-arm-DoF expectation recorded in
+  `configs/g1_29_vr_compatibility.json`
+- Verification: 20 diagnostic unit tests passed; the focused installed-contract
+  and G1-29 replay tests passed; the broader gate passed 29 tests with the
+  intentionally excluded G1-23 replay case deselected
+- Physical scope: no headset, live CloudXR, XRoboToolkit, DDS or physical robot
+  used
+
+Next implementation action: Commit 2 in
+`MoissanClub/lerobot_teleoperator_g1_vr`, bootstrapping the installable plugin and
+normalized `XRInputSource` contract. The existing untracked
+`tests/test_dev_workspace.py` and `tools/dev_workspace/` in the integration
+harness were preserved and not included in Commit 1.
 
 ## Repository and branching strategy
 
