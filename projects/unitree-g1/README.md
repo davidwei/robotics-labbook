@@ -36,6 +36,13 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   plugin-discovery and video-protocol gates passed; live XRoboToolkit and CloudXR
   headset acceptance remains pending. G1-23 depends on native model/IK support,
   and no physical robot motion is authorized by the plan.
+- **G1-29 XRoboToolkit live milestone (2026-11-17; partial):** the guided
+  [simulation session](../../sessions/2026-11-17-g1-29-xrobotoolkit-simulation/session.md)
+  produced qualitative controller-driven G1-29 MuJoCo arm response and a brief
+  Quest H.264 return. Controller-to-robot calibration appeared inaccurate, and
+  the run ended on an IK seed-limit boundary. Post-run commits `5017cc3` (plugin)
+  and `dcdc0d1` (integration workflow/evidence) passed software tests but still
+  require a short live repeat. No physical robot was connected or authorized.
 - Quest diagnostic idea: [in-headset controller motion/grip status](../../ideas/IDEA-20261116-001/README.md),
   with an unbuilt local Unity source draft; baseline released-client debugging remains the current priority.
 - Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
@@ -43,6 +50,7 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   and further physical tests remain stopped pending offline analysis and a new
   operator decision.
 - Sessions:
+  - [2026-11-17 G1-29 XRoboToolkit guided MuJoCo milestone](../../sessions/2026-11-17-g1-29-xrobotoolkit-simulation/session.md).
   - [2026-11-16 Quest Pro MuJoCo video return and simultaneous control](../../sessions/2026-11-16-quest-pro-mujoco-video-return/session.md).
   - [2026-11-16 Quest Pro XRoboToolkit dual-UR5e MuJoCo](../../sessions/2026-11-16-quest-pro-xrobotoolkit-mujoco/session.md).
   - [2026-11-03 PICO voice/controller physical run](../../sessions/2026-11-03-g1-sonic-pico-voice-physical/session.md).

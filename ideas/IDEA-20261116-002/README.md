@@ -1,10 +1,11 @@
 # IDEA-20261116-002 — Composable VR teleoperation for G1-29 and G1-23
 
-Status: validation pending; the G1-29 software sequence is complete through the
-documented Commit 12 candidate. Project: Unitree G1 / LeRobot. Readiness: ready
-for the consolidated XRoboToolkit and CloudXR simulation-lab acceptance plan.
-The live gates were assumed only for development sequencing and have not been
-observed. Physical validation: not started and not authorized by this idea.
+Status: validation in progress; a 2026-11-17 XRoboToolkit live run established a
+qualitative G1-29 MuJoCo control/video milestone but exposed controller-to-robot
+calibration concerns and an IK seed-limit failure. Project: Unitree G1 / LeRobot.
+Readiness: ready for headset-free calibration analysis and a short XRoboToolkit
+repeat at the post-run fixes; CloudXR remains pending. Physical validation: not
+started and not authorized by this idea.
 
 ## Objective
 
@@ -451,12 +452,29 @@ as operator observations rather than quantitative latency or reliability evidenc
 - LeRobot PR #4651: historical explicit embodiment support; current-main API must
   be verified before implementation.
 
+## 2026-11-17 validation update
+
+The [guided G1-29 session](../../sessions/2026-11-17-g1-29-xrobotoolkit-simulation/session.md)
+observed end-to-end XRoboToolkit input, grip-mediated simulated arm response,
+MuJoCo viewing and Quest H.264 return at a qualitative level. The operator also
+observed inaccurate controller-to-robot calibration/frame mapping. The live run
+then failed at an IK seed-limit boundary; the pre-fix runner did not retain
+per-frame telemetry through the exception.
+
+Integration commit `dcdc0d1` now provides the five guided lab scripts,
+deterministic synthetic-trace validation/replay, and continuously flushed JSONL
+telemetry. Plugin commit `5017cc3` clips only small measured seed excursions (at
+most `0.05 rad`), reports them, and retains a hard failure beyond the tolerance.
+These fixes passed automated and synthetic native-MuJoCo tests, but have not yet
+passed a repeat live headset run. Calibration remains a separate unresolved
+question and must not be attributed to the numerical boundary fix.
+
 ## Next action
 
-Execute the simulation-lab plan at plugin revision
-`0d68a65848011550393ef136b2dfe187c2ec37a6` and integration-harness revision
-`13a272a0711e39d9e736bef0577b43f500b3e137`. Use two headset sessions—one
-XRoboToolkit and one CloudXR—with headset-free replay between them. Preserve
-traces/hashes, named command and observation telemetry, source/re-clutch status,
-video-sidecar logs and operator observations. Stop at simulation scope; G1-23
-and physical G1 work remain separate and unauthorized.
+Capture deliberate controller-axis/orientation traces and analyze the normalized
+XR frame against G1 end-effector targets without the headset. Then repeat one
+short XRoboToolkit live run at plugin `5017cc3` and integration `dcdc0d1`, using
+the new JSONL telemetry to quantify any seed clipping and mapping error. Continue
+to CloudXR only after the XRoboToolkit calibration and live numerical boundary
+are understood. Stop at simulation scope; G1-23 and physical G1 work remain
+separate and unauthorized.

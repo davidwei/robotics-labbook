@@ -1,0 +1,39 @@
+id: SESSION-20261117-001
+date: 2026-11-17
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: simulation lab, local Ubuntu desktop
+experiments: [EXP-20261115-001]
+ideas: [IDEA-20261116-002]
+status: ended_partial_milestone_calibration_and_limit_followup
+mode: development_and_in_lab_simulation
+hardware:
+  headset: Meta Quest Pro
+  controllers: two Touch Pro controllers
+  workstation_gpus: two NVIDIA GeForce RTX 5090
+  physical_robot: none
+capture:
+  method: live
+  sources: [operator_observation, codex_session, filesystem, backend_log, video_sender_log, synthetic_trace, simulation_telemetry]
+  coverage: partial
+  known_gaps:
+    - The live runner version used for the failed run did not yet flush per-frame telemetry; JSONL failure capture was added afterward.
+    - The live worktree was dirty and was committed only after the run; dcdc0d1 includes post-run evidence improvements and is not an exact pre-run tree checkpoint.
+    - No headset-view recording or quantitative controller-to-end-effector calibration measurement was captured.
+    - Quest video sent for only about three seconds before the control-path failure.
+activities:
+  - type: preflight
+    description: Workstation, pinned packages, PC Service, GPU/NVENC, desktop display, speaker and no-DDS checks passed.
+  - type: development
+    description: Added guided lab scripts, validators, synthetic trace tooling and test coverage.
+  - type: diagnostic
+    description: Deterministic artificial bimanual trace passed validation and native MuJoCo replay.
+  - type: run
+    run_id: RUN-20261117-001
+    description: Guided XRoboToolkit live G1-29 MuJoCo control and Quest video attempt.
+  - type: development
+    description: Added bounded measured-seed clipping and continuous JSONL telemetry after the run failure.
+result: qualitative_end_to_end_milestone_observed_full_live_gate_failed
+next_agent_action: analyze_and_test_controller_to_robot_frame_calibration_then_repeat_short_live_run_at_5017cc3_and_dcdc0d1
+physical_validation_status: quest_and_controllers_exercised_no_physical_robot
+

@@ -1,0 +1,46 @@
+id: RUN-20261117-001
+date: 2026-11-17
+experiment: EXP-20261115-001
+session: SESSION-20261117-001
+classification: simulation_run_partial_high_level_pass_then_software_failure
+objective: Exercise XRoboToolkit input, G1-29 MuJoCo arm control, desktop viewer and Quest H.264 return in one timed voice-guided run.
+code:
+  plugin_pre_run_revision: 0d68a65848011550393ef136b2dfe187c2ec37a6
+  integration_pre_run_revision: 13a272a0711e39d9e736bef0577b43f500b3e137
+  integration_worktree: dirty_with_uncommitted_lab_workflow
+  post_run_plugin_fix: 5017cc3
+  post_run_integration_commit: dcdc0d1
+  provenance_note: The post-run commits are related successors, not an exact hash of the worktree that executed.
+configuration:
+  embodiment: g1_29
+  robot_backend: upstream-compatible native MuJoCo simulation
+  source: XRoboToolkit SDK 1.1.0 through PC Service 1.0.0
+  headset: Meta Quest Pro
+  guided_duration_s: 60
+  voice_rate: -35
+  donning_window_s: 10
+  physical_dds: disabled
+preflight:
+  result: pass
+  gpu: two NVIDIA GeForce RTX 5090
+  driver: 595.99.02
+  nvenc_probe: pass
+  pc_service_ports: [60061, 63901]
+result: qualitative_control_and_video_observed_then_seed_limit_failure
+observations:
+  - Operator reported that the simulated arms responded to controller input and described the high-level end-to-end control as working.
+  - Operator reported apparent calibration/frame-mapping issues between controller motion and simulated robot motion.
+  - Video sender received OPEN_CAMERA, connected to the Quest receiver and sent the first H.264 access unit.
+  - Control ended with ValueError Seed exceeds joint limits during IK; simulator, SDK and video sidecar then cleaned up.
+  - The video stream began late in the guided run and lasted about three seconds before the failure.
+capture:
+  root: /home/dwei/lerobot-sim/unitree_g1_lerobot/outputs/g1-vr-lab/20261117-110230
+  backend_log: live/live-e2e-20261117-110244/backend.log
+  sender_log: live/live-e2e-20261117-110244/video/quest-video-20261117T190244Z/sender.log
+  metadata: live/live-e2e-20261117-110244/video/quest-video-20261117T190244Z/metadata.json
+  live_telemetry: missing_due_to_pre_streaming_runner_failure
+limitations:
+  - Qualitative operator observation only for controller-to-arm response and calibration.
+  - No synchronized live controller/joint telemetry survived the exception.
+  - No sustained-video, reconnect, CloudXR, G1-23 or physical-robot claim.
+

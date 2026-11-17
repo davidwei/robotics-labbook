@@ -1,0 +1,10 @@
+{"time_local":"2026-11-17T09:48:00-08:00","type":"session_start","detail":"G1-29 XRoboToolkit simulation-lab preflight and deferred headset acceptance resumed."}
+{"type":"preflight","detail":"Pinned plugin/integration/LeRobot revisions, G1-29 URDF hash, package imports, two RTX 5090 GPUs, NVENC, disk, PC Service and no-DDS state checked; automated gates passed."}
+{"type":"diagnostic","detail":"A 120-sample deterministic artificial bimanual trace validated at 60.0 Hz and replayed through native G1-29 MuJoCo; both sides engaged for 102 frames with finite bounded commands."}
+{"type":"development","detail":"Five guided simulation-lab scripts and testable Python helpers implemented in the integration harness; exact headset handoff and removal confirmations exercised."}
+{"time_local":"2026-11-17T11:03:31-08:00","type":"run_start","run_id":"RUN-20261117-001","detail":"Operator gate released after the 10-second headset donning window; right-only guided stage started."}
+{"time_local":"2026-11-17T11:04:27-08:00","type":"video","run_id":"RUN-20261117-001","detail":"Quest sent OPEN_CAMERA; sender connected to 10.9.0.127:12345 and sent the first H.264 access unit."}
+{"type":"operator_observation","run_id":"RUN-20261117-001","detail":"Simulated arms responded to controller input at a high level; controller-to-robot calibration or frame mapping appeared inaccurate."}
+{"time_local":"2026-11-17T11:04:30-08:00","type":"failure","run_id":"RUN-20261117-001","detail":"Live control terminated with ValueError: Seed exceeds joint limits; video stream ended and all owned processes cleaned up."}
+{"time_local":"2026-11-17T11:04:56-08:00","type":"run_end","run_id":"RUN-20261117-001","detail":"Operator confirmed headset removed; run retained as a partial high-level milestone, not a full acceptance pass."}
+{"type":"development","detail":"Plugin fix 5017cc3 added bounded measured-seed clipping and diagnostics; integration commit dcdc0d1 added continuously flushed JSONL telemetry and the complete guided workflow."}

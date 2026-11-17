@@ -1,0 +1,22 @@
+{
+  "session": "SESSION-20261117-001",
+  "external_root": "/home/dwei/lerobot-sim/unitree_g1_lerobot/outputs/g1-vr-lab/20261117-110230",
+  "artifacts": [
+    {"id": "precheck", "path": "precheck.log", "sha256": "f0ec416a86b8287804f307f23ebfbef7044339d022c763d1bce49ea55a2c031c"},
+    {"id": "timeline", "path": "timeline.tsv", "sha256": "9eef649928a35656bc31c0a1ddd524aba97d0c3d486b7ea057a103216e343a6e"},
+    {"id": "live-backend", "path": "live/live-e2e-20261117-110244/backend.log", "sha256": "de49d31797e760975de54e67f9d89e9dadeecf080ced2f087e7cc721b62729b3"},
+    {"id": "video-metadata", "path": "live/live-e2e-20261117-110244/video/quest-video-20261117T190244Z/metadata.json", "sha256": "22c4de63cd6ff3b362b12d37fc1677e177f1b05a0bf67f7767c2cd15efa739b0"},
+    {"id": "video-sender", "path": "live/live-e2e-20261117-110244/video/quest-video-20261117T190244Z/sender.log", "sha256": "742ac8cc786f538f7f25fa006ee657320fa82efe12da67939418a06039a26a73"},
+    {"id": "synthetic-manifest", "path": "synthetic/trace/manifest.json", "sha256": "58d71f8e87aee8e6efa94945542c96a5a95d0ebe6fc4f80549173cb0f5c09f23"},
+    {"id": "synthetic-validation", "path": "synthetic/validation.json", "sha256": "565921b1c3bf92249328d284151ca7901725a776a307351c6f4a430f281fcbcf"},
+    {"id": "synthetic-replay-telemetry", "path": "synthetic/replay-telemetry.json", "sha256": "2ab7cc27723bd1fc7518d1ad940c1d2d2180a251b487aba8e563176c78f97540"}
+  ],
+  "known_missing": [
+    "live per-frame controller/joint telemetry before the exception",
+    "headset-view recording",
+    "quantitative controller-to-end-effector calibration measurements",
+    "exact pre-run dirty worktree patch"
+  ],
+  "retention": "External evidence remains in the local integration checkout and is not copied into Git. Synthetic trace contents are preserved under the same evidence root."
+}
+
