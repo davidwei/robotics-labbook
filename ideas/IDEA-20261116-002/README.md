@@ -24,6 +24,9 @@ robot and teleoperator interfaces.
 
 The reviewable implementation sequence for that first milestone is recorded in
 the [G1-29 + XRoboToolkit commit-by-commit plan](g1-29-xrobotoolkit-commit-plan.md).
+The [trace-driven development plan](trace-driven-development.md) makes recorded
+raw and normalized headset trajectories the primary input for headset-free IK,
+clutch, simulator and regression work.
 
 ## Proposed architecture
 
@@ -79,6 +82,45 @@ include:
 Source adapters must not contain G1 joint names, G1 IK or robot command logic.
 Coordinate-frame conversion at this boundary must be explicit and tested; it is
 not yet established that XRoboToolkit and CloudXR expose identical pose semantics.
+
+### 1a. Record/replay boundary for development efficiency
+
+Treat capture and replay as part of the architecture, not an experiment-only
+utility. Every live `XRInputSource` must support a recorder decorator, and a
+`TraceReplaySource` must implement the same source contract:
+
+```text
+live source -> raw recorder -> normalization -> normalized recorder -> control
+                                             ^
+                                             |
+                                  TraceReplaySource
+```
+
+Preserve both raw source values and normalized XR samples. Raw traces allow
+coordinate/timestamp conversion to be corrected without recapturing the headset;
+normalized traces are portable inputs for clutch, retargeting and simulator
+regressions. Commanded and observed robot joints remain downstream evidence and
+must not replace controller-intent traces.
+
+Control time must be injectable. Deterministic replay advances a trace clock
+without sleeping; real-time replay maps recorded elapsed time to the current host
+clock. Freshness and reconnect logic must use the injected clock so old absolute
+monotonic timestamps do not make valid replay data stale.
+
+The normal development loop is therefore:
+
+1. implement and fake-test a source adapter;
+2. use the headset briefly to capture a small raw/normalized trace suite without
+   MuJoCo or a robot backend;
+3. develop clutching, IK and simulation primarily from deterministic trace
+   replay;
+4. use the headset again only for a bounded live integration comparison;
+5. add video return after input-only live control passes.
+
+This separation reduces headset dependency but does not replace final live tests
+of transport latency, SDK lifecycle, device coordinate behavior, UI or operator
+comfort. The detailed schema, capture suite, clocks and evidence rules are in the
+[trace-driven development plan](trace-driven-development.md).
 
 ### 2. Shared interaction and safety state machine
 

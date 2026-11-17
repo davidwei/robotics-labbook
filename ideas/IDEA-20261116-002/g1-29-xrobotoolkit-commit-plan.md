@@ -137,7 +137,33 @@ unchanged.
 Architecture value: every later source must satisfy one contract, and the G1
 retargeter never imports XRoboToolkit or CloudXR.
 
-## Commit 3 — Put existing CloudXR behind the contract
+## Commit 3 — Add trace recording, replay and deterministic clocks
+
+Suggested subject:
+
+```text
+feat(vr): record and replay normalized XR traces
+```
+
+Changes:
+
+- Implement the versioned manifest, raw envelope and normalized JSONL trace
+  format described in the
+  [trace-driven development plan](trace-driven-development.md).
+- Add `TraceRecorder`, `TraceReader`, an injected control clock and
+  `TraceReplaySource` implementing `XRInputSource`.
+- Provide exact deterministic trace-time and real-time replay; keep rate
+  conversion explicitly optional and labeled as transformed data.
+- Add synthetic idle, right, left, bimanual, release, stale and reconnect
+  fixtures plus round-trip/schema/checksum/fake-clock tests.
+- Make replay default to simulation-only and reject a physical backend without a
+  separately reviewed override path.
+
+Gate: unit tests only; no vendor SDK, GPU, simulator or headset. Identical trace
+input and dependency revisions produce identical normalized samples and status
+transitions.
+
+## Commit 4 — Put existing CloudXR behind the contract
 
 Suggested subject:
 
@@ -161,7 +187,7 @@ Gate: Commit 1 tests plus existing live-shutdown tests when a CloudXR runtime is
 available. No live headset is required. A behavior change belongs in a later
 commit, not this refactor.
 
-## Commit 4 — Isolate the G1-29 retargeter
+## Commit 5 — Isolate the G1-29 retargeter
 
 Suggested subject:
 
@@ -188,7 +214,7 @@ not be imported by retargeter tests.
 Architecture value: G1-23 later implements the same contract without modifying
 either XR source.
 
-## Commit 5 — Add shared freshness and reconnect behavior
+## Commit 6 — Add shared freshness and reconnect behavior
 
 Suggested subject:
 
@@ -211,7 +237,7 @@ Changes:
 Gate: all tests use fake clocks and recorded samples. Prove no target jump across
 reconnect before connecting the live SDK.
 
-## Commit 6 — Implement the XRoboToolkit source adapter
+## Commit 7 — Implement the XRoboToolkit source adapter
 
 Suggested subject:
 
@@ -239,7 +265,15 @@ Gate: unit tests and import-coexistence probe in the pinned G1 environment. Do n
 open a live SDK connection in automated tests because the PC Service path is
 single-client sensitive.
 
-## Commit 7 — Add explicit source selection to the bridge
+## Headset Capture Gate — Record traces without MuJoCo
+
+This is the first headset use. Run only the XRoboToolkit PC Service, Quest app and
+capture-only CLI. Capture the `idle-released`, right, left, bimanual, rebase,
+buttons/head and reconnect traces defined in the trace-driven plan. Validate and
+hash raw and normalized data before ending the session. No simulator or robot
+backend runs at this gate.
+
+## Commit 8 — Add explicit source selection to the bridge
 
 Suggested subject:
 
@@ -262,7 +296,7 @@ Changes:
 Gate: replay and mocked-source bridge tests. The same `G129Retargeter` instance
 must be used for CloudXR and XRoboToolkit samples.
 
-## Commit 8 — Supervise XRoboToolkit without starting CloudXR
+## Commit 9 — Replay and supervise XRoboToolkit G1-29 simulation
 
 Suggested subject:
 
@@ -274,6 +308,8 @@ Changes:
 
 - In `MoissanClub/unitree_g1_lerobot`, consume the plugin from its pinned local or
   Git revision rather than copying its source modules into the harness.
+- Run the captured normalized traces through `G129Retargeter` and G1-29 MuJoCo in
+  deterministic and real-time modes before enabling a live source.
 - Teach `g1_vr_operator.py` to construct a process graph from the selected source:
   `simulator + bridge` for XRoboToolkit and `simulator + cloudxr + bridge` for
   CloudXR.
@@ -291,8 +327,9 @@ CloudXR replay and shutdown tests must remain green.
 
 ## Live Gate A — Input-only headset check, no video
 
-This is an experimental run, not a code commit. It is the first point requiring
-the Quest and PC Service:
+This is an experimental run, not a code commit. It is the first point that uses
+the Quest as a live G1 control source; the earlier capture gate used the headset
+only to create reusable traces:
 
 1. Start the PC Service and released Quest app with controller sending enabled.
 2. Start G1-29 MuJoCo with `--input-source xrobotoolkit`, video return disabled.
@@ -304,7 +341,7 @@ the Quest and PC Service:
 
 Do not continue to video integration if stale/reconnect behavior fails.
 
-## Commit 9 — Run the composition through standard LeRobot interfaces
+## Commit 10 — Run the composition through standard LeRobot interfaces
 
 Suggested subject:
 
@@ -335,7 +372,7 @@ preserve a failing integration test, then create a separate minimal branch from
 current Hugging Face LeRobot `main`. Do not cherry-pick mixed plugin commits into
 LeRobot, monkey-patch LeRobot or copy `lerobot-teleoperate` into the plugin.
 
-## Commit 10 — Add independent video-return orchestration and evidence capture
+## Commit 11 — Add independent video-return orchestration and evidence capture
 
 Suggested subject:
 
@@ -360,7 +397,7 @@ bounded desktop sender test. No physical robot.
 
 ## Live Gate B — Combined G1-29 experiment
 
-After Commit 10:
+After Commit 11:
 
 1. Repeat Live Gate A briefly to confirm no regression.
 2. Enable the video sidecar and confirm a recognizable, updating MuJoCo view.
@@ -374,7 +411,7 @@ Passing this gate supports only the bounded G1-29/XRoboToolkit simulation claim.
 It does not validate CloudXR equivalence, G1-23, quantitative latency, reliability
 or physical robot safety.
 
-## Commit 11 — Document the reviewed candidate and retain extension seams
+## Commit 12 — Document the reviewed candidate and retain extension seams
 
 Suggested subject:
 
@@ -400,14 +437,15 @@ environment or explicitly labeled unverified. Repository tests and `git diff
 
 Recommended review groups, while keeping individual commits intact:
 
-1. Commit 1 in the integration harness, then Commits 2–4 as sequential plugin
-   PRs: baseline, plugin contract and architecture-preserving refactor.
-2. Commits 5–8: freshness behavior and XRoboToolkit source integration.
-3. Live Gate A evidence review.
-4. Commit 9: standard LeRobot runtime boundary, with any necessary upstream fix
+1. Commit 1 in the integration harness, then Commits 2–5 as sequential plugin
+   PRs: baseline, plugin/trace contracts and architecture-preserving refactor.
+2. Commits 6–7, then the capture-only headset gate: freshness behavior,
+   XRoboToolkit source and reusable traces.
+3. Commits 8–9 and Live Gate A: headset-free trace simulation before live input.
+4. Commit 10: standard LeRobot runtime boundary, with any necessary upstream fix
    reviewed in its own repository and PR.
-5. Commit 10 and Live Gate B: optional video and combined experiment.
-6. Commit 11: reproducible handoff.
+5. Commit 11 and Live Gate B: optional video and combined experiment.
+6. Commit 12: reproducible handoff.
 
 Do not squash the source-neutral refactors together with the SDK implementation;
 their separate history makes CloudXR regressions and future G1-23 work easier to
