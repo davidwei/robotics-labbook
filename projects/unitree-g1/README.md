@@ -29,8 +29,13 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   based on the maintainer guidance after PR #4651 approval.
 - Architecture plan: [composable VR teleoperation for XRoboToolkit/CloudXR and
   G1-29/G1-23](../../ideas/IDEA-20261116-002/README.md). The first milestone is
-  G1-29 MuJoCo through standard LeRobot interfaces; G1-23 depends on native model
-  support, and no physical robot motion is authorized by the plan.
+  G1-29 MuJoCo through standard LeRobot interfaces. Software implementation
+  reached the documented Commit 12 candidate on 2026-11-16: plugin
+  `0d68a65848011550393ef136b2dfe187c2ec37a6` and integration harness
+  `13a272a0711e39d9e736bef0577b43f500b3e137`. Automated trace/IK/native-MuJoCo,
+  plugin-discovery and video-protocol gates passed; live XRoboToolkit and CloudXR
+  headset acceptance remains pending. G1-23 depends on native model/IK support,
+  and no physical robot motion is authorized by the plan.
 - Quest diagnostic idea: [in-headset controller motion/grip status](../../ideas/IDEA-20261116-001/README.md),
   with an unbuilt local Unity source draft; baseline released-client debugging remains the current priority.
 - Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),

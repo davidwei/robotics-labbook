@@ -1,6 +1,9 @@
 # G1-29 + XRoboToolkit implementation — commit-by-commit plan
 
-Date: 2026-11-16. Status: in development; Commits 1–4 completed and pushed.
+Date: 2026-11-16. Status: software implementation complete through Commit 12;
+simulation-lab headset validation pending. All implementation branches were
+pushed. Manual gates were assumed only to permit development sequencing and are
+not recorded as observed results.
 Scope: simulation only. Primary target: the MoissanClub third-party
 LeRobot plugin repository `MoissanClub/lerobot_teleoperator_g1_vr`, confirmed on
 2026-11-16 with default branch `main` at initial observed revision
@@ -89,11 +92,96 @@ Commit 4 completed on 2026-11-16:
 - Physical scope: no headset, live CloudXR session, GPU rendering, simulator,
   DDS or physical robot used
 
-The integration bridge was intentionally not changed in Commit 4. Its switch to
-the plugin remains in the later source-selection/integration commits so the
-adapter is independently reviewable. Next implementation action: Commit 5,
-isolate G1-29 XR retargeting behind the source-independent `G1Retargeter`
-contract.
+Commit 5 completed on 2026-11-16:
+
+- Repository/branch: `MoissanClub/lerobot_teleoperator_g1_vr`,
+  `feat/g1-29-retargeter`
+- Commit: `a1d18e6c79b4658e4b7dc18b1c0ab193f8325dc7`
+- Added the source-independent `G129Retargeter` over pinned LeRobot
+  `G1ArmKinematics`/`G1XRControl`, with measured-state seeding, named 14-joint
+  actions and IK/clutch diagnostics
+- Verification: 67 vendor-free tests passed with one expected skip; two actual
+  pinned G1-29 IK integration tests passed
+
+Commit 6 completed on 2026-11-16:
+
+- Repository/branch: plugin, `feat/xr-freshness-reclutch`
+- Commit: `1d490996c3b261e667f2fafa918e51712a6d87df`
+- Added shared fail-hold behavior for stale/disconnected/frozen/backward source
+  timestamps and independent release/new-grip recovery latches
+- Verification: 80 tests passed with one expected pinned-environment skip
+
+Commit 7 completed on 2026-11-16:
+
+- Repository/branch: plugin, `feat/xrobotoolkit-source`
+- Commit: `b73c8a948be7ee1f0c6b957c76d6ec2c2fee95e3`
+- Added the lazy XRoboToolkit SDK 1.1.0 adapter and capture-only trace CLI;
+  malformed hand data is isolated and stale/restarted SDK timestamps fail closed
+- Verification: 93 vendor-free tests passed with one expected skip; two pinned
+  G1 IK tests passed; actual SDK initialize/close succeeded beside Pinocchio
+  3.9.0, MuJoCo 3.12.0 and NumPy 2.2.6 without dependency shadowing
+- Headset trace capture remains pending
+
+Commit 8 completed on 2026-11-16:
+
+- Repository/branch: plugin, `feat/xr-source-selection`
+- Commit: `bf73e60e332b818f3db5d2e94d4c086fa964f807`
+- Added explicit mutually exclusive `trace`, `cloudxr` and `xrobotoolkit` source
+  selection; construction is lazy and does not probe unselected vendors
+- Verification: 103 tests passed with one expected pinned-environment skip
+
+Commit 9 completed on 2026-11-16:
+
+- Repository/branch: `MoissanClub/unitree_g1_lerobot`,
+  `feat/g1-29-vr-supervisor`
+- Commit: `2bdabacbb78b27eca7773b2c2c7c08a5787451b7`
+- Added the simulation-only supervised source → guard → retargeter → robot loop,
+  stable telemetry and a trace-driven native LeRobot G1-29 MuJoCo gate
+- Verification: five lifecycle/fail-hold supervisor tests and one real recorded
+  trace → pinned G1 IK → native MuJoCo test passed; no DDS/headset was used
+- Existing user-owned untracked development-workspace files were preserved
+
+Commit 10 completed on 2026-11-16:
+
+- Repository/branch: plugin, `feat/lerobot-g1-vr-teleoperator`
+- Commit: `b0928d0ddbccb7a4e9caf6e322c37267b8395453`
+- Added registered `g1_vr` standard LeRobot `Teleoperator` composition with
+  measured robot feedback and an enforced simulation-only configuration
+- Verification: three pinned framework/plugin tests and two real G1 IK tests
+  passed; built wheel installation and LeRobot third-party auto-discovery
+  registered `g1_vr`
+
+Commit 11 completed on 2026-11-16:
+
+- Repository/branch: integration harness, `feat/g1-29-quest-video`
+- Commit: `13a272a0711e39d9e736bef0577b43f500b3e137`
+- Reconciled the XRoboToolkit Quest `OPEN_CAMERA`/length-framed H.264 sender as an
+  optional sidecar with readiness, independent failure status, ordered shutdown,
+  `sender.log` and `metadata.json`
+- Verification: Quest protocol/mock sidecar tests, supervisor regressions and a
+  real bounded sender-process ready/stop lifecycle passed (`10 passed` total)
+- No Quest decoder or visible-video observation was performed
+
+Commit 12 completed on 2026-11-16:
+
+- Repository/branch: plugin, `docs/g1-29-xr-simulation-workflow`
+- Commit: `0d68a65848011550393ef136b2dfe187c2ec37a6`
+- Published exact candidate revisions, install/capture/replay/standard LeRobot
+  commands, recovery behavior, compatibility limits and an efficient manual
+  acceptance plan covering both sources in two headset sessions plus replay
+- Verification: Ruff passed; 103 vendor-free tests passed with two expected
+  optional skips; five pinned LeRobot/G1 tests passed; source and wheel builds
+  passed
+
+Software evidence supports the trace-driven G1-29 simulation architecture and
+its failure-state contracts. It does not yet support claims of live G1-29 motion
+from either headset source, visible video in the headset, source equivalence,
+G1-23 support, latency/reliability, or physical-robot safety.
+
+Next action: execute the simulation-lab plan in
+`docs/simulation-lab-acceptance.md` at plugin Commit 12 and integration-harness
+Commit 11, preserving source traces, telemetry, status transitions, video logs
+and operator observations. Physical validation status remains not authorized.
 
 ## Repository and branching strategy
 

@@ -1,9 +1,10 @@
 # IDEA-20261116-002 — Composable VR teleoperation for G1-29 and G1-23
 
-Status: in development; architecture, G1-29 baseline, normalized XR source
-contract, trace/replay and CloudXR-source commits are complete. Project: Unitree
-G1 / LeRobot. Readiness: ready to isolate G1-29 retargeting behind the shared
-contract. Physical validation: not started and not authorized by this idea.
+Status: validation pending; the G1-29 software sequence is complete through the
+documented Commit 12 candidate. Project: Unitree G1 / LeRobot. Readiness: ready
+for the consolidated XRoboToolkit and CloudXR simulation-lab acceptance plan.
+The live gates were assumed only for development sequencing and have not been
+observed. Physical validation: not started and not authorized by this idea.
 
 ## Objective
 
@@ -452,11 +453,10 @@ as operator observations rather than quantitative latency or reliability evidenc
 
 ## Next action
 
-When work resumes, perform Phase 0 only: pin the current LeRobot revision, run the
-bounded G1-29 MuJoCo baseline, and write the normalized XR and `G1Retargeter`
-interface definitions before changing the live operator. Recommended target is
-G1-29 simulation with no physical DDS path. Prerequisites are a clean tracked
-plugin workspace, current LeRobot source, the known G1-29 model assets and access
-to the existing XRoboToolkit/CloudXR reference implementations. Follow the
-linked commit plan and stop at Live Gate A for evidence review before adding
-combined headset video.
+Execute the simulation-lab plan at plugin revision
+`0d68a65848011550393ef136b2dfe187c2ec37a6` and integration-harness revision
+`13a272a0711e39d9e736bef0577b43f500b3e137`. Use two headset sessions—one
+XRoboToolkit and one CloudXR—with headset-free replay between them. Preserve
+traces/hashes, named command and observation telemetry, source/re-clutch status,
+video-sidecar logs and operator observations. Stop at simulation scope; G1-23
+and physical G1 work remain separate and unauthorized.
