@@ -14,3 +14,6 @@
 {"type":"software_validation","detail":"Shell syntax, Ruff format/lint, and 24 focused tests passed, including synthetic calibration quality gates, resume behavior, artifact separation, and existing supervised G1-29 coverage. Revised workflow has not yet been headset-validated."}
 {"type":"development","detail":"Commit 77120ad added an accelerated script-2 dry-run that speaks exact prompts without precheck, headset, XR connection, data writes, or resume-state mutation."}
 {"type":"software_validation","detail":"Muted position-natural-down dry-run passed from the normal lab path; 25 focused tests passed. No headset validation was performed."}
+{"type":"development","detail":"Commit 7d5c888 superseded flat anchors with four position-level calibration units. Forward samples palms up/inward/down/outward; horizontal samples up/forward/down/backward; down and up use inward anchors. Failed units repeat atomically while passing units are retained."}
+{"type":"software_validation","detail":"Shell syntax, Ruff format/lint, muted full dry walkthrough, and 27 focused tests passed for grouped calibration quality gates and retries. Final grouped workflow has not yet been headset-validated."}
+{"type":"development","detail":"Commit c7912d1 recorded the calibration scope as human-VR and the consumer boundary as retargeting_before_robot_ik."}
