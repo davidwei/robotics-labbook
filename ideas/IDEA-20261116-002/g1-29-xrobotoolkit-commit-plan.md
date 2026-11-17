@@ -1,7 +1,7 @@
 # G1-29 + XRoboToolkit implementation — commit-by-commit plan
 
-Date: 2026-11-16. Status: in development; Commit 1 completed and pushed. Scope:
-simulation only. Primary target: the MoissanClub third-party
+Date: 2026-11-16. Status: in development; Commits 1–2 completed and pushed.
+Scope: simulation only. Primary target: the MoissanClub third-party
 LeRobot plugin repository `MoissanClub/lerobot_teleoperator_g1_vr`, confirmed on
 2026-11-16 with default branch `main` at initial observed revision
 `a257fe5b7311e36c910e4e240e3ba9d3caff2707`.
@@ -28,9 +28,25 @@ Commit 1 completed on 2026-11-16:
 - Physical scope: no headset, live CloudXR, XRoboToolkit, DDS or physical robot
   used
 
-Next implementation action: Commit 2 in
-`MoissanClub/lerobot_teleoperator_g1_vr`, bootstrapping the installable plugin and
-normalized `XRInputSource` contract. The existing untracked
+Commit 2 completed on 2026-11-16:
+
+- Repository: `MoissanClub/lerobot_teleoperator_g1_vr`
+- Branch: `feat/xr-input-contract`
+- Commit: `c7ad3da92b6caebd0bff54fc68177f43a3845456`
+- Package: installable typed `lerobot_teleoperator_g1_vr` distribution with the
+  exact prefix used by LeRobot third-party teleoperator discovery
+- Contract: immutable normalized poses/controllers/samples, explicit metres and
+  `[x, y, z, w]` quaternions, host/source timestamps, source status and structural
+  `XRInputSource` lifecycle
+- Dependency boundary: base installation has no LeRobot, XRoboToolkit, CloudXR,
+  GPU, MuJoCo or device runtime dependency
+- Verification: 22 tests passed under Python 3.12; Ruff lint/format checks passed;
+  source distribution and wheel builds passed; metadata/discovery name verified
+- Physical scope: no headset, vendor SDK, simulator, DDS or physical robot used
+
+Next implementation action: Commit 3 in the plugin repository, adding the
+versioned raw/normalized trace format, `TraceRecorder`, `TraceReader`, injected
+clock and `TraceReplaySource`. The existing untracked
 `tests/test_dev_workspace.py` and `tools/dev_workspace/` in the integration
 harness were preserved and not included in Commit 1.
 
