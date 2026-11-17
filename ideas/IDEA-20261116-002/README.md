@@ -22,6 +22,9 @@ The first milestone is deliberately narrower: XRoboToolkit controller input to
 the upstream-compatible G1-29 MuJoCo simulation through the standard LeRobot
 robot and teleoperator interfaces.
 
+The reviewable implementation sequence for that first milestone is recorded in
+the [G1-29 + XRoboToolkit commit-by-commit plan](g1-29-xrobotoolkit-commit-plan.md).
+
 ## Proposed architecture
 
 ```text
@@ -409,4 +412,6 @@ bounded G1-29 MuJoCo baseline, and write the normalized XR and `G1Retargeter`
 interface definitions before changing the live operator. Recommended target is
 G1-29 simulation with no physical DDS path. Prerequisites are a clean tracked
 plugin workspace, current LeRobot source, the known G1-29 model assets and access
-to the existing XRoboToolkit/CloudXR reference implementations.
+to the existing XRoboToolkit/CloudXR reference implementations. Follow the
+linked commit plan and stop at Live Gate A for evidence review before adding
+combined headset video.
