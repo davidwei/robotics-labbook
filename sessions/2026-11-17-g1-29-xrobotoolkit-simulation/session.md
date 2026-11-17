@@ -38,3 +38,5 @@ Calibration observations and experiment traces are now semantically and physical
 
 Focused software verification passed: shell syntax, Ruff format/lint, and 24 tests covering synthetic static/dynamic trace gates, explicit prompts, representative-pose summaries, resumable selection, calibration/trace storage separation, and the existing supervised G1-29 path. No headset run has yet exercised this revised workflow.
 
+Commit `77120ad` adds an accelerated `02_record_trace.sh --dry-run` rehearsal. It speaks the exact phase, preparation, countdown, start, stop, and quality-decision prompts without requiring precheck or headset handoff, connecting to XRoboToolkit, writing artifacts, or changing resume state. A muted one-segment rehearsal from the normal lab path passed, and the focused suite now contains 25 passing tests. This remains software validation only.
+
