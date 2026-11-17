@@ -1,16 +1,66 @@
 # G1-29 + XRoboToolkit implementation — commit-by-commit plan
 
 Date: 2026-11-16. Status: proposed; no implementation commits made by this
-plan. Scope: simulation only. Target repository:
-`MoissanClub/unitree_g1_lerobot`. Target result: the released XRoboToolkit Quest
-app controls both G1-29 arms in MuJoCo while preserving a source-independent path
-for later CloudXR and G1-23 work.
+plan. Scope: simulation only. Primary target: a new MoissanClub third-party
+LeRobot plugin repository, proposed as `MoissanClub/lerobot_teleoperator_g1_vr`.
+`MoissanClub/unitree_g1_lerobot` remains the integration harness and evidence
+runner. Target result: the released XRoboToolkit Quest app controls both G1-29
+arms in MuJoCo while preserving a source-independent path for later CloudXR and
+G1-23 work.
+
+## Repository and branching strategy
+
+Create the plugin now. Do not build a large mixed project branch and attempt to
+extract upstream LeRobot commits afterward.
+
+Use three repositories with one-way responsibilities:
+
+| Repository | Role | Branch policy |
+| --- | --- | --- |
+| `MoissanClub/lerobot_teleoperator_g1_vr` (new) | Reusable XR source contract, source adapters, interaction state machine, G1 retargeter adapters and LeRobot teleoperator plugin | `main` stays releasable; develop through small sequential feature branches/PRs |
+| `MoissanClub/unitree_g1_lerobot` (existing) | Known-working reference operator, installers, simulation orchestration, video sidecar, experiment launchers and evidence capture | One short-lived integration branch for the G1-29 experiment; do not move reusable plugin code here |
+| `MoissanClub/lerobot` fork of Hugging Face LeRobot | Minimal robot-generic changes proposed upstream: embodiment metadata/model selection, reusable kinematics or a genuinely missing public hook | A separate branch per upstream contribution, always based on current Hugging Face `main`; never branch it from plugin or experiment history |
+
+Recommended branches:
+
+```text
+MoissanClub/lerobot_teleoperator_g1_vr
+  main
+  feat/xr-input-contract
+  feat/cloudxr-source
+  feat/g1-29-retargeter
+  feat/xrobotoolkit-source
+  feat/g1-29-lerobot-integration
+
+MoissanClub/unitree_g1_lerobot
+  main
+  integration/g1-29-xrobotoolkit
+
+MoissanClub/lerobot
+  current upstream-tracking main
+  upstream/g1-<one-minimal-capability>   # create only when a proven gap exists
+```
+
+Feature branches in the plugin should normally be sequential: merge the contract
+before branching the source adapters, then merge the retargeter, and so on. If a
+demo temporarily needs several unmerged plugin PRs, use a disposable
+`integration/g1-29-xrobotoolkit` branch in the plugin repository as a merge
+preview. Do not release from it, and do not use it as the source of an upstream
+LeRobot PR.
+
+When a LeRobot gap is found, first write a failing plugin/integration test that
+demonstrates it. Then author the smallest source-independent fix directly on a
+fresh `MoissanClub/lerobot` branch based on Hugging Face `main`. The upstream
+branch must contain no XRoboToolkit, CloudXR, Quest, video or Moissan experiment
+imports. Until it merges upstream, the plugin compatibility manifest may pin the
+tested fork commit explicitly; replace the pin with an upstream revision in a
+separate dependency-update commit.
 
 ## Starting point and branch policy
 
-- Start from reviewed repository revision
+- Start the integration harness from reviewed repository revision
   `e9891610f0779b7567e2e2637d53c8fb3a0f4d25` on a new branch such as
-  `work/g1-29-xrobotoolkit-vr`.
+  `integration/g1-29-xrobotoolkit`.
 - Preserve the existing untracked `tests/test_dev_workspace.py` and
   `tools/dev_workspace/`; they are not part of this series unless separately
   reviewed and intentionally added.
@@ -65,6 +115,10 @@ refactor(vr): define a normalized XR input contract
 
 Changes:
 
+- Bootstrap the installable `lerobot_teleoperator_g1_vr` distribution in the new
+  plugin repository, including license, minimal packaging, supported Python/
+  LeRobot compatibility metadata and a base test environment with no vendor XR
+  SDK installed.
 - Add an `XRInputSource` protocol with `connect()`, `get_action()` or `sample()`,
   `status`, and `disconnect()` lifecycle.
 - Define the normalized bimanual sample used by the current G1 controller:
@@ -195,16 +249,15 @@ feat(vr): select replay, CloudXR, or XRoboToolkit input
 
 Changes:
 
-- Add one explicit option such as
-  `--input-source={replay,cloudxr,xrobotoolkit}`; preserve current defaults for
-  existing commands.
+- Add plugin configuration such as `source.type={replay,cloudxr,xrobotoolkit}`;
+  preserve current defaults for existing integration-harness commands.
 - Add XRoboToolkit SDK-path and stale-timeout configuration without embedding a
   workstation-specific virtualenv in application code.
 - Build the source through one factory; do not add source checks inside the
   bridge loop or retargeter.
 - Emit structured startup/status lines identifying source, embodiment, tracking,
   clutch and stale/reconnect state.
-- Add parser, factory, invalid-combination and lifecycle tests.
+- Add config registry, factory, invalid-combination and lifecycle tests.
 
 Gate: replay and mocked-source bridge tests. The same `G129Retargeter` instance
 must be used for CloudXR and XRoboToolkit samples.
@@ -219,6 +272,8 @@ feat(vr): supervise G1-29 XRoboToolkit simulation sessions
 
 Changes:
 
+- In `MoissanClub/unitree_g1_lerobot`, consume the plugin from its pinned local or
+  Git revision rather than copying its source modules into the harness.
 - Teach `g1_vr_operator.py` to construct a process graph from the selected source:
   `simulator + bridge` for XRoboToolkit and `simulator + cloudxr + bridge` for
   CloudXR.
@@ -249,18 +304,16 @@ the Quest and PC Service:
 
 Do not continue to video integration if stale/reconnect behavior fails.
 
-## Commit 9 — Package the composition as a LeRobot teleoperator plugin
+## Commit 9 — Run the composition through standard LeRobot interfaces
 
 Suggested subject:
 
 ```text
-feat(vr): expose G1VRTeleoperator as a LeRobot plugin
+feat(vr): run G1VRTeleoperator through standard LeRobot control
 ```
 
 Changes:
 
-- Add the installable `lerobot_teleoperator_g1_vr` package metadata and config
-  registration expected by LeRobot third-party plugin discovery.
 - Implement `G1VRTeleoperator` as composition of `XRInputSource`, shared health/
   clutch behavior and `G129Retargeter`.
 - Return named arm `RobotAction` values and use feedback/current observations for
@@ -277,9 +330,10 @@ Gate: install the plugin into an isolated environment, verify standard LeRobot
 discovery, run deterministic actions through a simulated G1-29 robot, and confirm
 that LeRobot source contains no Moissan or XR SDK import.
 
-Decision boundary: if a missing public LeRobot hook blocks this commit, document
-the smallest generic upstream change and test it separately. Do not monkey-patch
-LeRobot or copy `lerobot-teleoperate` into the plugin.
+Decision boundary: if a missing public LeRobot hook blocks this commit, first
+preserve a failing integration test, then create a separate minimal branch from
+current Hugging Face LeRobot `main`. Do not cherry-pick mixed plugin commits into
+LeRobot, monkey-patch LeRobot or copy `lerobot-teleoperate` into the plugin.
 
 ## Commit 10 — Add independent video-return orchestration and evidence capture
 
@@ -346,10 +400,12 @@ environment or explicitly labeled unverified. Repository tests and `git diff
 
 Recommended review groups, while keeping individual commits intact:
 
-1. Commits 1–4: baseline and architecture-preserving refactor.
+1. Commit 1 in the integration harness, then Commits 2–4 as sequential plugin
+   PRs: baseline, plugin contract and architecture-preserving refactor.
 2. Commits 5–8: freshness behavior and XRoboToolkit source integration.
 3. Live Gate A evidence review.
-4. Commit 9: standard LeRobot plugin boundary.
+4. Commit 9: standard LeRobot runtime boundary, with any necessary upstream fix
+   reviewed in its own repository and PR.
 5. Commit 10 and Live Gate B: optional video and combined experiment.
 6. Commit 11: reproducible handoff.
 

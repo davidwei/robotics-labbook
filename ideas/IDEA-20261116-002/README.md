@@ -188,11 +188,12 @@ network defaults into the upstream `UnitreeG1` robot.
 
 ### What should live under MoissanClub
 
-Incubate the integration in
+Create a dedicated MoissanClub repository distributed as
+`lerobot_teleoperator_g1_vr` for the reusable plugin. Keep
 [`MoissanClub/unitree_g1_lerobot`](https://github.com/MoissanClub/unitree_g1_lerobot)
-or, if Phase 0 finds a clean repository split more maintainable, a dedicated
-MoissanClub repository distributed as `lerobot_teleoperator_g1_vr`. The package
-should remain installable against an unmodified supported LeRobot revision.
+as the integration harness, installer/evidence runner and reference for the
+known-working CloudXR path. The plugin should remain installable against an
+unmodified supported LeRobot revision.
 
 MoissanClub should initially own:
 
@@ -378,14 +379,14 @@ plan authorizes DDS connection or physical robot motion.
 
 ## Repository and evidence plan
 
-Target code location: choose or create a tracked external LeRobot teleoperator
-plugin repository during Phase 0; do not leave the reusable adapter only in an
-untracked experiment directory. Likely dependencies include current LeRobot,
+Target code location: create a tracked external LeRobot teleoperator plugin
+repository during Phase 0; do not leave the reusable adapter only in the existing
+integration harness or an untracked experiment directory. Likely dependencies include current LeRobot,
 XRoboToolkit SDK, the existing G1 kinematics stack and the CloudXR input client.
 Keep transport SDKs optional so installing one source does not require the other.
-The current candidate incubation repository is `MoissanClub/unitree_g1_lerobot`;
-use a dedicated plugin package/repository if that produces a clearer release and
-dependency boundary than adding more operator code to the existing project.
+The integration consumer remains `MoissanClub/unitree_g1_lerobot`; reusable
+adapter and retargeter code belongs in the dedicated plugin repository from the
+first implementation commit.
 
 For each phase preserve the code revision, environment lock, model/asset revision,
 configuration, normalized input trace, IK diagnostics, commanded and observed
