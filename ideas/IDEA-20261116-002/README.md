@@ -1,9 +1,10 @@
 # IDEA-20261116-002 — Composable VR teleoperation for G1-29 and G1-23
 
-Status: in development; architecture, G1-29 baseline and normalized XR source
-contract commits are complete. Project: Unitree G1 / LeRobot. Readiness: ready
-for trace recording/replay and deterministic-clock implementation. Physical
-validation: not started and not authorized by this idea.
+Status: in development; architecture, G1-29 baseline, normalized XR source
+contract and trace/replay commits are complete. Project: Unitree G1 / LeRobot.
+Readiness: ready to adapt the existing CloudXR source behind the normalized
+contract without changing behavior. Physical validation: not started and not
+authorized by this idea.
 
 ## Objective
 

@@ -1,6 +1,6 @@
 # G1-29 + XRoboToolkit implementation — commit-by-commit plan
 
-Date: 2026-11-16. Status: in development; Commits 1–2 completed and pushed.
+Date: 2026-11-16. Status: in development; Commits 1–3 completed and pushed.
 Scope: simulation only. Primary target: the MoissanClub third-party
 LeRobot plugin repository `MoissanClub/lerobot_teleoperator_g1_vr`, confirmed on
 2026-11-16 with default branch `main` at initial observed revision
@@ -44,11 +44,32 @@ Commit 2 completed on 2026-11-16:
   source distribution and wheel builds passed; metadata/discovery name verified
 - Physical scope: no headset, vendor SDK, simulator, DDS or physical robot used
 
-Next implementation action: Commit 3 in the plugin repository, adding the
-versioned raw/normalized trace format, `TraceRecorder`, `TraceReader`, injected
-clock and `TraceReplaySource`. The existing untracked
-`tests/test_dev_workspace.py` and `tools/dev_workspace/` in the integration
-harness were preserved and not included in Commit 1.
+The existing untracked `tests/test_dev_workspace.py` and `tools/dev_workspace/`
+in the integration harness were preserved and not included in Commit 1.
+
+Commit 3 completed on 2026-11-16:
+
+- Repository: `MoissanClub/lerobot_teleoperator_g1_vr`
+- Branch: `feat/xr-trace-replay`, stacked on Commit 2
+- Commit: `2c8e7fbba5a800bcde16cc033de02abeb8bdccf6`
+- Format: versioned manifest plus raw, normalized and source-event JSONL streams;
+  per-file SHA-256 values and an independent checksum file
+- Replay: `TraceReplaySource` uses the same `XRInputSource` contract with
+  deterministic trace-time or real-time pacing; old host timestamps are replaced
+  by the injected replay clock while source timestamps/status are preserved
+- Development safety: replay currently rejects non-simulation targets; rate
+  conversion is explicitly not implemented and exact captures are marked
+  untransformed
+- Fixtures: synthetic idle, right, left, bimanual, release, stale and reconnect
+  sequences cover round trips, status transitions and lifecycle behavior
+- Verification: 41 tests passed under Python 3.12; Ruff lint/format checks passed;
+  source distribution, wheel build and isolated base-wheel import passed
+- Physical scope: no headset, vendor SDK, LeRobot runtime, GPU, simulator, DDS or
+  physical robot used
+
+Next implementation action: Commit 4, wrap the known-working CloudXR controller
+reader behind `XRInputSource` with golden behavior tests and no live-headset
+requirement.
 
 ## Repository and branching strategy
 
