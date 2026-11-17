@@ -1,8 +1,10 @@
 # G1-29 + XRoboToolkit implementation — commit-by-commit plan
 
 Date: 2026-11-16. Status: proposed; no implementation commits made by this
-plan. Scope: simulation only. Primary target: a new MoissanClub third-party
-LeRobot plugin repository, proposed as `MoissanClub/lerobot_teleoperator_g1_vr`.
+plan. Scope: simulation only. Primary target: the MoissanClub third-party
+LeRobot plugin repository `MoissanClub/lerobot_teleoperator_g1_vr`, confirmed on
+2026-11-16 with default branch `main` at initial observed revision
+`a257fe5b7311e36c910e4e240e3ba9d3caff2707`.
 `MoissanClub/unitree_g1_lerobot` remains the integration harness and evidence
 runner. Target result: the released XRoboToolkit Quest app controls both G1-29
 arms in MuJoCo while preserving a source-independent path for later CloudXR and
@@ -10,8 +12,8 @@ G1-23 work.
 
 ## Repository and branching strategy
 
-Create the plugin now. Do not build a large mixed project branch and attempt to
-extract upstream LeRobot commits afterward.
+Develop in the dedicated plugin repository from the start. Do not build a large
+mixed project branch and attempt to extract upstream LeRobot commits afterward.
 
 Use three repositories with one-way responsibilities:
 

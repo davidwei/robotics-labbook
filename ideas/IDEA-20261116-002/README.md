@@ -230,8 +230,10 @@ network defaults into the upstream `UnitreeG1` robot.
 
 ### What should live under MoissanClub
 
-Create a dedicated MoissanClub repository distributed as
-`lerobot_teleoperator_g1_vr` for the reusable plugin. Keep
+Use the dedicated
+[`MoissanClub/lerobot_teleoperator_g1_vr`](https://github.com/MoissanClub/lerobot_teleoperator_g1_vr)
+repository for the reusable plugin. It was confirmed reachable on 2026-11-16
+with default branch `main` at initial observed revision `a257fe5b7311e36c910e4e240e3ba9d3caff2707`. Keep
 [`MoissanClub/unitree_g1_lerobot`](https://github.com/MoissanClub/unitree_g1_lerobot)
 as the integration harness, installer/evidence runner and reference for the
 known-working CloudXR path. The plugin should remain installable against an
@@ -421,8 +423,8 @@ plan authorizes DDS connection or physical robot motion.
 
 ## Repository and evidence plan
 
-Target code location: create a tracked external LeRobot teleoperator plugin
-repository during Phase 0; do not leave the reusable adapter only in the existing
+Target code location: the tracked external `MoissanClub/lerobot_teleoperator_g1_vr`
+repository; do not leave the reusable adapter only in the existing
 integration harness or an untracked experiment directory. Likely dependencies include current LeRobot,
 XRoboToolkit SDK, the existing G1 kinematics stack and the CloudXR input client.
 Keep transport SDKs optional so installing one source does not require the other.
