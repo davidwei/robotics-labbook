@@ -38,8 +38,8 @@ merge or a claim that the experimental control changes are generally ready.
 - The cited SO-101 history is remotely reachable from
   `MoissanClub/lerobot:lab/so101-intel-warning-20261023` or
   `lab/so101-venue-voice-20261031`, including `3cb506d`, `7197d0c`, `a08f19c`,
-  `bd49580`, `45531de`, `6107246`, `cae94f7`, and `546d61b`, except for the two
-  unavailable commits below.
+  `bd49580`, `45531de`, `6107246`, `cae94f7`, and `546d61b`. See the
+  follow-up below for the October 24 commits.
 - G1 handover revision `ca04051f570e4df1fa1d49f84ce39fd623ecbc2f`
   is reachable through `MoissanClub/lerobot:archive/g1-vr-physical-failure`.
   The earlier G1 revisions explicitly described as pushed are likewise
@@ -48,22 +48,18 @@ merge or a claim that the experimental control changes are generally ready.
   `278a3dcc669eb54b0fd5ed26031e420bc7f42e88` is reachable from
   `davidwei/xr_teleoperate:fix/controller-damping-shortcut`.
 
-## Unpublished objects unavailable on this workstation
+## SO-101 publication follow-up
 
-Two exact SO-101 commits remain unpublished:
+Both exact commits were recovered from the original macOS experiment checkout
+and published on `MoissanClub/lerobot:lab/so101-monitor-report-only-20261024`:
 
-- `c5ce05ec2e649132f5546631f108b02fa7d23c37`, recorded branch
-  `lab/so101-monitor-report-only-20261024`;
-- `c779a6c23cdc00694fe99243d874f60a916c193a`, the recorded 15-degree
-  pickup-exit tolerance change.
+- `c5ce05ec2e649132f5546631f108b02fa7d23c37` — report-only motor monitor;
+- `c779a6c23cdc00694fe99243d874f60a916c193a` — 15-degree rotary pickup-exit tolerance.
 
-Neither object exists in the current Linux LeRobot checkout, any fetched
-MoissanClub/lerobot remote branch, or GitHub's reachable object set. The record
-identifies the original source environment as the macOS SO-101 experiment
-checkout under `/Users/davidwei/robotics/lerobot-so101-experiment`. Publishing
-the exact hashes requires that checkout, a bundle, or another object database
-that still contains them; reconstructing equivalent patches would not preserve
-the cited revisions.
+The verified remote branch tip is `c779a6c23cdc00694fe99243d874f60a916c193a`,
+whose parent is `c5ce05ec2e649132f5546631f108b02fa7d23c37`.
+
+## Superseded historical reference
 
 The October 8 timeline also names superseded abbreviated merge tip `a734e000`.
 It was replaced by `bdd78d348cdbd4d0147c3b685f7131fabba25e09`, is not recorded as
