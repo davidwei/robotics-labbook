@@ -37,9 +37,17 @@ commits and pushes to the configured labbook remote and current branch.
   merely because the operator did not repeat this instruction.
 - If push fails, preserve the local commit and report the obstacle. Fetch and retry
   a normal push only when reconciliation is safe; do not force-push or discard work.
-- This instruction applies to labbook records, not automatic code-repository pushes
-  or robot actuation. A later explicit instruction to keep an update local takes
-  precedence.
+- Before a labbook record cites a software commit as durable evidence or provenance,
+  ensure that exact commit is reachable from a configured remote branch. A routine
+  non-force push of the existing code feature/current branch containing a newly
+  cited commit is authorized without additional confirmation. Verify the remote ref
+  resolves to the cited commit or a descendant that contains it.
+- Push only the branch needed to publish cited commits. Do not include unrelated
+  working-tree changes, publish unrelated local branches or tags, merge branches,
+  force-push, or infer permission for robot actuation. If the code push fails,
+  preserve the commit and record it as local/unpublished with the obstacle instead
+  of presenting the citation as durable. A later explicit instruction to keep an
+  update local takes precedence.
 
 ## Pending work discovery and handoff
 
