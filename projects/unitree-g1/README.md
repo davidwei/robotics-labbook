@@ -43,6 +43,12 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   the run ended on an IK seed-limit boundary. Post-run commits `5017cc3` (plugin)
   and `dcdc0d1` (integration workflow/evidence) passed software tests but still
   require a short live repeat. No physical robot was connected or authorized.
+- **G1-29 human/XR calibration capture (2026-11-19; transform pending):** the
+  [simulation session](../../sessions/2026-11-19-g1-29-xrobotoolkit-calibration/session.md)
+  accepted ten static headset/controller pose anchors and six unilateral motion
+  traces. Static calibration review and dynamic MuJoCo replay are now separate
+  commands at integration `f4393fc`. The observation set is complete, but the
+  controller-to-palm and human-to-robot transforms are not solved or validated.
 - Quest diagnostic idea: [in-headset controller motion/grip status](../../ideas/IDEA-20261116-001/README.md),
   with an unbuilt local Unity source draft; baseline released-client debugging remains the current priority.
 - Long-running safety research: [controlled stock-controller handover](../../ideas/IDEA-20261015-003/README.md),
@@ -50,6 +56,7 @@ Owner: David Wei. Project record initialized retrospectively on 2026-10-09; earl
   and further physical tests remain stopped pending offline analysis and a new
   operator decision.
 - Sessions:
+  - [2026-11-19 G1-29 XRoboToolkit calibration observations and trajectory split](../../sessions/2026-11-19-g1-29-xrobotoolkit-calibration/session.md).
   - [2026-11-17 G1-29 XRoboToolkit guided MuJoCo milestone](../../sessions/2026-11-17-g1-29-xrobotoolkit-simulation/session.md).
   - [2026-11-16 Quest Pro MuJoCo video return and simultaneous control](../../sessions/2026-11-16-quest-pro-mujoco-video-return/session.md).
   - [2026-11-16 Quest Pro XRoboToolkit dual-UR5e MuJoCo](../../sessions/2026-11-16-quest-pro-xrobotoolkit-mujoco/session.md).

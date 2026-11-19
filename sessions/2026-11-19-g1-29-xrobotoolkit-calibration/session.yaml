@@ -1,0 +1,35 @@
+id: SESSION-20261119-001
+date: 2026-11-19
+owner: David Wei
+participants: [David Wei, Codex]
+location_label: simulation lab, local Ubuntu desktop
+experiments: [EXP-20261115-001]
+ideas: [IDEA-20261116-002]
+status: calibration_observations_complete_transform_not_solved
+mode: in_lab_simulation_and_development
+hardware:
+  headset: Meta Quest Pro
+  controllers: two Touch Pro controllers
+  workstation_gpus: two NVIDIA GeForce RTX 5090
+  physical_robot: none
+capture:
+  method: live
+  sources: [operator_capture, raw_xr_trace, normalized_xr_trace, calibration_reports, simulation_telemetry, filesystem, codex_session]
+  coverage: partial
+  known_gaps:
+    - No headset-view video of the calibration prompts was captured.
+    - The operator has not yet reviewed the new interactive 4x6 calibration window.
+    - Human/XR and controller-to-palm transforms remain unsolved.
+activities:
+  - type: preflight
+    description: Simulation-only precheck passed with XRoboToolkit service, GPU/NVENC, display, speaker and no physical DDS process.
+  - type: run
+    run_id: RUN-20261119-001
+    description: Captured and accepted ten static calibration anchors and six dynamic unilateral controller traces.
+  - type: diagnostic
+    description: Reproduced a passive MuJoCo viewer shutdown segfault after static replay; integration commit 7e60a7a fixed the shutdown ordering.
+  - type: development
+    description: Integration commit f4393fc split calibration posture review into 03a and dynamic MuJoCo replay into 03b.
+result: complete_xr_observation_suite_and_motion_traces_transform_pending
+next_agent_action: operator_review_03a_then_solve_and_quantify_human_xr_calibration
+physical_validation_status: quest_and_controllers_exercised_no_physical_robot

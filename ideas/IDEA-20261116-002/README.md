@@ -471,10 +471,15 @@ question and must not be attributed to the numerical boundary fix.
 
 ## Next action
 
-Capture deliberate controller-axis/orientation traces and analyze the normalized
-XR frame against G1 end-effector targets without the headset. Then repeat one
-short XRoboToolkit live run at plugin `5017cc3` and integration `dcdc0d1`, using
-the new JSONL telemetry to quantify any seed clipping and mapping error. Continue
-to CloudXR only after the XRoboToolkit calibration and live numerical boundary
-are understood. Stop at simulation scope; G1-23 and physical G1 work remain
-separate and unauthorized.
+The [2026-11-19 calibration session](../../sessions/2026-11-19-g1-29-xrobotoolkit-calibration/session.md)
+captured a complete ten-anchor headset/controller observation set plus six
+passing unilateral motion traces. Integration commit `f4393fc` now separates a
+single 4×6 posture/orientation view (`03a`) from dynamic MuJoCo replay (`03b`).
+The data is suitable input to a calibration solve, but the anchor set explicitly
+states that the transform is not yet solved.
+
+Next, have the operator review the interactive calibration matrix, then solve
+and quantify the headset/body frame, controller-to-palm offsets and workspace
+mapping before comparing targets against G1 end-effectors. Repeat one short live
+XRoboToolkit run only after that offline boundary is understood. Continue to
+CloudXR afterward; G1-23 and physical G1 work remain separate and unauthorized.

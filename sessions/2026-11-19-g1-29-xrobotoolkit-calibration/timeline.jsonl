@@ -1,0 +1,8 @@
+{"time_local":"2026-11-19T12:57:37-08:00","type":"preflight","detail":"Simulation-only precheck passed at integration df545c3, plugin 5017cc3 and pinned LeRobot d5e400b; XRoboToolkit service, GPUs/NVENC, display, speaker and no-DDS checks passed."}
+{"time_local":"2026-11-19T12:58:00-08:00","type":"run_start","run_id":"RUN-20261119-001","detail":"Grouped XR calibration and motion-trace suite started through one persistent Quest connection."}
+{"type":"run_result","run_id":"RUN-20261119-001","detail":"Ten static calibration anchors and six unilateral motion traces were selected as passing; static anchors retained headset and both controller 6-DoF poses with released grips."}
+{"type":"diagnostic_failure","detail":"Visible static replay completed its samples but exited with corrupted double-linked list during passive MuJoCo viewer shutdown; headless replay passed."}
+{"type":"development","detail":"Integration commit 7e60a7a waits for the passive viewer thread before simulator disconnect; exact visible replay then exited normally."}
+{"time_local":"2026-11-19T14:01:06-08:00","type":"software_validation","detail":"The 03a calibration grid loaded ten anchors and rendered fourteen unavailable 4x6 cells blank; SVG evidence was saved."}
+{"time_local":"2026-11-19T14:02:13-08:00","type":"software_validation","detail":"The 03b default selected exactly six dynamic traces; all passed independent validation."}
+{"type":"development","detail":"Integration commit f4393fc split static calibration posture/orientation review from dynamic G1-29 MuJoCo trajectory replay; 16 focused tests and shell syntax passed."}

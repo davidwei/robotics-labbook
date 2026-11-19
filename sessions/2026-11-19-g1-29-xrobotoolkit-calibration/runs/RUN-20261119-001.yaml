@@ -1,0 +1,31 @@
+id: RUN-20261119-001
+date: 2026-11-19
+experiment: EXP-20261115-001
+session: SESSION-20261119-001
+classification: simulation_xr_calibration_and_motion_capture
+objective: Capture a complete grouped human-XR calibration observation set and unilateral controller-motion traces for G1-29 simulation development.
+code:
+  integration_revision: df545c3e4db529803a5c300a8b4a77f39c1ef164
+  plugin_revision: 5017cc3cf521b32ca01b4f7b9abb2fe20de0c473
+  lerobot_revision: d5e400bcefeccc93ba956ce876530e5283512df1
+  integration_worktree: user_owned_untracked_dev_workspace_files_present_and_excluded
+configuration:
+  source: XRoboToolkit SDK through PC Service and Meta Quest Pro
+  embodiment: g1_29_simulation_downstream
+  physical_dds: disabled
+  static_duration_s: 5
+  dynamic_duration_s: 10
+  target_rate_hz: 60
+result: pass_complete_observation_set_transform_not_yet_solved
+observations:
+  - Ten static anchors passed with about 299 samples each and both controllers tracked; grip was released by design.
+  - Six dynamic unilateral traces passed at 59.7-59.8 Hz with instructed-side translation between 0.470 and 0.949 m.
+  - Opposite-side translation was between 0.025 and 0.040 m across the dynamic traces.
+  - The anchor set preserves representative headset and controller position/quaternion poses but does not contain a solved calibration transform.
+capture:
+  root: /home/dwei/lerobot-sim/unitree_g1_lerobot/outputs/g1-vr-lab/20261119-125737
+  suite: calibration-suites/calibration-20261119-125800
+  anchor_set: calibration-suites/calibration-20261119-125800/calibration/anchor-set.json
+limitations:
+  - This run validates XR observations and recording quality, not controller-to-palm or human-to-robot calibration accuracy.
+  - No physical robot was connected or authorized.
