@@ -41,6 +41,12 @@
       "id": "approved-initial-hold-contract",
       "path": "evidence/arm-contract-initial-hold-approved-20261121.json",
       "sha256": "ce6540c8fb99a6fd3e3a68e1cddb591227641f99062f9c6f233c8a69d6c74712"
+    },
+    {
+      "id": "post-hold-passive-outlier-monitor",
+      "path": "evidence/hardware-readonly-20261121-006.json.gz",
+      "sha256": "bebcc68055541502d8518e4d95acbe4f8cd3844157d5650c7d1de7d464dac468",
+      "uncompressed_sha256": "2a04aabe3fe31ed4e68ee41e2333eda3617c0dfa3a064f307269b86b23c0299d"
     }
   ],
   "suspended_contract": {
@@ -49,7 +55,6 @@
     "reason": "One-run approval consumed and suspended after the measured-displacement fault."
   },
   "known_missing": [
-    "operator visual observation of the failed hold",
     "the transient joint/state sample that crossed the displacement envelope",
     "independent physical stop verification",
     "physical confirmation that weight-zero packets returned arm authority to stock control"

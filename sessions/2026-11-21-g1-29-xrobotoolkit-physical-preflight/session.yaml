@@ -147,7 +147,7 @@ initial_hold:
     fault: Measured displacement limit exceeded
     release_packet_sent: true
     physical_stop_verified: false
-    operator_visual_observation: pending
+    operator_visual_observation: no visible movement or disturbance
   post_fault_passive:
     samples: 172
     mode_machine: 5
@@ -157,7 +157,23 @@ initial_hold:
     maximum_pre_to_post_arm_delta_rad: 0.01812005043029785
     limiting_joint: kLeftElbow.q
   authorization_suspended: true
-next_action: Record the operator's visual observation and diagnose the uncaptured displacement transient; do not retry the hold or run 05a.
+post_hold_outlier_monitor:
+  duration_s: 19.99107278700012
+  samples: 862
+  mode_machine: 5
+  mode_pr: 0
+  maximum_state_age_s: 0.008818078000331298
+  maximum_position_span_rad: 0.00023968517780303955
+  maximum_consecutive_position_jump_rad: 0.0001198500394821167
+  maximum_observed_arm_velocity_rad_s: 0.04295146465301514
+  repeated_feedback_spike_observed: false
+fault_analysis:
+  status: hypothesis_only
+  candidate: authority blending without arm gravity feedforward
+  transferred_model_maximum_gravity_torque_nm: 1.8671248299368457
+  transferred_model_limiting_joint: right shoulder roll
+  actual_asymmetric_end_effector_inertia_verified: false
+next_action: Add structured fault-state capture and review live-torso/asymmetric-payload gravity support; do not retry the hold or run 05a.
 capture:
   method: live
   sources:
@@ -167,6 +183,5 @@ capture:
     - robot_read_only_feedback
   coverage: partial
   known_gaps:
-    - operator visual observation of the failed hold is pending
     - the state sample crossing the displacement envelope was not retained in the report loop
     - physical stop and weight-zero handover behavior remain unverified
