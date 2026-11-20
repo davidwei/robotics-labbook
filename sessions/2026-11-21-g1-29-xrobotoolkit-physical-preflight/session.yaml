@@ -3,16 +3,16 @@ date: 2026-11-21
 project: unitree-g1
 experiment: EXP-20261115-001
 mode: in-lab
-status: blocked_before_motion
+status: blocked_after_failed_initial_hold
 objective: Prepare the first script 05a static-posture physical validation.
-result: passive_feedback_passed_motion_gates_unmet
+result: initial_hold_faulted_on_measured_displacement
 code:
   integration_revision: f7d951ede82ddb7a5b2ed0ed835a11b8c25bee79
   guarded_replay_revision: cd8d7cdf52a1c448b8f38e1ad2913c16760f342a
   initial_positioning_revision: bfbf9c7cb0a49ebdfd9e761cc7ef43ec0298adae
   stock_balance_staging_revision: 65ebefbb1e573f30960a4f54133d6d802e32fbc3
   plugin_revision: e29a85b543bf4495223d403317afa7fd557a66a6
-  arm_sdk_revision: 39e02d7d2f2bc06353683a612ccca5b82733ea40
+  arm_sdk_revision: 90bdd40b4c4b3a66d75f499118ca8afe9fcd3e9b
   labbook_refresh_revision: 4ae46169eb077ec108805a878b4fcaf8b2010c47
 hardware:
   embodiment: g1_29
@@ -74,9 +74,11 @@ passive_recheck:
   motion_commanded: false
   result: blocked_by_starting_state_and_unreviewed_contract
 motion:
-  authorized_by_labbook: false
-  commanded: false
-  physical_validation: pending
+  authorized_by_operator: true
+  authorization_scope: one supported no-displacement authority hold
+  commanded: true
+  intended_displacement_rad: 0.0
+  physical_validation: failed
 development_validation:
   focused_tests: 26
   ruff: passed
@@ -120,15 +122,42 @@ first_actuation_request:
   maximum_observed_arm_velocity_rad_s: 0.012271846644580364
   competing_arm_process_found: false
   english_tts_command: passed
-  actuation_performed: false
-  blocker: reviewed hardware contract unavailable
+  actuation_performed: true
+  result: failed_measured_displacement_limit
 contract_progress:
   robot_identity_recorded: true
   payload_tool_configuration_recorded: true
   stock_lower_body_owner_confirmed: true
   overall_reviewed: false
   motion_authorized: false
-next_action: Preserve stock waist/leg self-balancing, review a no-arm-gravity-feedforward contract, then perform a supported no-displacement arm-authority hold before any 05a staging motion.
+initial_hold:
+  reviewer: dwei
+  approved_contract_sha256: ce6540c8fb99a6fd3e3a68e1cddb591227641f99062f9c6f233c8a69d6c74712
+  final_passive_gate:
+    samples: 178
+    mode_machine: 5
+    mode_pr: 0
+    maximum_state_age_s: 0.005679049999343988
+    maximum_observed_arm_velocity_rad_s: 0.03681553900241852
+    competing_arm_process_found: false
+  execution:
+    reported_samples: 27
+    maximum_reported_authority_weight: 0.18000000000000002
+    maximum_reported_start_relative_arm_delta_rad: 0.00008392333984375
+    fault: Measured displacement limit exceeded
+    release_packet_sent: true
+    physical_stop_verified: false
+    operator_visual_observation: pending
+  post_fault_passive:
+    samples: 172
+    mode_machine: 5
+    mode_pr: 0
+    maximum_state_age_s: 0.009223697999914293
+    maximum_observed_arm_velocity_rad_s: 0.04295146465301514
+    maximum_pre_to_post_arm_delta_rad: 0.01812005043029785
+    limiting_joint: kLeftElbow.q
+  authorization_suspended: true
+next_action: Record the operator's visual observation and diagnose the uncaptured displacement transient; do not retry the hold or run 05a.
 capture:
   method: live
   sources:
@@ -138,6 +167,6 @@ capture:
     - robot_read_only_feedback
   coverage: partial
   known_gaps:
-    - robot serial and firmware not independently recorded
-    - independent physical stop and support procedure not reviewed
-    - no physical motion or release behavior tested
+    - operator visual observation of the failed hold is pending
+    - the state sample crossing the displacement envelope was not retained in the report loop
+    - physical stop and weight-zero handover behavior remain unverified

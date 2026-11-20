@@ -18,17 +18,40 @@
       "path": "evidence/hardware-readonly-20261121-003.json.gz",
       "sha256": "5f5c2abc890320c110be532cd865a6e34859e413440ef420301dd48c4cb7f946",
       "uncompressed_sha256": "8c9d1f6577ed5d8baefdd541f688982bf8b180642cea1f0ccc72d4156d6e464b"
+    },
+    {
+      "id": "hardware-readonly-approved-hold-gate",
+      "path": "evidence/hardware-readonly-20261121-004.json.gz",
+      "sha256": "0cfc93caa992202d07910155b5a7763ba51792c974030363f0ae70b751aea1b4",
+      "uncompressed_sha256": "e643b813ae8e8d2637874b12cf0467e5d1c8411aba209834a169a19e157c2d2d"
+    },
+    {
+      "id": "hardware-initial-hold-failed",
+      "path": "evidence/hardware-initial-hold-20261121-001.json.gz",
+      "sha256": "11d474830eff1a2262fb20fbc7a43c46ed3e13c16399e6a5417c1dc9453e13db",
+      "uncompressed_sha256": "400824f7e9c868dac87c5cff2d4912c244f32d4e80611480ba2d47d5fda3b8f7"
+    },
+    {
+      "id": "hardware-readonly-after-failed-hold",
+      "path": "evidence/hardware-readonly-20261121-005.json.gz",
+      "sha256": "2a5324ba47d8fbf601c60b981d2ea465fefd4a334deed905cbd6b05fad81df48",
+      "uncompressed_sha256": "d4a9f648878fa779b9866514afbc01decde19a2a65df6a675bd061c83f084deb"
+    },
+    {
+      "id": "approved-initial-hold-contract",
+      "path": "evidence/arm-contract-initial-hold-approved-20261121.json",
+      "sha256": "ce6540c8fb99a6fd3e3a68e1cddb591227641f99062f9c6f233c8a69d6c74712"
     }
   ],
-  "unreviewed_contract": {
-    "local_path": "/home/dwei/xrobotoolkit/arm-contract-unreviewed.json",
-    "sha256": "4026215eff69c6effefd9ecddb0c31d58000508a9130fb0397ae6772645c54e7",
-    "retention": "Not copied into the canonical labbook because it is an unreviewed template, not an approved configuration."
+  "suspended_contract": {
+    "local_path": "/home/dwei/xrobotoolkit/arm-contract-initial-hold-reviewed.json",
+    "sha256": "8d8a7d2bf3a19228337e4242ff27a8fb3cd2e2d9d44632928452dbf41b0ab43f",
+    "reason": "One-run approval consumed and suspended after the measured-displacement fault."
   },
   "known_missing": [
-    "operator-approved hardware contract",
-    "robot serial and firmware provenance",
-    "independent stop/support verification",
-    "physical hold, release, tracking, and posture observations"
+    "operator visual observation of the failed hold",
+    "the transient joint/state sample that crossed the displacement envelope",
+    "independent physical stop verification",
+    "physical confirmation that weight-zero packets returned arm authority to stock control"
   ]
 }

@@ -62,6 +62,16 @@ The physical end effectors are asymmetric: a BrainCo Revo2 hand is installed on 
 
 A subscriber-only PC1 check received fresh `rt/lowstate` with version words `[0, 0]`, mode `(5, 0)`, and advancing ticks. A read-only RPC query reported live loco server API `1.0.0.0`; the arm-action service did not answer its version query. PC2 reports `/etc/user_release_version` `0.0`, Ubuntu `22.04.5`, and BrainCo service SDK `v1.1.9`. These interface/host values were not substituted for the operator-reported Unitree software version. The stock-lower-body-owner confirmation was recorded; the overall contract and all other approval gates remain unchanged, and no motion was authorized.
 
+## First no-displacement authority hold
+
+Reviewer `dwei` explicitly approved one supported no-displacement authority hold, accepted the documented process-death, payload-model and software-torque limitations, and confirmed presence at the physical emergency control. Arm SDK revision `90bdd40b4c4b3a66d75f499118ca8afe9fcd3e9b` preserved unverified waist and failure behavior as hold-test limitations rather than promoting them to verified findings. Thirty-seven focused tests passed, four optional physics tests were skipped, and Ruff passed. The exact approved contract is preserved with SHA256 `ce6540c8fb99a6fd3e3a68e1cddb591227641f99062f9c6f233c8a69d6c74712`.
+
+The final passive gate retained 178 samples, mode `(5, 0)`, maximum state age `0.005679 s`, and maximum observed arm velocity `0.03682 rad/s`. No competing arm process or held local lease was found. English speech warned before authority and again while the hold was active.
+
+The hold acquired arm authority and continuously requested the measured arm pose with gravity feedforward disabled. It faulted after 27 reported samples with `Measured displacement limit exceeded` while the reported authority weight had reached at most `0.18`. The report loop's retained samples show only `0.000084 rad` maximum start-relative arm change, so the state that crossed the `0.05 rad` envelope was not captured in those samples. Three weight-zero release packets were reported sent. This establishes neither a physical stop nor successful handover.
+
+A subsequent passive run retained 172 samples in mode `(5, 0)`, with maximum state age `0.009224 s` and maximum observed arm velocity `0.04295 rad/s`. The final arm pose was within `0.01812 rad` of the final pre-hold sample, limited by the left elbow; stock waist motion continued. This is evidence of live feedback after cleanup, not proof of the transient cause or physical release semantics. The one-run approval was consumed and suspended. Do not retry the hold or execute `05a` until the transient is diagnosed and the operator's visual observation is recorded.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.
