@@ -40,6 +40,14 @@ The operator clarified that the stock controller owns the waist and legs and mov
 
 Integration revision `65ebefbb1e573f30960a4f54133d6d802e32fbc3` therefore makes `lower_body_mode: stock_balance` explicit and rejects `05a` staging unless the reviewed Arm SDK profile uses `gravity_urdf: null` and the reviewer accepts no arm gravity feedforward. Stock lower-body commands remain untouched. The first physical gate becomes a supported no-displacement arm-authority hold with tracking, torque, lower-body behavior and release review; staging follows only if that passes. Twenty-six focused tests, Ruff, shell syntax and diff checks passed. This is software validation only.
 
+## Upstream `xr_teleoperate` coordinate-frame comparison
+
+Upstream `unitreerobotics/xr_teleoperate` revision `7e5026e4732cf166bcd1210d7958a75575d5fc95`, with `televuer` submodule `766de45e74373ae0ea66321d942ce538385655a5`, defaults to `arm_reference_mode="head_yaw"`. Each XR wrist translation subtracts the live operator-head translation and is rotated by inverse operator-head yaw; head pitch and roll are ignored. A fixed `+0.15 m` forward and `+0.45 m` vertical offset then maps the result to a nominal waist-origin frame for IK.
+
+This is not an absolute XR-world target, but it is also not measured robot-head/waist-relative control. The G1-29 IK model locks hips, legs and all three waist joints at zero and does not consume the physical robot's live waist transform. Stock-balance waist motion therefore changes the physical hand pose relative to the world/head without being compensated by that IK. The method is best described as **operator-head-yaw-relative input mapped into a nominal fixed robot-waist frame**.
+
+Current `05a` differs: it executes stored local arm joint angles, not a Cartesian world target. Stock waist motion carries the arms and hands with the torso; `05a` does not chase a world point or counteract balance. This is appropriate for the initial static staging/validation goal. Future live XR control under stock balance should preserve operator-head-relative input but solve arms against the measured robot torso/waist transform, rather than reuse a fixed-waist IK assumption.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.

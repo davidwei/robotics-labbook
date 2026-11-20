@@ -73,6 +73,14 @@ development_validation:
       waist_motion_allowed: true
       reduced_fixed_waist_gravity_model: prohibited
       current_candidate_arm_gravity_feedforward: disabled_pending_review
+upstream_coordinate_review:
+  xr_teleoperate_revision: 7e5026e4732cf166bcd1210d7958a75575d5fc95
+  televuer_revision: 766de45e74373ae0ea66321d942ce538385655a5
+  upstream_input_frame: operator_head_yaw_relative
+  upstream_ik_frame: nominal_fixed_robot_waist
+  physical_robot_waist_feedback_used_by_ik: false
+  current_05a_control_space: local_arm_joint_positions
+  live_xr_recommendation: operator-head-relative input with measured robot torso/waist transform in IK
 next_action: Preserve stock waist/leg self-balancing, review a no-arm-gravity-feedforward contract, then perform a supported no-displacement arm-authority hold before any 05a staging motion.
 capture:
   method: live
