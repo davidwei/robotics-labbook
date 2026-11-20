@@ -249,6 +249,14 @@ departure_preservation:
     - observed resource-allocation and stale-feedback timing failures
     - full suite not rerun after final-return diagnostic correction
   authorization: prior contract consumed and suspended; no 05a or 05b motion authorized
+home_review_questions:
+  - id: arm_authority_transfer
+    question: What exact acquisition, hold, return, release, and failure state machine is correct for rt/arm_sdk while PC1 retains stock balance?
+    status: unresolved
+  - id: motion_rate_limit
+    question: How should the hardware safety ceiling be separated from trajectory speed so a reviewed posture move completes in approximately 5 to 10 seconds?
+    considerations: [joint distance, acceleration, settling, tracking, payload, torque]
+    status: unresolved
 next_action: Resume offline physics-loop validation, perform a fresh passive preflight and contract review, then run one newly reviewed authority-only acquisition/return/release gate; only after it passes may static 05a be reviewed. Rebuild 05b before any dynamic replay.
 capture:
   method: live
