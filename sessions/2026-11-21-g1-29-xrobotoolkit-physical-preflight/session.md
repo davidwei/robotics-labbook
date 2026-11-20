@@ -24,6 +24,10 @@ The first-target approach now defaults to seven seconds, separate from the revie
 
 Software validation passed 23 focused tests, Ruff, shell syntax and diff checks. No physical motion, audible-in-lab acceptance, keyboard pause under real authority, hold behavior, release behavior or tracking response was validated by this development update. The starting-state and contract blockers above remain unchanged.
 
+## Passive recheck after operator preparation
+
+A second passive diagnostic retained 176 samples with mode `(5, 0)`, weight `0.0`, maximum state age `0.008863 s` and no structured errors. Waist yaw improved to `0.0102 rad` and waist roll was `0.0344 rad`, but waist pitch was `-0.0526 rad`, just outside the `0.05 rad` reduced-gravity-model gate. The maximum arm difference from `calibration-down-inward` remained `0.3634 rad`, now at the left elbow, versus the unchanged `0.05 rad` reviewed displacement envelope. No command publisher or physical motion was used. `05a` remains blocked; do not widen the envelope merely to bypass the starting-state check.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.

@@ -33,6 +33,19 @@ preflight:
   measured_waist_yaw_rad: 0.4242418706417084
   contract_reviewed: false
   physical_stop_verified: false
+passive_recheck:
+  samples: 176
+  maximum_state_age_s: 0.008862072999818338
+  mode_machine: 5
+  mode_pr: 0
+  arm_weight: 0.0
+  measured_waist_yaw_rad: 0.01017784047871828
+  measured_waist_roll_rad: 0.03440995514392853
+  measured_waist_pitch_rad: -0.052632320672273636
+  maximum_down_inward_start_delta_rad: 0.36338551413126186
+  limiting_joint: kLeftElbow.q
+  motion_commanded: false
+  result: blocked_by_starting_state_and_unreviewed_contract
 motion:
   authorized_by_labbook: false
   commanded: false

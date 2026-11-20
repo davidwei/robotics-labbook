@@ -6,6 +6,12 @@
       "path": "evidence/hardware-readonly-20261121-001.json.gz",
       "sha256": "a4219f70fe687197a6ad17a53b1c468ca6b812d9a10a814138532490b1400c87",
       "uncompressed_sha256": "ba096a0da0e6cb992431faf839ed7715274a33edfa746b4bb2b5614f2b04f640"
+    },
+    {
+      "id": "hardware-readonly-recheck",
+      "path": "evidence/hardware-readonly-20261121-002.json.gz",
+      "sha256": "38e54efa474460e0022a3906473066bd0be54c310e66107b9f3f01f46b7dba58",
+      "uncompressed_sha256": "47950e811accfc64348b4e4d41738b6f0250c19baa8aa61d14de3882aa681518"
     }
   ],
   "unreviewed_contract": {
