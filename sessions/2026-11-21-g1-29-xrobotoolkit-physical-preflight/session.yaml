@@ -1,0 +1,51 @@
+id: SESSION-20261121-001
+date: 2026-11-21
+project: unitree-g1
+experiment: EXP-20261115-001
+mode: in-lab
+status: blocked_before_motion
+objective: Prepare the first script 05a static-posture physical validation.
+result: passive_feedback_passed_motion_gates_unmet
+code:
+  integration_revision: f7d951ede82ddb7a5b2ed0ed835a11b8c25bee79
+  plugin_revision: e29a85b543bf4495223d403317afa7fd557a66a6
+  arm_sdk_revision: 39e02d7d2f2bc06353683a612ccca5b82733ea40
+  labbook_refresh_revision: 4ae46169eb077ec108805a878b4fcaf8b2010c47
+hardware:
+  embodiment: g1_29
+  network_interface: enP8p1s0
+  feedback_mode_machine: 5
+  feedback_mode_pr: 0
+  arm_weight: 0.0
+  command_publisher_created: false
+plans:
+  posture_sha256: 290d79e4c1e020127a4587d041d79383cf246ee5ada58a90ff28a8fa14d1a61e
+  trajectory_sha256: 00480bcd6428757a021c6b8989e0d2f0c09c1671bd5fc010020274ce9db1a1d9
+  urdf_sha256: 8bbf006633fc50b616f665c7a970780cc296577a0adfd7d28b049e751c238735
+preflight:
+  samples: 175
+  tick_first: 751647
+  tick_last: 755093
+  maximum_state_age_s: 0.00652449799997612
+  maximum_down_inward_start_delta_rad: 0.36500348483614187
+  limiting_joint: kLeftWristPitch.q
+  measured_waist_yaw_rad: 0.4242418706417084
+  contract_reviewed: false
+  physical_stop_verified: false
+motion:
+  authorized_by_labbook: false
+  commanded: false
+  physical_validation: pending
+next_action: Use the stock controller to neutralize the waist and align arms near the reviewed down/inward target, repeat passive feedback, and complete an external site-specific contract review before any 05a execution.
+capture:
+  method: live
+  sources:
+    - codex_session
+    - git
+    - filesystem
+    - robot_read_only_feedback
+  coverage: partial
+  known_gaps:
+    - robot serial and firmware not independently recorded
+    - independent physical stop and support procedure not reviewed
+    - no physical motion or release behavior tested

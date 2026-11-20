@@ -1,0 +1,22 @@
+{
+  "session": "SESSION-20261121-001",
+  "artifacts": [
+    {
+      "id": "hardware-readonly-report",
+      "path": "evidence/hardware-readonly-20261121-001.json.gz",
+      "sha256": "a4219f70fe687197a6ad17a53b1c468ca6b812d9a10a814138532490b1400c87",
+      "uncompressed_sha256": "ba096a0da0e6cb992431faf839ed7715274a33edfa746b4bb2b5614f2b04f640"
+    }
+  ],
+  "unreviewed_contract": {
+    "local_path": "/home/dwei/xrobotoolkit/arm-contract-unreviewed.json",
+    "sha256": "4026215eff69c6effefd9ecddb0c31d58000508a9130fb0397ae6772645c54e7",
+    "retention": "Not copied into the canonical labbook because it is an unreviewed template, not an approved configuration."
+  },
+  "known_missing": [
+    "operator-approved hardware contract",
+    "robot serial and firmware provenance",
+    "independent stop/support verification",
+    "physical hold, release, tracking, and posture observations"
+  ]
+}
