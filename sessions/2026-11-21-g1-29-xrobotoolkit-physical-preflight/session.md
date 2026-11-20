@@ -56,7 +56,11 @@ A third passive diagnostic retained 174 samples with mode `(5, 0)`, arm weight `
 
 ## Operator-reported model identity
 
-The operator reported that the physical robot is the same Unitree G1 EDU 29-DoF configuration represented by the transferred `g1_29.urdf` simulation model (`SHA256 8bbf006633fc50b616f665c7a970780cc296577a0adfd7d28b049e751c238735`). This supports the embodiment/model assumption but was not independently measured. The attached payload/tool configuration was not separately specified. The local SDK search exposed service API versions but no read-only robot serial or installed-firmware query, so those identity fields remain unknown. No approval flags were changed and no motion was authorized.
+The operator reported that the physical robot is the same Unitree G1 EDU 29-DoF body configuration represented by the transferred `g1_29.urdf` simulation model (`SHA256 8bbf006633fc50b616f665c7a970780cc296577a0adfd7d28b049e751c238735`). The operator supplied robot SN `E21D6000Q1M76781`, Unitree software `v1.5.4`, and hardware `v1.0`. Stock balance is owned by robot PC1 at `192.168.123.161`; the present host is PC2 `unitree-g1-nx`.
+
+The physical end effectors are asymmetric: a BrainCo Revo2 hand is installed on the right and a dummy hand on the left. The transferred URDF contains bilateral articulated hand links and inertial data and does not explicitly identify a BrainCo/dummy composition. The body kinematics can therefore match while the end-effector mass/inertia model remains unverified. This does not change `05a` joint targets, but it is relevant to gains, torque limits, tracking, and any future gravity compensation.
+
+A subscriber-only PC1 check received fresh `rt/lowstate` with version words `[0, 0]`, mode `(5, 0)`, and advancing ticks. A read-only RPC query reported live loco server API `1.0.0.0`; the arm-action service did not answer its version query. PC2 reports `/etc/user_release_version` `0.0`, Ubuntu `22.04.5`, and BrainCo service SDK `v1.1.9`. These interface/host values were not substituted for the operator-reported Unitree software version. The stock-lower-body-owner confirmation was recorded; the overall contract and all other approval gates remain unchanged, and no motion was authorized.
 
 ## Evidence limits
 
