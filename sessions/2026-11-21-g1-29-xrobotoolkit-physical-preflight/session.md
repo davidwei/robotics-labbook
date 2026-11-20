@@ -28,6 +28,12 @@ Software validation passed 23 focused tests, Ruff, shell syntax and diff checks.
 
 A second passive diagnostic retained 176 samples with mode `(5, 0)`, weight `0.0`, maximum state age `0.008863 s` and no structured errors. Waist yaw improved to `0.0102 rad` and waist roll was `0.0344 rad`, but waist pitch was `-0.0526 rad`, just outside the `0.05 rad` reduced-gravity-model gate. The maximum arm difference from `calibration-down-inward` remained `0.3634 rad`, now at the left elbow, versus the unchanged `0.05 rad` reviewed displacement envelope. No command publisher or physical motion was used. `05a` remains blocked; do not widen the envelope merely to bypass the starting-state check.
 
+## Separately reviewed initial-positioning implementation
+
+Integration revision `bfbf9c7cb0a49ebdfd9e761cc7ef43ec0298adae` adds `05a --stage-from-current` as a single continuous arm-only phase from the live measured pose to the selected static posture. It defaults to a 10-second cubic approach and is lengthened when the reviewed velocity or acceleration ceiling requires more time. For the latest `0.3634 rad` gap, the nominal peak command speed would be about `0.0545 rad/s`, below the existing `0.1 rad/s` ceiling. The existing English alarms, `Q` hold, `R` resume, torque/tracking checks and release request remain active.
+
+The feature does not control the waist, legs or hands and does not authorize a larger envelope. It requires a named, label-specific `physical_replay_staging` review with a maximum live start delta, minimum duration and explicit path/clearance review. The Arm SDK `max_displacement` must independently cover the full path; the executor rejects either mismatch. This avoids treating repeated small activations as a way around the total-displacement gate. Software validation passed 25 focused tests, Ruff, shell syntax, CLI-help and diff checks. No physical staging, clearance, pause, tracking or release behavior was tested.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.
