@@ -16,6 +16,14 @@ Physical motion remains blocked because no site-reviewed arm-only hardware contr
 
 `05b` remains downstream of a reviewed and observed `05a` result.
 
+## Guarded replay control update
+
+Integration revision `cd8d7cdf52a1c448b8f38e1ad2913c16760f342a` adds three operator controls to both physical replay executors. English speech now explicitly selects `spd-say -l en`, gives a blocking pre-motion warning and repeats from a background worker during authority/motion so TTS cannot block the 20 ms command loop. An interactive terminal is mandatory: `Q` latches a pause, freezes plan time and commands a hold near the latest measured pose; `R` explicitly resumes. `Ctrl+C` retains the existing request to release through three weight-zero packets. The `Q` path keeps arm torque active and is not an independent or verified emergency stop.
+
+The first-target approach now defaults to seven seconds, separate from the reviewed Arm SDK velocity ceiling. With the current `0.05 rad` displacement envelope, a seven-second cubic approach peaks near `0.011 rad/s`; `0.1 rad/s` remains a ceiling for faults or larger future reviewed plans. The two-second authority blend and one-second final hold are additional. Safety-derived velocity/acceleration minima can only lengthen the requested approach.
+
+Software validation passed 23 focused tests, Ruff, shell syntax and diff checks. No physical motion, audible-in-lab acceptance, keyboard pause under real authority, hold behavior, release behavior or tracking response was validated by this development update. The starting-state and contract blockers above remain unchanged.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.

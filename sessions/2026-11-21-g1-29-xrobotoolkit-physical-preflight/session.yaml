@@ -8,6 +8,7 @@ objective: Prepare the first script 05a static-posture physical validation.
 result: passive_feedback_passed_motion_gates_unmet
 code:
   integration_revision: f7d951ede82ddb7a5b2ed0ed835a11b8c25bee79
+  guarded_replay_revision: cd8d7cdf52a1c448b8f38e1ad2913c16760f342a
   plugin_revision: e29a85b543bf4495223d403317afa7fd557a66a6
   arm_sdk_revision: 39e02d7d2f2bc06353683a612ccca5b82733ea40
   labbook_refresh_revision: 4ae46169eb077ec108805a878b4fcaf8b2010c47
@@ -36,6 +37,17 @@ motion:
   authorized_by_labbook: false
   commanded: false
   physical_validation: pending
+development_validation:
+  focused_tests: 23
+  ruff: passed
+  shell_syntax: passed
+  physical_motion: not_performed
+  controls:
+    tts_language: en
+    approach_duration_s: 7.0
+    keyboard_pause: Q
+    keyboard_resume: R
+    pause_holds_torque: true
 next_action: Use the stock controller to neutralize the waist and align arms near the reviewed down/inward target, repeat passive feedback, and complete an external site-specific contract review before any 05a execution.
 capture:
   method: live
