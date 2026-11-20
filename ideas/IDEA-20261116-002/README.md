@@ -484,6 +484,12 @@ in native MuJoCo. Only the down/inward reference converged. The other nine cells
 were bounded best-effort with 0.633–1.015 m maximum per-hand position residuals.
 This establishes a quantitative uncalibrated baseline, not a calibration solve.
 
+Post-lab FK review confirmed the preview is not annotation-correct: raw XR axes
+are currently added directly to the G1 base frame, so human forward/up motions
+map into wrong robot directions. Palm semantics are also undefined without a
+basis conversion and controller/robot palm-frame offsets. See the session
+[analysis](../../sessions/2026-11-19-g1-29-xrobotoolkit-calibration/analysis.md).
+
 Next, have the operator review both interactive calibration/robot tabs, then solve
 and quantify the headset/body frame, controller-to-palm offsets and workspace
 mapping before comparing targets against G1 end-effectors. Repeat one short live

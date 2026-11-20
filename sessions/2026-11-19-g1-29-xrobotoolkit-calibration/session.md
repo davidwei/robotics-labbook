@@ -41,6 +41,14 @@ controller-to-palm offset and robot reachability. Seventeen focused tests,
 headless native rendering, embedded-image SVG conversion and the interactive
 two-tab launch path passed; operator visual review remains pending.
 
+Subsequent quantitative review found that the rendered postures do not match
+their annotations. Forward maps mainly down/left, horizontal is asymmetric, and
+upward remains below the shoulders while shifting left. Palm directions cannot
+be validated because neither the XR-to-robot rotation basis nor palm-frame
+offsets are implemented. The reference convergence is only a zero-relative-
+motion result. Measurements, proposed axis mapping and isolation tests are in
+[analysis.md](analysis.md).
+
 ## Evidence-supported interpretation and next action
 
 The data needed for a human/XR calibration solve is present: time-series and representative headset/controller positions and orientations. The current visualization verifies recorded posture distinctions, but it does not solve the headset/body frame, controller-to-palm offset, workspace scale, or human-to-robot transform; it therefore does not validate G1 IK pose correspondence.
