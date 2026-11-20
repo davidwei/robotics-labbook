@@ -58,3 +58,11 @@ tabs, then implement and quantitatively test the human/XR calibration solve
 against the preserved residual report. Continue using
 `03b_replay_trajectories.sh` for dynamic replay. Physical G1 motion remains
 unauthorized and outside this session.
+
+## 2026-11-20 shared calibration and offline hardware replay verification
+
+The [plugin calibration implementation](https://github.com/MoissanClub/lerobot_teleoperator_g1_vr/commit/e29a85b) now supplies the shared profile for [03a, 03b, 04 and the new 05 replay scripts](https://github.com/MoissanClub/unitree_g1_lerobot/commit/f7d951e). Each script can reconstruct the profile from the accepted anchor set and robot model independently. 05a and 05b generate offline plans by default.
+
+On the recorded suite, all ten static anchors produced identical Cartesian and joint targets in the simulation and physical-plan paths. All 598 frames of right-up agreed for Cartesian targets, joint commands and grip state. Motion plans were generated for all six trajectories. The focused lab suite passed 29 tests and the plugin suite passed 111. The executor was exercised with a simulated SDK backend.
+
+These comparisons establish reproducibility of desired targets. Operator review of anatomical correspondence in 03a, live headset verification in 04, and measured tracking on physical hardware remain pending. No physical motion was performed.
