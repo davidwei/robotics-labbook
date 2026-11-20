@@ -81,6 +81,22 @@ upstream_coordinate_review:
   physical_robot_waist_feedback_used_by_ik: false
   current_05a_control_space: local_arm_joint_positions
   live_xr_recommendation: operator-head-relative input with measured robot torso/waist transform in IK
+first_actuation_request:
+  operator_report:
+    gantry: true
+    environment_clear: true
+    emergency_clear: true
+  selected_gate: no_displacement_arm_authority_hold
+  passive_samples: 174
+  mode_machine: 5
+  mode_pr: 0
+  arm_weight: 0.0
+  maximum_state_age_s: 0.0067103050000696385
+  maximum_observed_arm_velocity_rad_s: 0.012271846644580364
+  competing_arm_process_found: false
+  english_tts_command: passed
+  actuation_performed: false
+  blocker: reviewed hardware contract unavailable
 next_action: Preserve stock waist/leg self-balancing, review a no-arm-gravity-feedforward contract, then perform a supported no-displacement arm-authority hold before any 05a staging motion.
 capture:
   method: live

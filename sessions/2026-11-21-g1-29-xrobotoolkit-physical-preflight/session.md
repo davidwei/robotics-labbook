@@ -48,6 +48,12 @@ This is not an absolute XR-world target, but it is also not measured robot-head/
 
 Current `05a` differs: it executes stored local arm joint angles, not a Cartesian world target. Stock waist motion carries the arms and hands with the torso; `05a` does not chase a world point or counteract balance. This is appropriate for the initial static staging/validation goal. Future live XR control under stock balance should preserve operator-head-relative input but solve arms against the measured robot torso/waist transform, rather than reuse a fixed-waist IK assumption.
 
+## First-actuation request and passive gate
+
+The operator reported the robot on the gantry, the environment clear and the emergency control clear, and requested the first physical move. The selected first actuation remains the no-displacement arm-authority hold rather than the larger `05a` staging path. No actuation occurred because no reviewed hardware contract exists.
+
+A third passive diagnostic retained 174 samples with mode `(5, 0)`, arm weight `0.0`, maximum state age `0.006711 s`, maximum observed arm velocity `0.01228 rad/s` and no structured errors. Waist motion continued under stock balance. The English `spd-say -l en` preflight command completed. No competing LeRobot/G1 arm process was found, and the execution and Arm SDK checkouts matched their published revisions. The sole local contract remains explicitly unreviewed, lacks robot identity/firmware and procedure approvals, and still names the prohibited fixed-waist gravity model. Physical stop behavior remains unverified by execution evidence.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.

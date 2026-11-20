@@ -12,6 +12,12 @@
       "path": "evidence/hardware-readonly-20261121-002.json.gz",
       "sha256": "38e54efa474460e0022a3906473066bd0be54c310e66107b9f3f01f46b7dba58",
       "uncompressed_sha256": "47950e811accfc64348b4e4d41738b6f0250c19baa8aa61d14de3882aa681518"
+    },
+    {
+      "id": "hardware-readonly-first-actuation-gate",
+      "path": "evidence/hardware-readonly-20261121-003.json.gz",
+      "sha256": "5f5c2abc890320c110be532cd865a6e34859e413440ef420301dd48c4cb7f946",
+      "uncompressed_sha256": "8c9d1f6577ed5d8baefdd541f688982bf8b180642cea1f0ccc72d4156d6e464b"
     }
   ],
   "unreviewed_contract": {
