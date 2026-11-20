@@ -31,3 +31,11 @@ The October 16 series provides additional handover context, not a direct recurre
 - Reproduce and instrument the exact upstream takeover semantics offline: `rt/arm_sdk`, current-state-bounded target, immediate startup weight `1.0`, upstream joint-group gains, and explicit feedforward choice. Compare it with the custom gradual blend before proposing another physical contract.
 - Review an arm-gravity strategy that uses live torso orientation and the actual asymmetric end-effector inertias. Do not simply restore the fixed-waist feedforward model or widen the displacement envelope.
 - Require a new explicit operator review before any repeat hold. `05a` remains blocked.
+
+## 05a-to-05b readiness audit
+
+The current executor still assumes the custom two-second startup weight blend and releases with three immediate weight-zero packets. Before another physical run, replace and test those semantics: measured-pose target continuity with full startup arm weight, then a controlled move to a stock-compatible arm pose followed by a `1 -> 0` release fade. A newly reviewed no-displacement acquisition-and-release run remains the first physical gate.
+
+The existing `05a` posture artifact remains suitable only as a reviewed static target. The `calibration-down-inward` target is approximately `0.36 rad` from the latest measured pose, so its complete path, gains, payload assumptions, torque limits and approximately 10-second staging duration require explicit review after the takeover implementation changes.
+
+The existing `05b` artifact is not eligible for physical replay. Across its six approximately 10-second segments, timestamp-derived peak joint velocity is `5.41–11.35 rad/s` and peak acceleration is `357–717 rad/s^2`, versus the current reviewed ceilings of `0.1 rad/s` and `0.5 rad/s^2`. Meeting the velocity ceiling by global stretching would require roughly `54–114x`, which is not a useful repair. The trajectories require continuity-preserving IK/replanning, velocity/acceleration validation, start-pose matching, and static validation of the selected segment's start pose before one single-arm dynamic run.

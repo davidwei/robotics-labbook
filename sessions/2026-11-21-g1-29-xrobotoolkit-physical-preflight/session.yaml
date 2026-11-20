@@ -209,7 +209,26 @@ self_run_05a_request:
   requested: true
   enabled: false
   reason: prerequisite authority hold failed before full authority
-next_action: Reproduce and compare upstream takeover semantics offline against the custom blend, then review feedforward/payload handling; do not retry the hold or run physical 05a.
+replay_readiness_audit:
+  executor_changes_required_before_05a:
+    - replace custom 0-to-1 startup blend with reviewed full-weight target-continuity acquisition
+    - add controlled move to stock-compatible arm pose followed by 1-to-0 release fade
+    - validate acquisition and release offline, then in one newly reviewed no-displacement run
+  05a:
+    target: calibration-down-inward
+    latest_maximum_start_delta_rad: 0.36338551413126186
+    proposed_staging_duration_s: 10.0
+    status: blocked pending takeover/release correction and review
+  05b:
+    segment_count: 6
+    duration_s_range: [9.98640914, 9.997811221]
+    maximum_joint_velocity_rad_s_range: [5.412635, 11.346758]
+    maximum_joint_acceleration_rad_s2_range: [357.239643, 716.502352]
+    reviewed_velocity_ceiling_rad_s: 0.1
+    reviewed_acceleration_ceiling_rad_s2: 0.5
+    velocity_only_required_stretch_range: [54.1, 113.5]
+    status: blocked; continuity-preserving replanning required
+next_action: Correct and test takeover plus controlled release, repeat a newly reviewed no-displacement gate, then run one reviewed static 05a; rebuild and validate 05b before any dynamic replay.
 capture:
   method: live
   sources:
