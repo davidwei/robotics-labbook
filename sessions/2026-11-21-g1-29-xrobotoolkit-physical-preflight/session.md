@@ -74,6 +74,10 @@ A subsequent passive run retained 172 samples in mode `(5, 0)`, with maximum sta
 
 The operator subsequently reported **nothing visibly moved or changed** during the hold. A 20-second subscriber-only monitor then retained 862 samples in mode `(5, 0)` and found only `0.000240 rad` maximum arm-position span and `0.000120 rad` maximum consecutive-sample jump. No persistent or repeated feedback spike was observed. Offline evaluation of the transferred model predicted maximum gravity torque near `1.87 Nm` at the right shoulder roll; the transition from stock support to a no-feedforward arm controller is a plausible contributor, particularly with the asymmetric physical end effectors, but is not a validated cause. See `analysis.md`; authorization remains suspended.
 
+Arm SDK revision `c130b0b145fa1c3dff429a0075016cb8445fd709` adds a 64-state bounded history and structured displacement-fault evidence: joint name, measured/initial/previous-command positions, delta and limit, velocity, torque estimate, tick, mode, authority weight and state age. The physical diagnostic report now preserves that context. Thirty-seven focused tests passed, four optional physics tests were skipped, and Ruff passed. No physical command was sent for this development update.
+
+The operator requested to self-run physical `05a`. That request was not enabled because the prerequisite hold faulted at authority weight `0.18`, while the planned posture remains approximately `0.36 rad` from the measured start. The suspended contract continues to fail closed. Only read-only/offline validation is appropriate until the authority transition is diagnosed and a new explicit review is completed.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.

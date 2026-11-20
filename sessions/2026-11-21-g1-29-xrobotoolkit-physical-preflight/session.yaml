@@ -12,7 +12,7 @@ code:
   initial_positioning_revision: bfbf9c7cb0a49ebdfd9e761cc7ef43ec0298adae
   stock_balance_staging_revision: 65ebefbb1e573f30960a4f54133d6d802e32fbc3
   plugin_revision: e29a85b543bf4495223d403317afa7fd557a66a6
-  arm_sdk_revision: 90bdd40b4c4b3a66d75f499118ca8afe9fcd3e9b
+  arm_sdk_revision: c130b0b145fa1c3dff429a0075016cb8445fd709
   labbook_refresh_revision: 4ae46169eb077ec108805a878b4fcaf8b2010c47
 hardware:
   embodiment: g1_29
@@ -173,7 +173,18 @@ fault_analysis:
   transferred_model_maximum_gravity_torque_nm: 1.8671248299368457
   transferred_model_limiting_joint: right shoulder roll
   actual_asymmetric_end_effector_inertia_verified: false
-next_action: Add structured fault-state capture and review live-torso/asymmetric-payload gravity support; do not retry the hold or run 05a.
+diagnostic_instrumentation:
+  revision: c130b0b145fa1c3dff429a0075016cb8445fd709
+  recent_state_capacity: 64
+  structured_displacement_fault_context: true
+  focused_tests_passed: 37
+  optional_physics_tests_skipped: 4
+  ruff: passed
+self_run_05a_request:
+  requested: true
+  enabled: false
+  reason: prerequisite authority hold failed before full authority
+next_action: Review and simulate live-torso/asymmetric-payload gravity support using the new fault evidence; do not retry the hold or run physical 05a.
 capture:
   method: live
   sources:
