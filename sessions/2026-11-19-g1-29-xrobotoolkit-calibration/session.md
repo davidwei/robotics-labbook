@@ -66,3 +66,14 @@ The [plugin calibration implementation](https://github.com/MoissanClub/lerobot_t
 On the recorded suite, all ten static anchors produced identical Cartesian and joint targets in the simulation and physical-plan paths. All 598 frames of right-up agreed for Cartesian targets, joint commands and grip state. Motion plans were generated for all six trajectories. The focused lab suite passed 29 tests and the plugin suite passed 111. The executor was exercised with a simulated SDK backend.
 
 These comparisons establish reproducibility of desired targets. Operator review of anatomical correspondence in 03a, live headset verification in 04, and measured tracking on physical hardware remain pending. No physical motion was performed.
+
+## Physical-lab handoff for EXP-20261115-001
+
+The 05 scripts are published on branch `feat/g1-29-vr-lab-scripts` at `f7d951e`. The calibration plugin is on `feat/g1-vr-calibration` at `e29a85b`. The robot-host [Arm SDK and hardware contract validator](https://github.com/MoissanClub/lerobot/tree/39e02d7d2f2bc06353683a612ccca5b82733ea40) are on `work/g1-29-arm-hardware`. All three GitHub branch tips were verified before handoff. The canonical labbook revision at pre-lab refresh was `4c13a9f`.
+
+Transfer the directory `physical-plans/handoff-20261120/` from the session evidence root listed in evidence.json. It contains the two offline plans, the matching URDF and SHA256SUMS. Run `sha256sum -c SHA256SUMS` on arrival. The posture plan SHA-256 is `290d79e4c1e020127a4587d041d79383cf246ee5ada58a90ff28a8fa14d1a61e`. The trajectory plan SHA-256 is `00480bcd6428757a021c6b8989e0d2f0c09c1671bd5fc010020274ce9db1a1d9`. No hardware contract was approved during workstation preparation.
+
+1. **05a · physical validation pending.** Review the 03a down/inward target and the lab's arm-only hardware contract before execution. For one reviewed posture, compare visible arm and palm direction to the label and measured joints to the planned targets within the contract limits. Preserve the JSONL and the operator's observation. If the posture disagrees, isolate that anchor in 03a before proceeding.
+2. **05b · follows the static check.** Review one trajectory in 03b and confirm the hardware starting pose and contract for that segment. Compare measured tracking, moving side and held arm against the recorded targets. Preserve the segment label, timing stretch, plan/contract digests, JSONL and reason for any early stop.
+
+Minimum useful outcome if motion is deferred is confirmation of the plan and URDF hashes and documentation of the first unmet robot-host prerequisite. Hardware tracking and stop/release behavior remain unverified.
