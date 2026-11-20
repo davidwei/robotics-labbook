@@ -77,3 +77,7 @@ Transfer the directory `physical-plans/handoff-20261120/` from the session evide
 2. **05b · follows the static check.** Review one trajectory in 03b and confirm the hardware starting pose and contract for that segment. Compare measured tracking, moving side and held arm against the recorded targets. Preserve the segment label, timing stretch, plan/contract digests, JSONL and reason for any early stop.
 
 Minimum useful outcome if motion is deferred is confirmation of the plan and URDF hashes and documentation of the first unmet robot-host prerequisite. Hardware tracking and stop/release behavior remain unverified.
+
+### Download at the physical lab
+
+Download the [complete handoff ZIP](handoff-20261120.zip) or browse the [individual files](handoff-20261120/). Extract the ZIP, enter `handoff-20261120`, and run `sha256sum -c SHA256SUMS`. Expect three OK results. Both plans and the exact URDF are included. The robot host also needs the [05 scripts and usage](https://github.com/MoissanClub/unitree_g1_lerobot/tree/f7d951ede82ddb7a5b2ed0ed835a11b8c25bee79/lab/g1_vr), the [Arm SDK checkout](https://github.com/MoissanClub/lerobot/tree/39e02d7d2f2bc06353683a612ccca5b82733ea40) and the lab's site-specific reviewed hardware contract.
