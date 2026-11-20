@@ -169,10 +169,35 @@ post_hold_outlier_monitor:
   repeated_feedback_spike_observed: false
 fault_analysis:
   status: hypothesis_only
-  candidate: authority blending without arm gravity feedforward
+  candidate: custom gradual startup blend and controller mismatch versus upstream; exact cause unresolved
   transferred_model_maximum_gravity_torque_nm: 1.8671248299368457
   transferred_model_limiting_joint: right shoulder roll
   actual_asymmetric_end_effector_inertia_verified: false
+  prior_related_evidence:
+    run: RUN-20261015-009
+    similarity: no gravity feedforward; small arm error guard; exact watchdog sample absent; operator reported stationary
+    difference: commanded preparation motion and tracking-error fault rather than measured-pose authority hold and displacement fault
+    confounded_followup: RUN-20261015-010 changed both gravity feedforward and preparation tolerance
+    broader_handover_context:
+      - RUN-20261016-005 pose-specific fade success with 3.09 rad/s post-close wrist peak
+      - RUN-20261016-006 distinct full-authority oscillatory return failure requiring operator emergency stop
+  upstream_takeover_audit:
+    repository: unitreerobotics/xr_teleoperate
+    revision: 7e5026e4732cf166bcd1210d7958a75575d5fc95
+    command_topic: rt/arm_sdk
+    startup_weight: 1.0
+    startup_weight_ramp: false
+    target_bounding: clip_arm_q_target at 250 Hz
+    exit_sequence: command arm home, then fade weight from 1 to 0
+    upstream_gains:
+      shoulder_elbow_kp_kd: [80.0, 3.0]
+      wrist_kp_kd: [40.0, 1.5]
+    upstream_tracking_feedforward: IK-derived torque
+    failed_hold_deviations:
+      - two-second 0-to-1 startup weight blend
+      - uniform kp/kd 60/1.5
+      - zero feedforward
+    correction: previous transfer-of-control explanation overemphasized gradual startup blending
 diagnostic_instrumentation:
   revision: c130b0b145fa1c3dff429a0075016cb8445fd709
   recent_state_capacity: 64
@@ -184,7 +209,7 @@ self_run_05a_request:
   requested: true
   enabled: false
   reason: prerequisite authority hold failed before full authority
-next_action: Review and simulate live-torso/asymmetric-payload gravity support using the new fault evidence; do not retry the hold or run physical 05a.
+next_action: Reproduce and compare upstream takeover semantics offline against the custom blend, then review feedforward/payload handling; do not retry the hold or run physical 05a.
 capture:
   method: live
   sources:
