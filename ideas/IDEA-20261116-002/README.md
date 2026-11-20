@@ -478,7 +478,13 @@ single 4×6 posture/orientation view (`03a`) from dynamic MuJoCo replay (`03b`).
 The data is suitable input to a calibration solve, but the anchor set explicitly
 states that the transform is not yet solved.
 
-Next, have the operator review the interactive calibration matrix, then solve
+The 2026-11-20 offline preview at integration `785629f` then evaluated those
+anchors through the production G1-29 retargeter and rendered the joint targets
+in native MuJoCo. Only the down/inward reference converged. The other nine cells
+were bounded best-effort with 0.633–1.015 m maximum per-hand position residuals.
+This establishes a quantitative uncalibrated baseline, not a calibration solve.
+
+Next, have the operator review both interactive calibration/robot tabs, then solve
 and quantify the headset/body frame, controller-to-palm offsets and workspace
 mapping before comparing targets against G1 end-effectors. Repeat one short live
 XRoboToolkit run only after that offline boundary is understood. Continue to

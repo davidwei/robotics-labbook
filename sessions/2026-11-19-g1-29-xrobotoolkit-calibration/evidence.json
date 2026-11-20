@@ -4,14 +4,17 @@
   "artifacts": [
     {"id": "suite-manifest", "path": "calibration-suites/calibration-20261119-125800/manifest.json", "sha256": "067d2089da3aab39ed1cc3adacce4c8ef55d55647dfe9e40e05b379df16c2771"},
     {"id": "calibration-anchor-set", "path": "calibration-suites/calibration-20261119-125800/calibration/anchor-set.json", "sha256": "d17bb3e146b87af0d365b50b1751ef09c2b78c414333fdcc97776100f9aae09c"},
-    {"id": "calibration-posture-grid", "path": "checks/calibration-posture-grid-20261119-140106.svg", "sha256": "c497a00561f885341e027cc36f91fdb906c7563bd6aff4c9af633e33545d090a"}
+    {"id": "calibration-posture-grid", "path": "checks/calibration-posture-grid-20261119-140106.svg", "sha256": "c497a00561f885341e027cc36f91fdb906c7563bd6aff4c9af633e33545d090a"},
+    {"id": "calibration-g1-retarget-grid", "path": "checks/calibration-g1-retarget-grid-20261120-072751.svg", "sha256": "0b99fd04e9210553a903a7187dc90d5137d184242d11616b06a19e72d0a7c6d7"},
+    {"id": "calibration-g1-retarget-report", "path": "checks/calibration-g1-retarget-20261120-072751.json", "sha256": "2ec65cd286297a0c880988e1edaf9168d7d450ec2d286f1e70bd9e827333188c"}
   ],
   "code": {
     "capture_integration_revision": "df545c3e4db529803a5c300a8b4a77f39c1ef164",
     "plugin_revision": "5017cc3cf521b32ca01b4f7b9abb2fe20de0c473",
     "pinned_lerobot_revision": "d5e400bcefeccc93ba956ce876530e5283512df1",
     "viewer_shutdown_fix": "7e60a7a02c74909d807a9740db5cb22a00917c7e",
-    "split_review_workflow": "f4393fc"
+    "split_review_workflow": "f4393fc",
+    "g1_retargeting_preview": "785629f"
   },
   "known_missing": ["headset-view video", "operator acceptance of interactive 03a view", "solved human/XR calibration transform", "quantitative robot end-effector correspondence"],
   "retention": "Raw/normalized traces, reports, telemetry and logs remain in the local integration evidence root and are not copied into Git."

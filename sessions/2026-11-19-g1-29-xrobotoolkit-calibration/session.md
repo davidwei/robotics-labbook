@@ -21,8 +21,32 @@ Integration commit `f4393fc` replaces the combined replay command with:
 
 Software verification passed: shell syntax, 16 focused tests, rendering the real ten-anchor set to SVG, and independent validation of all six selected motion traces. The generated view was inspected for matrix population and OpenXR Y-up projection. Operator visual acceptance of the interactive window remains pending.
 
+## 2026-11-20 offline G1 retargeting preview
+
+Integration commit `785629f` extends script 3a with a second tab and saved SVG
+for native G1-29 robot views. The diagnostic uses
+`calibration-down-inward` as the clutch-relative reference, applies a virtual
+two-hand grip only inside the offline preview, repeatedly evaluates each static
+anchor through the production retargeter/IK until convergence or a stable
+bounded result, and renders the resulting joint target in native MuJoCo. A JSON
+report preserves joint targets, iteration counts, IK status and residuals.
+
+The real ten-anchor set produced one converged cell: the reference anchor with
+effectively zero residual. All nine other cells ended `bounded_best_effort`.
+Their maximum per-hand position residuals ranged from 0.633 m to 1.015 m. This
+is direct software evidence that the raw static observations cannot be treated
+as calibrated robot targets under the present unit-scale, uncorrected-frame
+mapping. It does not distinguish the contributions of scale, axis/frame,
+controller-to-palm offset and robot reachability. Seventeen focused tests,
+headless native rendering, embedded-image SVG conversion and the interactive
+two-tab launch path passed; operator visual review remains pending.
+
 ## Evidence-supported interpretation and next action
 
 The data needed for a human/XR calibration solve is present: time-series and representative headset/controller positions and orientations. The current visualization verifies recorded posture distinctions, but it does not solve the headset/body frame, controller-to-palm offset, workspace scale, or human-to-robot transform; it therefore does not validate G1 IK pose correspondence.
 
-Next: run `03a_view_calibration.sh` interactively for operator review, then implement and quantitatively test the human/XR calibration solve before using the anchors as robot end-effector targets. Continue using `03b_replay_trajectories.sh` for dynamic replay. Physical G1 motion remains unauthorized and outside this session.
+Next: run `03a_view_calibration.sh` interactively for operator review of both
+tabs, then implement and quantitatively test the human/XR calibration solve
+against the preserved residual report. Continue using
+`03b_replay_trajectories.sh` for dynamic replay. Physical G1 motion remains
+unauthorized and outside this session.
