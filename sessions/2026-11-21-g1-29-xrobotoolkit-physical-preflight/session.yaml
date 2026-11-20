@@ -228,7 +228,28 @@ replay_readiness_audit:
     reviewed_acceleration_ceiling_rad_s2: 0.5
     velocity_only_required_stretch_range: [54.1, 113.5]
     status: blocked; continuity-preserving replanning required
-next_action: Correct and test takeover plus controlled release, repeat a newly reviewed no-displacement gate, then run one reviewed static 05a; rebuild and validate 05b before any dynamic replay.
+departure_preservation:
+  arm_sdk_revision: 87e29c26
+  arm_sdk_remote: origin/work/g1-29-arm-hardware
+  integration_revision: 0eb6d34
+  integration_remote: origin/feat/g1-29-vr-lab-scripts
+  physical_motion: false
+  focused_validation:
+    backend_contract_tests: 37 passed, 7 optional physics cases skipped
+    replay_control_tests: 8 passed
+    g1_29_kinematics_tests: 15 passed
+    ruff: passed in both repositories
+    shell_syntax: passed
+  exact_urdf_hold_simulation:
+    result: passed
+    maximum_displacement_rad: 1.92e-17
+    normal_release_complete: true
+  unresolved_validation:
+    - full subprocess physics suite was not repeatable before departure
+    - observed resource-allocation and stale-feedback timing failures
+    - full suite not rerun after final-return diagnostic correction
+  authorization: prior contract consumed and suspended; no 05a or 05b motion authorized
+next_action: Resume offline physics-loop validation, perform a fresh passive preflight and contract review, then run one newly reviewed authority-only acquisition/return/release gate; only after it passes may static 05a be reviewed. Rebuild 05b before any dynamic replay.
 capture:
   method: live
   sources:
