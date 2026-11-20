@@ -54,6 +54,10 @@ The operator reported the robot on the gantry, the environment clear and the eme
 
 A third passive diagnostic retained 174 samples with mode `(5, 0)`, arm weight `0.0`, maximum state age `0.006711 s`, maximum observed arm velocity `0.01228 rad/s` and no structured errors. Waist motion continued under stock balance. The English `spd-say -l en` preflight command completed. No competing LeRobot/G1 arm process was found, and the execution and Arm SDK checkouts matched their published revisions. The sole local contract remains explicitly unreviewed, lacks robot identity/firmware and procedure approvals, and still names the prohibited fixed-waist gravity model. Physical stop behavior remains unverified by execution evidence.
 
+## Operator-reported model identity
+
+The operator reported that the physical robot is the same Unitree G1 EDU 29-DoF configuration represented by the transferred `g1_29.urdf` simulation model (`SHA256 8bbf006633fc50b616f665c7a970780cc296577a0adfd7d28b049e751c238735`). This supports the embodiment/model assumption but was not independently measured. The attached payload/tool configuration was not separately specified. The local SDK search exposed service API versions but no read-only robot serial or installed-firmware query, so those identity fields remain unknown. No approval flags were changed and no motion was authorized.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.

@@ -16,6 +16,14 @@ code:
   labbook_refresh_revision: 4ae46169eb077ec108805a878b4fcaf8b2010c47
 hardware:
   embodiment: g1_29
+  model_identity:
+    source: operator_report
+    matches_simulation_model: true
+    simulation_urdf_sha256: 8bbf006633fc50b616f665c7a970780cc296577a0adfd7d28b049e751c238735
+    independently_measured: false
+    payload_tool_configuration_separately_specified: false
+    robot_serial: unknown
+    installed_firmware: unknown
   network_interface: enP8p1s0
   feedback_mode_machine: 5
   feedback_mode_pr: 0
