@@ -34,6 +34,12 @@ Integration revision `bfbf9c7cb0a49ebdfd9e761cc7ef43ec0298adae` adds `05a --stag
 
 The feature does not control the waist, legs or hands and does not authorize a larger envelope. It requires a named, label-specific `physical_replay_staging` review with a maximum live start delta, minimum duration and explicit path/clearance review. The Arm SDK `max_displacement` must independently cover the full path; the executor rejects either mismatch. This avoids treating repeated small activations as a way around the total-displacement gate. Software validation passed 25 focused tests, Ruff, shell syntax, CLI-help and diff checks. No physical staging, clearance, pause, tracking or release behavior was tested.
 
+## Stock-balance correction
+
+The operator clarified that the stock controller owns the waist and legs and moves them as needed for self-balancing; the waist cannot and should not be forced neutral for this test. The earlier neutral-waist next action is superseded. The current reduced arm gravity feedforward is fixed-waist and not dynamically compatible with that operating mode.
+
+Integration revision `65ebefbb1e573f30960a4f54133d6d802e32fbc3` therefore makes `lower_body_mode: stock_balance` explicit and rejects `05a` staging unless the reviewed Arm SDK profile uses `gravity_urdf: null` and the reviewer accepts no arm gravity feedforward. Stock lower-body commands remain untouched. The first physical gate becomes a supported no-displacement arm-authority hold with tracking, torque, lower-body behavior and release review; staging follows only if that passes. Twenty-six focused tests, Ruff, shell syntax and diff checks passed. This is software validation only.
+
 ## Evidence limits
 
 The passive report contained 175 samples, advancing ticks `751647` through `755093`, maximum reported state age `0.006525 s`, mode `(5, 0)`, weight `0.0`, and no structured report errors. Two console-level `Reader take sample error` messages occurred around the run boundary; continuous samples were still retained. Mode bytes and a passing software report do not establish hardware acceptance, safe handover, or physical stop behavior.
